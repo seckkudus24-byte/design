@@ -9,12 +9,16 @@ timeline.json :
   ]
 }
 "start" = début de la phrase (s). "whip_in" = whip pan entre le plan précédent et celui-ci.
+"speech_end" (facultatif) : fin de la voix ; la dernière image est tenue HOLD s puis fondue au noir.
+"flashes" (facultatif) : numéros des images qui entrent avec un flash blanc.
 """
 import json, os, re, subprocess, sys
 
 W, H, FPS = 1080, 1920, 30
 ZOOM = 0.08
 WHIP = 0.15          # durée totale du whip pan
+HOLD, FADE = 1.5, 0.5
+FLASH = 0.1
 RED = "&H002E26D7&"  # #D7262E en BGR
 FONT_DIR = "assets/fonts"
 FONT = "Anton"
@@ -38,7 +42,7 @@ def render_shot(image, n_frames, zoom_in, out):
     # Image agrandie pour un zoom fluide, recadrée pour remplir le 9:16 sans bandes.
     z = f"1+{ZOOM}*on/{n_frames}" if zoom_in else f"{1 + ZOOM}-{ZOOM}*on/{n_frames}"
     vf = (f"scale={W * 2}:{H * 2}:force_original_aspect_ratio=increase,crop={W * 2}:{H * 2},"
-          f"zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={n_frames}:s={W}x{H}:fps={FPS},"
+          f"zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={n_frames}:s={W}x{H}:fps={FPS},setsar=1,"
           f"format=yuv420p")
     run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", image, "-vf", vf,
          "-frames:v", str(n_frames), "-c:v", "libx264", "-preset", "fast", "-crf", "16", out])
@@ -74,11 +78,12 @@ def write_ass(shots, end, path):
     open(path, "w").write("\n".join(lines) + "\n")
 
 
-def main(timeline_path, out_path, work="build"):
-    tl = json.load(open(timeline_path))
-    shots, audio = tl["shots"], tl["audio"]
+def main(timeline_path, audio, out_path, work="build"):
+    """audio = piste finale déjà mixée (voir audio.py)."""
+    tl = json.load(open(timeline_path, encoding="utf-8"))
+    shots = tl["shots"]
     os.makedirs(work, exist_ok=True)
-    end = audio_duration(audio)
+    end = tl["speech_end"] + HOLD + FADE if "speech_end" in tl else audio_duration(audio)
     shots[0]["start"] = 0.0  # la première image couvre le tout début
     half = WHIP / 2
 
@@ -128,24 +133,20 @@ def main(timeline_path, out_path, work="build"):
         fc.append(f"[{cur}][{lbl}]xfade=transition={direction}:duration={whip_frames / FPS}:offset={offset}[{out}]")
         whip_times.append(offset)
         cur, cur_len = out, cur_len + n - whip_frames
+    flashes = "".join(
+        f",drawbox=t=fill:c=white@1:enable='between(t,{shots[n - 1]['start']:.3f},{shots[n - 1]['start'] + FLASH:.3f})'"
+        for n in tl.get("flashes", []))
+    fade = f",fade=t=out:st={end - FADE:.3f}:d={FADE}" if "speech_end" in tl else ""
     blur = "".join(f",avgblur=sizeX=60:sizeY=1:enable='between(t,{t:.3f},{t + WHIP:.3f})'" for t in whip_times)
     ass = os.path.join(work, "texte.ass")
     write_ass(shots, end, ass)
-    fc.append(f"[{cur}]null{blur},ass={ass}:fontsdir={FONT_DIR},format=yuv420p[v]")
+    fc.append(f"[{cur}]null{blur}{flashes},ass={ass}:fontsdir={FONT_DIR}{fade},format=yuv420p[v]")
 
-    # Normalisation à -14 LUFS en mode linéaire (gain constant, voix intacte).
-    probe = subprocess.run(["ffmpeg", "-hide_banner", "-i", audio, "-af",
-                            "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
-                           capture_output=True, text=True).stderr
-    m = json.loads(probe[probe.rindex("{"):probe.rindex("}") + 1])
-    af = (f"loudnorm=I=-14:TP=-1.5:LRA=11:linear=true:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
-          f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']},"
-          f"aresample=48000")
     inputs += ["-i", audio]
     run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(fc),
-         "-map", "[v]", "-map", f"{len(seg_files)}:a", "-af", af,
+         "-map", "[v]", "-map", f"{len(seg_files)}:a",
          "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-r", str(FPS), "-pix_fmt", "yuv420p",
-         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", out_path])
+         "-c:a", "aac", "-b:a", "192k", "-ac", "2", "-movflags", "+faststart", "-t", f"{end:.3f}", out_path])
     print("OK ->", out_path)
 
 

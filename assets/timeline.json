@@ -1,0 +1,196 @@
+{
+ "audio": "assets/voix.m4a",
+ "speech_end": 80.9522,
+ "flashes": [
+  9,
+  14
+ ],
+ "shots": [
+  {
+   "image": "build/images/1.jpg",
+   "start": 0.0,
+   "text": "Pourquoi personne n'a jamais vu une anguille **faire des bébés** ?",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/2.jpg",
+   "start": 6.18,
+   "text": "Pas un pêcheur. Pas un scientifique. Pas une seule **caméra**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/3.jpg",
+   "start": 9.507,
+   "text": "Et ce mystère dure depuis plus de **2 000 ans**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/4.jpg",
+   "start": 11.618,
+   "text": "Le philosophe grec **Aristote** a cherché. Il ouvre des anguilles.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/5.jpg",
+   "start": 14.5,
+   "text": "Aucun œuf. Sa conclusion ? Elles naissent… de la **boue**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/6.jpg",
+   "start": 17.657,
+   "text": "En **1876**, un jeune étudiant reprend l'enquête.",
+   "whip_in": true
+  },
+  {
+   "image": "build/images/7.jpg",
+   "start": 20.244,
+   "text": "Il dissèque environ **400** anguilles.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/8.jpg",
+   "start": 22.153,
+   "text": "Il cherche leurs organes reproducteurs. Résultat : **rien**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/9.jpg",
+   "start": 25.148,
+   "text": "Cet étudiant s'appelait… **Sigmund Freud**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/10.jpg",
+   "start": 27.392,
+   "text": "Il a abandonné les anguilles… pour étudier le **cerveau humain**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/11.jpg",
+   "start": 30.161,
+   "text": "Alors… **où** naissent-elles ? Au début du 20E siècle,",
+   "whip_in": true
+  },
+  {
+   "image": "build/images/12.jpg",
+   "start": 32.733,
+   "text": "un biologiste danois fouille l'Atlantique pendant presque **20 ans**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/13.jpg",
+   "start": 36.192,
+   "text": "Plus il va vers l'ouest, plus les bébés anguilles sont **petits**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/14.jpg",
+   "start": 38.687,
+   "text": "Les plus minuscules sont dans un endroit précis : la **mer des Sargasses**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/15.jpg",
+   "start": 41.998,
+   "text": "À plus de **5 000 km** de l'Europe.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/16.jpg",
+   "start": 43.936,
+   "text": "Et voici ce que **personne** ne vous dit.",
+   "whip_in": true
+  },
+  {
+   "image": "build/images/17.jpg",
+   "start": 45.777,
+   "text": "Pour y retourner, l'anguille adulte se **transforme** complètement.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/18.jpg",
+   "start": 48.529,
+   "text": "Son ventre devient argenté. Ses yeux **grossissent**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/19.jpg",
+   "start": 51.091,
+   "text": "Et son système digestif se dégrade. Elle arrête de **manger**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/20.jpg",
+   "start": 53.54,
+   "text": "Elle traverse l'océan le ventre vide. Pendant des **mois**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/21.jpg",
+   "start": 56.15,
+   "text": "En **2022**, des chercheurs leur posent des balises satellites.",
+   "whip_in": true
+  },
+  {
+   "image": "build/images/22.jpg",
+   "start": 58.936,
+   "text": "Pour la **première fois**, on suit des anguilles adultes jusqu'aux Sargasses.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/23.jpg",
+   "start": 62.757,
+   "text": "Mais ce qu'elles font là-bas… personne ne l'a jamais **filmé**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/24.jpg",
+   "start": 65.482,
+   "text": "On n'a jamais trouvé un seul **œuf** d'anguille européenne en pleine mer.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/25.jpg",
+   "start": 68.797,
+   "text": "Chaque anguille que vous mangez a été pêchée dans la **nature**.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/26.jpg",
+   "start": 71.471,
+   "text": "Elle naît au milieu de l'**océan**,",
+   "whip_in": true
+  },
+  {
+   "image": "build/images/27.jpg",
+   "start": 73.006,
+   "text": "vit jusqu'à 20 ans dans nos **rivières**…",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/28.jpg",
+   "start": 74.754,
+   "text": "puis traverse **5 000 km**",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/29.jpg",
+   "start": 76.539,
+   "text": "pour **mourir** là où elle est née.",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/30.jpg",
+   "start": 77.914,
+   "text": "Comment trouve-t-elle le **chemin** ?",
+   "whip_in": false
+  },
+  {
+   "image": "build/images/31.jpg",
+   "start": 79.294,
+   "text": "Ça aussi… c'est encore un **mystère**.",
+   "whip_in": false
+  }
+ ]
+}
