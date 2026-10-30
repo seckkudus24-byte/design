@@ -1,0 +1,1782 @@
+{
+"duration": 95.190204,
+"source": "pauses",
+"words": [
+{
+"w": "Saviez-vous",
+"s": 0.0,
+"e": 0.34,
+"scene": "titre"
+},
+{
+"w": "qu'en",
+"s": 0.34,
+"e": 0.59,
+"scene": "titre"
+},
+{
+"w": "Afrique,",
+"s": 0.59,
+"e": 0.93,
+"scene": "titre"
+},
+{
+"w": "des",
+"s": 1.22,
+"e": 1.37,
+"scene": "titre"
+},
+{
+"w": "phacochères",
+"s": 1.37,
+"e": 1.88,
+"scene": "titre"
+},
+{
+"w": "se",
+"s": 1.88,
+"e": 2.04,
+"scene": "titre"
+},
+{
+"w": "couchent",
+"s": 2.04,
+"e": 2.31,
+"scene": "titre"
+},
+{
+"w": "volontairement",
+"s": 2.31,
+"e": 2.94,
+"scene": "titre"
+},
+{
+"w": "par",
+"s": 2.94,
+"e": 3.09,
+"scene": "titre"
+},
+{
+"w": "terre",
+"s": 3.09,
+"e": 3.36,
+"scene": "titre"
+},
+{
+"w": "pour",
+"s": 3.36,
+"e": 3.7,
+"scene": "titre"
+},
+{
+"w": "se",
+"s": 3.7,
+"e": 3.85,
+"scene": "titre"
+},
+{
+"w": "faire",
+"s": 3.85,
+"e": 4.13,
+"scene": "titre"
+},
+{
+"w": "« masser »",
+"s": 4.13,
+"e": 4.4,
+"scene": "titre"
+},
+{
+"w": "par",
+"s": 4.4,
+"e": 4.55,
+"scene": "titre"
+},
+{
+"w": "des",
+"s": 4.55,
+"e": 4.71,
+"scene": "titre"
+},
+{
+"w": "mangoustes ?",
+"s": 4.71,
+"e": 5.1,
+"scene": "titre"
+},
+{
+"w": "Ça",
+"s": 5.45,
+"e": 5.61,
+"scene": "blague"
+},
+{
+"w": "a",
+"s": 5.61,
+"e": 5.77,
+"scene": "blague"
+},
+{
+"w": "l'air",
+"s": 5.77,
+"e": 5.92,
+"scene": "blague"
+},
+{
+"w": "d'une",
+"s": 5.92,
+"e": 6.2,
+"scene": "blague"
+},
+{
+"w": "blague,",
+"s": 6.2,
+"e": 6.48,
+"scene": "blague"
+},
+{
+"w": "et",
+"s": 6.66,
+"e": 6.8,
+"scene": "blague"
+},
+{
+"w": "pourtant",
+"s": 6.8,
+"e": 7.06,
+"scene": "blague"
+},
+{
+"w": "c'est",
+"s": 7.06,
+"e": 7.2,
+"scene": "blague"
+},
+{
+"w": "l'un",
+"s": 7.2,
+"e": 7.34,
+"scene": "blague"
+},
+{
+"w": "des",
+"s": 7.34,
+"e": 7.49,
+"scene": "blague"
+},
+{
+"w": "partenariats",
+"s": 7.49,
+"e": 7.96,
+"scene": "blague"
+},
+{
+"w": "les",
+"s": 7.96,
+"e": 8.1,
+"scene": "blague"
+},
+{
+"w": "plus",
+"s": 8.1,
+"e": 8.25,
+"scene": "blague"
+},
+{
+"w": "étonnants",
+"s": 8.25,
+"e": 8.61,
+"scene": "blague"
+},
+{
+"w": "de",
+"s": 8.61,
+"e": 8.88,
+"scene": "blague"
+},
+{
+"w": "la",
+"s": 8.88,
+"e": 9.02,
+"scene": "blague"
+},
+{
+"w": "savane.",
+"s": 9.02,
+"e": 9.39,
+"scene": "blague"
+},
+{
+"w": "Un",
+"s": 9.67,
+"e": 9.8,
+"scene": "tiques"
+},
+{
+"w": "problème",
+"s": 9.8,
+"e": 10.13,
+"scene": "tiques"
+},
+{
+"w": "qui",
+"s": 10.13,
+"e": 10.27,
+"scene": "tiques"
+},
+{
+"w": "gratte.",
+"s": 10.27,
+"e": 10.5,
+"scene": "tiques"
+},
+{
+"w": "Le",
+"s": 10.73,
+"e": 10.86,
+"scene": "tiques"
+},
+{
+"w": "phacochère",
+"s": 10.86,
+"e": 11.3,
+"scene": "tiques"
+},
+{
+"w": "vit",
+"s": 11.3,
+"e": 11.44,
+"scene": "tiques"
+},
+{
+"w": "couvert",
+"s": 11.44,
+"e": 11.67,
+"scene": "tiques"
+},
+{
+"w": "de",
+"s": 11.67,
+"e": 11.81,
+"scene": "tiques"
+},
+{
+"w": "tiques.",
+"s": 11.81,
+"e": 12.04,
+"scene": "tiques"
+},
+{
+"w": "Ces",
+"s": 12.17,
+"e": 12.34,
+"scene": "tiques"
+},
+{
+"w": "petits",
+"s": 12.34,
+"e": 12.65,
+"scene": "tiques"
+},
+{
+"w": "parasites",
+"s": 12.65,
+"e": 13.22,
+"scene": "tiques"
+},
+{
+"w": "s'accrochent",
+"s": 13.22,
+"e": 13.66,
+"scene": "tiques"
+},
+{
+"w": "à",
+"s": 13.66,
+"e": 13.83,
+"scene": "tiques"
+},
+{
+"w": "sa",
+"s": 13.83,
+"e": 14.0,
+"scene": "tiques"
+},
+{
+"w": "peau",
+"s": 14.0,
+"e": 14.18,
+"scene": "tiques"
+},
+{
+"w": "grâce",
+"s": 14.18,
+"e": 14.48,
+"scene": "tiques"
+},
+{
+"w": "à",
+"s": 14.48,
+"e": 14.66,
+"scene": "tiques"
+},
+{
+"w": "des",
+"s": 14.66,
+"e": 14.96,
+"scene": "tiques"
+},
+{
+"w": "crochets",
+"s": 14.96,
+"e": 15.26,
+"scene": "tiques"
+},
+{
+"w": "et",
+"s": 15.26,
+"e": 15.44,
+"scene": "tiques"
+},
+{
+"w": "sucent",
+"s": 15.44,
+"e": 15.74,
+"scene": "tiques"
+},
+{
+"w": "son",
+"s": 15.74,
+"e": 15.92,
+"scene": "tiques"
+},
+{
+"w": "sang",
+"s": 15.92,
+"e": 16.09,
+"scene": "tiques"
+},
+{
+"w": "pendant",
+"s": 16.09,
+"e": 16.4,
+"scene": "tiques"
+},
+{
+"w": "des",
+"s": 16.4,
+"e": 16.57,
+"scene": "tiques"
+},
+{
+"w": "jours.",
+"s": 16.57,
+"e": 16.74,
+"scene": "tiques"
+},
+{
+"w": "Quand",
+"s": 16.74,
+"e": 16.92,
+"scene": "tiques"
+},
+{
+"w": "ils",
+"s": 16.92,
+"e": 17.09,
+"scene": "tiques"
+},
+{
+"w": "sont",
+"s": 17.09,
+"e": 17.26,
+"scene": "tiques"
+},
+{
+"w": "très",
+"s": 17.26,
+"e": 17.44,
+"scene": "tiques"
+},
+{
+"w": "nombreux,",
+"s": 17.44,
+"e": 17.74,
+"scene": "tiques"
+},
+{
+"w": "ils",
+"s": 17.89,
+"e": 18.02,
+"scene": "tiques"
+},
+{
+"w": "peuvent",
+"s": 18.02,
+"e": 18.24,
+"scene": "tiques"
+},
+{
+"w": "l'affaiblir",
+"s": 18.24,
+"e": 18.55,
+"scene": "tiques"
+},
+{
+"w": "sérieusement,",
+"s": 18.55,
+"e": 18.96,
+"scene": "tiques"
+},
+{
+"w": "le",
+"s": 18.96,
+"e": 19.09,
+"scene": "tiques"
+},
+{
+"w": "rendre",
+"s": 19.09,
+"e": 19.31,
+"scene": "tiques"
+},
+{
+"w": "anémié",
+"s": 19.31,
+"e": 19.63,
+"scene": "tiques"
+},
+{
+"w": "et",
+"s": 19.63,
+"e": 19.75,
+"scene": "tiques"
+},
+{
+"w": "plus",
+"s": 19.75,
+"e": 19.88,
+"scene": "tiques"
+},
+{
+"w": "lent",
+"s": 19.88,
+"e": 20.0,
+"scene": "tiques"
+},
+{
+"w": "face",
+"s": 20.0,
+"e": 20.22,
+"scene": "tiques"
+},
+{
+"w": "aux",
+"s": 20.22,
+"e": 20.34,
+"scene": "tiques"
+},
+{
+"w": "prédateurs.",
+"s": 20.34,
+"e": 20.66,
+"scene": "tiques"
+},
+{
+"w": "Se",
+"s": 20.79,
+"e": 20.96,
+"scene": "tiques"
+},
+{
+"w": "rouler",
+"s": 20.96,
+"e": 21.25,
+"scene": "tiques"
+},
+{
+"w": "dans",
+"s": 21.25,
+"e": 21.41,
+"scene": "tiques"
+},
+{
+"w": "la",
+"s": 21.41,
+"e": 21.57,
+"scene": "tiques"
+},
+{
+"w": "boue",
+"s": 21.57,
+"e": 21.87,
+"scene": "tiques"
+},
+{
+"w": "",
+"s": 21.87,
+"e": 27.86,
+"scene": "tiques"
+},
+{
+"w": "Les",
+"s": 28.19,
+"e": 28.33,
+"scene": "mangoustes"
+},
+{
+"w": "nettoyeurs",
+"s": 28.33,
+"e": 28.58,
+"scene": "mangoustes"
+},
+{
+"w": "de",
+"s": 28.58,
+"e": 28.72,
+"scene": "mangoustes"
+},
+{
+"w": "la",
+"s": 28.72,
+"e": 28.86,
+"scene": "mangoustes"
+},
+{
+"w": "savane.",
+"s": 28.86,
+"e": 29.21,
+"scene": "mangoustes"
+},
+{
+"w": "C'est",
+"s": 29.48,
+"e": 29.67,
+"scene": "mangoustes"
+},
+{
+"w": "là",
+"s": 29.67,
+"e": 29.86,
+"scene": "mangoustes"
+},
+{
+"w": "qu'entrent",
+"s": 29.86,
+"e": 30.35,
+"scene": "mangoustes"
+},
+{
+"w": "en",
+"s": 30.35,
+"e": 30.55,
+"scene": "mangoustes"
+},
+{
+"w": "scène",
+"s": 30.55,
+"e": 30.89,
+"scene": "mangoustes"
+},
+{
+"w": "les",
+"s": 30.89,
+"e": 31.08,
+"scene": "mangoustes"
+},
+{
+"w": "mangoustes",
+"s": 31.08,
+"e": 31.57,
+"scene": "mangoustes"
+},
+{
+"w": "rayées.",
+"s": 31.57,
+"e": 31.76,
+"scene": "mangoustes"
+},
+{
+"w": "Ces",
+"s": 32.01,
+"e": 32.17,
+"scene": "mangoustes"
+},
+{
+"w": "petits",
+"s": 32.17,
+"e": 32.44,
+"scene": "mangoustes"
+},
+{
+"w": "carnivores",
+"s": 32.44,
+"e": 32.96,
+"scene": "mangoustes"
+},
+{
+"w": "vivent",
+"s": 32.96,
+"e": 33.23,
+"scene": "mangoustes"
+},
+{
+"w": "en",
+"s": 33.23,
+"e": 33.39,
+"scene": "mangoustes"
+},
+{
+"w": "groupe",
+"s": 33.39,
+"e": 33.89,
+"scene": "mangoustes"
+},
+{
+"w": "et",
+"s": 33.89,
+"e": 34.05,
+"scene": "mangoustes"
+},
+{
+"w": "adorent",
+"s": 34.05,
+"e": 34.44,
+"scene": "mangoustes"
+},
+{
+"w": "manger",
+"s": 34.44,
+"e": 34.85,
+"scene": "mangoustes"
+},
+{
+"w": "les",
+"s": 34.85,
+"e": 35.01,
+"scene": "mangoustes"
+},
+{
+"w": "insectes…",
+"s": 35.01,
+"e": 35.4,
+"scene": "mangoustes"
+},
+{
+"w": "et",
+"s": 35.85,
+"e": 35.97,
+"scene": "mangoustes"
+},
+{
+"w": "les",
+"s": 35.97,
+"e": 36.09,
+"scene": "mangoustes"
+},
+{
+"w": "tiques.",
+"s": 36.09,
+"e": 36.3,
+"scene": "mangoustes"
+},
+{
+"w": "Un",
+"s": 36.59,
+"e": 36.75,
+"scene": "signal"
+},
+{
+"w": "signal",
+"s": 36.75,
+"e": 37.05,
+"scene": "signal"
+},
+{
+"w": "secret.",
+"s": 37.05,
+"e": 37.34,
+"scene": "signal"
+},
+{
+"w": "Le",
+"s": 37.67,
+"e": 37.8,
+"scene": "signal"
+},
+{
+"w": "phacochère",
+"s": 37.8,
+"e": 38.23,
+"scene": "signal"
+},
+{
+"w": "est",
+"s": 38.23,
+"e": 38.36,
+"scene": "signal"
+},
+{
+"w": "d'habitude",
+"s": 38.36,
+"e": 38.97,
+"scene": "signal"
+},
+{
+"w": "très",
+"s": 38.97,
+"e": 39.1,
+"scene": "signal"
+},
+{
+"w": "méfiant,",
+"s": 39.1,
+"e": 39.33,
+"scene": "signal"
+},
+{
+"w": "car",
+"s": 39.75,
+"e": 39.9,
+"scene": "signal"
+},
+{
+"w": "il",
+"s": 39.9,
+"e": 40.04,
+"scene": "signal"
+},
+{
+"w": "est",
+"s": 40.04,
+"e": 40.19,
+"scene": "signal"
+},
+{
+"w": "la",
+"s": 40.19,
+"e": 40.33,
+"scene": "signal"
+},
+{
+"w": "proie",
+"s": 40.33,
+"e": 40.62,
+"scene": "signal"
+},
+{
+"w": "préférée",
+"s": 40.62,
+"e": 40.98,
+"scene": "signal"
+},
+{
+"w": "de",
+"s": 40.98,
+"e": 41.13,
+"scene": "signal"
+},
+{
+"w": "nombreux",
+"s": 41.13,
+"e": 41.38,
+"scene": "signal"
+},
+{
+"w": "carnivores.",
+"s": 41.38,
+"e": 41.86,
+"scene": "signal"
+},
+{
+"w": "Mais",
+"s": 42.07,
+"e": 42.23,
+"scene": "signal"
+},
+{
+"w": "quand",
+"s": 42.23,
+"e": 42.39,
+"scene": "signal"
+},
+{
+"w": "il",
+"s": 42.39,
+"e": 42.55,
+"scene": "signal"
+},
+{
+"w": "voit",
+"s": 42.55,
+"e": 42.71,
+"scene": "signal"
+},
+{
+"w": "arriver",
+"s": 42.71,
+"e": 43.11,
+"scene": "signal"
+},
+{
+"w": "un",
+"s": 43.11,
+"e": 43.27,
+"scene": "signal"
+},
+{
+"w": "groupe",
+"s": 43.27,
+"e": 43.55,
+"scene": "signal"
+},
+{
+"w": "de",
+"s": 43.55,
+"e": 43.71,
+"scene": "signal"
+},
+{
+"w": "mangoustes,",
+"s": 43.71,
+"e": 44.12,
+"scene": "signal"
+},
+{
+"w": "il",
+"s": 44.25,
+"e": 44.59,
+"scene": "signal"
+},
+{
+"w": "fait",
+"s": 44.59,
+"e": 44.74,
+"scene": "signal"
+},
+{
+"w": "quelque",
+"s": 44.74,
+"e": 45.0,
+"scene": "signal"
+},
+{
+"w": "chose",
+"s": 45.0,
+"e": 45.26,
+"scene": "signal"
+},
+{
+"w": "d'incroyable :",
+"s": 45.26,
+"e": 45.64,
+"scene": "signal"
+},
+{
+"w": "il",
+"s": 45.97,
+"e": 46.12,
+"scene": "signal"
+},
+{
+"w": "plie",
+"s": 46.12,
+"e": 46.28,
+"scene": "signal"
+},
+{
+"w": "les",
+"s": 46.28,
+"e": 46.43,
+"scene": "signal"
+},
+{
+"w": "pattes",
+"s": 46.43,
+"e": 46.7,
+"scene": "signal"
+},
+{
+"w": "et",
+"s": 46.7,
+"e": 47.12,
+"scene": "signal"
+},
+{
+"w": "s'allonge",
+"s": 47.12,
+"e": 47.51,
+"scene": "signal"
+},
+{
+"w": "sur",
+"s": 47.51,
+"e": 47.67,
+"scene": "signal"
+},
+{
+"w": "le",
+"s": 47.67,
+"e": 47.82,
+"scene": "signal"
+},
+{
+"w": "côté.",
+"s": 47.82,
+"e": 48.09,
+"scene": "signal"
+},
+{
+"w": "C'est",
+"s": 48.55,
+"e": 48.81,
+"scene": "signal"
+},
+{
+"w": "une",
+"s": 48.81,
+"e": 49.28,
+"scene": "signal"
+},
+{
+"w": "invitation.",
+"s": 49.28,
+"e": 50.51,
+"scene": "signal"
+},
+{
+"w": "Il",
+"s": 50.92,
+"e": 51.01,
+"scene": "signal"
+},
+{
+"w": "leur",
+"s": 51.01,
+"e": 51.1,
+"scene": "signal"
+},
+{
+"w": "dit",
+"s": 51.1,
+"e": 51.19,
+"scene": "signal"
+},
+{
+"w": "en",
+"s": 51.19,
+"e": 51.28,
+"scene": "signal"
+},
+{
+"w": "",
+"s": 51.28,
+"e": 51.71,
+"scene": "signal"
+},
+{
+"w": "Le",
+"s": 52.08,
+"e": 52.28,
+"scene": "nettoyage"
+},
+{
+"w": "grand",
+"s": 52.28,
+"e": 52.47,
+"scene": "nettoyage"
+},
+{
+"w": "nettoyage.",
+"s": 52.47,
+"e": 52.97,
+"scene": "nettoyage"
+},
+{
+"w": "Les",
+"s": 53.24,
+"e": 53.39,
+"scene": "nettoyage"
+},
+{
+"w": "mangoustes",
+"s": 53.39,
+"e": 53.76,
+"scene": "nettoyage"
+},
+{
+"w": "grimpent",
+"s": 53.76,
+"e": 54.01,
+"scene": "nettoyage"
+},
+{
+"w": "alors",
+"s": 54.01,
+"e": 54.27,
+"scene": "nettoyage"
+},
+{
+"w": "sur",
+"s": 54.27,
+"e": 54.41,
+"scene": "nettoyage"
+},
+{
+"w": "lui",
+"s": 54.41,
+"e": 54.56,
+"scene": "nettoyage"
+},
+{
+"w": "et",
+"s": 54.56,
+"e": 54.85,
+"scene": "nettoyage"
+},
+{
+"w": "se",
+"s": 54.85,
+"e": 55.0,
+"scene": "nettoyage"
+},
+{
+"w": "répartissent",
+"s": 55.0,
+"e": 55.48,
+"scene": "nettoyage"
+},
+{
+"w": "le",
+"s": 55.48,
+"e": 55.62,
+"scene": "nettoyage"
+},
+{
+"w": "travail.",
+"s": 55.62,
+"e": 56.07,
+"scene": "nettoyage"
+},
+{
+"w": "Grâce",
+"s": 56.25,
+"e": 56.53,
+"scene": "nettoyage"
+},
+{
+"w": "à",
+"s": 56.53,
+"e": 56.7,
+"scene": "nettoyage"
+},
+{
+"w": "leur",
+"s": 56.7,
+"e": 56.86,
+"scene": "nettoyage"
+},
+{
+"w": "excellent",
+"s": 56.86,
+"e": 57.27,
+"scene": "nettoyage"
+},
+{
+"w": "odorat,",
+"s": 57.27,
+"e": 57.67,
+"scene": "nettoyage"
+},
+{
+"w": "elles",
+"s": 57.67,
+"e": 57.96,
+"scene": "nettoyage"
+},
+{
+"w": "repèrent",
+"s": 57.96,
+"e": 58.37,
+"scene": "nettoyage"
+},
+{
+"w": "les",
+"s": 58.37,
+"e": 58.53,
+"scene": "nettoyage"
+},
+{
+"w": "tiques",
+"s": 58.53,
+"e": 59.09,
+"scene": "nettoyage"
+},
+{
+"w": "et",
+"s": 59.09,
+"e": 59.26,
+"scene": "nettoyage"
+},
+{
+"w": "glissent",
+"s": 59.26,
+"e": 59.54,
+"scene": "nettoyage"
+},
+{
+"w": "leur",
+"s": 59.54,
+"e": 59.7,
+"scene": "nettoyage"
+},
+{
+"w": "museau",
+"s": 59.7,
+"e": 59.99,
+"scene": "nettoyage"
+},
+{
+"w": "fin",
+"s": 59.99,
+"e": 60.15,
+"scene": "nettoyage"
+},
+{
+"w": "derrière",
+"s": 60.15,
+"e": 60.56,
+"scene": "nettoyage"
+},
+{
+"w": "les",
+"s": 60.56,
+"e": 60.72,
+"scene": "nettoyage"
+},
+{
+"w": "oreilles,",
+"s": 60.72,
+"e": 61.13,
+"scene": "nettoyage"
+},
+{
+"w": "dans",
+"s": 61.32,
+"e": 61.45,
+"scene": "nettoyage"
+},
+{
+"w": "les",
+"s": 61.45,
+"e": 61.58,
+"scene": "nettoyage"
+},
+{
+"w": "plis",
+"s": 61.58,
+"e": 61.7,
+"scene": "nettoyage"
+},
+{
+"w": "de",
+"s": 61.7,
+"e": 61.83,
+"scene": "nettoyage"
+},
+{
+"w": "la",
+"s": 61.83,
+"e": 61.96,
+"scene": "nettoyage"
+},
+{
+"w": "peau",
+"s": 61.96,
+"e": 62.08,
+"scene": "nettoyage"
+},
+{
+"w": "et",
+"s": 62.08,
+"e": 62.4,
+"scene": "nettoyage"
+},
+{
+"w": "entre",
+"s": 62.4,
+"e": 62.63,
+"scene": "nettoyage"
+},
+{
+"w": "les",
+"s": 62.63,
+"e": 62.75,
+"scene": "nettoyage"
+},
+{
+"w": "pattes.",
+"s": 62.75,
+"e": 62.98,
+"scene": "nettoyage"
+},
+{
+"w": "Elles",
+"s": 63.29,
+"e": 63.56,
+"scene": "nettoyage"
+},
+{
+"w": "arrachent",
+"s": 63.56,
+"e": 63.94,
+"scene": "nettoyage"
+},
+{
+"w": "les",
+"s": 63.94,
+"e": 64.09,
+"scene": "nettoyage"
+},
+{
+"w": "parasites",
+"s": 64.09,
+"e": 64.73,
+"scene": "nettoyage"
+},
+{
+"w": "un",
+"s": 64.73,
+"e": 64.88,
+"scene": "nettoyage"
+},
+{
+"w": "par",
+"s": 64.88,
+"e": 65.24,
+"scene": "nettoyage"
+},
+{
+"w": "un",
+"s": 65.24,
+"e": 65.39,
+"scene": "nettoyage"
+},
+{
+"w": "et",
+"s": 65.39,
+"e": 65.54,
+"scene": "nettoyage"
+},
+{
+"w": "les",
+"s": 65.54,
+"e": 66.01,
+"scene": "nettoyage"
+},
+{
+"w": "",
+"s": 66.01,
+"e": 68.03,
+"scene": "nettoyage"
+},
+{
+"w": "Le",
+"s": 68.38,
+"e": 68.64,
+"scene": "garde"
+},
+{
+"w": "phacochère,",
+"s": 68.64,
+"e": 69.51,
+"scene": "garde"
+},
+{
+"w": "lui,",
+"s": 69.51,
+"e": 69.77,
+"scene": "garde"
+},
+{
+"w": "n'a",
+"s": 70.02,
+"e": 70.29,
+"scene": "garde"
+},
+{
+"w": "qu'à",
+"s": 70.29,
+"e": 70.78,
+"scene": "garde"
+},
+{
+"w": "se",
+"s": 70.78,
+"e": 71.05,
+"scene": "garde"
+},
+{
+"w": "laisser",
+"s": 71.05,
+"e": 71.53,
+"scene": "garde"
+},
+{
+"w": "faire :",
+"s": 71.53,
+"e": 72.01,
+"scene": "garde"
+},
+{
+"w": "il",
+"s": 72.15,
+"e": 72.3,
+"scene": "garde"
+},
+{
+"w": "se",
+"s": 72.3,
+"e": 72.45,
+"scene": "garde"
+},
+{
+"w": "débarrasse",
+"s": 72.45,
+"e": 72.96,
+"scene": "garde"
+},
+{
+"w": "de",
+"s": 72.96,
+"e": 73.11,
+"scene": "garde"
+},
+{
+"w": "ses",
+"s": 73.11,
+"e": 73.26,
+"scene": "garde"
+},
+{
+"w": "parasites",
+"s": 73.26,
+"e": 73.76,
+"scene": "garde"
+},
+{
+"w": "sans",
+"s": 73.76,
+"e": 73.91,
+"scene": "garde"
+},
+{
+"w": "le",
+"s": 73.91,
+"e": 74.07,
+"scene": "garde"
+},
+{
+"w": "moindre",
+"s": 74.07,
+"e": 74.33,
+"scene": "garde"
+},
+{
+"w": "effort.",
+"s": 74.33,
+"e": 74.6,
+"scene": "garde"
+},
+{
+"w": "Pendant",
+"s": 74.76,
+"e": 74.85,
+"scene": "garde"
+},
+{
+"w": "ce",
+"s": 74.85,
+"e": 74.91,
+"scene": "garde"
+},
+{
+"w": "temps,",
+"s": 74.91,
+"e": 74.96,
+"scene": "garde"
+},
+{
+"w": "certaines",
+"s": 74.96,
+"e": 75.1,
+"scene": "garde"
+},
+{
+"w": "mangoustes",
+"s": 75.1,
+"e": 75.23,
+"scene": "garde"
+},
+{
+"w": "montent",
+"s": 75.23,
+"e": 75.32,
+"scene": "garde"
+},
+{
+"w": "la",
+"s": 75.32,
+"e": 75.38,
+"scene": "garde"
+},
+{
+"w": "garde.",
+"s": 75.38,
+"e": 75.47,
+"scene": "garde"
+},
+{
+"w": "Si",
+"s": 75.6,
+"e": 75.75,
+"scene": "garde"
+},
+{
+"w": "un",
+"s": 75.75,
+"e": 75.9,
+"scene": "garde"
+},
+{
+"w": "prédateur",
+"s": 75.9,
+"e": 76.28,
+"scene": "garde"
+},
+{
+"w": "approche,",
+"s": 76.28,
+"e": 76.66,
+"scene": "garde"
+},
+{
+"w": "elles",
+"s": 76.66,
+"e": 76.92,
+"scene": "garde"
+},
+{
+"w": "donnent",
+"s": 76.92,
+"e": 77.19,
+"scene": "garde"
+},
+{
+"w": "l'alerte",
+"s": 77.19,
+"e": 77.7,
+"scene": "garde"
+},
+{
+"w": "et",
+"s": 77.7,
+"e": 77.85,
+"scene": "garde"
+},
+{
+"w": "le",
+"s": 77.85,
+"e": 78.0,
+"scene": "garde"
+},
+{
+"w": "",
+"s": 78.0,
+"e": 78.95,
+"scene": "garde"
+},
+{
+"w": "Deux",
+"s": 79.27,
+"e": 79.42,
+"scene": "mutualisme"
+},
+{
+"w": "animaux",
+"s": 79.42,
+"e": 79.81,
+"scene": "mutualisme"
+},
+{
+"w": "totalement",
+"s": 79.81,
+"e": 80.49,
+"scene": "mutualisme"
+},
+{
+"w": "différents,",
+"s": 80.49,
+"e": 80.88,
+"scene": "mutualisme"
+},
+{
+"w": "qui",
+"s": 81.03,
+"e": 81.14,
+"scene": "mutualisme"
+},
+{
+"w": "ne",
+"s": 81.14,
+"e": 81.24,
+"scene": "mutualisme"
+},
+{
+"w": "parlent",
+"s": 81.24,
+"e": 81.43,
+"scene": "mutualisme"
+},
+{
+"w": "pas",
+"s": 81.43,
+"e": 81.71,
+"scene": "mutualisme"
+},
+{
+"w": "la",
+"s": 81.71,
+"e": 81.81,
+"scene": "mutualisme"
+},
+{
+"w": "même",
+"s": 81.81,
+"e": 82.0,
+"scene": "mutualisme"
+},
+{
+"w": "langue,",
+"s": 82.0,
+"e": 82.19,
+"scene": "mutualisme"
+},
+{
+"w": "et",
+"s": 82.45,
+"e": 82.63,
+"scene": "mutualisme"
+},
+{
+"w": "qui",
+"s": 82.63,
+"e": 82.82,
+"scene": "mutualisme"
+},
+{
+"w": "pourtant",
+"s": 82.82,
+"e": 83.14,
+"scene": "mutualisme"
+},
+{
+"w": "se",
+"s": 83.14,
+"e": 83.32,
+"scene": "mutualisme"
+},
+{
+"w": "comprennent",
+"s": 83.32,
+"e": 84.15,
+"scene": "mutualisme"
+},
+{
+"w": "parfaitement.",
+"s": 84.15,
+"e": 84.97,
+"scene": "mutualisme"
+},
+{
+"w": "Les",
+"s": 85.1,
+"e": 85.27,
+"scene": "mutualisme"
+},
+{
+"w": "mangoustes",
+"s": 85.27,
+"e": 85.69,
+"scene": "mutualisme"
+},
+{
+"w": "trouvent",
+"s": 85.69,
+"e": 85.99,
+"scene": "mutualisme"
+},
+{
+"w": "à",
+"s": 85.99,
+"e": 86.15,
+"scene": "mutualisme"
+},
+{
+"w": "manger,",
+"s": 86.15,
+"e": 86.45,
+"scene": "mutualisme"
+},
+{
+"w": "le",
+"s": 86.45,
+"e": 86.62,
+"scene": "mutualisme"
+},
+{
+"w": "phacochère",
+"s": 86.62,
+"e": 87.17,
+"scene": "mutualisme"
+},
+{
+"w": "reste",
+"s": 87.17,
+"e": 87.46,
+"scene": "mutualisme"
+},
+{
+"w": "en",
+"s": 87.46,
+"e": 87.63,
+"scene": "mutualisme"
+},
+{
+"w": "bonne",
+"s": 87.63,
+"e": 88.07,
+"scene": "mutualisme"
+},
+{
+"w": "santé",
+"s": 88.07,
+"e": 88.37,
+"scene": "mutualisme"
+},
+{
+"w": "et",
+"s": 88.37,
+"e": 88.7,
+"scene": "mutualisme"
+},
+{
+"w": "en",
+"s": 88.7,
+"e": 88.87,
+"scene": "mutualisme"
+},
+{
+"w": "sécurité.",
+"s": 88.87,
+"e": 89.42,
+"scene": "mutualisme"
+},
+{
+"w": "C'est",
+"s": 89.6,
+"e": 89.73,
+"scene": "mutualisme"
+},
+{
+"w": "ce",
+"s": 89.73,
+"e": 89.87,
+"scene": "mutualisme"
+},
+{
+"w": "qu'on",
+"s": 89.87,
+"e": 90.1,
+"scene": "mutualisme"
+},
+{
+"w": "appelle",
+"s": 90.1,
+"e": 90.77,
+"scene": "mutualisme"
+},
+{
+"w": "le",
+"s": 90.77,
+"e": 90.91,
+"scene": "mutualisme"
+},
+{
+"w": "mutualisme :",
+"s": 90.91,
+"e": 91.54,
+"scene": "mutualisme"
+},
+{
+"w": "une",
+"s": 91.66,
+"e": 91.92,
+"scene": "mutualisme"
+},
+{
+"w": "",
+"s": 91.92,
+"e": 92.29,
+"scene": "mutualisme"
+},
+{
+"w": "Abonne-toi",
+"s": 92.69,
+"e": 93.15,
+"scene": "abonne"
+},
+{
+"w": "pour",
+"s": 93.15,
+"e": 93.29,
+"scene": "abonne"
+},
+{
+"w": "découvrir",
+"s": 93.29,
+"e": 93.65,
+"scene": "abonne"
+},
+{
+"w": "d'autres",
+"s": 93.65,
+"e": 93.89,
+"scene": "abonne"
+},
+{
+"w": "secrets",
+"s": 93.89,
+"e": 94.14,
+"scene": "abonne"
+},
+{
+"w": "du",
+"s": 94.14,
+"e": 94.28,
+"scene": "abonne"
+},
+{
+"w": "monde",
+"s": 94.28,
+"e": 94.53,
+"scene": "abonne"
+},
+{
+"w": "animal !",
+"s": 94.53,
+"e": 94.88,
+"scene": "abonne"
+}
+]
+}
