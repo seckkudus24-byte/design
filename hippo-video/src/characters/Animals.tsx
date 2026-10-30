@@ -160,3 +160,24 @@ export const Poop: React.FC<{size?: number; face?: boolean; style?: React.CSSPro
     ) : null}
   </svg>
 );
+
+// Petite crevette tournée vers la droite.
+export const Shrimp: React.FC<{frame: number; size?: number; style?: React.CSSProperties}> = ({frame, size = 100, style}) => {
+  const flick = Math.sin(frame * 0.6) * 8;
+  return (
+    <svg viewBox="0 0 110 80" width={size} style={{overflow: 'visible', ...style}}>
+      <g transform={`rotate(${flick} 20 45)`}>
+        <path d="M22 44 L4 30 L6 58 Z" fill="#FF8A80" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+      </g>
+      <path d="M20 44 Q 30 12 70 18 Q 96 24 92 46 Q 70 40 50 52 Q 34 60 20 44 Z" fill="#FF8A80" stroke={INK} strokeWidth={4} strokeLinejoin="round" />
+      {[38, 52, 66].map((x) => (
+        <path key={x} d={`M${x} 22 Q ${x - 6} 36 ${x + 2} 48`} stroke={INK} strokeWidth={3} fill="none" opacity={0.5} />
+      ))}
+      <circle cx={84} cy={30} r={5} fill={INK} />
+      <path d={`M92 32 Q 108 ${10 + flick} 110 0 M90 36 Q 112 ${30 + flick} 118 22`} stroke={INK} strokeWidth={3} fill="none" />
+      {[48, 60, 72].map((x) => (
+        <path key={x} d={`M${x} 50 l-4 14`} stroke={INK} strokeWidth={3} strokeLinecap="round" />
+      ))}
+    </svg>
+  );
+};
