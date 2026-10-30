@@ -1,0 +1,21 @@
+{
+  "name": "hippo-video",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "studio": "remotion studio",
+    "sync": "node tools/sync-voix.mjs",
+    "render": "remotion render HippoTikTok out/hippo.mp4",
+    "still": "remotion still HippoTikTok out/preview.png --frame=60"
+  },
+  "dependencies": {
+    "@fontsource/luckiest-guy": "^5.3.0",
+    "@remotion/cli": "^4.0.539",
+    "@remotion/media-utils": "^4.0.539",
+    "@types/react": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.539",
+    "typescript": "^7.0.2"
+  }
+}
