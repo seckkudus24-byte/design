@@ -10,6 +10,7 @@ import {Attention} from './scenes/Attention';
 import {Architecte} from './scenes/Architecte';
 import {Conclusion} from './scenes/Conclusion';
 import {Subtitles} from './Subtitles';
+import {Music, SceneSound} from './Sound';
 
 export type HippoVideoProps = {
   durations: number[];
@@ -28,11 +29,13 @@ export const HippoVideo: React.FC<HippoVideoProps> = ({durations, hasAudio}) => 
         return (
           <Series.Sequence key={scene.id} durationInFrames={durations[i]} name={scene.id}>
             <Comp dur={durations[i]} />
+            <SceneSound index={i} dur={durations[i]} />
           </Series.Sequence>
         );
       })}
     </Series>
     <Subtitles />
+    <Music durations={durations} />
     {hasAudio ? <Audio src={staticFile('voix.mp3')} /> : null}
   </AbsoluteFill>
 );
