@@ -9,6 +9,10 @@ Trois méthodes, de la plus précise à la plus simple :
      les changements de scène, fins de phrase et virgules sont recalés sur les pauses de la voix.
   3. "estimate": pas de voix.mp3 -> débit de parole estimé (pour travailler avant l'enregistrement).
 
+Repères optionnels : une ligne du script peut commencer par « @12.7 » = instant (s) où ce passage
+commence dans la voix (par ex. relevé sur la vidéo de lecture). Le calage sur les pauses se fait alors
+bloc par bloc entre deux repères, ce qui évite toute dérive.
+
 Usage : python3 tools/align.py [--no-whisper]
 """
 import difflib
@@ -30,11 +34,18 @@ def load_script():
         if line.startswith("## "):
             scene = line[3:].strip()
             continue
+        anchor = None
+        m = re.match(r"@([\d.]+)\s+(.*)", line)
+        if m:
+            anchor, line = float(m.group(1)), m.group(2)
+        first = len(words)
         for tok in line.replace("« ", "«").replace(" »", "»").split():
             if words and re.fullmatch(r"[?!:;]+", tok):
                 words[-1]["w"] += " " + tok  # ponctuation française collée au mot
             else:
                 words.append({"w": tok.replace("«", "« ").replace("»", " »"), "scene": scene})
+        if anchor is not None and len(words) > first:
+            words[first]["anchor"] = anchor
     return words
 
 
@@ -160,7 +171,15 @@ def pause_times(words, dur):
 
     lead = sil[0][1] if sil and sil[0][0] < 0.05 else 0.0
     tail = sil[-1][0] if sil and sil[-1][1] > dur - 0.05 else dur
-    return align(words, lead, tail)
+    # découpe en blocs aux repères « @temps », puis calage de chaque bloc
+    cuts = [i for i, w in enumerate(words) if "anchor" in w and i > 0]
+    bounds = [0] + cuts + [len(words)]
+    times = []
+    for a, b in zip(bounds, bounds[1:]):
+        t0 = max(lead, words[a].get("anchor", lead))
+        t1 = words[b]["anchor"] if b < len(words) else tail
+        times += align(words[a:b], t0, t1)
+    return times
 
 
 # ---------- 3. estimation ----------

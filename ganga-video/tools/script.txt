@@ -1,20 +1,21 @@
 ## titre
-Pourquoi cet oiseau du désert se transforme-t-il en éponge vivante pour sauver ses petits ?
+@0 Pourquoi cet oiseau du désert se transforme-t-il en éponge vivante pour sauver ses petits ?
 ## ganga
-Voici le ganga, un oiseau qui vit dans les zones les plus chaudes et les plus sèches de la planète. Et il cache un secret que presque personne ne connaît.
+@4.73 Voici le ganga, un oiseau qui vit dans les zones les plus chaudes et les plus sèches de la planète. Et il cache un secret que presque personne ne connaît.
 ## nid
-Un nid en plein soleil.
-Le ganga ne construit pas son nid dans un arbre. Il pond directement sur le sol, sans aucun abri. En pleine saison sèche, avec une chaleur ressentie de 45 degrés, ses poussins risquent de se dessécher en quelques heures. Pour eux, l'eau est encore plus importante que la nourriture.
+@11.5 Un nid en plein soleil.
+@12.7 Le ganga ne construit pas son nid dans un arbre. Il pond directement sur le sol, sans aucun abri. En pleine saison sèche, avec une chaleur ressentie de 45 degrés, ses poussins risquent de se dessécher en quelques heures. Pour eux, l'eau est encore plus importante que la nourriture.
 ## vol
-Des kilomètres pour une gorgée.
-Le problème, c'est que l'eau est souvent très loin. Le père ganga doit parfois parcourir des dizaines, voire des centaines de kilomètres aller-retour, chaque jour, juste pour trouver à boire. Et il ne part jamais seul : des centaines de gangas volent ensemble, car autour des points d'eau, les prédateurs attendent.
+@27.23 Des kilomètres pour une gorgée.
+@28.67 Le problème, c'est que l'eau est souvent très loin. Le père ganga doit parfois parcourir des dizaines, voire des centaines de kilomètres aller-retour, chaque jour, juste pour trouver à boire. Et il ne part jamais seul : des centaines de gangas volent ensemble, car autour des points d'eau, les prédateurs attendent.
 ## eponge
-Le secret : des plumes-éponges.
-C'est là que ça devient étrange. Le père ganga a sur la poitrine des plumes uniques au monde, enroulées en spirale. Il entre dans l'eau, se balance d'avant en arrière, et ses plumes absorbent l'eau comme une éponge. Il peut transporter environ 25 millilitres… mais il lui faut près de 15 minutes pour remplir sa « réserve ».
+@44.1 Le secret : des plumes-éponges.
+@45.7 C'est là que ça devient étrange. Le père ganga a sur la poitrine des plumes uniques au monde, enroulées en spirale. Il entre dans l'eau, se balance d'avant en arrière, et ses plumes absorbent l'eau comme une éponge. Il peut transporter environ 25 millilitres… mais il lui faut près de 15 minutes pour remplir sa « réserve ».
 ## retour
-Le retour à la maison.
-Chargé d'eau, il reprend son long vol vers le nid. Là, ses petits assoiffés se précipitent sur lui et boivent directement sur sa poitrine, comme à un biberon. Chaque poussin boit environ 4 millilitres. C'est minuscule, mais ça suffit pour survivre une journée de plus.
+@61.17 Le retour à la maison.
+@62.4 Chargé d'eau, il reprend son long vol vers le nid. Là, ses petits assoiffés se précipitent sur lui et boivent directement sur sa poitrine, comme à un biberon. Chaque poussin boit environ 4 millilitres. C'est minuscule, mais ça suffit pour survivre une journée de plus.
 ## conclusion
-Et le lendemain, tout recommence. Chaque jour, la survie de ses petits dépend de ce père infatigable et de ses plumes extraordinaires. Dans le désert, même une seule goutte d'eau peut sauver une vie.
+@76.03 Conclusion.
+@76.8 Et le lendemain, tout recommence. Chaque jour, la survie de ses petits dépend de ce père infatigable et de ses plumes extraordinaires. Dans le désert, même une seule goutte d'eau peut sauver une vie.
 ## abonne
-Abonne-toi pour découvrir d'autres secrets du monde animal !
+@87.17 Abonne-toi pour découvrir d'autres secrets du monde animal !
