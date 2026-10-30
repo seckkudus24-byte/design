@@ -64,10 +64,13 @@ export const Pitcher: React.FC<{
   const shake = Math.sin(frame * 2.2) * 6 * lidShake;
   return (
     <svg viewBox="0 0 400 700" height={height} style={{overflow: 'visible', ...style}}>
+      <ellipse cx={200} cy={600} rx={150} ry={26} fill="rgba(0,0,0,0.18)" />
       {/* vrille qui relie à la feuille */}
       <path d="M200 690 Q 120 660 140 600" stroke={dark} strokeWidth={14} fill="none" strokeLinecap="round" />
       {/* urne */}
       <path d="M110 230 C 60 360 60 560 200 600 C 340 560 340 360 290 230 Z" fill={body} stroke={INK} strokeWidth={8} />
+      <path d="M250 240 C 300 360 310 520 205 596 C 300 560 330 380 290 232 Z" fill="rgba(0,0,0,0.14)" />
+      <path d="M130 270 C 105 360 105 450 125 520" stroke="rgba(255,255,255,0.35)" strokeWidth={14} fill="none" strokeLinecap="round" />
       {[0, 1, 2].map((i) => (
         <path key={i} d={`M${150 + i * 50} 260 Q ${140 + i * 55} 420 ${160 + i * 40} 570`} stroke={dark} strokeWidth={6} fill="none" opacity={0.6} />
       ))}
@@ -196,6 +199,24 @@ export const Jungle: React.FC<{frame: number; night?: number; sunrise?: number; 
     <>
       <div style={{position: 'absolute', inset: 0, background: `linear-gradient(${sky1} 0%, ${sky2} 70%)`}} />
       {night < 0.5 ? <Sun x={860} y={1250 - sunrise * 520} r={80} frame={frame} /> : null}
+      {/* nuages qui défilent doucement */}
+      <svg width={1080} height={1920} style={{position: 'absolute', opacity: 1 - night * 0.7}}>
+        {[
+          {y: 560, s: 1, v: 0.6, o: 0},
+          {y: 760, s: 0.7, v: 0.4, o: 500},
+          {y: 980, s: 0.85, v: 0.5, o: 900},
+        ].map((c, i) => {
+          const x = ((c.o + frame * c.v) % 1500) - 250;
+          return (
+            <g key={i} transform={`translate(${x} ${c.y}) scale(${c.s})`}>
+              <ellipse cx={0} cy={0} rx={130} ry={46} fill="#FFFFFF" />
+              <ellipse cx={-60} cy={-24} rx={70} ry={52} fill="#FFFFFF" />
+              <ellipse cx={50} cy={-34} rx={80} ry={60} fill="#FFFFFF" />
+              <ellipse cx={0} cy={22} rx={120} ry={16} fill="#E3F2FD" />
+            </g>
+          );
+        })}
+      </svg>
       <svg width={1080} height={1920} style={{position: 'absolute'}}>
         {/* montagnes de Bornéo */}
         <path d="M-20 1250 L 180 980 L 330 1120 L 520 900 L 720 1110 L 880 960 L 1100 1200 L 1100 1300 L -20 1300 Z" fill={interpolateColors(night, [0, 1], ['#81C784', '#283593'])} opacity={0.8} />
