@@ -4,7 +4,7 @@ import type {SceneProps} from '../HippoVideo';
 import {HippoFace} from '../characters/Hippo';
 import {Fish} from '../characters/Animals';
 import {StickMan} from '../characters/StickMan';
-import {Bubble, Caption, Place, Scene, prog, usePop} from '../ui';
+import {Bubble, Place, Scene, prog, usePop} from '../ui';
 
 type Pt = [number, number];
 
@@ -27,7 +27,7 @@ const toD = (pts: Pt[]) => pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)}
 const D = toD(PATH);
 const LEN = PATH.slice(1).reduce((a, p, i) => a + Math.hypot(p[0] - PATH[i][0], p[1] - PATH[i][1]), 0);
 
-export const Architecte: React.FC<SceneProps> = ({dur, text}) => {
+export const Architecte: React.FC<SceneProps> = ({dur}) => {
   const frame = useCurrentFrame();
   const walk = prog(frame, dur, 0.05, 0.45);
   const flood = prog(frame, dur, 0.48, 0.78);
@@ -81,7 +81,6 @@ export const Architecte: React.FC<SceneProps> = ({dur, text}) => {
         <StickMan frame={frame} pose={poolWater > 0.5 ? 'cheer' : 'point'} height={280} style={{transform: 'scaleX(-1)'}} />
       </Place>
       {poolWater > 0.5 ? <Bubble text="UN REFUGE !" x={600} y={880} size={62} tail="right" delay={Math.round(dur * 0.82)} /> : null}
-      <Caption text={text} size={96} top={150} />
     </Scene>
   );
 };

@@ -22,62 +22,6 @@ export const usePop = (delay = 0, damping = 11) => {
   return spring({frame: frame - delay, fps, config: {damping, stiffness: 160, mass: 0.7}});
 };
 
-// Phrase clé en gros. Les mots entre *étoiles* sont surlignés.
-export const Caption: React.FC<{
-  text: string;
-  size?: number;
-  top?: number;
-  delay?: number;
-  highlight?: string;
-  color?: string;
-}> = ({text, size = 96, top = 170, delay = 6, highlight = '#FFD600', color = '#fff'}) => {
-  const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const words = text.split(' ');
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        top,
-        left: 60,
-        right: 60,
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        columnGap: size * 0.28,
-        rowGap: size * 0.05,
-        fontFamily: FONT,
-        fontSize: size,
-        lineHeight: 1.12,
-        textAlign: 'center',
-        textTransform: 'uppercase',
-      }}
-    >
-      {words.map((w, i) => {
-        const hl = w.includes('*');
-        const clean = w.replace(/\*/g, '');
-        const s = spring({frame: frame - delay - i * 3, fps, config: {damping: 10, stiffness: 180, mass: 0.6}});
-        return (
-          <span
-            key={i}
-            style={{
-              display: 'inline-block',
-              color: hl ? highlight : color,
-              WebkitTextStroke: `${Math.round(size * 0.16)}px #16121F`,
-              paintOrder: 'stroke fill',
-              textShadow: `0 ${size * 0.09}px 0 rgba(0,0,0,0.35)`,
-              transform: `scale(${s}) rotate(${hl ? Math.sin(frame * 0.15 + i) * 3 : 0}deg)`,
-              opacity: Math.min(1, s * 2),
-            }}
-          >
-            {clean}
-          </span>
-        );
-      })}
-    </div>
-  );
-};
-
 // Conteneur de scène : entrée "punch" + flash blanc.
 export const Scene: React.FC<{bg: string; children: React.ReactNode; first?: boolean}> = ({bg, children, first = false}) => {
   const frame = useCurrentFrame();

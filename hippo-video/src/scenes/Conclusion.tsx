@@ -4,9 +4,9 @@ import type {SceneProps} from '../HippoVideo';
 import {Hippo} from '../characters/Hippo';
 import {Algae, Fish, Poop} from '../characters/Animals';
 import {StickMan} from '../characters/StickMan';
-import {Caption, FONT, Place, Scene, Water, prog, usePop} from '../ui';
+import {FONT, Place, Scene, Water, prog, usePop} from '../ui';
 
-export const Conclusion: React.FC<SceneProps> = ({dur, text}) => {
+export const Conclusion: React.FC<SceneProps> = ({dur}) => {
   const frame = useCurrentFrame();
   // « Abonne-toi… » arrive à 108,7 s dans la voix (≈ 71 % de la scène)
   const ctaAt = Math.round(dur * 0.7);
@@ -101,7 +101,6 @@ export const Conclusion: React.FC<SceneProps> = ({dur, text}) => {
           + DE SECRETS ANIMAUX
         </div>
       </div>
-      <Caption text={text} size={96} top={150} />
     </Scene>
   );
 };

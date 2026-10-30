@@ -3,7 +3,7 @@ import {interpolate, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../HippoVideo';
 import {Hippo} from '../characters/Hippo';
 import {Croc, Lion} from '../characters/Animals';
-import {Bubble, Caption, Place, Scene, Sun, prog} from '../ui';
+import {Bubble, Place, Scene, Sun, prog} from '../ui';
 
 const Tree: React.FC<{x: number; y: number}> = ({x, y}) => (
   <svg width={360} height={420} style={{position: 'absolute', left: x - 180, top: y - 420}}>
@@ -12,7 +12,7 @@ const Tree: React.FC<{x: number; y: number}> = ({x, y}) => (
   </svg>
 );
 
-export const Geant: React.FC<SceneProps> = ({dur, text}) => {
+export const Geant: React.FC<SceneProps> = ({dur}) => {
   const frame = useCurrentFrame();
   const walkIn = prog(frame, dur, 0.0, 0.22);
   const momX = interpolate(walkIn, [0, 1], [-350, 620]);
@@ -54,7 +54,6 @@ export const Geant: React.FC<SceneProps> = ({dur, text}) => {
       </div>
       {lionTurned && lionOut < 0.9 ? <Bubble text="NON MERCI…" x={560} y={1140} size={50} tail="right" delay={Math.round(dur * 0.36)} /> : null}
       {roar > 0.2 ? <Bubble text="HOOONK !" x={600} y={730} size={78} delay={Math.round(dur * 0.63)} /> : null}
-      <Caption text={text} size={96} top={150} />
     </Scene>
   );
 };

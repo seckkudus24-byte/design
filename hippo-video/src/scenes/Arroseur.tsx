@@ -3,7 +3,7 @@ import {interpolate, interpolateColors, random, useCurrentFrame} from 'remotion'
 import type {SceneProps} from '../HippoVideo';
 import {Hippo} from '../characters/Hippo';
 import {Algae, Fish, Shrimp} from '../characters/Animals';
-import {Bubble, Caption, FONT, Place, Scene, Water, prog, usePop} from '../ui';
+import {Bubble, FONT, Place, Scene, Water, prog, usePop} from '../ui';
 
 const BadgeBox: React.FC<{s: number; top: number; children: React.ReactNode}> = ({s, top, children}) => (
   <div
@@ -37,7 +37,7 @@ const BadgeBox: React.FC<{s: number; top: number; children: React.ReactNode}> = 
   </div>
 );
 
-export const Arroseur: React.FC<SceneProps> = ({dur, text}) => {
+export const Arroseur: React.FC<SceneProps> = ({dur}) => {
   const frame = useCurrentFrame();
   const at = (f: number) => Math.round(dur * f);
   const spinning = frame / dur > 0.08;
@@ -109,7 +109,6 @@ export const Arroseur: React.FC<SceneProps> = ({dur, text}) => {
         <br />
         LE GARDE-MANGER RESTE !
       </BadgeBox>
-      <Caption text={text} size={96} top={150} />
     </Scene>
   );
 };

@@ -9,13 +9,14 @@ import {Arroseur} from './scenes/Arroseur';
 import {Attention} from './scenes/Attention';
 import {Architecte} from './scenes/Architecte';
 import {Conclusion} from './scenes/Conclusion';
+import {Subtitles} from './Subtitles';
 
 export type HippoVideoProps = {
   durations: number[];
   hasAudio: boolean;
 };
 
-export type SceneProps = {dur: number; text: string};
+export type SceneProps = {dur: number};
 
 const COMPONENTS: React.FC<SceneProps>[] = [Intro, Geant, EauTerre, Digestion, Arroseur, Attention, Architecte, Conclusion];
 
@@ -26,11 +27,12 @@ export const HippoVideo: React.FC<HippoVideoProps> = ({durations, hasAudio}) => 
         const Comp = COMPONENTS[i];
         return (
           <Series.Sequence key={scene.id} durationInFrames={durations[i]} name={scene.id}>
-            <Comp dur={durations[i]} text={scene.text} />
+            <Comp dur={durations[i]} />
           </Series.Sequence>
         );
       })}
     </Series>
+    <Subtitles />
     {hasAudio ? <Audio src={staticFile('voix.mp3')} /> : null}
   </AbsoluteFill>
 );

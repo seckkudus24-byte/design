@@ -4,7 +4,7 @@ import type {SceneProps} from '../HippoVideo';
 import {Hippo} from '../characters/Hippo';
 import {Poop} from '../characters/Animals';
 import {StickMan} from '../characters/StickMan';
-import {Bubble, Caption, FONT, Moon, Place, Scene, prog, usePop} from '../ui';
+import {Bubble, FONT, Moon, Place, Scene, prog, usePop} from '../ui';
 
 const Tag: React.FC<{text: string; x: number; y: number; s: number; color: string}> = ({text, x, y, s, color}) => (
   <div
@@ -28,7 +28,7 @@ const Tag: React.FC<{text: string; x: number; y: number; s: number; color: strin
   </div>
 );
 
-export const Digestion: React.FC<SceneProps> = ({dur, text}) => {
+export const Digestion: React.FC<SceneProps> = ({dur}) => {
   const frame = useCurrentFrame();
   const at = (f: number) => Math.round(dur * f);
   const eating = frame / dur < 0.45;
@@ -123,7 +123,6 @@ export const Digestion: React.FC<SceneProps> = ({dur, text}) => {
       <Place x={960} y={1520}>
         <StickMan frame={frame} pose={poop > 0.5 ? 'surprised' : 'idle'} height={240} />
       </Place>
-      <Caption text={text} size={100} top={150} />
     </Scene>
   );
 };

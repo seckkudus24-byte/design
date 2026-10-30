@@ -5,16 +5,15 @@ export const WIDTH = 1080;
 export const HEIGHT = 1920;
 
 // Une entrée par section du script. `estimate` = durée estimée (s) tant que voix.mp3 n'est pas là.
-// `text` = la phrase clé affichée à l'écran (*mot* = surligné en jaune).
 export const SCENES = [
-  {id: 'intro', estimate: 12, text: "Est-ce que tu savais que les *excréments* de l'hippopotame font vivre *toute une rivière* ?"},
-  {id: 'geant', estimate: 11, text: 'Un *géant* herbivore… presque *sans ennemis*'},
-  {id: 'eau-terre', estimate: 18, text: "*16 h* par jour dans l'eau… la nuit, il *broute*"},
-  {id: 'digestion', estimate: 15, text: 'Près de *la moitié* ressort… *non digérée* !'},
-  {id: 'arroseur', estimate: 21, text: 'Sa queue *arrose* la rivière… et nourrit *tout le monde*'},
-  {id: 'attention', estimate: 9, text: "*Attention :* trop de crottes = *plus d'oxygène*"},
-  {id: 'architecte', estimate: 11, text: 'Il creuse des *mares* et des *chenaux*'},
-  {id: 'conclusion', estimate: 14, text: 'Il nourrit *toute une rivière* !'},
+  {id: 'intro', estimate: 12},
+  {id: 'geant', estimate: 11},
+  {id: 'eau-terre', estimate: 18},
+  {id: 'digestion', estimate: 15},
+  {id: 'arroseur', estimate: 21},
+  {id: 'attention', estimate: 9},
+  {id: 'architecte', estimate: 11},
+  {id: 'conclusion', estimate: 14},
 ] as const;
 
 // Secondes de "queue" ajoutées après la fin de la voix (le temps de lire l'appel à s'abonner).

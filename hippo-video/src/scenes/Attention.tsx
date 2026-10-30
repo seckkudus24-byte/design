@@ -3,9 +3,9 @@ import {interpolate, interpolateColors, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../HippoVideo';
 import {Hippo} from '../characters/Hippo';
 import {Fish} from '../characters/Animals';
-import {Caption, FONT, Place, Scene, Water, prog, usePop} from '../ui';
+import {FONT, Place, Scene, Water, prog, usePop} from '../ui';
 
-export const Attention: React.FC<SceneProps> = ({dur, text}) => {
+export const Attention: React.FC<SceneProps> = ({dur}) => {
   const frame = useCurrentFrame();
   const sign = usePop(4, 8);
   const dirty = prog(frame, dur, 0.15, 0.65);
@@ -57,7 +57,6 @@ export const Attention: React.FC<SceneProps> = ({dur, text}) => {
           />
         </div>
       </div>
-      <Caption text={text} size={92} top={140} />
     </Scene>
   );
 };

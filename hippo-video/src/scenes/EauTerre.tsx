@@ -2,11 +2,11 @@ import React from 'react';
 import {interpolate, interpolateColors, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../HippoVideo';
 import {Hippo} from '../characters/Hippo';
-import {Bubble, Caption, FONT, Moon, Place, Scene, Sun, Water, prog, usePop} from '../ui';
+import {Bubble, FONT, Moon, Place, Scene, Sun, Water, prog, usePop} from '../ui';
 
 const STARS = Array.from({length: 22}, (_, i) => ({x: (i * 379) % 1040 + 20, y: 620 + ((i * 211) % 520)}));
 
-export const EauTerre: React.FC<SceneProps> = ({dur, text}) => {
+export const EauTerre: React.FC<SceneProps> = ({dur}) => {
   const frame = useCurrentFrame();
   const night = prog(frame, dur, 0.5, 0.62);
   const sky = interpolateColors(night, [0, 1], ['#4FC3F7', '#1A237E']);
@@ -89,7 +89,6 @@ export const EauTerre: React.FC<SceneProps> = ({dur, text}) => {
         16 H
         <div style={{fontSize: 40}}>PAR JOUR</div>
       </div>
-      <Caption text={text} size={100} top={150} />
     </Scene>
   );
 };

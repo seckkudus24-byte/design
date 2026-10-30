@@ -1,12 +1,12 @@
 import React from 'react';
-import {Sequence, interpolate, useCurrentFrame} from 'remotion';
+import {interpolate, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../HippoVideo';
 import {Hippo} from '../characters/Hippo';
 import {Fish, Poop} from '../characters/Animals';
 import {StickMan} from '../characters/StickMan';
-import {Bubble, Caption, Place, Scene, Sun, Water, usePop} from '../ui';
+import {Bubble, Place, Scene, Sun, Water, usePop} from '../ui';
 
-export const Intro: React.FC<SceneProps> = ({dur, text}) => {
+export const Intro: React.FC<SceneProps> = ({dur}) => {
   const frame = useCurrentFrame();
   const rise = usePop(10, 12);
   const hippoY = interpolate(rise, [0, 1], [1450, 1110]);
@@ -38,10 +38,6 @@ export const Intro: React.FC<SceneProps> = ({dur, text}) => {
         <Poop size={130} />
       </Place>
       <Bubble text="?!" x={210} y={680} delay={second} size={80} />
-      {frame < second ? <Caption text={text} size={84} top={140} /> : null}
-      <Sequence from={second} layout="none">
-        <Caption text="Un rôle essentiel… grâce à sa *bouse* !" size={100} top={170} />
-      </Sequence>
     </Scene>
   );
 };
