@@ -81,20 +81,11 @@ export const Caption: React.FC<{
   );
 };
 
-// Conteneur de scène : entrée "punch" + flash blanc.
-export const Scene: React.FC<{bg: string; children: React.ReactNode; first?: boolean}> = ({bg, children, first = false}) => {
-  const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const s = spring({frame, fps, config: {damping: 14, stiffness: 120}});
-  const scale = first ? 1 : interpolate(s, [0, 1], [1.1, 1]);
-  const flash = first ? 0 : interpolate(frame, [0, 7], [0.6, 0], {extrapolateRight: 'clamp'});
-  return (
-    <AbsoluteFill style={{background: bg, overflow: 'hidden'}}>
-      <AbsoluteFill style={{transform: `scale(${scale})`}}>{children}</AbsoluteFill>
-      <AbsoluteFill style={{background: '#fff', opacity: flash}} />
-    </AbsoluteFill>
-  );
-};
+// Conteneur de scène (fond). Les transitions et les changements de plan sont gérés par camera.tsx.
+// `first` est conservé pour compatibilité avec les scènes.
+export const Scene: React.FC<{bg: string; children: React.ReactNode; first?: boolean}> = ({bg, children}) => (
+  <AbsoluteFill style={{background: bg, overflow: 'hidden'}}>{children}</AbsoluteFill>
+);
 
 // Bulle de BD.
 export const Bubble: React.FC<{text: string; x: number; y: number; delay?: number; size?: number; tail?: 'left' | 'right'}> = ({

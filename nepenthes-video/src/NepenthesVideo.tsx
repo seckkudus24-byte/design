@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, Audio, Series, staticFile} from 'remotion';
+import {AbsoluteFill, Audio, Sequence, staticFile} from 'remotion';
 import {SCENE_IDS, sceneDurations} from './timeline';
 import {SceneCtx} from './cue';
 import {Titre} from './scenes/Titre';
@@ -14,6 +14,7 @@ import {Conclusion} from './scenes/Conclusion';
 import {Abonne} from './scenes/Abonne';
 import {Subtitles} from './Subtitles';
 import {Music, SceneSound} from './Sound';
+import {Camera, Reveal, TRANSITION_FRAMES} from './camera';
 
 export type NepenthesVideoProps = {k: number; total: number; hasAudio: boolean};
 export type SceneProps = {dur: number};
@@ -25,21 +26,26 @@ export const NepenthesVideo: React.FC<NepenthesVideoProps> = ({k, total, hasAudi
   let start = 0;
   return (
     <AbsoluteFill style={{background: '#000'}}>
-      <Series>
-        {SCENE_IDS.map((id, i) => {
-          const Comp = COMPONENTS[i];
-          const ctx = {id, start, k};
-          start += durations[i];
-          return (
-            <Series.Sequence key={id} durationInFrames={durations[i]} name={id}>
-              <SceneCtx.Provider value={ctx}>
-                <Comp dur={durations[i]} />
-                <SceneSound dur={durations[i]} />
-              </SceneCtx.Provider>
-            </Series.Sequence>
-          );
-        })}
-      </Series>
+      {SCENE_IDS.map((id, i) => {
+        const Comp = COMPONENTS[i];
+        const ctx = {id, start, k};
+        const from = start;
+        start += durations[i];
+        // chaque scène continue de jouer sous la suivante pendant la transition
+        const extra = i < SCENE_IDS.length - 1 ? TRANSITION_FRAMES : 0;
+        return (
+          <Sequence key={id} from={from} durationInFrames={durations[i] + extra} name={id}>
+            <SceneCtx.Provider value={ctx}>
+              <Reveal index={i}>
+                <Camera dur={durations[i]}>
+                  <Comp dur={durations[i]} />
+                </Camera>
+              </Reveal>
+              <SceneSound dur={durations[i]} />
+            </SceneCtx.Provider>
+          </Sequence>
+        );
+      })}
       <Subtitles k={k} />
       <Music totalFrames={durations.reduce((a, b) => a + b, 0)} />
       {hasAudio ? <Audio src={staticFile('voix.mp3')} /> : null}
