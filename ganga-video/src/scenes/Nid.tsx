@@ -2,11 +2,10 @@ import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../GangaVideo';
 import {useCue} from '../cue';
-import {TEXT} from '../texts';
 import {Chick, Egg, Ganga, Nest, Thermometer} from '../characters/Ganga';
 import {Desert} from '../characters/Desert';
 import {Badge, Drop, NoTree, Seeds} from '../characters/Props';
-import {Caption, FONT, Place, Scene, ramp, usePop} from '../ui';
+import {FONT, Place, Scene, ramp, usePop} from '../ui';
 
 export const Nid: React.FC<SceneProps> = () => {
   const frame = useCurrentFrame();
@@ -72,7 +71,6 @@ export const Nid: React.FC<SceneProps> = () => {
           <div><Badge size={44} rotate={4}>NOURRITURE</Badge></div>
         </div>
       </div>
-      <Caption text={TEXT.nid} size={96} top={150} />
     </Scene>
   );
 };

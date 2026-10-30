@@ -22,7 +22,7 @@ export const Abonne: React.FC<SceneProps> = ({dur}) => {
           <Chick frame={frame + i * 7} size={160} />
         </Place>
       ))}
-      <div style={{position: 'absolute', left: 0, right: 0, top: 380, display: 'flex', flexDirection: 'column', alignItems: 'center', transform: `scale(${cta})`, fontFamily: FONT}}>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 600, display: 'flex', flexDirection: 'column', alignItems: 'center', transform: `scale(${cta})`, fontFamily: FONT}}>
         <div
           style={{
             transform: `scale(${pulse * (1 - click * 0.08)})`,
@@ -41,7 +41,7 @@ export const Abonne: React.FC<SceneProps> = ({dur}) => {
             <path d="M30 10 q12 -8 20 4 v40 q10 -6 18 2 q10 -4 16 6 q10 -2 14 8 v30 q0 26 -30 32 h-20 q-22 -4 -32 -30 l-14 -30 q-2 -12 12 -10 l12 14 z" fill="#fff" stroke="#16121F" strokeWidth={7} strokeLinejoin="round" />
           </svg>
         </div>
-        <div style={{marginTop: 80, fontSize: 64, color: '#fff', WebkitTextStroke: '12px #16121F', paintOrder: 'stroke fill', textAlign: 'center', lineHeight: 1.15}}>
+        <div style={{marginTop: 70, fontSize: 60, color: '#fff', WebkitTextStroke: '12px #16121F', paintOrder: 'stroke fill', textAlign: 'center', lineHeight: 1.15}}>
           + DE SECRETS
           <br />
           DU MONDE ANIMAL

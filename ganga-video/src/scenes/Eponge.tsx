@@ -2,11 +2,10 @@ import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../GangaVideo';
 import {useCue} from '../cue';
-import {TEXT} from '../texts';
 import {Clock, Ganga, SpiralLens, Tube} from '../characters/Ganga';
 import {Desert} from '../characters/Desert';
 import {Badge} from '../characters/Props';
-import {Caption, Place, Scene, Water, ramp, usePop} from '../ui';
+import {Place, Scene, Water, ramp, usePop} from '../ui';
 
 export const Eponge: React.FC<SceneProps> = ({dur}) => {
   const frame = useCurrentFrame();
@@ -75,7 +74,6 @@ export const Eponge: React.FC<SceneProps> = ({dur}) => {
       <div style={{position: 'absolute', left: 650, top: 730, transform: `scale(${clock})`}}>
         <Clock turns={turns} label="15 MIN" size={290} />
       </div>
-      <Caption text={TEXT.eponge} size={96} top={150} />
     </Scene>
   );
 };

@@ -2,11 +2,10 @@ import React from 'react';
 import {interpolate, random, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../GangaVideo';
 import {useCue} from '../cue';
-import {TEXT} from '../texts';
 import {Ganga, Hawk, Jackal} from '../characters/Ganga';
 import {Desert} from '../characters/Desert';
 import {Badge} from '../characters/Props';
-import {Caption, Place, Scene, ramp, usePop} from '../ui';
+import {Place, Scene, ramp, usePop} from '../ui';
 
 const FLOCK = Array.from({length: 34}, (_, i) => ({
   x: (i % 7) * 150 + random(`fx${i}`) * 90,
@@ -80,7 +79,6 @@ export const Vol: React.FC<SceneProps> = ({dur}) => {
           CHAQUE JOUR !
         </Badge>
       </div>
-      <Caption text={TEXT.vol} size={96} top={150} />
     </Scene>
   );
 };

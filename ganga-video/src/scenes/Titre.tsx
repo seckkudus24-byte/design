@@ -2,12 +2,11 @@ import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../GangaVideo';
 import {useCue} from '../cue';
-import {TEXT} from '../texts';
 import {Ganga, Chick} from '../characters/Ganga';
 import {Desert} from '../characters/Desert';
 import {Sponge} from '../characters/Props';
 import {StickMan} from '../characters/StickMan';
-import {Bubble, Caption, FONT, Place, Scene, usePop} from '../ui';
+import {Bubble, FONT, Place, Scene, usePop} from '../ui';
 
 export const Titre: React.FC<SceneProps> = () => {
   const frame = useCurrentFrame();
@@ -38,7 +37,6 @@ export const Titre: React.FC<SceneProps> = () => {
         <StickMan frame={frame} pose={frame >= eponge ? 'surprised' : 'idle'} height={260} />
       </Place>
       {frame >= eponge ? <Bubble text="?!" x={170} y={720} size={76} delay={eponge} /> : null}
-      <Caption text={TEXT.titre} size={88} top={140} />
     </Scene>
   );
 };

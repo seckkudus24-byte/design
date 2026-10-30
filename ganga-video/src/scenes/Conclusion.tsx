@@ -2,11 +2,10 @@ import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../GangaVideo';
 import {useCue} from '../cue';
-import {TEXT} from '../texts';
 import {Chick, Ganga, Nest} from '../characters/Ganga';
 import {Desert} from '../characters/Desert';
 import {Badge, Drop, Medal} from '../characters/Props';
-import {Caption, Place, Scene, ramp, usePop} from '../ui';
+import {Place, Scene, ramp, usePop} from '../ui';
 
 export const Conclusion: React.FC<SceneProps> = () => {
   const frame = useCurrentFrame();
@@ -58,7 +57,6 @@ export const Conclusion: React.FC<SceneProps> = () => {
       <div style={{position: 'absolute', left: 540 - 150, top: 720, transform: `scale(${drop * (1 + Math.sin(frame * 0.2) * 0.05)})`}}>
         <Drop size={300} heart glow={drop} />
       </div>
-      <Caption text={TEXT.conclusion} size={96} top={150} />
     </Scene>
   );
 };

@@ -2,11 +2,10 @@ import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../GangaVideo';
 import {useCue} from '../cue';
-import {TEXT} from '../texts';
 import {Chick, Ganga, Nest} from '../characters/Ganga';
 import {Desert} from '../characters/Desert';
 import {Badge, Heart} from '../characters/Props';
-import {Caption, Place, Scene, ramp, usePop} from '../ui';
+import {Place, Scene, ramp, usePop} from '../ui';
 
 // Poussins : position dans le nid, puis contre la poitrine du père (qui regarde à droite).
 const CHICKS = [
@@ -80,7 +79,6 @@ export const Retour: React.FC<SceneProps> = () => {
           </Badge>
         ))}
       </div>
-      <Caption text={TEXT.retour} size={96} top={150} />
     </Scene>
   );
 };

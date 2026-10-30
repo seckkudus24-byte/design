@@ -2,12 +2,11 @@ import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
 import type {SceneProps} from '../GangaVideo';
 import {useCue} from '../cue';
-import {TEXT} from '../texts';
 import {Ganga} from '../characters/Ganga';
 import {Desert} from '../characters/Desert';
 import {Badge} from '../characters/Props';
 import {StickMan} from '../characters/StickMan';
-import {Bubble, Caption, Place, Scene, ramp, usePop} from '../ui';
+import {Bubble, Place, Scene, ramp, usePop} from '../ui';
 
 export const Presentation: React.FC<SceneProps> = () => {
   const frame = useCurrentFrame();
@@ -44,7 +43,6 @@ export const Presentation: React.FC<SceneProps> = () => {
         <StickMan frame={frame} pose={frame >= secret ? 'surprised' : 'point'} height={260} style={{transform: 'scaleX(-1)'}} />
       </Place>
       {frame >= secret ? <Bubble text="UN SECRET…" x={560} y={1010} size={60} tail="right" delay={secret} /> : null}
-      <Caption text={TEXT.ganga} size={96} top={150} />
     </Scene>
   );
 };

@@ -10,6 +10,8 @@ import {Eponge} from './scenes/Eponge';
 import {Retour} from './scenes/Retour';
 import {Conclusion} from './scenes/Conclusion';
 import {Abonne} from './scenes/Abonne';
+import {Subtitles} from './Subtitles';
+import {Music, SceneSound} from './Sound';
 
 export type GangaVideoProps = {k: number; total: number; hasAudio: boolean};
 export type SceneProps = {dur: number};
@@ -30,11 +32,14 @@ export const GangaVideo: React.FC<GangaVideoProps> = ({k, total, hasAudio}) => {
             <Series.Sequence key={id} durationInFrames={durations[i]} name={id}>
               <SceneCtx.Provider value={ctx}>
                 <Comp dur={durations[i]} />
+                <SceneSound dur={durations[i]} />
               </SceneCtx.Provider>
             </Series.Sequence>
           );
         })}
       </Series>
+      <Subtitles k={k} />
+      <Music totalFrames={durations.reduce((a, b) => a + b, 0)} />
       {hasAudio ? <Audio src={staticFile('voix.mp3')} /> : null}
     </AbsoluteFill>
   );
