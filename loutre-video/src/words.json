@@ -1,0 +1,3006 @@
+{
+"duration": 131.369796,
+"source": "pauses",
+"words": [
+{
+"w": "Saviez-vous",
+"s": 0.0,
+"e": 0.34,
+"scene": "titre"
+},
+{
+"w": "qu'il",
+"s": 0.34,
+"e": 0.57,
+"scene": "titre"
+},
+{
+"w": "existe",
+"s": 0.57,
+"e": 0.91,
+"scene": "titre"
+},
+{
+"w": "en",
+"s": 0.91,
+"e": 1.04,
+"scene": "titre"
+},
+{
+"w": "Amazonie",
+"s": 1.04,
+"e": 1.65,
+"scene": "titre"
+},
+{
+"w": "une",
+"s": 1.65,
+"e": 1.88,
+"scene": "titre"
+},
+{
+"w": "loutre",
+"s": 1.88,
+"e": 2.12,
+"scene": "titre"
+},
+{
+"w": "si",
+"s": 2.12,
+"e": 2.25,
+"scene": "titre"
+},
+{
+"w": "grande",
+"s": 2.25,
+"e": 2.48,
+"scene": "titre"
+},
+{
+"w": "et",
+"s": 2.48,
+"e": 2.62,
+"scene": "titre"
+},
+{
+"w": "si",
+"s": 2.62,
+"e": 2.75,
+"scene": "titre"
+},
+{
+"w": "redoutable",
+"s": 2.75,
+"e": 3.5,
+"scene": "titre"
+},
+{
+"w": "qu'on",
+"s": 3.5,
+"e": 3.73,
+"scene": "titre"
+},
+{
+"w": "la",
+"s": 3.73,
+"e": 3.87,
+"scene": "titre"
+},
+{
+"w": "surnomme",
+"s": 3.87,
+"e": 4.41,
+"scene": "titre"
+},
+{
+"w": "le",
+"s": 4.41,
+"e": 4.55,
+"scene": "titre"
+},
+{
+"w": "« loup",
+"s": 4.55,
+"e": 4.68,
+"scene": "titre"
+},
+{
+"w": "des",
+"s": 4.68,
+"e": 4.81,
+"scene": "titre"
+},
+{
+"w": "rivières » ?",
+"s": 4.81,
+"e": 5.15,
+"scene": "titre"
+},
+{
+"w": "Elle",
+"s": 5.45,
+"e": 5.68,
+"scene": "taille"
+},
+{
+"w": "mesure",
+"s": 5.68,
+"e": 6.01,
+"scene": "taille"
+},
+{
+"w": "presque",
+"s": 6.01,
+"e": 6.23,
+"scene": "taille"
+},
+{
+"w": "la",
+"s": 6.23,
+"e": 6.36,
+"scene": "taille"
+},
+{
+"w": "taille",
+"s": 6.36,
+"e": 6.59,
+"scene": "taille"
+},
+{
+"w": "d'un",
+"s": 6.59,
+"e": 6.72,
+"scene": "taille"
+},
+{
+"w": "homme,",
+"s": 6.72,
+"e": 6.95,
+"scene": "taille"
+},
+{
+"w": "croque",
+"s": 7.28,
+"e": 7.56,
+"scene": "taille"
+},
+{
+"w": "des",
+"s": 7.56,
+"e": 7.72,
+"scene": "taille"
+},
+{
+"w": "poissons",
+"s": 7.72,
+"e": 8.01,
+"scene": "taille"
+},
+{
+"w": "à",
+"s": 8.01,
+"e": 8.17,
+"scene": "taille"
+},
+{
+"w": "carapace",
+"s": 8.17,
+"e": 8.7,
+"scene": "taille"
+},
+{
+"w": "comme",
+"s": 8.7,
+"e": 8.98,
+"scene": "taille"
+},
+{
+"w": "des",
+"s": 8.98,
+"e": 9.14,
+"scene": "taille"
+},
+{
+"w": "chips…",
+"s": 9.14,
+"e": 9.3,
+"scene": "taille"
+},
+{
+"w": "et",
+"s": 9.65,
+"e": 9.79,
+"scene": "taille"
+},
+{
+"w": "même",
+"s": 9.79,
+"e": 10.04,
+"scene": "taille"
+},
+{
+"w": "le",
+"s": 10.04,
+"e": 10.18,
+"scene": "taille"
+},
+{
+"w": "jaguar",
+"s": 10.18,
+"e": 10.44,
+"scene": "taille"
+},
+{
+"w": "hésite",
+"s": 10.44,
+"e": 10.8,
+"scene": "taille"
+},
+{
+"w": "à",
+"s": 10.8,
+"e": 10.94,
+"scene": "taille"
+},
+{
+"w": "l'affronter.",
+"s": 10.94,
+"e": 11.3,
+"scene": "taille"
+},
+{
+"w": "Un",
+"s": 11.73,
+"e": 12.05,
+"scene": "geant"
+},
+{
+"w": "géant",
+"s": 12.05,
+"e": 12.37,
+"scene": "geant"
+},
+{
+"w": "parmi",
+"s": 12.37,
+"e": 12.94,
+"scene": "geant"
+},
+{
+"w": "les",
+"s": 12.94,
+"e": 13.27,
+"scene": "geant"
+},
+{
+"w": "loutres.",
+"s": 13.27,
+"e": 13.84,
+"scene": "geant"
+},
+{
+"w": "Voici",
+"s": 14.15,
+"e": 14.28,
+"scene": "geant"
+},
+{
+"w": "la",
+"s": 14.28,
+"e": 14.35,
+"scene": "geant"
+},
+{
+"w": "loutre",
+"s": 14.35,
+"e": 14.48,
+"scene": "geant"
+},
+{
+"w": "géante,",
+"s": 14.48,
+"e": 14.6,
+"scene": "geant"
+},
+{
+"w": "la",
+"s": 14.6,
+"e": 14.68,
+"scene": "geant"
+},
+{
+"w": "plus",
+"s": 14.68,
+"e": 14.75,
+"scene": "geant"
+},
+{
+"w": "grande",
+"s": 14.75,
+"e": 14.87,
+"scene": "geant"
+},
+{
+"w": "loutre",
+"s": 14.87,
+"e": 15.0,
+"scene": "geant"
+},
+{
+"w": "du",
+"s": 15.0,
+"e": 15.07,
+"scene": "geant"
+},
+{
+"w": "monde.",
+"s": 15.07,
+"e": 15.2,
+"scene": "geant"
+},
+{
+"w": "Du",
+"s": 15.45,
+"e": 15.65,
+"scene": "geant"
+},
+{
+"w": "museau",
+"s": 15.65,
+"e": 16.02,
+"scene": "geant"
+},
+{
+"w": "au",
+"s": 16.02,
+"e": 16.22,
+"scene": "geant"
+},
+{
+"w": "bout",
+"s": 16.22,
+"e": 16.42,
+"scene": "geant"
+},
+{
+"w": "de",
+"s": 16.42,
+"e": 16.63,
+"scene": "geant"
+},
+{
+"w": "la",
+"s": 16.63,
+"e": 16.83,
+"scene": "geant"
+},
+{
+"w": "queue,",
+"s": 16.83,
+"e": 17.03,
+"scene": "geant"
+},
+{
+"w": "elle",
+"s": 17.2,
+"e": 17.37,
+"scene": "geant"
+},
+{
+"w": "peut",
+"s": 17.37,
+"e": 17.47,
+"scene": "geant"
+},
+{
+"w": "mesurer",
+"s": 17.47,
+"e": 17.73,
+"scene": "geant"
+},
+{
+"w": "jusqu'à",
+"s": 17.73,
+"e": 17.98,
+"scene": "geant"
+},
+{
+"w": "1,8",
+"s": 17.98,
+"e": 18.24,
+"scene": "geant"
+},
+{
+"w": "mètre",
+"s": 18.24,
+"e": 18.72,
+"scene": "geant"
+},
+{
+"w": "et",
+"s": 18.72,
+"e": 18.82,
+"scene": "geant"
+},
+{
+"w": "peser",
+"s": 18.82,
+"e": 18.99,
+"scene": "geant"
+},
+{
+"w": "plus",
+"s": 18.99,
+"e": 19.09,
+"scene": "geant"
+},
+{
+"w": "de",
+"s": 19.09,
+"e": 19.19,
+"scene": "geant"
+},
+{
+"w": "30",
+"s": 19.19,
+"e": 19.45,
+"scene": "geant"
+},
+{
+"w": "kilos.",
+"s": 19.45,
+"e": 19.63,
+"scene": "geant"
+},
+{
+"w": "Et",
+"s": 19.84,
+"e": 20.05,
+"scene": "geant"
+},
+{
+"w": "elle",
+"s": 20.05,
+"e": 20.41,
+"scene": "geant"
+},
+{
+"w": "a",
+"s": 20.41,
+"e": 20.62,
+"scene": "geant"
+},
+{
+"w": "un",
+"s": 20.62,
+"e": 20.83,
+"scene": "geant"
+},
+{
+"w": "appétit",
+"s": 20.83,
+"e": 21.35,
+"scene": "geant"
+},
+{
+"w": "d'ogre :",
+"s": 21.35,
+"e": 21.72,
+"scene": "geant"
+},
+{
+"w": "elle",
+"s": 22.02,
+"e": 22.3,
+"scene": "geant"
+},
+{
+"w": "peut",
+"s": 22.3,
+"e": 22.46,
+"scene": "geant"
+},
+{
+"w": "avaler",
+"s": 22.46,
+"e": 22.86,
+"scene": "geant"
+},
+{
+"w": "plusieurs",
+"s": 22.86,
+"e": 23.14,
+"scene": "geant"
+},
+{
+"w": "kilos",
+"s": 23.14,
+"e": 23.43,
+"scene": "geant"
+},
+{
+"w": "de",
+"s": 23.43,
+"e": 23.59,
+"scene": "geant"
+},
+{
+"w": "poisson",
+"s": 23.59,
+"e": 23.87,
+"scene": "geant"
+},
+{
+"w": "par",
+"s": 23.87,
+"e": 24.03,
+"scene": "geant"
+},
+{
+"w": "jour.",
+"s": 24.03,
+"e": 24.19,
+"scene": "geant"
+},
+{
+"w": "Elle",
+"s": 24.57,
+"e": 24.69,
+"scene": "geant"
+},
+{
+"w": "passe",
+"s": 24.69,
+"e": 24.81,
+"scene": "geant"
+},
+{
+"w": "donc",
+"s": 24.81,
+"e": 24.87,
+"scene": "geant"
+},
+{
+"w": "une",
+"s": 24.87,
+"e": 24.99,
+"scene": "geant"
+},
+{
+"w": "grande",
+"s": 24.99,
+"e": 25.11,
+"scene": "geant"
+},
+{
+"w": "partie",
+"s": 25.11,
+"e": 25.23,
+"scene": "geant"
+},
+{
+"w": "de",
+"s": 25.23,
+"e": 25.64,
+"scene": "geant"
+},
+{
+"w": "sa",
+"s": 25.64,
+"e": 25.71,
+"scene": "geant"
+},
+{
+"w": "journée",
+"s": 25.71,
+"e": 25.83,
+"scene": "geant"
+},
+{
+"w": "à",
+"s": 25.83,
+"e": 25.9,
+"scene": "geant"
+},
+{
+"w": "chasser.",
+"s": 25.9,
+"e": 26.02,
+"scene": "geant"
+},
+{
+"w": "Des",
+"s": 26.39,
+"e": 26.54,
+"scene": "machoires"
+},
+{
+"w": "mâchoires",
+"s": 26.54,
+"e": 26.9,
+"scene": "machoires"
+},
+{
+"w": "de",
+"s": 26.9,
+"e": 27.04,
+"scene": "machoires"
+},
+{
+"w": "broyeuse.",
+"s": 27.04,
+"e": 27.29,
+"scene": "machoires"
+},
+{
+"w": "Son",
+"s": 27.29,
+"e": 27.44,
+"scene": "machoires"
+},
+{
+"w": "plat",
+"s": 27.44,
+"e": 27.58,
+"scene": "machoires"
+},
+{
+"w": "préféré ?",
+"s": 27.58,
+"e": 27.94,
+"scene": "machoires"
+},
+{
+"w": "Le",
+"s": 28.11,
+"e": 28.33,
+"scene": "machoires"
+},
+{
+"w": "poisson.",
+"s": 28.33,
+"e": 28.72,
+"scene": "machoires"
+},
+{
+"w": "Même",
+"s": 29.05,
+"e": 29.35,
+"scene": "machoires"
+},
+{
+"w": "ceux",
+"s": 29.35,
+"e": 29.51,
+"scene": "machoires"
+},
+{
+"w": "que",
+"s": 29.51,
+"e": 29.68,
+"scene": "machoires"
+},
+{
+"w": "les",
+"s": 29.68,
+"e": 29.84,
+"scene": "machoires"
+},
+{
+"w": "autres",
+"s": 29.84,
+"e": 30.14,
+"scene": "machoires"
+},
+{
+"w": "prédateurs",
+"s": 30.14,
+"e": 30.56,
+"scene": "machoires"
+},
+{
+"w": "évitent,",
+"s": 30.56,
+"e": 30.98,
+"scene": "machoires"
+},
+{
+"w": "comme",
+"s": 31.19,
+"e": 31.46,
+"scene": "machoires"
+},
+{
+"w": "le",
+"s": 31.46,
+"e": 31.61,
+"scene": "machoires"
+},
+{
+"w": "pléco,",
+"s": 31.61,
+"e": 31.88,
+"scene": "machoires"
+},
+{
+"w": "ce",
+"s": 31.88,
+"e": 32.03,
+"scene": "machoires"
+},
+{
+"w": "poisson",
+"s": 32.03,
+"e": 32.3,
+"scene": "machoires"
+},
+{
+"w": "couvert",
+"s": 32.3,
+"e": 32.57,
+"scene": "machoires"
+},
+{
+"w": "de",
+"s": 32.57,
+"e": 32.72,
+"scene": "machoires"
+},
+{
+"w": "plaques",
+"s": 32.72,
+"e": 33.21,
+"scene": "machoires"
+},
+{
+"w": "dures",
+"s": 33.21,
+"e": 33.48,
+"scene": "machoires"
+},
+{
+"w": "comme",
+"s": 33.48,
+"e": 33.75,
+"scene": "machoires"
+},
+{
+"w": "une",
+"s": 33.75,
+"e": 34.02,
+"scene": "machoires"
+},
+{
+"w": "armure.",
+"s": 34.02,
+"e": 34.4,
+"scene": "machoires"
+},
+{
+"w": "Pour",
+"s": 34.4,
+"e": 34.56,
+"scene": "machoires"
+},
+{
+"w": "la",
+"s": 34.56,
+"e": 34.71,
+"scene": "machoires"
+},
+{
+"w": "loutre",
+"s": 34.71,
+"e": 34.98,
+"scene": "machoires"
+},
+{
+"w": "géante,",
+"s": 34.98,
+"e": 35.24,
+"scene": "machoires"
+},
+{
+"w": "pas",
+"s": 35.24,
+"e": 35.4,
+"scene": "machoires"
+},
+{
+"w": "de",
+"s": 35.4,
+"e": 35.55,
+"scene": "machoires"
+},
+{
+"w": "problème :",
+"s": 35.55,
+"e": 35.93,
+"scene": "machoires"
+},
+{
+"w": "ses",
+"s": 36.24,
+"e": 36.38,
+"scene": "machoires"
+},
+{
+"w": "mâchoires",
+"s": 36.38,
+"e": 36.73,
+"scene": "machoires"
+},
+{
+"w": "puissantes",
+"s": 36.73,
+"e": 37.09,
+"scene": "machoires"
+},
+{
+"w": "et",
+"s": 37.09,
+"e": 37.4,
+"scene": "machoires"
+},
+{
+"w": "ses",
+"s": 37.4,
+"e": 37.54,
+"scene": "machoires"
+},
+{
+"w": "crocs",
+"s": 37.54,
+"e": 37.68,
+"scene": "machoires"
+},
+{
+"w": "pointus",
+"s": 37.68,
+"e": 37.93,
+"scene": "machoires"
+},
+{
+"w": "le",
+"s": 37.93,
+"e": 38.07,
+"scene": "machoires"
+},
+{
+"w": "broient",
+"s": 38.07,
+"e": 38.21,
+"scene": "machoires"
+},
+{
+"w": "sans",
+"s": 38.21,
+"e": 38.34,
+"scene": "machoires"
+},
+{
+"w": "effort.",
+"s": 38.34,
+"e": 38.59,
+"scene": "machoires"
+},
+{
+"w": "Mais",
+"s": 38.77,
+"e": 38.89,
+"scene": "machoires"
+},
+{
+"w": "quand",
+"s": 38.89,
+"e": 39.0,
+"scene": "machoires"
+},
+{
+"w": "elle",
+"s": 39.0,
+"e": 39.21,
+"scene": "machoires"
+},
+{
+"w": "a",
+"s": 39.21,
+"e": 39.33,
+"scene": "machoires"
+},
+{
+"w": "le",
+"s": 39.33,
+"e": 39.45,
+"scene": "machoires"
+},
+{
+"w": "choix,",
+"s": 39.45,
+"e": 39.56,
+"scene": "machoires"
+},
+{
+"w": "elle",
+"s": 39.77,
+"e": 39.9,
+"scene": "machoires"
+},
+{
+"w": "préfère",
+"s": 39.9,
+"e": 40.1,
+"scene": "machoires"
+},
+{
+"w": "une",
+"s": 40.1,
+"e": 40.24,
+"scene": "machoires"
+},
+{
+"w": "proie",
+"s": 40.24,
+"e": 40.32,
+"scene": "machoires"
+},
+{
+"w": "plus",
+"s": 40.32,
+"e": 40.4,
+"scene": "machoires"
+},
+{
+"w": "charnue,",
+"s": 40.4,
+"e": 40.53,
+"scene": "machoires"
+},
+{
+"w": "comme",
+"s": 40.7,
+"e": 40.95,
+"scene": "machoires"
+},
+{
+"w": "une",
+"s": 40.95,
+"e": 41.2,
+"scene": "machoires"
+},
+{
+"w": "grosse",
+"s": 41.2,
+"e": 41.46,
+"scene": "machoires"
+},
+{
+"w": "anguille",
+"s": 41.46,
+"e": 41.82,
+"scene": "machoires"
+},
+{
+"w": "de",
+"s": 41.82,
+"e": 41.96,
+"scene": "machoires"
+},
+{
+"w": "plus",
+"s": 41.96,
+"e": 42.1,
+"scene": "machoires"
+},
+{
+"w": "d'un",
+"s": 42.1,
+"e": 42.25,
+"scene": "machoires"
+},
+{
+"w": "demi-mètre,",
+"s": 42.25,
+"e": 42.72,
+"scene": "machoires"
+},
+{
+"w": "qu'elle",
+"s": 43.07,
+"e": 43.49,
+"scene": "machoires"
+},
+{
+"w": "dévore",
+"s": 43.49,
+"e": 43.9,
+"scene": "machoires"
+},
+{
+"w": "directement",
+"s": 43.9,
+"e": 44.44,
+"scene": "machoires"
+},
+{
+"w": "en",
+"s": 44.44,
+"e": 45.09,
+"scene": "machoires"
+},
+{
+"w": "la",
+"s": 45.09,
+"e": 45.25,
+"scene": "machoires"
+},
+{
+"w": "tenant",
+"s": 45.25,
+"e": 45.54,
+"scene": "machoires"
+},
+{
+"w": "dans",
+"s": 45.54,
+"e": 45.7,
+"scene": "machoires"
+},
+{
+"w": "ses",
+"s": 45.7,
+"e": 45.86,
+"scene": "machoires"
+},
+{
+"w": "pattes.",
+"s": 45.86,
+"e": 46.15,
+"scene": "machoires"
+},
+{
+"w": "Le",
+"s": 46.5,
+"e": 46.63,
+"scene": "amazone"
+},
+{
+"w": "plus",
+"s": 46.63,
+"e": 46.76,
+"scene": "amazone"
+},
+{
+"w": "grand",
+"s": 46.76,
+"e": 46.89,
+"scene": "amazone"
+},
+{
+"w": "garde-manger",
+"s": 46.89,
+"e": 47.32,
+"scene": "amazone"
+},
+{
+"w": "du",
+"s": 47.32,
+"e": 47.45,
+"scene": "amazone"
+},
+{
+"w": "monde.",
+"s": 47.45,
+"e": 47.68,
+"scene": "amazone"
+},
+{
+"w": "Il",
+"s": 47.68,
+"e": 47.81,
+"scene": "amazone"
+},
+{
+"w": "faut",
+"s": 47.81,
+"e": 47.94,
+"scene": "amazone"
+},
+{
+"w": "dire",
+"s": 47.94,
+"e": 48.17,
+"scene": "amazone"
+},
+{
+"w": "qu'elle",
+"s": 48.17,
+"e": 48.5,
+"scene": "amazone"
+},
+{
+"w": "vit",
+"s": 48.5,
+"e": 48.63,
+"scene": "amazone"
+},
+{
+"w": "au",
+"s": 48.63,
+"e": 48.76,
+"scene": "amazone"
+},
+{
+"w": "bon",
+"s": 48.76,
+"e": 48.89,
+"scene": "amazone"
+},
+{
+"w": "endroit.",
+"s": 48.89,
+"e": 49.12,
+"scene": "amazone"
+},
+{
+"w": "Le",
+"s": 49.41,
+"e": 49.54,
+"scene": "amazone"
+},
+{
+"w": "fleuve",
+"s": 49.54,
+"e": 49.77,
+"scene": "amazone"
+},
+{
+"w": "Amazone",
+"s": 49.77,
+"e": 50.2,
+"scene": "amazone"
+},
+{
+"w": "fait",
+"s": 50.2,
+"e": 50.54,
+"scene": "amazone"
+},
+{
+"w": "environ",
+"s": 50.54,
+"e": 50.87,
+"scene": "amazone"
+},
+{
+"w": "6",
+"s": 50.87,
+"e": 51.21,
+"scene": "amazone"
+},
+{
+"w": "400",
+"s": 51.21,
+"e": 51.54,
+"scene": "amazone"
+},
+{
+"w": "kilomètres",
+"s": 51.54,
+"e": 51.97,
+"scene": "amazone"
+},
+{
+"w": "de",
+"s": 51.97,
+"e": 52.47,
+"scene": "amazone"
+},
+{
+"w": "long",
+"s": 52.47,
+"e": 52.6,
+"scene": "amazone"
+},
+{
+"w": "et",
+"s": 52.6,
+"e": 52.74,
+"scene": "amazone"
+},
+{
+"w": "transporte",
+"s": 52.74,
+"e": 53.07,
+"scene": "amazone"
+},
+{
+"w": "plus",
+"s": 53.07,
+"e": 53.2,
+"scene": "amazone"
+},
+{
+"w": "d'eau",
+"s": 53.2,
+"e": 53.33,
+"scene": "amazone"
+},
+{
+"w": "que",
+"s": 53.33,
+"e": 53.46,
+"scene": "amazone"
+},
+{
+"w": "n'importe",
+"s": 53.46,
+"e": 53.8,
+"scene": "amazone"
+},
+{
+"w": "quel",
+"s": 53.8,
+"e": 53.93,
+"scene": "amazone"
+},
+{
+"w": "autre",
+"s": 53.93,
+"e": 54.16,
+"scene": "amazone"
+},
+{
+"w": "fleuve",
+"s": 54.16,
+"e": 54.39,
+"scene": "amazone"
+},
+{
+"w": "de",
+"s": 54.39,
+"e": 54.52,
+"scene": "amazone"
+},
+{
+"w": "la",
+"s": 54.52,
+"e": 54.65,
+"scene": "amazone"
+},
+{
+"w": "planète.",
+"s": 54.65,
+"e": 54.99,
+"scene": "amazone"
+},
+{
+"w": "On",
+"s": 55.35,
+"e": 55.48,
+"scene": "amazone"
+},
+{
+"w": "y",
+"s": 55.48,
+"e": 55.62,
+"scene": "amazone"
+},
+{
+"w": "trouve",
+"s": 55.62,
+"e": 55.86,
+"scene": "amazone"
+},
+{
+"w": "plus",
+"s": 55.86,
+"e": 56.0,
+"scene": "amazone"
+},
+{
+"w": "de",
+"s": 56.0,
+"e": 56.13,
+"scene": "amazone"
+},
+{
+"w": "2",
+"s": 56.13,
+"e": 56.75,
+"scene": "amazone"
+},
+{
+"w": "000",
+"s": 56.75,
+"e": 57.1,
+"scene": "amazone"
+},
+{
+"w": "espèces",
+"s": 57.1,
+"e": 57.44,
+"scene": "amazone"
+},
+{
+"w": "de",
+"s": 57.44,
+"e": 57.58,
+"scene": "amazone"
+},
+{
+"w": "poissons",
+"s": 57.58,
+"e": 57.82,
+"scene": "amazone"
+},
+{
+"w": "d'eau",
+"s": 57.82,
+"e": 57.96,
+"scene": "amazone"
+},
+{
+"w": "douce.",
+"s": 57.96,
+"e": 58.2,
+"scene": "amazone"
+},
+{
+"w": "Un",
+"s": 58.46,
+"e": 58.62,
+"scene": "amazone"
+},
+{
+"w": "buffet",
+"s": 58.62,
+"e": 58.92,
+"scene": "amazone"
+},
+{
+"w": "à",
+"s": 58.92,
+"e": 59.08,
+"scene": "amazone"
+},
+{
+"w": "volonté !",
+"s": 59.08,
+"e": 59.5,
+"scene": "amazone"
+},
+{
+"w": "Une",
+"s": 60.29,
+"e": 60.72,
+"scene": "equipe"
+},
+{
+"w": "chasse",
+"s": 60.72,
+"e": 61.15,
+"scene": "equipe"
+},
+{
+"w": "en",
+"s": 61.15,
+"e": 61.39,
+"scene": "equipe"
+},
+{
+"w": "équipe.",
+"s": 61.39,
+"e": 62.01,
+"scene": "equipe"
+},
+{
+"w": "La",
+"s": 62.29,
+"e": 62.38,
+"scene": "equipe"
+},
+{
+"w": "loutre",
+"s": 62.38,
+"e": 62.53,
+"scene": "equipe"
+},
+{
+"w": "géante",
+"s": 62.53,
+"e": 62.68,
+"scene": "equipe"
+},
+{
+"w": "ne",
+"s": 62.68,
+"e": 62.91,
+"scene": "equipe"
+},
+{
+"w": "chasse",
+"s": 62.91,
+"e": 63.06,
+"scene": "equipe"
+},
+{
+"w": "presque",
+"s": 63.06,
+"e": 63.21,
+"scene": "equipe"
+},
+{
+"w": "jamais",
+"s": 63.21,
+"e": 63.36,
+"scene": "equipe"
+},
+{
+"w": "seule.",
+"s": 63.36,
+"e": 63.51,
+"scene": "equipe"
+},
+{
+"w": "Elle",
+"s": 63.73,
+"e": 63.95,
+"scene": "equipe"
+},
+{
+"w": "vit",
+"s": 63.95,
+"e": 64.07,
+"scene": "equipe"
+},
+{
+"w": "en",
+"s": 64.07,
+"e": 64.2,
+"scene": "equipe"
+},
+{
+"w": "famille",
+"s": 64.2,
+"e": 64.51,
+"scene": "equipe"
+},
+{
+"w": "de",
+"s": 64.51,
+"e": 64.63,
+"scene": "equipe"
+},
+{
+"w": "4",
+"s": 64.63,
+"e": 64.94,
+"scene": "equipe"
+},
+{
+"w": "à",
+"s": 64.94,
+"e": 65.07,
+"scene": "equipe"
+},
+{
+"w": "8",
+"s": 65.07,
+"e": 65.38,
+"scene": "equipe"
+},
+{
+"w": "individus.",
+"s": 65.38,
+"e": 65.79,
+"scene": "equipe"
+},
+{
+"w": "Ensemble,",
+"s": 66.06,
+"e": 67.13,
+"scene": "equipe"
+},
+{
+"w": "elles",
+"s": 67.39,
+"e": 67.64,
+"scene": "equipe"
+},
+{
+"w": "encerclent",
+"s": 67.64,
+"e": 68.0,
+"scene": "equipe"
+},
+{
+"w": "les",
+"s": 68.0,
+"e": 68.32,
+"scene": "equipe"
+},
+{
+"w": "gros",
+"s": 68.32,
+"e": 68.46,
+"scene": "equipe"
+},
+{
+"w": "poissons",
+"s": 68.46,
+"e": 68.71,
+"scene": "equipe"
+},
+{
+"w": "cachés",
+"s": 68.71,
+"e": 69.2,
+"scene": "equipe"
+},
+{
+"w": "entre",
+"s": 69.2,
+"e": 69.45,
+"scene": "equipe"
+},
+{
+"w": "les",
+"s": 69.45,
+"e": 69.59,
+"scene": "equipe"
+},
+{
+"w": "branches",
+"s": 69.59,
+"e": 70.21,
+"scene": "equipe"
+},
+{
+"w": "mortes",
+"s": 70.21,
+"e": 70.46,
+"scene": "equipe"
+},
+{
+"w": "et",
+"s": 70.46,
+"e": 70.6,
+"scene": "equipe"
+},
+{
+"w": "les",
+"s": 70.6,
+"e": 70.89,
+"scene": "equipe"
+},
+{
+"w": "rabattent",
+"s": 70.89,
+"e": 71.25,
+"scene": "equipe"
+},
+{
+"w": "vers",
+"s": 71.25,
+"e": 71.39,
+"scene": "equipe"
+},
+{
+"w": "les",
+"s": 71.39,
+"e": 71.53,
+"scene": "equipe"
+},
+{
+"w": "eaux",
+"s": 71.53,
+"e": 71.67,
+"scene": "equipe"
+},
+{
+"w": "peu",
+"s": 71.67,
+"e": 71.81,
+"scene": "equipe"
+},
+{
+"w": "profondes,",
+"s": 71.81,
+"e": 72.17,
+"scene": "equipe"
+},
+{
+"w": "où",
+"s": 72.38,
+"e": 72.45,
+"scene": "equipe"
+},
+{
+"w": "ils",
+"s": 72.45,
+"e": 72.52,
+"scene": "equipe"
+},
+{
+"w": "ne",
+"s": 72.52,
+"e": 72.59,
+"scene": "equipe"
+},
+{
+"w": "peuvent",
+"s": 72.59,
+"e": 72.71,
+"scene": "equipe"
+},
+{
+"w": "plus",
+"s": 72.71,
+"e": 72.78,
+"scene": "equipe"
+},
+{
+"w": "s'échapper.",
+"s": 72.78,
+"e": 72.96,
+"scene": "equipe"
+},
+{
+"w": "Un",
+"s": 73.34,
+"e": 73.45,
+"scene": "radar"
+},
+{
+"w": "radar",
+"s": 73.45,
+"e": 73.65,
+"scene": "radar"
+},
+{
+"w": "sous",
+"s": 73.65,
+"e": 73.76,
+"scene": "radar"
+},
+{
+"w": "l'eau.",
+"s": 73.76,
+"e": 73.87,
+"scene": "radar"
+},
+{
+"w": "Et",
+"s": 73.87,
+"e": 73.98,
+"scene": "radar"
+},
+{
+"w": "même",
+"s": 73.98,
+"e": 74.18,
+"scene": "radar"
+},
+{
+"w": "dans",
+"s": 74.18,
+"e": 74.29,
+"scene": "radar"
+},
+{
+"w": "l'eau",
+"s": 74.29,
+"e": 74.4,
+"scene": "radar"
+},
+{
+"w": "trouble",
+"s": 74.4,
+"e": 74.6,
+"scene": "radar"
+},
+{
+"w": "et",
+"s": 74.6,
+"e": 74.71,
+"scene": "radar"
+},
+{
+"w": "boueuse",
+"s": 74.71,
+"e": 74.91,
+"scene": "radar"
+},
+{
+"w": "de",
+"s": 74.91,
+"e": 75.02,
+"scene": "radar"
+},
+{
+"w": "l'Amazone,",
+"s": 75.02,
+"e": 75.39,
+"scene": "radar"
+},
+{
+"w": "elle",
+"s": 75.39,
+"e": 75.58,
+"scene": "radar"
+},
+{
+"w": "ne",
+"s": 75.58,
+"e": 75.69,
+"scene": "radar"
+},
+{
+"w": "rate",
+"s": 75.69,
+"e": 75.89,
+"scene": "radar"
+},
+{
+"w": "rien.",
+"s": 75.89,
+"e": 76.0,
+"scene": "radar"
+},
+{
+"w": "Ses",
+"s": 76.23,
+"e": 76.39,
+"scene": "radar"
+},
+{
+"w": "moustaches",
+"s": 76.39,
+"e": 76.78,
+"scene": "radar"
+},
+{
+"w": "fonctionnent",
+"s": 76.78,
+"e": 77.18,
+"scene": "radar"
+},
+{
+"w": "comme",
+"s": 77.18,
+"e": 77.45,
+"scene": "radar"
+},
+{
+"w": "un",
+"s": 77.45,
+"e": 77.61,
+"scene": "radar"
+},
+{
+"w": "véritable",
+"s": 77.61,
+"e": 78.12,
+"scene": "radar"
+},
+{
+"w": "radar :",
+"s": 78.12,
+"e": 78.4,
+"scene": "radar"
+},
+{
+"w": "elles",
+"s": 78.82,
+"e": 79.07,
+"scene": "radar"
+},
+{
+"w": "sentent",
+"s": 79.07,
+"e": 79.31,
+"scene": "radar"
+},
+{
+"w": "les",
+"s": 79.31,
+"e": 79.44,
+"scene": "radar"
+},
+{
+"w": "vibrations",
+"s": 79.44,
+"e": 80.05,
+"scene": "radar"
+},
+{
+"w": "des",
+"s": 80.05,
+"e": 80.19,
+"scene": "radar"
+},
+{
+"w": "poissons",
+"s": 80.19,
+"e": 80.43,
+"scene": "radar"
+},
+{
+"w": "qui",
+"s": 80.43,
+"e": 80.57,
+"scene": "radar"
+},
+{
+"w": "nagent",
+"s": 80.57,
+"e": 80.81,
+"scene": "radar"
+},
+{
+"w": "autour",
+"s": 80.81,
+"e": 81.05,
+"scene": "radar"
+},
+{
+"w": "d'elle.",
+"s": 81.05,
+"e": 81.29,
+"scene": "radar"
+},
+{
+"w": "Une",
+"s": 81.64,
+"e": 81.9,
+"scene": "famille"
+},
+{
+"w": "famille",
+"s": 81.9,
+"e": 82.27,
+"scene": "famille"
+},
+{
+"w": "soudée.",
+"s": 82.27,
+"e": 82.53,
+"scene": "famille"
+},
+{
+"w": "Après",
+"s": 82.53,
+"e": 82.79,
+"scene": "famille"
+},
+{
+"w": "la",
+"s": 82.79,
+"e": 82.94,
+"scene": "famille"
+},
+{
+"w": "chasse,",
+"s": 82.94,
+"e": 83.2,
+"scene": "famille"
+},
+{
+"w": "les",
+"s": 83.2,
+"e": 83.35,
+"scene": "famille"
+},
+{
+"w": "loutres",
+"s": 83.35,
+"e": 83.61,
+"scene": "famille"
+},
+{
+"w": "ne",
+"s": 83.61,
+"e": 83.75,
+"scene": "famille"
+},
+{
+"w": "mangent",
+"s": 83.75,
+"e": 84.02,
+"scene": "famille"
+},
+{
+"w": "pas",
+"s": 84.02,
+"e": 84.49,
+"scene": "famille"
+},
+{
+"w": "toujours",
+"s": 84.49,
+"e": 84.75,
+"scene": "famille"
+},
+{
+"w": "tout",
+"s": 84.75,
+"e": 84.9,
+"scene": "famille"
+},
+{
+"w": "de",
+"s": 84.9,
+"e": 85.05,
+"scene": "famille"
+},
+{
+"w": "suite.",
+"s": 85.05,
+"e": 85.31,
+"scene": "famille"
+},
+{
+"w": "Elles",
+"s": 85.65,
+"e": 85.84,
+"scene": "famille"
+},
+{
+"w": "rapportent",
+"s": 85.84,
+"e": 86.12,
+"scene": "famille"
+},
+{
+"w": "une",
+"s": 86.12,
+"e": 86.69,
+"scene": "famille"
+},
+{
+"w": "partie",
+"s": 86.69,
+"e": 86.88,
+"scene": "famille"
+},
+{
+"w": "du",
+"s": 86.88,
+"e": 86.99,
+"scene": "famille"
+},
+{
+"w": "butin",
+"s": 86.99,
+"e": 87.18,
+"scene": "famille"
+},
+{
+"w": "au",
+"s": 87.18,
+"e": 87.28,
+"scene": "famille"
+},
+{
+"w": "terrier,",
+"s": 87.28,
+"e": 87.48,
+"scene": "famille"
+},
+{
+"w": "où",
+"s": 87.75,
+"e": 87.89,
+"scene": "famille"
+},
+{
+"w": "les",
+"s": 87.89,
+"e": 88.04,
+"scene": "famille"
+},
+{
+"w": "petits",
+"s": 88.04,
+"e": 88.29,
+"scene": "famille"
+},
+{
+"w": "attendent,",
+"s": 88.29,
+"e": 88.65,
+"scene": "famille"
+},
+{
+"w": "le",
+"s": 88.65,
+"e": 88.79,
+"scene": "famille"
+},
+{
+"w": "ventre",
+"s": 88.79,
+"e": 89.04,
+"scene": "famille"
+},
+{
+"w": "vide.",
+"s": 89.04,
+"e": 89.29,
+"scene": "famille"
+},
+{
+"w": "À",
+"s": 89.29,
+"e": 89.44,
+"scene": "famille"
+},
+{
+"w": "quelques",
+"s": 89.44,
+"e": 89.69,
+"scene": "famille"
+},
+{
+"w": "mois",
+"s": 89.69,
+"e": 89.83,
+"scene": "famille"
+},
+{
+"w": "seulement,",
+"s": 89.83,
+"e": 90.19,
+"scene": "famille"
+},
+{
+"w": "ils",
+"s": 90.19,
+"e": 90.33,
+"scene": "famille"
+},
+{
+"w": "ne",
+"s": 90.33,
+"e": 90.47,
+"scene": "famille"
+},
+{
+"w": "savent",
+"s": 90.47,
+"e": 90.73,
+"scene": "famille"
+},
+{
+"w": "pas",
+"s": 90.73,
+"e": 90.87,
+"scene": "famille"
+},
+{
+"w": "encore",
+"s": 90.87,
+"e": 91.38,
+"scene": "famille"
+},
+{
+"w": "chasser.",
+"s": 91.38,
+"e": 91.63,
+"scene": "famille"
+},
+{
+"w": "Alors",
+"s": 91.76,
+"e": 91.88,
+"scene": "famille"
+},
+{
+"w": "toute",
+"s": 91.88,
+"e": 92.0,
+"scene": "famille"
+},
+{
+"w": "la",
+"s": 92.0,
+"e": 92.07,
+"scene": "famille"
+},
+{
+"w": "famille",
+"s": 92.07,
+"e": 92.24,
+"scene": "famille"
+},
+{
+"w": "s'occupe",
+"s": 92.24,
+"e": 92.41,
+"scene": "famille"
+},
+{
+"w": "d'eux :",
+"s": 92.41,
+"e": 92.48,
+"scene": "famille"
+},
+{
+"w": "les",
+"s": 92.62,
+"e": 92.77,
+"scene": "famille"
+},
+{
+"w": "parents,",
+"s": 92.77,
+"e": 93.04,
+"scene": "famille"
+},
+{
+"w": "les",
+"s": 93.04,
+"e": 93.2,
+"scene": "famille"
+},
+{
+"w": "grands",
+"s": 93.2,
+"e": 93.35,
+"scene": "famille"
+},
+{
+"w": "frères",
+"s": 93.35,
+"e": 93.62,
+"scene": "famille"
+},
+{
+"w": "et",
+"s": 93.62,
+"e": 93.78,
+"scene": "famille"
+},
+{
+"w": "les",
+"s": 93.78,
+"e": 93.93,
+"scene": "famille"
+},
+{
+"w": "grandes",
+"s": 93.93,
+"e": 94.2,
+"scene": "famille"
+},
+{
+"w": "sœurs",
+"s": 94.2,
+"e": 94.35,
+"scene": "famille"
+},
+{
+"w": "les",
+"s": 94.35,
+"e": 94.51,
+"scene": "famille"
+},
+{
+"w": "nourrissent",
+"s": 94.51,
+"e": 95.53,
+"scene": "famille"
+},
+{
+"w": "et",
+"s": 95.53,
+"e": 95.68,
+"scene": "famille"
+},
+{
+"w": "les",
+"s": 95.68,
+"e": 95.83,
+"scene": "famille"
+},
+{
+"w": "protègent.",
+"s": 95.83,
+"e": 96.22,
+"scene": "famille"
+},
+{
+"w": "Face",
+"s": 96.44,
+"e": 97.06,
+"scene": "jaguar"
+},
+{
+"w": "au",
+"s": 97.06,
+"e": 97.41,
+"scene": "jaguar"
+},
+{
+"w": "jaguar.",
+"s": 97.41,
+"e": 98.04,
+"scene": "jaguar"
+},
+{
+"w": "Adultes,",
+"s": 98.4,
+"e": 98.86,
+"scene": "jaguar"
+},
+{
+"w": "les",
+"s": 99.19,
+"e": 99.3,
+"scene": "jaguar"
+},
+{
+"w": "loutres",
+"s": 99.3,
+"e": 99.5,
+"scene": "jaguar"
+},
+{
+"w": "géantes",
+"s": 99.5,
+"e": 100.0,
+"scene": "jaguar"
+},
+{
+"w": "n'ont",
+"s": 100.0,
+"e": 100.12,
+"scene": "jaguar"
+},
+{
+"w": "presque",
+"s": 100.12,
+"e": 100.32,
+"scene": "jaguar"
+},
+{
+"w": "aucun",
+"s": 100.32,
+"e": 100.52,
+"scene": "jaguar"
+},
+{
+"w": "ennemi",
+"s": 100.52,
+"e": 100.81,
+"scene": "jaguar"
+},
+{
+"w": "dans",
+"s": 100.81,
+"e": 100.92,
+"scene": "jaguar"
+},
+{
+"w": "la",
+"s": 100.92,
+"e": 101.03,
+"scene": "jaguar"
+},
+{
+"w": "rivière.",
+"s": 101.03,
+"e": 101.32,
+"scene": "jaguar"
+},
+{
+"w": "Sauf",
+"s": 101.7,
+"e": 101.87,
+"scene": "jaguar"
+},
+{
+"w": "un :",
+"s": 101.87,
+"e": 102.05,
+"scene": "jaguar"
+},
+{
+"w": "le",
+"s": 102.19,
+"e": 102.35,
+"scene": "jaguar"
+},
+{
+"w": "jaguar,",
+"s": 102.35,
+"e": 102.63,
+"scene": "jaguar"
+},
+{
+"w": "le",
+"s": 102.63,
+"e": 102.8,
+"scene": "jaguar"
+},
+{
+"w": "roi",
+"s": 102.8,
+"e": 102.96,
+"scene": "jaguar"
+},
+{
+"w": "de",
+"s": 102.96,
+"e": 103.12,
+"scene": "jaguar"
+},
+{
+"w": "la",
+"s": 103.12,
+"e": 103.28,
+"scene": "jaguar"
+},
+{
+"w": "jungle",
+"s": 103.28,
+"e": 103.57,
+"scene": "jaguar"
+},
+{
+"w": "amazonienne.",
+"s": 103.57,
+"e": 104.23,
+"scene": "jaguar"
+},
+{
+"w": "Un",
+"s": 104.52,
+"e": 104.66,
+"scene": "jaguar"
+},
+{
+"w": "jour,",
+"s": 104.66,
+"e": 104.8,
+"scene": "jaguar"
+},
+{
+"w": "alors",
+"s": 104.8,
+"e": 105.04,
+"scene": "jaguar"
+},
+{
+"w": "que",
+"s": 105.04,
+"e": 105.18,
+"scene": "jaguar"
+},
+{
+"w": "la",
+"s": 105.18,
+"e": 105.31,
+"scene": "jaguar"
+},
+{
+"w": "famille",
+"s": 105.31,
+"e": 105.66,
+"scene": "jaguar"
+},
+{
+"w": "se",
+"s": 105.66,
+"e": 105.8,
+"scene": "jaguar"
+},
+{
+"w": "repose",
+"s": 105.8,
+"e": 106.54,
+"scene": "jaguar"
+},
+{
+"w": "au",
+"s": 106.54,
+"e": 106.67,
+"scene": "jaguar"
+},
+{
+"w": "soleil",
+"s": 106.67,
+"e": 106.92,
+"scene": "jaguar"
+},
+{
+"w": "sur",
+"s": 106.92,
+"e": 107.05,
+"scene": "jaguar"
+},
+{
+"w": "la",
+"s": 107.05,
+"e": 107.19,
+"scene": "jaguar"
+},
+{
+"w": "berge,",
+"s": 107.19,
+"e": 107.44,
+"scene": "jaguar"
+},
+{
+"w": "un",
+"s": 107.59,
+"e": 107.69,
+"scene": "jaguar"
+},
+{
+"w": "jaguar",
+"s": 107.69,
+"e": 107.87,
+"scene": "jaguar"
+},
+{
+"w": "s'approche",
+"s": 107.87,
+"e": 108.12,
+"scene": "jaguar"
+},
+{
+"w": "en",
+"s": 108.12,
+"e": 108.22,
+"scene": "jaguar"
+},
+{
+"w": "silence.",
+"s": 108.22,
+"e": 108.47,
+"scene": "jaguar"
+},
+{
+"w": "Un",
+"s": 108.81,
+"e": 108.9,
+"scene": "jaguar"
+},
+{
+"w": "petit",
+"s": 108.9,
+"e": 109.05,
+"scene": "jaguar"
+},
+{
+"w": "le",
+"s": 109.05,
+"e": 109.13,
+"scene": "jaguar"
+},
+{
+"w": "repère",
+"s": 109.13,
+"e": 109.34,
+"scene": "jaguar"
+},
+{
+"w": "le",
+"s": 109.34,
+"e": 109.43,
+"scene": "jaguar"
+},
+{
+"w": "premier",
+"s": 109.43,
+"e": 109.58,
+"scene": "jaguar"
+},
+{
+"w": "et",
+"s": 109.58,
+"e": 109.66,
+"scene": "jaguar"
+},
+{
+"w": "pousse",
+"s": 109.66,
+"e": 109.99,
+"scene": "jaguar"
+},
+{
+"w": "un",
+"s": 109.99,
+"e": 110.07,
+"scene": "jaguar"
+},
+{
+"w": "cri",
+"s": 110.07,
+"e": 110.16,
+"scene": "jaguar"
+},
+{
+"w": "d'alarme.",
+"s": 110.16,
+"e": 110.37,
+"scene": "jaguar"
+},
+{
+"w": "Tout",
+"s": 110.59,
+"e": 110.75,
+"scene": "jaguar"
+},
+{
+"w": "le",
+"s": 110.75,
+"e": 110.9,
+"scene": "jaguar"
+},
+{
+"w": "monde",
+"s": 110.9,
+"e": 111.18,
+"scene": "jaguar"
+},
+{
+"w": "plonge",
+"s": 111.18,
+"e": 111.46,
+"scene": "jaguar"
+},
+{
+"w": "dans",
+"s": 111.46,
+"e": 111.62,
+"scene": "jaguar"
+},
+{
+"w": "l'eau.",
+"s": 111.62,
+"e": 111.77,
+"scene": "jaguar"
+},
+{
+"w": "Sur",
+"s": 112.01,
+"e": 112.18,
+"scene": "jaguar"
+},
+{
+"w": "terre,",
+"s": 112.18,
+"e": 112.5,
+"scene": "jaguar"
+},
+{
+"w": "les",
+"s": 112.71,
+"e": 112.79,
+"scene": "jaguar"
+},
+{
+"w": "loutres",
+"s": 112.79,
+"e": 112.93,
+"scene": "jaguar"
+},
+{
+"w": "n'auraient",
+"s": 112.93,
+"e": 113.08,
+"scene": "jaguar"
+},
+{
+"w": "aucune",
+"s": 113.08,
+"e": 113.28,
+"scene": "jaguar"
+},
+{
+"w": "chance.",
+"s": 113.28,
+"e": 113.42,
+"scene": "jaguar"
+},
+{
+"w": "Mais",
+"s": 113.68,
+"e": 113.82,
+"scene": "jaguar"
+},
+{
+"w": "dans",
+"s": 113.82,
+"e": 113.96,
+"scene": "jaguar"
+},
+{
+"w": "l'eau,",
+"s": 113.96,
+"e": 114.11,
+"scene": "jaguar"
+},
+{
+"w": "c'est",
+"s": 114.11,
+"e": 114.25,
+"scene": "jaguar"
+},
+{
+"w": "leur",
+"s": 114.25,
+"e": 114.39,
+"scene": "jaguar"
+},
+{
+"w": "territoire.",
+"s": 114.39,
+"e": 114.86,
+"scene": "jaguar"
+},
+{
+"w": "Elles",
+"s": 115.27,
+"e": 115.5,
+"scene": "jaguar"
+},
+{
+"w": "se",
+"s": 115.5,
+"e": 115.63,
+"scene": "jaguar"
+},
+{
+"w": "regroupent",
+"s": 115.63,
+"e": 115.97,
+"scene": "jaguar"
+},
+{
+"w": "face",
+"s": 115.97,
+"e": 116.21,
+"scene": "jaguar"
+},
+{
+"w": "au",
+"s": 116.21,
+"e": 116.34,
+"scene": "jaguar"
+},
+{
+"w": "jaguar",
+"s": 116.34,
+"e": 116.83,
+"scene": "jaguar"
+},
+{
+"w": "et",
+"s": 116.83,
+"e": 116.96,
+"scene": "jaguar"
+},
+{
+"w": "lui",
+"s": 116.96,
+"e": 117.09,
+"scene": "jaguar"
+},
+{
+"w": "crient",
+"s": 117.09,
+"e": 117.23,
+"scene": "jaguar"
+},
+{
+"w": "dessus",
+"s": 117.23,
+"e": 117.46,
+"scene": "jaguar"
+},
+{
+"w": "toutes",
+"s": 117.46,
+"e": 117.7,
+"scene": "jaguar"
+},
+{
+"w": "ensemble.",
+"s": 117.7,
+"e": 118.03,
+"scene": "jaguar"
+},
+{
+"w": "Devant",
+"s": 118.23,
+"e": 118.45,
+"scene": "jaguar"
+},
+{
+"w": "cette",
+"s": 118.45,
+"e": 118.67,
+"scene": "jaguar"
+},
+{
+"w": "bande",
+"s": 118.67,
+"e": 118.88,
+"scene": "jaguar"
+},
+{
+"w": "unie,",
+"s": 118.88,
+"e": 119.1,
+"scene": "jaguar"
+},
+{
+"w": "le",
+"s": 119.45,
+"e": 119.59,
+"scene": "jaguar"
+},
+{
+"w": "grand",
+"s": 119.59,
+"e": 119.72,
+"scene": "jaguar"
+},
+{
+"w": "félin",
+"s": 119.72,
+"e": 119.96,
+"scene": "jaguar"
+},
+{
+"w": "n'ose",
+"s": 119.96,
+"e": 120.19,
+"scene": "jaguar"
+},
+{
+"w": "pas",
+"s": 120.19,
+"e": 120.33,
+"scene": "jaguar"
+},
+{
+"w": "plonger…",
+"s": 120.33,
+"e": 120.56,
+"scene": "jaguar"
+},
+{
+"w": "et",
+"s": 120.93,
+"e": 121.07,
+"scene": "jaguar"
+},
+{
+"w": "finit",
+"s": 121.07,
+"e": 121.31,
+"scene": "jaguar"
+},
+{
+"w": "par",
+"s": 121.31,
+"e": 121.45,
+"scene": "jaguar"
+},
+{
+"w": "repartir",
+"s": 121.45,
+"e": 121.8,
+"scene": "jaguar"
+},
+{
+"w": "bredouille.",
+"s": 121.8,
+"e": 122.14,
+"scene": "jaguar"
+},
+{
+"w": "Conclusion.",
+"s": 122.41,
+"e": 122.67,
+"scene": "conclusion"
+},
+{
+"w": "Seule,",
+"s": 122.86,
+"e": 123.74,
+"scene": "conclusion"
+},
+{
+"w": "une",
+"s": 124.04,
+"e": 124.11,
+"scene": "conclusion"
+},
+{
+"w": "loutre",
+"s": 124.11,
+"e": 124.19,
+"scene": "conclusion"
+},
+{
+"w": "serait",
+"s": 124.19,
+"e": 124.26,
+"scene": "conclusion"
+},
+{
+"w": "une",
+"s": 124.26,
+"e": 124.33,
+"scene": "conclusion"
+},
+{
+"w": "proie.",
+"s": 124.33,
+"e": 124.37,
+"scene": "conclusion"
+},
+{
+"w": "Ensemble,",
+"s": 124.55,
+"e": 124.83,
+"scene": "conclusion"
+},
+{
+"w": "elles",
+"s": 124.83,
+"e": 125.03,
+"scene": "conclusion"
+},
+{
+"w": "deviennent",
+"s": 125.03,
+"e": 125.31,
+"scene": "conclusion"
+},
+{
+"w": "les",
+"s": 125.31,
+"e": 125.42,
+"scene": "conclusion"
+},
+{
+"w": "« loups",
+"s": 125.42,
+"e": 125.53,
+"scene": "conclusion"
+},
+{
+"w": "des",
+"s": 125.53,
+"e": 125.65,
+"scene": "conclusion"
+},
+{
+"w": "rivières ».",
+"s": 125.65,
+"e": 125.93,
+"scene": "conclusion"
+},
+{
+"w": "La",
+"s": 126.2,
+"e": 126.33,
+"scene": "conclusion"
+},
+{
+"w": "preuve",
+"s": 126.33,
+"e": 126.56,
+"scene": "conclusion"
+},
+{
+"w": "que",
+"s": 126.56,
+"e": 126.69,
+"scene": "conclusion"
+},
+{
+"w": "dans",
+"s": 126.69,
+"e": 126.82,
+"scene": "conclusion"
+},
+{
+"w": "la",
+"s": 126.82,
+"e": 126.94,
+"scene": "conclusion"
+},
+{
+"w": "nature,",
+"s": 126.94,
+"e": 127.27,
+"scene": "conclusion"
+},
+{
+"w": "l'union",
+"s": 127.43,
+"e": 127.7,
+"scene": "conclusion"
+},
+{
+"w": "fait",
+"s": 127.7,
+"e": 127.85,
+"scene": "conclusion"
+},
+{
+"w": "vraiment",
+"s": 127.85,
+"e": 128.12,
+"scene": "conclusion"
+},
+{
+"w": "la",
+"s": 128.12,
+"e": 128.27,
+"scene": "conclusion"
+},
+{
+"w": "force.",
+"s": 128.27,
+"e": 128.54,
+"scene": "conclusion"
+},
+{
+"w": "Abonne-toi",
+"s": 128.95,
+"e": 129.41,
+"scene": "abonne"
+},
+{
+"w": "pour",
+"s": 129.41,
+"e": 129.55,
+"scene": "abonne"
+},
+{
+"w": "découvrir",
+"s": 129.55,
+"e": 129.9,
+"scene": "abonne"
+},
+{
+"w": "d'autres",
+"s": 129.9,
+"e": 130.14,
+"scene": "abonne"
+},
+{
+"w": "secrets",
+"s": 130.14,
+"e": 130.38,
+"scene": "abonne"
+},
+{
+"w": "du",
+"s": 130.38,
+"e": 130.52,
+"scene": "abonne"
+},
+{
+"w": "monde",
+"s": 130.52,
+"e": 130.76,
+"scene": "abonne"
+},
+{
+"w": "animal !",
+"s": 130.76,
+"e": 131.11,
+"scene": "abonne"
+}
+]
+}
