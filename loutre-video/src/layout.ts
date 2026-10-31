@@ -1,2 +1,2 @@
-// Ligne des badges (en haut, les sous-titres étant en bas).
-export const BADGE_Y = 230;
+// Ligne des badges (juste sous les sous-titres, qui sont en haut).
+export const BADGE_Y = 470;

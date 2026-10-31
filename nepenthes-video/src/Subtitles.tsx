@@ -41,7 +41,7 @@ const LINES: W[][] = [];
 
 const tidy = (w: string) => w.replace(/[.,…]+$/, '').replace(/^« |»$/g, '').trim();
 
-// Sous-titres en pastille (2-3 mots), placés dans le bas de l'image ; le mot prononcé est surligné en jaune.
+// Sous-titres en pastille (2-3 mots), placés en haut de l'image ; le mot prononcé est surligné en jaune.
 export const Subtitles: React.FC<{k: number}> = ({k}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -57,7 +57,7 @@ export const Subtitles: React.FC<{k: number}> = ({k}) => {
   const enter = spring({frame: frame - Math.round(line[0].s * k * fps), fps, config: {damping: 12, stiffness: 240, mass: 0.6}});
   return (
     <AbsoluteFill>
-      <div style={{position: 'absolute', left: 30, right: 30, top: 1400, display: 'flex', justifyContent: 'center'}}>
+      <div style={{position: 'absolute', left: 30, right: 30, top: 220, display: 'flex', justifyContent: 'center'}}>
         <div
           style={{
             display: 'flex',

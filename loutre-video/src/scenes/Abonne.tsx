@@ -20,7 +20,7 @@ export const Abonne: React.FC<SceneProps> = ({dur}) => {
       <Place x={700} y={SURFACE + 300}>
         <Otter frame={frame + 10} width={420} />
       </Place>
-      <div style={{position: 'absolute', left: 0, right: 0, top: 200, display: 'flex', flexDirection: 'column', alignItems: 'center', transform: `scale(${cta})`, fontFamily: FONT}}>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 520, display: 'flex', flexDirection: 'column', alignItems: 'center', transform: `scale(${cta})`, fontFamily: FONT}}>
         <div
           style={{
             transform: `scale(${pulse * (1 - click * 0.08)})`,

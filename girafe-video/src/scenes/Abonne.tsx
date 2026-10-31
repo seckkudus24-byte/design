@@ -22,7 +22,7 @@ export const Abonne: React.FC<SceneProps> = ({dur}) => {
       <Place x={760} y={gy(900)}>
         <Giraffe frame={frame + 20} height={900} baby />
       </Place>
-      <div style={{position: 'absolute', left: 0, right: 0, top: 200, display: 'flex', flexDirection: 'column', alignItems: 'center', transform: `scale(${cta})`, fontFamily: FONT}}>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 520, display: 'flex', flexDirection: 'column', alignItems: 'center', transform: `scale(${cta})`, fontFamily: FONT}}>
         <div
           style={{
             transform: `scale(${pulse * (1 - click * 0.08)})`,

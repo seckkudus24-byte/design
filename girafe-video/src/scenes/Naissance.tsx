@@ -70,7 +70,7 @@ export const Naissance: React.FC<SceneProps> = () => {
       <TopBadge s={kg} size={84}>
         45 KG
       </TopBadge>
-      <div style={{position: 'absolute', left: 0, right: 0, top: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, transform: `scale(${clock})`}}>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 440, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, transform: `scale(${clock})`}}>
         <Clock size={150} turns={interpolate(frame, [heure, debout + 25], [0, 0.9], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />
         <TopBadgeInline>MOINS D'1 H</TopBadgeInline>
       </div>

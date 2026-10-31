@@ -36,7 +36,7 @@ export const Armee: React.FC<SceneProps> = () => {
         DES DIZAINES DE MILLIERS !
       </TopBadge>
       {/* programme : manger, dormir, grandir */}
-      <div style={{position: 'absolute', left: 0, right: 0, top: 200, display: 'flex', justifyContent: 'center', gap: 26}}>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 460, display: 'flex', justifyContent: 'center', gap: 26}}>
         {['MANGER', 'DORMIR', 'GRANDIR'].map((label, i) => (
           <div key={label} style={{transform: `scale(${prog[i]})`, background: ['#C5E1A5', '#B39DDB', '#FFE082'][i], border: '9px solid #16121F', borderRadius: 30, padding: '10px 22px 2px', fontFamily: 'LuckiestGuy', fontSize: 48, boxShadow: '0 10px 0 rgba(0,0,0,0.3)', position: 'relative'}}>
             {label}

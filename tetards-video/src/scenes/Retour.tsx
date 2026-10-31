@@ -25,7 +25,7 @@ export const Retour: React.FC<SceneProps> = () => {
       <svg width={1080} height={1920} style={{position: 'absolute', opacity: loop}}>
         <path d={`M${SHALLOW.x} ${SHALLOW.y} Q 640 760 ${DEEP.x} ${DEEP.y} Q 380 1200 ${SHALLOW.x} ${SHALLOW.y}`} stroke="#FFF59D" strokeWidth={10} strokeDasharray="26 18" strokeDashoffset={-frame * 3} fill="none" />
       </svg>
-      <div style={{position: 'absolute', left: 0, right: 0, top: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, transform: `scale(${work})`}}>
+      <div style={{position: 'absolute', left: 0, right: 0, top: 440, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20, transform: `scale(${work})`}}>
         <House size={150} color="#E57373" label="MAISON" />
         <svg width={120} height={60} viewBox="0 0 120 60">
           <path d="M10 20 H100 l-16 -14 M110 40 H20 l16 14" stroke="#fff" strokeWidth={9} fill="none" strokeLinecap="round" strokeLinejoin="round" />
