@@ -1,0 +1,2286 @@
+{
+"duration": 92.917551,
+"source": "pauses",
+"words": [
+{
+"w": "Saviez-vous",
+"s": 0.0,
+"e": 0.33,
+"scene": "titre"
+},
+{
+"w": "que",
+"s": 0.33,
+"e": 0.45,
+"scene": "titre"
+},
+{
+"w": "des",
+"s": 0.45,
+"e": 0.58,
+"scene": "titre"
+},
+{
+"w": "milliers",
+"s": 0.58,
+"e": 0.81,
+"scene": "titre"
+},
+{
+"w": "de",
+"s": 0.81,
+"e": 0.94,
+"scene": "titre"
+},
+{
+"w": "bébés",
+"s": 0.94,
+"e": 1.16,
+"scene": "titre"
+},
+{
+"w": "amphibiens",
+"s": 1.16,
+"e": 1.68,
+"scene": "titre"
+},
+{
+"w": "font",
+"s": 1.68,
+"e": 1.81,
+"scene": "titre"
+},
+{
+"w": "chaque",
+"s": 1.81,
+"e": 2.04,
+"scene": "titre"
+},
+{
+"w": "jour",
+"s": 2.04,
+"e": 2.16,
+"scene": "titre"
+},
+{
+"w": "un",
+"s": 2.16,
+"e": 2.29,
+"scene": "titre"
+},
+{
+"w": "aller-retour",
+"s": 2.29,
+"e": 2.72,
+"scene": "titre"
+},
+{
+"w": "entre",
+"s": 2.72,
+"e": 2.94,
+"scene": "titre"
+},
+{
+"w": "deux",
+"s": 2.94,
+"e": 3.07,
+"scene": "titre"
+},
+{
+"w": "« maisons »",
+"s": 3.07,
+"e": 3.3,
+"scene": "titre"
+},
+{
+"w": "pour",
+"s": 3.3,
+"e": 3.43,
+"scene": "titre"
+},
+{
+"w": "survivre ?",
+"s": 3.43,
+"e": 3.75,
+"scene": "titre"
+},
+{
+"w": "Le",
+"s": 4.02,
+"e": 4.31,
+"scene": "plage"
+},
+{
+"w": "matin,",
+"s": 4.31,
+"e": 5.23,
+"scene": "plage"
+},
+{
+"w": "direction",
+"s": 5.6,
+"e": 5.94,
+"scene": "plage"
+},
+{
+"w": "la",
+"s": 5.94,
+"e": 6.07,
+"scene": "plage"
+},
+{
+"w": "plage.",
+"s": 6.07,
+"e": 6.31,
+"scene": "plage"
+},
+{
+"w": "Le",
+"s": 6.58,
+"e": 6.78,
+"scene": "plage"
+},
+{
+"w": "soir,",
+"s": 6.78,
+"e": 6.97,
+"scene": "plage"
+},
+{
+"w": "retour",
+"s": 7.21,
+"e": 7.5,
+"scene": "plage"
+},
+{
+"w": "au",
+"s": 7.5,
+"e": 7.67,
+"scene": "plage"
+},
+{
+"w": "bunker.",
+"s": 7.67,
+"e": 7.96,
+"scene": "plage"
+},
+{
+"w": "Et",
+"s": 8.22,
+"e": 8.36,
+"scene": "plage"
+},
+{
+"w": "ceux",
+"s": 8.36,
+"e": 8.49,
+"scene": "plage"
+},
+{
+"w": "qui",
+"s": 8.49,
+"e": 8.63,
+"scene": "plage"
+},
+{
+"w": "se",
+"s": 8.63,
+"e": 8.77,
+"scene": "plage"
+},
+{
+"w": "trompent",
+"s": 8.77,
+"e": 9.01,
+"scene": "plage"
+},
+{
+"w": "d'horaire",
+"s": 9.01,
+"e": 9.35,
+"scene": "plage"
+},
+{
+"w": "finissent",
+"s": 9.35,
+"e": 9.7,
+"scene": "plage"
+},
+{
+"w": "dévorés.",
+"s": 9.7,
+"e": 10.05,
+"scene": "plage"
+},
+{
+"w": "Une",
+"s": 10.56,
+"e": 10.79,
+"scene": "armee"
+},
+{
+"w": "armée",
+"s": 10.79,
+"e": 11.03,
+"scene": "armee"
+},
+{
+"w": "de",
+"s": 11.03,
+"e": 11.16,
+"scene": "armee"
+},
+{
+"w": "têtards.",
+"s": 11.16,
+"e": 11.39,
+"scene": "armee"
+},
+{
+"w": "Tout",
+"s": 11.82,
+"e": 11.86,
+"scene": "armee"
+},
+{
+"w": "commence",
+"s": 11.86,
+"e": 11.97,
+"scene": "armee"
+},
+{
+"w": "dans",
+"s": 11.97,
+"e": 12.01,
+"scene": "armee"
+},
+{
+"w": "un",
+"s": 12.01,
+"e": 12.05,
+"scene": "armee"
+},
+{
+"w": "étang.",
+"s": 12.05,
+"e": 12.12,
+"scene": "armee"
+},
+{
+"w": "Au",
+"s": 12.32,
+"e": 12.43,
+"scene": "armee"
+},
+{
+"w": "début,",
+"s": 12.43,
+"e": 12.63,
+"scene": "armee"
+},
+{
+"w": "quelques",
+"s": 12.63,
+"e": 12.83,
+"scene": "armee"
+},
+{
+"w": "centaines",
+"s": 12.83,
+"e": 13.12,
+"scene": "armee"
+},
+{
+"w": "de",
+"s": 13.12,
+"e": 13.23,
+"scene": "armee"
+},
+{
+"w": "têtards",
+"s": 13.23,
+"e": 13.43,
+"scene": "armee"
+},
+{
+"w": "éclosent.",
+"s": 13.43,
+"e": 13.72,
+"scene": "armee"
+},
+{
+"w": "Puis",
+"s": 14.03,
+"e": 14.18,
+"scene": "armee"
+},
+{
+"w": "ils",
+"s": 14.18,
+"e": 14.32,
+"scene": "armee"
+},
+{
+"w": "se",
+"s": 14.32,
+"e": 14.46,
+"scene": "armee"
+},
+{
+"w": "regroupent,",
+"s": 14.46,
+"e": 14.82,
+"scene": "armee"
+},
+{
+"w": "encore",
+"s": 14.95,
+"e": 15.31,
+"scene": "armee"
+},
+{
+"w": "et",
+"s": 15.31,
+"e": 15.45,
+"scene": "armee"
+},
+{
+"w": "encore,",
+"s": 15.45,
+"e": 15.81,
+"scene": "armee"
+},
+{
+"w": "jusqu'à",
+"s": 16.02,
+"e": 16.33,
+"scene": "armee"
+},
+{
+"w": "former",
+"s": 16.33,
+"e": 16.55,
+"scene": "armee"
+},
+{
+"w": "un",
+"s": 16.55,
+"e": 16.67,
+"scene": "armee"
+},
+{
+"w": "énorme",
+"s": 16.67,
+"e": 16.98,
+"scene": "armee"
+},
+{
+"w": "banc",
+"s": 16.98,
+"e": 17.1,
+"scene": "armee"
+},
+{
+"w": "de",
+"s": 17.1,
+"e": 17.41,
+"scene": "armee"
+},
+{
+"w": "plusieurs",
+"s": 17.41,
+"e": 17.63,
+"scene": "armee"
+},
+{
+"w": "dizaines",
+"s": 17.63,
+"e": 17.94,
+"scene": "armee"
+},
+{
+"w": "de",
+"s": 17.94,
+"e": 18.07,
+"scene": "armee"
+},
+{
+"w": "milliers",
+"s": 18.07,
+"e": 18.28,
+"scene": "armee"
+},
+{
+"w": "de",
+"s": 18.28,
+"e": 18.41,
+"scene": "armee"
+},
+{
+"w": "têtards.",
+"s": 18.41,
+"e": 18.62,
+"scene": "armee"
+},
+{
+"w": "Leur",
+"s": 19.1,
+"e": 19.29,
+"scene": "armee"
+},
+{
+"w": "programme",
+"s": 19.29,
+"e": 19.78,
+"scene": "armee"
+},
+{
+"w": "est",
+"s": 19.78,
+"e": 20.19,
+"scene": "armee"
+},
+{
+"w": "simple :",
+"s": 20.19,
+"e": 20.54,
+"scene": "armee"
+},
+{
+"w": "manger,",
+"s": 20.7,
+"e": 21.07,
+"scene": "armee"
+},
+{
+"w": "dormir,",
+"s": 21.34,
+"e": 21.5,
+"scene": "armee"
+},
+{
+"w": "grandir.",
+"s": 21.5,
+"e": 21.67,
+"scene": "armee"
+},
+{
+"w": "Le",
+"s": 22.31,
+"e": 22.55,
+"scene": "croissance"
+},
+{
+"w": "secret",
+"s": 22.55,
+"e": 22.97,
+"scene": "croissance"
+},
+{
+"w": "de",
+"s": 22.97,
+"e": 23.21,
+"scene": "croissance"
+},
+{
+"w": "la",
+"s": 23.21,
+"e": 23.45,
+"scene": "croissance"
+},
+{
+"w": "croissance",
+"s": 23.45,
+"e": 24.05,
+"scene": "croissance"
+},
+{
+"w": "express.",
+"s": 24.05,
+"e": 24.47,
+"scene": "croissance"
+},
+{
+"w": "Pendant",
+"s": 24.64,
+"e": 24.74,
+"scene": "croissance"
+},
+{
+"w": "la",
+"s": 24.74,
+"e": 24.8,
+"scene": "croissance"
+},
+{
+"w": "journée,",
+"s": 24.8,
+"e": 24.91,
+"scene": "croissance"
+},
+{
+"w": "ils",
+"s": 24.91,
+"e": 24.97,
+"scene": "croissance"
+},
+{
+"w": "nagent",
+"s": 24.97,
+"e": 25.08,
+"scene": "croissance"
+},
+{
+"w": "vers",
+"s": 25.08,
+"e": 25.14,
+"scene": "croissance"
+},
+{
+"w": "les",
+"s": 25.14,
+"e": 25.2,
+"scene": "croissance"
+},
+{
+"w": "bords",
+"s": 25.2,
+"e": 25.26,
+"scene": "croissance"
+},
+{
+"w": "de",
+"s": 25.26,
+"e": 25.32,
+"scene": "croissance"
+},
+{
+"w": "l'étang,",
+"s": 25.32,
+"e": 25.43,
+"scene": "croissance"
+},
+{
+"w": "là",
+"s": 25.43,
+"e": 25.49,
+"scene": "croissance"
+},
+{
+"w": "où",
+"s": 25.49,
+"e": 25.55,
+"scene": "croissance"
+},
+{
+"w": "l'eau",
+"s": 25.55,
+"e": 25.61,
+"scene": "croissance"
+},
+{
+"w": "est",
+"s": 25.61,
+"e": 25.67,
+"scene": "croissance"
+},
+{
+"w": "peu",
+"s": 25.67,
+"e": 25.73,
+"scene": "croissance"
+},
+{
+"w": "profonde.",
+"s": 25.73,
+"e": 25.88,
+"scene": "croissance"
+},
+{
+"w": "Le",
+"s": 26.11,
+"e": 26.23,
+"scene": "croissance"
+},
+{
+"w": "soleil",
+"s": 26.23,
+"e": 26.43,
+"scene": "croissance"
+},
+{
+"w": "la",
+"s": 26.43,
+"e": 26.55,
+"scene": "croissance"
+},
+{
+"w": "réchauffe",
+"s": 26.55,
+"e": 26.84,
+"scene": "croissance"
+},
+{
+"w": "jusqu'à",
+"s": 26.84,
+"e": 27.13,
+"scene": "croissance"
+},
+{
+"w": "5",
+"s": 27.13,
+"e": 27.42,
+"scene": "croissance"
+},
+{
+"w": "degrés",
+"s": 27.42,
+"e": 27.79,
+"scene": "croissance"
+},
+{
+"w": "de",
+"s": 27.79,
+"e": 27.9,
+"scene": "croissance"
+},
+{
+"w": "plus",
+"s": 27.9,
+"e": 28.02,
+"scene": "croissance"
+},
+{
+"w": "qu'au",
+"s": 28.02,
+"e": 28.22,
+"scene": "croissance"
+},
+{
+"w": "fond.",
+"s": 28.22,
+"e": 28.34,
+"scene": "croissance"
+},
+{
+"w": "Et",
+"s": 28.62,
+"e": 28.77,
+"scene": "croissance"
+},
+{
+"w": "plus",
+"s": 28.77,
+"e": 28.92,
+"scene": "croissance"
+},
+{
+"w": "l'eau",
+"s": 28.92,
+"e": 29.07,
+"scene": "croissance"
+},
+{
+"w": "est",
+"s": 29.07,
+"e": 29.22,
+"scene": "croissance"
+},
+{
+"w": "chaude,",
+"s": 29.22,
+"e": 29.49,
+"scene": "croissance"
+},
+{
+"w": "plus",
+"s": 29.67,
+"e": 29.82,
+"scene": "croissance"
+},
+{
+"w": "ils",
+"s": 29.82,
+"e": 29.96,
+"scene": "croissance"
+},
+{
+"w": "grandissent",
+"s": 29.96,
+"e": 30.31,
+"scene": "croissance"
+},
+{
+"w": "vite !",
+"s": 30.31,
+"e": 30.56,
+"scene": "croissance"
+},
+{
+"w": "En",
+"s": 30.9,
+"e": 31.08,
+"scene": "croissance"
+},
+{
+"w": "plus,",
+"s": 31.08,
+"e": 31.27,
+"scene": "croissance"
+},
+{
+"w": "c'est",
+"s": 31.48,
+"e": 31.61,
+"scene": "croissance"
+},
+{
+"w": "là",
+"s": 31.61,
+"e": 31.74,
+"scene": "croissance"
+},
+{
+"w": "que",
+"s": 31.74,
+"e": 31.88,
+"scene": "croissance"
+},
+{
+"w": "poussent",
+"s": 31.88,
+"e": 32.11,
+"scene": "croissance"
+},
+{
+"w": "les",
+"s": 32.11,
+"e": 32.25,
+"scene": "croissance"
+},
+{
+"w": "algues,",
+"s": 32.25,
+"e": 32.48,
+"scene": "croissance"
+},
+{
+"w": "leur",
+"s": 32.68,
+"e": 32.8,
+"scene": "croissance"
+},
+{
+"w": "nourriture",
+"s": 32.8,
+"e": 33.21,
+"scene": "croissance"
+},
+{
+"w": "préférée.",
+"s": 33.21,
+"e": 33.53,
+"scene": "croissance"
+},
+{
+"w": "Le",
+"s": 33.77,
+"e": 33.87,
+"scene": "retour"
+},
+{
+"w": "retour",
+"s": 33.87,
+"e": 34.04,
+"scene": "retour"
+},
+{
+"w": "au",
+"s": 34.04,
+"e": 34.14,
+"scene": "retour"
+},
+{
+"w": "bunker.",
+"s": 34.14,
+"e": 34.31,
+"scene": "retour"
+},
+{
+"w": "Mais",
+"s": 34.31,
+"e": 34.41,
+"scene": "retour"
+},
+{
+"w": "dès",
+"s": 34.41,
+"e": 34.51,
+"scene": "retour"
+},
+{
+"w": "que",
+"s": 34.51,
+"e": 34.61,
+"scene": "retour"
+},
+{
+"w": "la",
+"s": 34.61,
+"e": 34.71,
+"scene": "retour"
+},
+{
+"w": "nuit",
+"s": 34.71,
+"e": 34.8,
+"scene": "retour"
+},
+{
+"w": "tombe",
+"s": 34.8,
+"e": 34.98,
+"scene": "retour"
+},
+{
+"w": "et",
+"s": 34.98,
+"e": 35.07,
+"scene": "retour"
+},
+{
+"w": "que",
+"s": 35.07,
+"e": 35.17,
+"scene": "retour"
+},
+{
+"w": "l'eau",
+"s": 35.17,
+"e": 35.27,
+"scene": "retour"
+},
+{
+"w": "se",
+"s": 35.27,
+"e": 35.37,
+"scene": "retour"
+},
+{
+"w": "refroidit,",
+"s": 35.37,
+"e": 35.62,
+"scene": "retour"
+},
+{
+"w": "toute",
+"s": 35.92,
+"e": 36.14,
+"scene": "retour"
+},
+{
+"w": "la",
+"s": 36.14,
+"e": 36.27,
+"scene": "retour"
+},
+{
+"w": "troupe",
+"s": 36.27,
+"e": 36.5,
+"scene": "retour"
+},
+{
+"w": "redescend",
+"s": 36.5,
+"e": 36.95,
+"scene": "retour"
+},
+{
+"w": "vers",
+"s": 36.95,
+"e": 37.08,
+"scene": "retour"
+},
+{
+"w": "les",
+"s": 37.08,
+"e": 37.21,
+"scene": "retour"
+},
+{
+"w": "eaux",
+"s": 37.21,
+"e": 37.33,
+"scene": "retour"
+},
+{
+"w": "profondes,",
+"s": 37.33,
+"e": 37.66,
+"scene": "retour"
+},
+{
+"w": "plus",
+"s": 37.82,
+"e": 37.96,
+"scene": "retour"
+},
+{
+"w": "sûres.",
+"s": 37.96,
+"e": 38.22,
+"scene": "retour"
+},
+{
+"w": "Chaque",
+"s": 38.67,
+"e": 38.9,
+"scene": "retour"
+},
+{
+"w": "jour,",
+"s": 38.9,
+"e": 39.02,
+"scene": "retour"
+},
+{
+"w": "le",
+"s": 39.02,
+"e": 39.15,
+"scene": "retour"
+},
+{
+"w": "même",
+"s": 39.15,
+"e": 39.38,
+"scene": "retour"
+},
+{
+"w": "trajet,",
+"s": 39.38,
+"e": 39.6,
+"scene": "retour"
+},
+{
+"w": "comme",
+"s": 39.88,
+"e": 40.12,
+"scene": "retour"
+},
+{
+"w": "des",
+"s": 40.12,
+"e": 40.26,
+"scene": "retour"
+},
+{
+"w": "travailleurs",
+"s": 40.26,
+"e": 40.61,
+"scene": "retour"
+},
+{
+"w": "qui",
+"s": 40.61,
+"e": 40.75,
+"scene": "retour"
+},
+{
+"w": "font",
+"s": 40.75,
+"e": 40.88,
+"scene": "retour"
+},
+{
+"w": "la",
+"s": 40.88,
+"e": 41.02,
+"scene": "retour"
+},
+{
+"w": "navette",
+"s": 41.02,
+"e": 41.37,
+"scene": "retour"
+},
+{
+"w": "entre",
+"s": 41.37,
+"e": 41.62,
+"scene": "retour"
+},
+{
+"w": "la",
+"s": 41.62,
+"e": 41.75,
+"scene": "retour"
+},
+{
+"w": "maison",
+"s": 41.75,
+"e": 42.0,
+"scene": "retour"
+},
+{
+"w": "et",
+"s": 42.0,
+"e": 42.36,
+"scene": "retour"
+},
+{
+"w": "le",
+"s": 42.36,
+"e": 42.5,
+"scene": "retour"
+},
+{
+"w": "bureau.",
+"s": 42.5,
+"e": 42.74,
+"scene": "retour"
+},
+{
+"w": "Des",
+"s": 42.97,
+"e": 43.28,
+"scene": "monstres"
+},
+{
+"w": "monstres",
+"s": 43.28,
+"e": 43.81,
+"scene": "monstres"
+},
+{
+"w": "dans",
+"s": 43.81,
+"e": 44.12,
+"scene": "monstres"
+},
+{
+"w": "l'étang.",
+"s": 44.12,
+"e": 44.65,
+"scene": "monstres"
+},
+{
+"w": "Le",
+"s": 44.91,
+"e": 45.09,
+"scene": "monstres"
+},
+{
+"w": "problème,",
+"s": 45.09,
+"e": 45.55,
+"scene": "monstres"
+},
+{
+"w": "c'est",
+"s": 45.75,
+"e": 45.81,
+"scene": "monstres"
+},
+{
+"w": "que",
+"s": 45.81,
+"e": 45.87,
+"scene": "monstres"
+},
+{
+"w": "les",
+"s": 45.87,
+"e": 45.93,
+"scene": "monstres"
+},
+{
+"w": "prédateurs",
+"s": 45.93,
+"e": 46.09,
+"scene": "monstres"
+},
+{
+"w": "ont",
+"s": 46.09,
+"e": 46.15,
+"scene": "monstres"
+},
+{
+"w": "repéré",
+"s": 46.15,
+"e": 46.31,
+"scene": "monstres"
+},
+{
+"w": "leurs",
+"s": 46.31,
+"e": 46.38,
+"scene": "monstres"
+},
+{
+"w": "horaires.",
+"s": 46.38,
+"e": 46.53,
+"scene": "monstres"
+},
+{
+"w": "Le",
+"s": 46.95,
+"e": 47.04,
+"scene": "monstres"
+},
+{
+"w": "pire",
+"s": 47.04,
+"e": 47.22,
+"scene": "monstres"
+},
+{
+"w": "de",
+"s": 47.22,
+"e": 47.32,
+"scene": "monstres"
+},
+{
+"w": "tous :",
+"s": 47.32,
+"e": 47.41,
+"scene": "monstres"
+},
+{
+"w": "la",
+"s": 47.41,
+"e": 47.51,
+"scene": "monstres"
+},
+{
+"w": "larve",
+"s": 47.51,
+"e": 47.69,
+"scene": "monstres"
+},
+{
+"w": "de",
+"s": 47.69,
+"e": 47.78,
+"scene": "monstres"
+},
+{
+"w": "libellule.",
+"s": 47.78,
+"e": 48.11,
+"scene": "monstres"
+},
+{
+"w": "Elle",
+"s": 48.29,
+"e": 48.51,
+"scene": "monstres"
+},
+{
+"w": "reste",
+"s": 48.51,
+"e": 48.73,
+"scene": "monstres"
+},
+{
+"w": "immobile",
+"s": 48.73,
+"e": 49.14,
+"scene": "monstres"
+},
+{
+"w": "en",
+"s": 49.14,
+"e": 49.27,
+"scene": "monstres"
+},
+{
+"w": "embuscade,",
+"s": 49.27,
+"e": 49.68,
+"scene": "monstres"
+},
+{
+"w": "puis",
+"s": 49.68,
+"e": 49.8,
+"scene": "monstres"
+},
+{
+"w": "projette",
+"s": 49.8,
+"e": 50.12,
+"scene": "monstres"
+},
+{
+"w": "d'un",
+"s": 50.12,
+"e": 50.24,
+"scene": "monstres"
+},
+{
+"w": "coup",
+"s": 50.24,
+"e": 50.37,
+"scene": "monstres"
+},
+{
+"w": "une",
+"s": 50.37,
+"e": 50.59,
+"scene": "monstres"
+},
+{
+"w": "mâchoire",
+"s": 50.59,
+"e": 51.16,
+"scene": "monstres"
+},
+{
+"w": "qui",
+"s": 51.16,
+"e": 51.29,
+"scene": "monstres"
+},
+{
+"w": "se",
+"s": 51.29,
+"e": 51.41,
+"scene": "monstres"
+},
+{
+"w": "déplie",
+"s": 51.41,
+"e": 51.63,
+"scene": "monstres"
+},
+{
+"w": "comme",
+"s": 51.63,
+"e": 51.85,
+"scene": "monstres"
+},
+{
+"w": "un",
+"s": 51.85,
+"e": 51.97,
+"scene": "monstres"
+},
+{
+"w": "bras",
+"s": 51.97,
+"e": 52.1,
+"scene": "monstres"
+},
+{
+"w": "mécanique.",
+"s": 52.1,
+"e": 52.51,
+"scene": "monstres"
+},
+{
+"w": "Le",
+"s": 52.81,
+"e": 52.91,
+"scene": "monstres"
+},
+{
+"w": "têtard",
+"s": 52.91,
+"e": 53.09,
+"scene": "monstres"
+},
+{
+"w": "n'a",
+"s": 53.09,
+"e": 53.19,
+"scene": "monstres"
+},
+{
+"w": "même",
+"s": 53.19,
+"e": 53.36,
+"scene": "monstres"
+},
+{
+"w": "pas",
+"s": 53.36,
+"e": 53.46,
+"scene": "monstres"
+},
+{
+"w": "le",
+"s": 53.46,
+"e": 53.73,
+"scene": "monstres"
+},
+{
+"w": "temps",
+"s": 53.73,
+"e": 53.83,
+"scene": "monstres"
+},
+{
+"w": "de",
+"s": 53.83,
+"e": 53.93,
+"scene": "monstres"
+},
+{
+"w": "comprendre.",
+"s": 53.93,
+"e": 54.18,
+"scene": "monstres"
+},
+{
+"w": "Et",
+"s": 54.37,
+"e": 54.51,
+"scene": "monstres"
+},
+{
+"w": "elle",
+"s": 54.51,
+"e": 54.77,
+"scene": "monstres"
+},
+{
+"w": "ne",
+"s": 54.77,
+"e": 55.06,
+"scene": "monstres"
+},
+{
+"w": "s'arrête",
+"s": 55.06,
+"e": 55.42,
+"scene": "monstres"
+},
+{
+"w": "jamais :",
+"s": 55.42,
+"e": 55.67,
+"scene": "monstres"
+},
+{
+"w": "un",
+"s": 56.02,
+"e": 56.14,
+"scene": "monstres"
+},
+{
+"w": "têtard,",
+"s": 56.14,
+"e": 56.34,
+"scene": "monstres"
+},
+{
+"w": "puis",
+"s": 56.34,
+"e": 56.46,
+"scene": "monstres"
+},
+{
+"w": "un",
+"s": 56.46,
+"e": 56.57,
+"scene": "monstres"
+},
+{
+"w": "autre,",
+"s": 56.57,
+"e": 56.78,
+"scene": "monstres"
+},
+{
+"w": "puis",
+"s": 56.97,
+"e": 57.1,
+"scene": "monstres"
+},
+{
+"w": "encore",
+"s": 57.1,
+"e": 57.45,
+"scene": "monstres"
+},
+{
+"w": "un",
+"s": 57.45,
+"e": 57.59,
+"scene": "monstres"
+},
+{
+"w": "autre.",
+"s": 57.59,
+"e": 57.83,
+"scene": "monstres"
+},
+{
+"w": "Au",
+"s": 58.0,
+"e": 58.11,
+"scene": "monstres"
+},
+{
+"w": "fond,",
+"s": 58.11,
+"e": 58.23,
+"scene": "monstres"
+},
+{
+"w": "dans",
+"s": 58.23,
+"e": 58.35,
+"scene": "monstres"
+},
+{
+"w": "la",
+"s": 58.35,
+"e": 58.46,
+"scene": "monstres"
+},
+{
+"w": "vase,",
+"s": 58.46,
+"e": 58.67,
+"scene": "monstres"
+},
+{
+"w": "d'autres",
+"s": 58.67,
+"e": 58.87,
+"scene": "monstres"
+},
+{
+"w": "chasseurs",
+"s": 58.87,
+"e": 59.08,
+"scene": "monstres"
+},
+{
+"w": "attendent :",
+"s": 59.08,
+"e": 59.37,
+"scene": "monstres"
+},
+{
+"w": "de",
+"s": 59.58,
+"e": 59.68,
+"scene": "monstres"
+},
+{
+"w": "petites",
+"s": 59.68,
+"e": 59.92,
+"scene": "monstres"
+},
+{
+"w": "sangsues",
+"s": 59.92,
+"e": 60.08,
+"scene": "monstres"
+},
+{
+"w": "qui",
+"s": 60.08,
+"e": 60.18,
+"scene": "monstres"
+},
+{
+"w": "rôdent",
+"s": 60.18,
+"e": 60.35,
+"scene": "monstres"
+},
+{
+"w": "dans",
+"s": 60.35,
+"e": 60.44,
+"scene": "monstres"
+},
+{
+"w": "la",
+"s": 60.44,
+"e": 60.53,
+"scene": "monstres"
+},
+{
+"w": "boue",
+"s": 60.53,
+"e": 60.63,
+"scene": "monstres"
+},
+{
+"w": "et",
+"s": 60.63,
+"e": 61.04,
+"scene": "monstres"
+},
+{
+"w": "vident",
+"s": 61.04,
+"e": 61.21,
+"scene": "monstres"
+},
+{
+"w": "leurs",
+"s": 61.21,
+"e": 61.31,
+"scene": "monstres"
+},
+{
+"w": "victimes",
+"s": 61.31,
+"e": 61.55,
+"scene": "monstres"
+},
+{
+"w": "de",
+"s": 61.55,
+"e": 61.64,
+"scene": "monstres"
+},
+{
+"w": "leur",
+"s": 61.64,
+"e": 61.73,
+"scene": "monstres"
+},
+{
+"w": "sang.",
+"s": 61.73,
+"e": 61.83,
+"scene": "monstres"
+},
+{
+"w": "La",
+"s": 62.11,
+"e": 62.41,
+"scene": "transformation"
+},
+{
+"w": "grande",
+"s": 62.41,
+"e": 62.95,
+"scene": "transformation"
+},
+{
+"w": "transformation.",
+"s": 62.95,
+"e": 63.94,
+"scene": "transformation"
+},
+{
+"w": "Malgré",
+"s": 64.25,
+"e": 64.33,
+"scene": "transformation"
+},
+{
+"w": "tous",
+"s": 64.33,
+"e": 64.38,
+"scene": "transformation"
+},
+{
+"w": "ces",
+"s": 64.38,
+"e": 64.43,
+"scene": "transformation"
+},
+{
+"w": "dangers,",
+"s": 64.43,
+"e": 64.51,
+"scene": "transformation"
+},
+{
+"w": "les",
+"s": 64.51,
+"e": 64.55,
+"scene": "transformation"
+},
+{
+"w": "têtards",
+"s": 64.55,
+"e": 64.63,
+"scene": "transformation"
+},
+{
+"w": "continuent",
+"s": 64.63,
+"e": 64.75,
+"scene": "transformation"
+},
+{
+"w": "leur",
+"s": 64.75,
+"e": 64.8,
+"scene": "transformation"
+},
+{
+"w": "routine",
+"s": 64.8,
+"e": 64.91,
+"scene": "transformation"
+},
+{
+"w": "pendant",
+"s": 64.91,
+"e": 64.99,
+"scene": "transformation"
+},
+{
+"w": "tout",
+"s": 64.99,
+"e": 65.04,
+"scene": "transformation"
+},
+{
+"w": "l'été.",
+"s": 65.04,
+"e": 65.12,
+"scene": "transformation"
+},
+{
+"w": "Et",
+"s": 65.3,
+"e": 65.38,
+"scene": "transformation"
+},
+{
+"w": "semaine",
+"s": 65.38,
+"e": 65.57,
+"scene": "transformation"
+},
+{
+"w": "après",
+"s": 65.57,
+"e": 65.71,
+"scene": "transformation"
+},
+{
+"w": "semaine,",
+"s": 65.71,
+"e": 65.9,
+"scene": "transformation"
+},
+{
+"w": "leur",
+"s": 66.09,
+"e": 66.3,
+"scene": "transformation"
+},
+{
+"w": "corps",
+"s": 66.3,
+"e": 66.51,
+"scene": "transformation"
+},
+{
+"w": "change :",
+"s": 66.51,
+"e": 66.88,
+"scene": "transformation"
+},
+{
+"w": "des",
+"s": 67.09,
+"e": 67.15,
+"scene": "transformation"
+},
+{
+"w": "pattes",
+"s": 67.15,
+"e": 67.26,
+"scene": "transformation"
+},
+{
+"w": "apparaissent,",
+"s": 67.26,
+"e": 67.48,
+"scene": "transformation"
+},
+{
+"w": "la",
+"s": 67.48,
+"e": 67.54,
+"scene": "transformation"
+},
+{
+"w": "queue",
+"s": 67.54,
+"e": 67.61,
+"scene": "transformation"
+},
+{
+"w": "se",
+"s": 67.61,
+"e": 67.67,
+"scene": "transformation"
+},
+{
+"w": "transforme…",
+"s": 67.67,
+"e": 67.84,
+"scene": "transformation"
+},
+{
+"w": "C'est",
+"s": 68.31,
+"e": 68.45,
+"scene": "transformation"
+},
+{
+"w": "la",
+"s": 68.45,
+"e": 68.58,
+"scene": "transformation"
+},
+{
+"w": "métamorphose.",
+"s": 68.58,
+"e": 69.12,
+"scene": "transformation"
+},
+{
+"w": "Le",
+"s": 69.48,
+"e": 69.59,
+"scene": "depart"
+},
+{
+"w": "grand",
+"s": 69.59,
+"e": 69.71,
+"scene": "depart"
+},
+{
+"w": "départ.",
+"s": 69.71,
+"e": 69.91,
+"scene": "depart"
+},
+{
+"w": "À",
+"s": 69.91,
+"e": 70.03,
+"scene": "depart"
+},
+{
+"w": "la",
+"s": 70.03,
+"e": 70.15,
+"scene": "depart"
+},
+{
+"w": "fin,",
+"s": 70.15,
+"e": 70.26,
+"scene": "depart"
+},
+{
+"w": "sur",
+"s": 70.26,
+"e": 70.38,
+"scene": "depart"
+},
+{
+"w": "des",
+"s": 70.38,
+"e": 70.49,
+"scene": "depart"
+},
+{
+"w": "dizaines",
+"s": 70.49,
+"e": 70.79,
+"scene": "depart"
+},
+{
+"w": "de",
+"s": 70.79,
+"e": 70.9,
+"scene": "depart"
+},
+{
+"w": "milliers",
+"s": 70.9,
+"e": 71.11,
+"scene": "depart"
+},
+{
+"w": "de",
+"s": 71.11,
+"e": 71.23,
+"scene": "depart"
+},
+{
+"w": "têtards,",
+"s": 71.23,
+"e": 71.43,
+"scene": "depart"
+},
+{
+"w": "environ",
+"s": 71.61,
+"e": 71.98,
+"scene": "depart"
+},
+{
+"w": "un",
+"s": 71.98,
+"e": 72.13,
+"scene": "depart"
+},
+{
+"w": "millier",
+"s": 72.13,
+"e": 72.39,
+"scene": "depart"
+},
+{
+"w": "seulement",
+"s": 72.39,
+"e": 72.97,
+"scene": "depart"
+},
+{
+"w": "réussit",
+"s": 72.97,
+"e": 73.23,
+"scene": "depart"
+},
+{
+"w": "sa",
+"s": 73.23,
+"e": 73.38,
+"scene": "depart"
+},
+{
+"w": "transformation.",
+"s": 73.38,
+"e": 73.87,
+"scene": "depart"
+},
+{
+"w": "Les",
+"s": 74.31,
+"e": 74.45,
+"scene": "depart"
+},
+{
+"w": "survivants",
+"s": 74.45,
+"e": 74.79,
+"scene": "depart"
+},
+{
+"w": "quittent",
+"s": 74.79,
+"e": 75.03,
+"scene": "depart"
+},
+{
+"w": "alors",
+"s": 75.03,
+"e": 75.27,
+"scene": "depart"
+},
+{
+"w": "l'étang",
+"s": 75.27,
+"e": 75.51,
+"scene": "depart"
+},
+{
+"w": "pour",
+"s": 75.51,
+"e": 75.64,
+"scene": "depart"
+},
+{
+"w": "s'enfoncer",
+"s": 75.64,
+"e": 75.98,
+"scene": "depart"
+},
+{
+"w": "dans",
+"s": 75.98,
+"e": 76.12,
+"scene": "depart"
+},
+{
+"w": "la",
+"s": 76.12,
+"e": 76.26,
+"scene": "depart"
+},
+{
+"w": "forêt.",
+"s": 76.26,
+"e": 76.49,
+"scene": "depart"
+},
+{
+"w": "Ils",
+"s": 76.72,
+"e": 76.86,
+"scene": "depart"
+},
+{
+"w": "y",
+"s": 76.86,
+"e": 76.99,
+"scene": "depart"
+},
+{
+"w": "passeront",
+"s": 76.99,
+"e": 77.34,
+"scene": "depart"
+},
+{
+"w": "plusieurs",
+"s": 77.34,
+"e": 77.59,
+"scene": "depart"
+},
+{
+"w": "années",
+"s": 77.59,
+"e": 78.01,
+"scene": "depart"
+},
+{
+"w": "à",
+"s": 78.01,
+"e": 78.15,
+"scene": "depart"
+},
+{
+"w": "grandir.",
+"s": 78.15,
+"e": 78.39,
+"scene": "depart"
+},
+{
+"w": "Et",
+"s": 78.6,
+"e": 78.73,
+"scene": "depart"
+},
+{
+"w": "un",
+"s": 78.73,
+"e": 78.86,
+"scene": "depart"
+},
+{
+"w": "jour,",
+"s": 78.86,
+"e": 78.99,
+"scene": "depart"
+},
+{
+"w": "devenus",
+"s": 78.99,
+"e": 79.31,
+"scene": "depart"
+},
+{
+"w": "adultes,",
+"s": 79.31,
+"e": 79.63,
+"scene": "depart"
+},
+{
+"w": "ils",
+"s": 79.8,
+"e": 79.95,
+"scene": "depart"
+},
+{
+"w": "reviendront",
+"s": 79.95,
+"e": 80.33,
+"scene": "depart"
+},
+{
+"w": "dans",
+"s": 80.33,
+"e": 80.48,
+"scene": "depart"
+},
+{
+"w": "ce",
+"s": 80.48,
+"e": 80.63,
+"scene": "depart"
+},
+{
+"w": "même",
+"s": 80.63,
+"e": 80.9,
+"scene": "depart"
+},
+{
+"w": "étang…",
+"s": 80.9,
+"e": 81.16,
+"scene": "depart"
+},
+{
+"w": "pour",
+"s": 81.58,
+"e": 81.71,
+"scene": "depart"
+},
+{
+"w": "donner",
+"s": 81.71,
+"e": 81.93,
+"scene": "depart"
+},
+{
+"w": "naissance",
+"s": 81.93,
+"e": 82.26,
+"scene": "depart"
+},
+{
+"w": "à",
+"s": 82.26,
+"e": 82.39,
+"scene": "depart"
+},
+{
+"w": "la",
+"s": 82.39,
+"e": 82.51,
+"scene": "depart"
+},
+{
+"w": "génération",
+"s": 82.51,
+"e": 82.94,
+"scene": "depart"
+},
+{
+"w": "suivante.",
+"s": 82.94,
+"e": 83.26,
+"scene": "depart"
+},
+{
+"w": "Conclusion.",
+"s": 83.56,
+"e": 83.86,
+"scene": "conclusion"
+},
+{
+"w": "Un",
+"s": 83.86,
+"e": 83.98,
+"scene": "conclusion"
+},
+{
+"w": "simple",
+"s": 83.98,
+"e": 84.19,
+"scene": "conclusion"
+},
+{
+"w": "étang",
+"s": 84.19,
+"e": 84.4,
+"scene": "conclusion"
+},
+{
+"w": "cache",
+"s": 84.4,
+"e": 84.61,
+"scene": "conclusion"
+},
+{
+"w": "donc",
+"s": 84.61,
+"e": 84.72,
+"scene": "conclusion"
+},
+{
+"w": "une",
+"s": 84.72,
+"e": 84.93,
+"scene": "conclusion"
+},
+{
+"w": "véritable",
+"s": 84.93,
+"e": 85.32,
+"scene": "conclusion"
+},
+{
+"w": "aventure",
+"s": 85.32,
+"e": 85.71,
+"scene": "conclusion"
+},
+{
+"w": "de",
+"s": 85.71,
+"e": 85.83,
+"scene": "conclusion"
+},
+{
+"w": "survie.",
+"s": 85.83,
+"e": 86.04,
+"scene": "conclusion"
+},
+{
+"w": "La",
+"s": 86.71,
+"e": 86.87,
+"scene": "conclusion"
+},
+{
+"w": "prochaine",
+"s": 86.87,
+"e": 87.29,
+"scene": "conclusion"
+},
+{
+"w": "fois",
+"s": 87.29,
+"e": 87.46,
+"scene": "conclusion"
+},
+{
+"w": "que",
+"s": 87.46,
+"e": 87.62,
+"scene": "conclusion"
+},
+{
+"w": "tu",
+"s": 87.62,
+"e": 87.79,
+"scene": "conclusion"
+},
+{
+"w": "verras",
+"s": 87.79,
+"e": 88.08,
+"scene": "conclusion"
+},
+{
+"w": "des",
+"s": 88.08,
+"e": 88.41,
+"scene": "conclusion"
+},
+{
+"w": "têtards,",
+"s": 88.41,
+"e": 88.7,
+"scene": "conclusion"
+},
+{
+"w": "souviens-toi :",
+"s": 89.0,
+"e": 89.28,
+"scene": "conclusion"
+},
+{
+"w": "chacun",
+"s": 89.28,
+"e": 89.47,
+"scene": "conclusion"
+},
+{
+"w": "d'eux",
+"s": 89.47,
+"e": 89.58,
+"scene": "conclusion"
+},
+{
+"w": "est",
+"s": 89.58,
+"e": 89.68,
+"scene": "conclusion"
+},
+{
+"w": "un",
+"s": 89.68,
+"e": 89.79,
+"scene": "conclusion"
+},
+{
+"w": "petit",
+"s": 89.79,
+"e": 89.98,
+"scene": "conclusion"
+},
+{
+"w": "survivant.",
+"s": 89.98,
+"e": 90.26,
+"scene": "conclusion"
+},
+{
+"w": "Abonne-toi",
+"s": 90.63,
+"e": 91.05,
+"scene": "abonne"
+},
+{
+"w": "pour",
+"s": 91.05,
+"e": 91.17,
+"scene": "abonne"
+},
+{
+"w": "découvrir",
+"s": 91.17,
+"e": 91.49,
+"scene": "abonne"
+},
+{
+"w": "d'autres",
+"s": 91.49,
+"e": 91.71,
+"scene": "abonne"
+},
+{
+"w": "secrets",
+"s": 91.71,
+"e": 91.94,
+"scene": "abonne"
+},
+{
+"w": "du",
+"s": 91.94,
+"e": 92.06,
+"scene": "abonne"
+},
+{
+"w": "monde",
+"s": 92.06,
+"e": 92.28,
+"scene": "abonne"
+},
+{
+"w": "animal !",
+"s": 92.28,
+"e": 92.6,
+"scene": "abonne"
+}
+]
+}
