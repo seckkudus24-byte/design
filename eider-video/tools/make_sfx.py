@@ -816,7 +816,7 @@ EIDER = [
     ("amb_sea", river), ("amb_birds", savanna), ("music", music), ("pop", soft_pop), ("boing", boing),
     ("sparkle", sparkle), ("ding", ding), ("chime", chime), ("harp", harp), ("plouf", plouf), ("peep", peep),
     ("peeps", peeps), ("call", soft_honk), ("kiik", kiik), ("mystery", mystery), ("patter", patter), ("chomp", chomp),
-    ("snore", snore), ("clock", clock_tick), ("wings", lambda: flaps(4, 5, 1)),
+    ("snore", snore), ("clock", clock_tick), ("wings", lambda: flaps(4, 5, 1)), ("whoosh", whoosh),
 ]
 
 if __name__ == "__main__":

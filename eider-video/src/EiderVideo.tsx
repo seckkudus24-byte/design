@@ -13,6 +13,7 @@ import {Cri} from './scenes/Cri';
 import {Creche} from './scenes/Creche';
 import {Conclusion} from './scenes/Conclusion';
 import {Abonne} from './scenes/Abonne';
+import {InsertAudio, Inserts} from './inserts';
 import {Subtitles} from './Subtitles';
 import {Music, SceneSound} from './Sound';
 import {Camera, Reveal, TRANSITION_FRAMES} from './camera';
@@ -41,8 +42,10 @@ export const EiderVideo: React.FC<EiderVideoProps> = ({k, total, hasAudio}) => {
                 <Camera dur={durations[i]}>
                   <Comp dur={durations[i]} />
                 </Camera>
+                <Inserts dur={durations[i]} />
               </Reveal>
               <SceneSound dur={durations[i]} />
+              <InsertAudio dur={durations[i]} />
             </SceneCtx.Provider>
           </Sequence>
         );
