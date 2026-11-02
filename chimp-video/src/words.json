@@ -1,0 +1,1674 @@
+{
+"duration": 90.592653,
+"source": "pauses",
+"words": [
+{
+"w": "Saviez-vous",
+"s": 0.0,
+"e": 0.47,
+"scene": "titre"
+},
+{
+"w": "que",
+"s": 0.47,
+"e": 0.65,
+"scene": "titre"
+},
+{
+"w": "les",
+"s": 0.65,
+"e": 0.84,
+"scene": "titre"
+},
+{
+"w": "chimpanzés",
+"s": 0.84,
+"e": 1.3,
+"scene": "titre"
+},
+{
+"w": "chassent",
+"s": 1.3,
+"e": 1.63,
+"scene": "titre"
+},
+{
+"w": "en",
+"s": 1.63,
+"e": 1.81,
+"scene": "titre"
+},
+{
+"w": "équipe…",
+"s": 1.81,
+"e": 2.28,
+"scene": "titre"
+},
+{
+"w": "et",
+"s": 2.79,
+"e": 2.92,
+"scene": "titre"
+},
+{
+"w": "que",
+"s": 2.92,
+"e": 3.06,
+"scene": "titre"
+},
+{
+"w": "celui",
+"s": 3.06,
+"e": 3.29,
+"scene": "titre"
+},
+{
+"w": "qui",
+"s": 3.29,
+"e": 3.42,
+"scene": "titre"
+},
+{
+"w": "n'a",
+"s": 3.42,
+"e": 3.55,
+"scene": "titre"
+},
+{
+"w": "rien",
+"s": 3.55,
+"e": 3.68,
+"scene": "titre"
+},
+{
+"w": "fait",
+"s": 3.68,
+"e": 3.81,
+"scene": "titre"
+},
+{
+"w": "n'a",
+"s": 3.81,
+"e": 3.94,
+"scene": "titre"
+},
+{
+"w": "pas",
+"s": 3.94,
+"e": 4.08,
+"scene": "titre"
+},
+{
+"w": "le",
+"s": 4.08,
+"e": 4.34,
+"scene": "titre"
+},
+{
+"w": "droit",
+"s": 4.34,
+"e": 4.47,
+"scene": "titre"
+},
+{
+"w": "de",
+"s": 4.47,
+"e": 4.6,
+"scene": "titre"
+},
+{
+"w": "manger ?",
+"s": 4.6,
+"e": 4.84,
+"scene": "titre"
+},
+{
+"w": "Tu",
+"s": 5.63,
+"e": 5.83,
+"scene": "collegue"
+},
+{
+"w": "connais",
+"s": 5.83,
+"e": 6.2,
+"scene": "collegue"
+},
+{
+"w": "ce",
+"s": 6.2,
+"e": 6.41,
+"scene": "collegue"
+},
+{
+"w": "collègue",
+"s": 6.41,
+"e": 6.94,
+"scene": "collegue"
+},
+{
+"w": "qui",
+"s": 6.94,
+"e": 7.15,
+"scene": "collegue"
+},
+{
+"w": "ne",
+"s": 7.15,
+"e": 7.35,
+"scene": "collegue"
+},
+{
+"w": "fait",
+"s": 7.35,
+"e": 7.56,
+"scene": "collegue"
+},
+{
+"w": "rien",
+"s": 7.56,
+"e": 7.77,
+"scene": "collegue"
+},
+{
+"w": "pendant",
+"s": 7.77,
+"e": 8.14,
+"scene": "collegue"
+},
+{
+"w": "le",
+"s": 8.14,
+"e": 8.35,
+"scene": "collegue"
+},
+{
+"w": "projet",
+"s": 8.35,
+"e": 8.71,
+"scene": "collegue"
+},
+{
+"w": "mais",
+"s": 8.71,
+"e": 8.92,
+"scene": "collegue"
+},
+{
+"w": "qui",
+"s": 8.92,
+"e": 9.69,
+"scene": "collegue"
+},
+{
+"w": "veut",
+"s": 9.69,
+"e": 9.9,
+"scene": "collegue"
+},
+{
+"w": "sa",
+"s": 9.9,
+"e": 10.11,
+"scene": "collegue"
+},
+{
+"w": "part",
+"s": 10.11,
+"e": 10.31,
+"scene": "collegue"
+},
+{
+"w": "de",
+"s": 10.31,
+"e": 10.78,
+"scene": "collegue"
+},
+{
+"w": "la",
+"s": 10.78,
+"e": 10.99,
+"scene": "collegue"
+},
+{
+"w": "récompense ?",
+"s": 10.99,
+"e": 11.68,
+"scene": "collegue"
+},
+{
+"w": "Chez",
+"s": 12.17,
+"e": 12.24,
+"scene": "collegue"
+},
+{
+"w": "les",
+"s": 12.24,
+"e": 12.32,
+"scene": "collegue"
+},
+{
+"w": "chimpanzés,",
+"s": 12.32,
+"e": 12.52,
+"scene": "collegue"
+},
+{
+"w": "il",
+"s": 12.52,
+"e": 12.6,
+"scene": "collegue"
+},
+{
+"w": "repart",
+"s": 12.6,
+"e": 12.74,
+"scene": "collegue"
+},
+{
+"w": "le",
+"s": 12.74,
+"e": 12.81,
+"scene": "collegue"
+},
+{
+"w": "ventre",
+"s": 12.81,
+"e": 12.95,
+"scene": "collegue"
+},
+{
+"w": "vide.",
+"s": 12.95,
+"e": 13.09,
+"scene": "collegue"
+},
+{
+"w": "Pas",
+"s": 13.97,
+"e": 14.14,
+"scene": "cannibale"
+},
+{
+"w": "du",
+"s": 14.14,
+"e": 14.31,
+"scene": "cannibale"
+},
+{
+"w": "cannibalisme.",
+"s": 14.31,
+"e": 15.0,
+"scene": "cannibale"
+},
+{
+"w": "Dans",
+"s": 15.17,
+"e": 15.34,
+"scene": "cannibale"
+},
+{
+"w": "la",
+"s": 15.34,
+"e": 15.52,
+"scene": "cannibale"
+},
+{
+"w": "forêt",
+"s": 15.52,
+"e": 15.82,
+"scene": "cannibale"
+},
+{
+"w": "africaine,",
+"s": 15.82,
+"e": 16.38,
+"scene": "cannibale"
+},
+{
+"w": "des",
+"s": 16.38,
+"e": 16.55,
+"scene": "cannibale"
+},
+{
+"w": "chimpanzés",
+"s": 16.55,
+"e": 16.98,
+"scene": "cannibale"
+},
+{
+"w": "se",
+"s": 16.98,
+"e": 17.15,
+"scene": "cannibale"
+},
+{
+"w": "partagent",
+"s": 17.15,
+"e": 17.97,
+"scene": "cannibale"
+},
+{
+"w": "un",
+"s": 17.97,
+"e": 18.14,
+"scene": "cannibale"
+},
+{
+"w": "singe",
+"s": 18.14,
+"e": 18.44,
+"scene": "cannibale"
+},
+{
+"w": "qu'ils",
+"s": 18.44,
+"e": 19.31,
+"scene": "cannibale"
+},
+{
+"w": "viennent",
+"s": 19.31,
+"e": 19.61,
+"scene": "cannibale"
+},
+{
+"w": "de",
+"s": 19.61,
+"e": 19.78,
+"scene": "cannibale"
+},
+{
+"w": "capturer,",
+"s": 19.78,
+"e": 20.21,
+"scene": "cannibale"
+},
+{
+"w": "un",
+"s": 20.21,
+"e": 20.38,
+"scene": "cannibale"
+},
+{
+"w": "colobe",
+"s": 20.38,
+"e": 20.82,
+"scene": "cannibale"
+},
+{
+"w": "roux.",
+"s": 20.82,
+"e": 20.99,
+"scene": "cannibale"
+},
+{
+"w": "Beaucoup",
+"s": 21.42,
+"e": 22.18,
+"scene": "cannibale"
+},
+{
+"w": "pensent",
+"s": 22.18,
+"e": 22.47,
+"scene": "cannibale"
+},
+{
+"w": "qu'ils",
+"s": 22.47,
+"e": 22.77,
+"scene": "cannibale"
+},
+{
+"w": "mangent",
+"s": 22.77,
+"e": 23.06,
+"scene": "cannibale"
+},
+{
+"w": "leur",
+"s": 23.06,
+"e": 23.23,
+"scene": "cannibale"
+},
+{
+"w": "propre",
+"s": 23.23,
+"e": 23.77,
+"scene": "cannibale"
+},
+{
+"w": "espèce.",
+"s": 23.77,
+"e": 24.19,
+"scene": "cannibale"
+},
+{
+"w": "Faux !",
+"s": 24.41,
+"e": 25.24,
+"scene": "cannibale"
+},
+{
+"w": "Le",
+"s": 25.69,
+"e": 25.87,
+"scene": "cannibale"
+},
+{
+"w": "colobe",
+"s": 25.87,
+"e": 26.31,
+"scene": "cannibale"
+},
+{
+"w": "est",
+"s": 26.31,
+"e": 26.49,
+"scene": "cannibale"
+},
+{
+"w": "un",
+"s": 26.49,
+"e": 26.9,
+"scene": "cannibale"
+},
+{
+"w": "singe,",
+"s": 26.9,
+"e": 27.21,
+"scene": "cannibale"
+},
+{
+"w": "le",
+"s": 27.66,
+"e": 27.84,
+"scene": "cannibale"
+},
+{
+"w": "chimpanzé",
+"s": 27.84,
+"e": 28.3,
+"scene": "cannibale"
+},
+{
+"w": "un",
+"s": 28.3,
+"e": 28.48,
+"scene": "cannibale"
+},
+{
+"w": "grand",
+"s": 28.48,
+"e": 28.66,
+"scene": "cannibale"
+},
+{
+"w": "singe.",
+"s": 28.66,
+"e": 28.99,
+"scene": "cannibale"
+},
+{
+"w": "Et",
+"s": 28.99,
+"e": 29.17,
+"scene": "cannibale"
+},
+{
+"w": "son",
+"s": 29.17,
+"e": 29.35,
+"scene": "cannibale"
+},
+{
+"w": "plus",
+"s": 29.35,
+"e": 29.53,
+"scene": "cannibale"
+},
+{
+"w": "proche",
+"s": 29.53,
+"e": 29.86,
+"scene": "cannibale"
+},
+{
+"w": "parent,",
+"s": 29.86,
+"e": 30.18,
+"scene": "cannibale"
+},
+{
+"w": "c'est",
+"s": 30.18,
+"e": 30.36,
+"scene": "cannibale"
+},
+{
+"w": "nous :",
+"s": 30.36,
+"e": 30.54,
+"scene": "cannibale"
+},
+{
+"w": "nous",
+"s": 31.19,
+"e": 31.3,
+"scene": "cannibale"
+},
+{
+"w": "partageons",
+"s": 31.3,
+"e": 31.56,
+"scene": "cannibale"
+},
+{
+"w": "environ",
+"s": 31.56,
+"e": 32.0,
+"scene": "cannibale"
+},
+{
+"w": "98",
+"s": 32.0,
+"e": 32.26,
+"scene": "cannibale"
+},
+{
+"w": "%",
+"s": 32.26,
+"e": 32.37,
+"scene": "cannibale"
+},
+{
+"w": "de",
+"s": 32.37,
+"e": 32.47,
+"scene": "cannibale"
+},
+{
+"w": "notre",
+"s": 32.47,
+"e": 32.66,
+"scene": "cannibale"
+},
+{
+"w": "ADN",
+"s": 32.66,
+"e": 32.76,
+"scene": "cannibale"
+},
+{
+"w": "avec",
+"s": 32.76,
+"e": 32.95,
+"scene": "cannibale"
+},
+{
+"w": "lui.",
+"s": 32.95,
+"e": 33.05,
+"scene": "cannibale"
+},
+{
+"w": "Une",
+"s": 33.81,
+"e": 34.08,
+"scene": "proie"
+},
+{
+"w": "proie",
+"s": 34.08,
+"e": 34.23,
+"scene": "proie"
+},
+{
+"w": "impossible",
+"s": 34.23,
+"e": 34.73,
+"scene": "proie"
+},
+{
+"w": "à",
+"s": 34.73,
+"e": 34.88,
+"scene": "proie"
+},
+{
+"w": "attraper",
+"s": 34.88,
+"e": 35.27,
+"scene": "proie"
+},
+{
+"w": "seul.",
+"s": 35.27,
+"e": 35.42,
+"scene": "proie"
+},
+{
+"w": "Le",
+"s": 35.42,
+"e": 35.57,
+"scene": "proie"
+},
+{
+"w": "colobe",
+"s": 35.57,
+"e": 35.95,
+"scene": "proie"
+},
+{
+"w": "vit",
+"s": 35.95,
+"e": 36.1,
+"scene": "proie"
+},
+{
+"w": "tout",
+"s": 36.1,
+"e": 36.25,
+"scene": "proie"
+},
+{
+"w": "en",
+"s": 36.25,
+"e": 36.41,
+"scene": "proie"
+},
+{
+"w": "haut",
+"s": 36.41,
+"e": 36.56,
+"scene": "proie"
+},
+{
+"w": "des",
+"s": 36.56,
+"e": 36.71,
+"scene": "proie"
+},
+{
+"w": "arbres",
+"s": 36.71,
+"e": 37.11,
+"scene": "proie"
+},
+{
+"w": "et",
+"s": 37.11,
+"e": 37.26,
+"scene": "proie"
+},
+{
+"w": "saute",
+"s": 37.26,
+"e": 37.97,
+"scene": "proie"
+},
+{
+"w": "de",
+"s": 37.97,
+"e": 38.12,
+"scene": "proie"
+},
+{
+"w": "branche",
+"s": 38.12,
+"e": 38.55,
+"scene": "proie"
+},
+{
+"w": "en",
+"s": 38.55,
+"e": 38.7,
+"scene": "proie"
+},
+{
+"w": "branche",
+"s": 38.7,
+"e": 38.96,
+"scene": "proie"
+},
+{
+"w": "à",
+"s": 38.96,
+"e": 39.12,
+"scene": "proie"
+},
+{
+"w": "toute",
+"s": 39.12,
+"e": 39.54,
+"scene": "proie"
+},
+{
+"w": "vitesse.",
+"s": 39.54,
+"e": 39.92,
+"scene": "proie"
+},
+{
+"w": "Seul,",
+"s": 40.37,
+"e": 40.75,
+"scene": "proie"
+},
+{
+"w": "un",
+"s": 40.94,
+"e": 41.09,
+"scene": "proie"
+},
+{
+"w": "chimpanzé",
+"s": 41.09,
+"e": 41.46,
+"scene": "proie"
+},
+{
+"w": "n'a",
+"s": 41.46,
+"e": 41.61,
+"scene": "proie"
+},
+{
+"w": "aucune",
+"s": 41.61,
+"e": 41.98,
+"scene": "proie"
+},
+{
+"w": "chance.",
+"s": 41.98,
+"e": 42.24,
+"scene": "proie"
+},
+{
+"w": "Alors,",
+"s": 42.53,
+"e": 43.3,
+"scene": "proie"
+},
+{
+"w": "comme",
+"s": 43.83,
+"e": 43.97,
+"scene": "proie"
+},
+{
+"w": "nous",
+"s": 43.97,
+"e": 44.05,
+"scene": "proie"
+},
+{
+"w": "face",
+"s": 44.05,
+"e": 44.19,
+"scene": "proie"
+},
+{
+"w": "à",
+"s": 44.19,
+"e": 44.28,
+"scene": "proie"
+},
+{
+"w": "un",
+"s": 44.28,
+"e": 44.36,
+"scene": "proie"
+},
+{
+"w": "gros",
+"s": 44.36,
+"e": 44.44,
+"scene": "proie"
+},
+{
+"w": "problème,",
+"s": 44.44,
+"e": 44.64,
+"scene": "proie"
+},
+{
+"w": "ils",
+"s": 44.64,
+"e": 44.72,
+"scene": "proie"
+},
+{
+"w": "s'organisent.",
+"s": 44.72,
+"e": 44.99,
+"scene": "proie"
+},
+{
+"w": "Une",
+"s": 45.57,
+"e": 45.79,
+"scene": "equipe"
+},
+{
+"w": "vraie",
+"s": 45.79,
+"e": 45.91,
+"scene": "equipe"
+},
+{
+"w": "équipe",
+"s": 45.91,
+"e": 46.23,
+"scene": "equipe"
+},
+{
+"w": "de",
+"s": 46.23,
+"e": 46.35,
+"scene": "equipe"
+},
+{
+"w": "foot.",
+"s": 46.35,
+"e": 46.47,
+"scene": "equipe"
+},
+{
+"w": "Chacun",
+"s": 46.84,
+"e": 47.3,
+"scene": "equipe"
+},
+{
+"w": "a",
+"s": 47.3,
+"e": 47.56,
+"scene": "equipe"
+},
+{
+"w": "son",
+"s": 47.56,
+"e": 47.82,
+"scene": "equipe"
+},
+{
+"w": "poste.",
+"s": 47.82,
+"e": 48.27,
+"scene": "equipe"
+},
+{
+"w": "Un",
+"s": 48.68,
+"e": 48.9,
+"scene": "equipe"
+},
+{
+"w": "chef",
+"s": 48.9,
+"e": 49.13,
+"scene": "equipe"
+},
+{
+"w": "expérimenté",
+"s": 49.13,
+"e": 50.04,
+"scene": "equipe"
+},
+{
+"w": "dirige.",
+"s": 50.04,
+"e": 50.83,
+"scene": "equipe"
+},
+{
+"w": "Certains",
+"s": 51.25,
+"e": 51.3,
+"scene": "equipe"
+},
+{
+"w": "se",
+"s": 51.3,
+"e": 51.33,
+"scene": "equipe"
+},
+{
+"w": "cachent",
+"s": 51.33,
+"e": 51.38,
+"scene": "equipe"
+},
+{
+"w": "en",
+"s": 51.38,
+"e": 51.4,
+"scene": "equipe"
+},
+{
+"w": "silence",
+"s": 51.4,
+"e": 51.47,
+"scene": "equipe"
+},
+{
+"w": "dans",
+"s": 51.47,
+"e": 51.5,
+"scene": "equipe"
+},
+{
+"w": "les",
+"s": 51.5,
+"e": 51.53,
+"scene": "equipe"
+},
+{
+"w": "arbres,",
+"s": 51.53,
+"e": 51.58,
+"scene": "equipe"
+},
+{
+"w": "devant.",
+"s": 51.71,
+"e": 52.37,
+"scene": "equipe"
+},
+{
+"w": "D'autres",
+"s": 52.78,
+"e": 53.09,
+"scene": "equipe"
+},
+{
+"w": "bloquent",
+"s": 53.09,
+"e": 53.4,
+"scene": "equipe"
+},
+{
+"w": "les",
+"s": 53.4,
+"e": 53.57,
+"scene": "equipe"
+},
+{
+"w": "côtés.",
+"s": 53.57,
+"e": 53.88,
+"scene": "equipe"
+},
+{
+"w": "Et",
+"s": 53.88,
+"e": 54.06,
+"scene": "equipe"
+},
+{
+"w": "un",
+"s": 54.06,
+"e": 54.23,
+"scene": "equipe"
+},
+{
+"w": "rabatteur",
+"s": 54.23,
+"e": 54.67,
+"scene": "equipe"
+},
+{
+"w": "secoue",
+"s": 54.67,
+"e": 54.98,
+"scene": "equipe"
+},
+{
+"w": "les",
+"s": 54.98,
+"e": 55.16,
+"scene": "equipe"
+},
+{
+"w": "branches",
+"s": 55.16,
+"e": 55.93,
+"scene": "equipe"
+},
+{
+"w": "pour",
+"s": 55.93,
+"e": 56.1,
+"scene": "equipe"
+},
+{
+"w": "faire",
+"s": 56.1,
+"e": 56.54,
+"scene": "equipe"
+},
+{
+"w": "paniquer",
+"s": 56.54,
+"e": 56.99,
+"scene": "equipe"
+},
+{
+"w": "les",
+"s": 56.99,
+"e": 57.16,
+"scene": "equipe"
+},
+{
+"w": "singes.",
+"s": 57.16,
+"e": 57.47,
+"scene": "equipe"
+},
+{
+"w": "Le",
+"s": 57.72,
+"e": 57.83,
+"scene": "equipe"
+},
+{
+"w": "tout",
+"s": 57.83,
+"e": 57.94,
+"scene": "equipe"
+},
+{
+"w": "presque",
+"s": 57.94,
+"e": 58.13,
+"scene": "equipe"
+},
+{
+"w": "sans",
+"s": 58.13,
+"e": 58.24,
+"scene": "equipe"
+},
+{
+"w": "un",
+"s": 58.24,
+"e": 58.34,
+"scene": "equipe"
+},
+{
+"w": "bruit,",
+"s": 58.34,
+"e": 58.45,
+"scene": "equipe"
+},
+{
+"w": "sans",
+"s": 58.58,
+"e": 58.68,
+"scene": "equipe"
+},
+{
+"w": "réunion",
+"s": 58.68,
+"e": 58.85,
+"scene": "equipe"
+},
+{
+"w": "ni",
+"s": 58.85,
+"e": 58.95,
+"scene": "equipe"
+},
+{
+"w": "groupe",
+"s": 58.95,
+"e": 59.13,
+"scene": "equipe"
+},
+{
+"w": "WhatsApp !",
+"s": 59.13,
+"e": 59.31,
+"scene": "equipe"
+},
+{
+"w": "Les",
+"s": 59.99,
+"e": 60.17,
+"scene": "piege"
+},
+{
+"w": "colobes",
+"s": 60.17,
+"e": 60.63,
+"scene": "piege"
+},
+{
+"w": "s'enfuient…",
+"s": 60.63,
+"e": 60.96,
+"scene": "piege"
+},
+{
+"w": "droit",
+"s": 61.27,
+"e": 61.46,
+"scene": "piege"
+},
+{
+"w": "dans",
+"s": 61.46,
+"e": 61.65,
+"scene": "piege"
+},
+{
+"w": "le",
+"s": 61.65,
+"e": 61.83,
+"scene": "piege"
+},
+{
+"w": "piège.",
+"s": 61.83,
+"e": 62.16,
+"scene": "piege"
+},
+{
+"w": "En",
+"s": 62.61,
+"e": 62.78,
+"scene": "piege"
+},
+{
+"w": "quelques",
+"s": 62.78,
+"e": 63.07,
+"scene": "piege"
+},
+{
+"w": "secondes,",
+"s": 63.07,
+"e": 63.49,
+"scene": "piege"
+},
+{
+"w": "c'est",
+"s": 63.68,
+"e": 63.84,
+"scene": "piege"
+},
+{
+"w": "fini.",
+"s": 63.84,
+"e": 64.13,
+"scene": "piege"
+},
+{
+"w": "Pas",
+"s": 64.7,
+"e": 64.89,
+"scene": "partage"
+},
+{
+"w": "de",
+"s": 64.89,
+"e": 65.08,
+"scene": "partage"
+},
+{
+"w": "travail,",
+"s": 65.08,
+"e": 65.41,
+"scene": "partage"
+},
+{
+"w": "pas",
+"s": 65.7,
+"e": 65.83,
+"scene": "partage"
+},
+{
+"w": "de",
+"s": 65.83,
+"e": 65.96,
+"scene": "partage"
+},
+{
+"w": "repas.",
+"s": 65.96,
+"e": 66.18,
+"scene": "partage"
+},
+{
+"w": "Au",
+"s": 66.75,
+"e": 66.9,
+"scene": "partage"
+},
+{
+"w": "moment",
+"s": 66.9,
+"e": 67.15,
+"scene": "partage"
+},
+{
+"w": "du",
+"s": 67.15,
+"e": 67.29,
+"scene": "partage"
+},
+{
+"w": "partage,",
+"s": 67.29,
+"e": 67.66,
+"scene": "partage"
+},
+{
+"w": "ceux",
+"s": 67.8,
+"e": 67.95,
+"scene": "partage"
+},
+{
+"w": "qui",
+"s": 67.95,
+"e": 68.1,
+"scene": "partage"
+},
+{
+"w": "ont",
+"s": 68.1,
+"e": 68.25,
+"scene": "partage"
+},
+{
+"w": "chassé",
+"s": 68.25,
+"e": 68.53,
+"scene": "partage"
+},
+{
+"w": "sont",
+"s": 68.53,
+"e": 68.68,
+"scene": "partage"
+},
+{
+"w": "servis",
+"s": 68.68,
+"e": 68.95,
+"scene": "partage"
+},
+{
+"w": "en",
+"s": 68.95,
+"e": 69.1,
+"scene": "partage"
+},
+{
+"w": "premier,",
+"s": 69.1,
+"e": 69.37,
+"scene": "partage"
+},
+{
+"w": "avec",
+"s": 69.61,
+"e": 69.87,
+"scene": "partage"
+},
+{
+"w": "les",
+"s": 69.87,
+"e": 70.02,
+"scene": "partage"
+},
+{
+"w": "petits",
+"s": 70.02,
+"e": 70.28,
+"scene": "partage"
+},
+{
+"w": "et",
+"s": 70.28,
+"e": 70.43,
+"scene": "partage"
+},
+{
+"w": "certaines",
+"s": 70.43,
+"e": 70.8,
+"scene": "partage"
+},
+{
+"w": "femelles.",
+"s": 70.8,
+"e": 71.17,
+"scene": "partage"
+},
+{
+"w": "Ceux",
+"s": 71.68,
+"e": 71.85,
+"scene": "partage"
+},
+{
+"w": "qui",
+"s": 71.85,
+"e": 72.01,
+"scene": "partage"
+},
+{
+"w": "ont",
+"s": 72.01,
+"e": 72.17,
+"scene": "partage"
+},
+{
+"w": "juste",
+"s": 72.17,
+"e": 72.46,
+"scene": "partage"
+},
+{
+"w": "regardé",
+"s": 72.46,
+"e": 73.07,
+"scene": "partage"
+},
+{
+"w": "tournent",
+"s": 73.07,
+"e": 73.36,
+"scene": "partage"
+},
+{
+"w": "autour…",
+"s": 73.36,
+"e": 73.65,
+"scene": "partage"
+},
+{
+"w": "et",
+"s": 74.07,
+"e": 74.25,
+"scene": "partage"
+},
+{
+"w": "repartent",
+"s": 74.25,
+"e": 74.69,
+"scene": "partage"
+},
+{
+"w": "presque",
+"s": 74.69,
+"e": 75.0,
+"scene": "partage"
+},
+{
+"w": "toujours",
+"s": 75.0,
+"e": 75.31,
+"scene": "partage"
+},
+{
+"w": "sans",
+"s": 75.31,
+"e": 75.48,
+"scene": "partage"
+},
+{
+"w": "rien.",
+"s": 75.48,
+"e": 75.66,
+"scene": "partage"
+},
+{
+"w": "Conclusion.",
+"s": 76.29,
+"e": 77.02,
+"scene": "conclusion"
+},
+{
+"w": "Travail",
+"s": 77.18,
+"e": 77.43,
+"scene": "conclusion"
+},
+{
+"w": "d'équipe,",
+"s": 77.43,
+"e": 77.8,
+"scene": "conclusion"
+},
+{
+"w": "capitaine,",
+"s": 77.95,
+"e": 78.99,
+"scene": "conclusion"
+},
+{
+"w": "récompense",
+"s": 79.38,
+"e": 79.76,
+"scene": "conclusion"
+},
+{
+"w": "méritée :",
+"s": 79.76,
+"e": 80.05,
+"scene": "conclusion"
+},
+{
+"w": "les",
+"s": 80.05,
+"e": 80.17,
+"scene": "conclusion"
+},
+{
+"w": "chimpanzés",
+"s": 80.17,
+"e": 80.46,
+"scene": "conclusion"
+},
+{
+"w": "nous",
+"s": 80.46,
+"e": 80.58,
+"scene": "conclusion"
+},
+{
+"w": "ressemblent",
+"s": 80.58,
+"e": 80.87,
+"scene": "conclusion"
+},
+{
+"w": "beaucoup.",
+"s": 80.87,
+"e": 81.08,
+"scene": "conclusion"
+},
+{
+"w": "Et",
+"s": 81.66,
+"e": 81.82,
+"scene": "question"
+},
+{
+"w": "toi,",
+"s": 81.82,
+"e": 81.98,
+"scene": "question"
+},
+{
+"w": "dans",
+"s": 82.15,
+"e": 82.27,
+"scene": "question"
+},
+{
+"w": "ton",
+"s": 82.27,
+"e": 82.4,
+"scene": "question"
+},
+{
+"w": "équipe,",
+"s": 82.4,
+"e": 82.73,
+"scene": "question"
+},
+{
+"w": "tu",
+"s": 83.02,
+"e": 83.15,
+"scene": "question"
+},
+{
+"w": "es",
+"s": 83.15,
+"e": 83.29,
+"scene": "question"
+},
+{
+"w": "le",
+"s": 83.29,
+"e": 83.43,
+"scene": "question"
+},
+{
+"w": "chasseur…",
+"s": 83.43,
+"e": 83.67,
+"scene": "question"
+},
+{
+"w": "ou",
+"s": 84.13,
+"e": 84.3,
+"scene": "question"
+},
+{
+"w": "celui",
+"s": 84.3,
+"e": 84.6,
+"scene": "question"
+},
+{
+"w": "qui",
+"s": 84.6,
+"e": 84.77,
+"scene": "question"
+},
+{
+"w": "attend",
+"s": 84.77,
+"e": 85.08,
+"scene": "question"
+},
+{
+"w": "sa",
+"s": 85.08,
+"e": 85.25,
+"scene": "question"
+},
+{
+"w": "part",
+"s": 85.25,
+"e": 85.42,
+"scene": "question"
+},
+{
+"w": "sans",
+"s": 85.42,
+"e": 85.59,
+"scene": "question"
+},
+{
+"w": "rien",
+"s": 85.59,
+"e": 85.76,
+"scene": "question"
+},
+{
+"w": "faire ?",
+"s": 85.76,
+"e": 86.06,
+"scene": "question"
+},
+{
+"w": "Dis-le",
+"s": 86.47,
+"e": 86.75,
+"scene": "question"
+},
+{
+"w": "en",
+"s": 86.75,
+"e": 86.9,
+"scene": "question"
+},
+{
+"w": "commentaire.",
+"s": 86.9,
+"e": 87.41,
+"scene": "question"
+},
+{
+"w": "Abonne-toi",
+"s": 87.81,
+"e": 88.35,
+"scene": "abonne"
+},
+{
+"w": "pour",
+"s": 88.35,
+"e": 88.51,
+"scene": "abonne"
+},
+{
+"w": "découvrir",
+"s": 88.51,
+"e": 88.92,
+"scene": "abonne"
+},
+{
+"w": "d'autres",
+"s": 88.92,
+"e": 89.2,
+"scene": "abonne"
+},
+{
+"w": "secrets",
+"s": 89.2,
+"e": 89.49,
+"scene": "abonne"
+},
+{
+"w": "du",
+"s": 89.49,
+"e": 89.65,
+"scene": "abonne"
+},
+{
+"w": "monde",
+"s": 89.65,
+"e": 89.93,
+"scene": "abonne"
+},
+{
+"w": "animal !",
+"s": 89.93,
+"e": 90.34,
+"scene": "abonne"
+}
+]
+}
