@@ -1,0 +1,1524 @@
+{
+"duration": 74.266122,
+"source": "pauses",
+"words": [
+{
+"w": "Saviez-vous",
+"s": 0.0,
+"e": 0.52,
+"scene": "titre"
+},
+{
+"w": "que",
+"s": 0.52,
+"e": 0.73,
+"scene": "titre"
+},
+{
+"w": "face",
+"s": 0.73,
+"e": 1.09,
+"scene": "titre"
+},
+{
+"w": "à",
+"s": 1.09,
+"e": 1.3,
+"scene": "titre"
+},
+{
+"w": "un",
+"s": 1.3,
+"e": 1.51,
+"scene": "titre"
+},
+{
+"w": "ours,",
+"s": 1.51,
+"e": 1.71,
+"scene": "titre"
+},
+{
+"w": "faire",
+"s": 1.98,
+"e": 2.3,
+"scene": "titre"
+},
+{
+"w": "le",
+"s": 2.3,
+"e": 2.48,
+"scene": "titre"
+},
+{
+"w": "mort",
+"s": 2.48,
+"e": 2.66,
+"scene": "titre"
+},
+{
+"w": "peut",
+"s": 2.66,
+"e": 2.84,
+"scene": "titre"
+},
+{
+"w": "te",
+"s": 2.84,
+"e": 3.02,
+"scene": "titre"
+},
+{
+"w": "sauver…",
+"s": 3.02,
+"e": 3.34,
+"scene": "titre"
+},
+{
+"w": "ou",
+"s": 3.9,
+"e": 4.08,
+"scene": "titre"
+},
+{
+"w": "faire",
+"s": 4.08,
+"e": 4.4,
+"scene": "titre"
+},
+{
+"w": "de",
+"s": 4.4,
+"e": 4.58,
+"scene": "titre"
+},
+{
+"w": "toi",
+"s": 4.58,
+"e": 4.76,
+"scene": "titre"
+},
+{
+"w": "son",
+"s": 4.76,
+"e": 4.94,
+"scene": "titre"
+},
+{
+"w": "dîner ?",
+"s": 4.94,
+"e": 5.26,
+"scene": "titre"
+},
+{
+"w": "Tout",
+"s": 5.79,
+"e": 5.93,
+"scene": "technique"
+},
+{
+"w": "dépend",
+"s": 5.93,
+"e": 6.19,
+"scene": "technique"
+},
+{
+"w": "de",
+"s": 6.19,
+"e": 6.33,
+"scene": "technique"
+},
+{
+"w": "l'ours",
+"s": 6.33,
+"e": 6.47,
+"scene": "technique"
+},
+{
+"w": "que",
+"s": 6.47,
+"e": 6.62,
+"scene": "technique"
+},
+{
+"w": "tu",
+"s": 6.62,
+"e": 6.76,
+"scene": "technique"
+},
+{
+"w": "as",
+"s": 6.76,
+"e": 6.9,
+"scene": "technique"
+},
+{
+"w": "en",
+"s": 6.9,
+"e": 7.04,
+"scene": "technique"
+},
+{
+"w": "face",
+"s": 7.04,
+"e": 7.3,
+"scene": "technique"
+},
+{
+"w": "de",
+"s": 7.3,
+"e": 7.44,
+"scene": "technique"
+},
+{
+"w": "toi.",
+"s": 7.44,
+"e": 7.58,
+"scene": "technique"
+},
+{
+"w": "C'est",
+"s": 8.09,
+"e": 8.2,
+"scene": "technique"
+},
+{
+"w": "un",
+"s": 8.2,
+"e": 8.32,
+"scene": "technique"
+},
+{
+"w": "peu",
+"s": 8.32,
+"e": 8.44,
+"scene": "technique"
+},
+{
+"w": "comme",
+"s": 8.44,
+"e": 8.64,
+"scene": "technique"
+},
+{
+"w": "dans",
+"s": 8.64,
+"e": 8.76,
+"scene": "technique"
+},
+{
+"w": "la",
+"s": 8.76,
+"e": 8.88,
+"scene": "technique"
+},
+{
+"w": "vie :",
+"s": 8.88,
+"e": 8.99,
+"scene": "technique"
+},
+{
+"w": "la",
+"s": 9.42,
+"e": 9.57,
+"scene": "technique"
+},
+{
+"w": "même",
+"s": 9.57,
+"e": 9.83,
+"scene": "technique"
+},
+{
+"w": "technique",
+"s": 9.83,
+"e": 10.2,
+"scene": "technique"
+},
+{
+"w": "ne",
+"s": 10.2,
+"e": 10.35,
+"scene": "technique"
+},
+{
+"w": "marche",
+"s": 10.35,
+"e": 10.6,
+"scene": "technique"
+},
+{
+"w": "pas",
+"s": 10.6,
+"e": 10.75,
+"scene": "technique"
+},
+{
+"w": "avec",
+"s": 10.75,
+"e": 11.15,
+"scene": "technique"
+},
+{
+"w": "tout",
+"s": 11.15,
+"e": 11.29,
+"scene": "technique"
+},
+{
+"w": "le",
+"s": 11.29,
+"e": 11.44,
+"scene": "technique"
+},
+{
+"w": "monde !",
+"s": 11.44,
+"e": 11.7,
+"scene": "technique"
+},
+{
+"w": "Comment",
+"s": 12.32,
+"e": 12.54,
+"scene": "reconnaitre"
+},
+{
+"w": "les",
+"s": 12.54,
+"e": 12.66,
+"scene": "reconnaitre"
+},
+{
+"w": "reconnaître.",
+"s": 12.66,
+"e": 13.07,
+"scene": "reconnaitre"
+},
+{
+"w": "Ne",
+"s": 13.63,
+"e": 13.77,
+"scene": "reconnaitre"
+},
+{
+"w": "te",
+"s": 13.77,
+"e": 13.92,
+"scene": "reconnaitre"
+},
+{
+"w": "fie",
+"s": 13.92,
+"e": 14.07,
+"scene": "reconnaitre"
+},
+{
+"w": "pas",
+"s": 14.07,
+"e": 14.22,
+"scene": "reconnaitre"
+},
+{
+"w": "à",
+"s": 14.22,
+"e": 14.36,
+"scene": "reconnaitre"
+},
+{
+"w": "la",
+"s": 14.36,
+"e": 14.51,
+"scene": "reconnaitre"
+},
+{
+"w": "couleur.",
+"s": 14.51,
+"e": 14.77,
+"scene": "reconnaitre"
+},
+{
+"w": "Regarde",
+"s": 15.22,
+"e": 15.62,
+"scene": "reconnaitre"
+},
+{
+"w": "plutôt",
+"s": 15.62,
+"e": 15.91,
+"scene": "reconnaitre"
+},
+{
+"w": "les",
+"s": 15.91,
+"e": 16.06,
+"scene": "reconnaitre"
+},
+{
+"w": "épaules.",
+"s": 16.06,
+"e": 16.47,
+"scene": "reconnaitre"
+},
+{
+"w": "L'ours",
+"s": 16.89,
+"e": 17.24,
+"scene": "reconnaitre"
+},
+{
+"w": "brun,",
+"s": 17.24,
+"e": 17.59,
+"scene": "reconnaitre"
+},
+{
+"w": "ou",
+"s": 17.76,
+"e": 17.98,
+"scene": "reconnaitre"
+},
+{
+"w": "grizzly,",
+"s": 17.98,
+"e": 18.37,
+"scene": "reconnaitre"
+},
+{
+"w": "a",
+"s": 18.61,
+"e": 18.76,
+"scene": "reconnaitre"
+},
+{
+"w": "une",
+"s": 18.76,
+"e": 19.02,
+"scene": "reconnaitre"
+},
+{
+"w": "grosse",
+"s": 19.02,
+"e": 19.28,
+"scene": "reconnaitre"
+},
+{
+"w": "bosse",
+"s": 19.28,
+"e": 19.55,
+"scene": "reconnaitre"
+},
+{
+"w": "sur",
+"s": 19.55,
+"e": 19.69,
+"scene": "reconnaitre"
+},
+{
+"w": "le",
+"s": 19.69,
+"e": 19.84,
+"scene": "reconnaitre"
+},
+{
+"w": "dos,",
+"s": 19.84,
+"e": 19.99,
+"scene": "reconnaitre"
+},
+{
+"w": "au",
+"s": 20.22,
+"e": 20.34,
+"scene": "reconnaitre"
+},
+{
+"w": "niveau",
+"s": 20.34,
+"e": 20.56,
+"scene": "reconnaitre"
+},
+{
+"w": "des",
+"s": 20.56,
+"e": 20.68,
+"scene": "reconnaitre"
+},
+{
+"w": "épaules.",
+"s": 20.68,
+"e": 20.99,
+"scene": "reconnaitre"
+},
+{
+"w": "L'ours",
+"s": 21.43,
+"e": 21.64,
+"scene": "reconnaitre"
+},
+{
+"w": "noir",
+"s": 21.64,
+"e": 21.85,
+"scene": "reconnaitre"
+},
+{
+"w": "n'en",
+"s": 21.85,
+"e": 22.06,
+"scene": "reconnaitre"
+},
+{
+"w": "a",
+"s": 22.06,
+"e": 22.27,
+"scene": "reconnaitre"
+},
+{
+"w": "pas,",
+"s": 22.27,
+"e": 22.48,
+"scene": "reconnaitre"
+},
+{
+"w": "il",
+"s": 22.8,
+"e": 22.95,
+"scene": "reconnaitre"
+},
+{
+"w": "est",
+"s": 22.95,
+"e": 23.23,
+"scene": "reconnaitre"
+},
+{
+"w": "plus",
+"s": 23.23,
+"e": 23.39,
+"scene": "reconnaitre"
+},
+{
+"w": "petit",
+"s": 23.39,
+"e": 23.87,
+"scene": "reconnaitre"
+},
+{
+"w": "et",
+"s": 23.87,
+"e": 24.03,
+"scene": "reconnaitre"
+},
+{
+"w": "grimpe",
+"s": 24.03,
+"e": 24.31,
+"scene": "reconnaitre"
+},
+{
+"w": "très",
+"s": 24.31,
+"e": 24.46,
+"scene": "reconnaitre"
+},
+{
+"w": "bien",
+"s": 24.46,
+"e": 24.62,
+"scene": "reconnaitre"
+},
+{
+"w": "aux",
+"s": 24.62,
+"e": 24.78,
+"scene": "reconnaitre"
+},
+{
+"w": "arbres.",
+"s": 24.78,
+"e": 25.06,
+"scene": "reconnaitre"
+},
+{
+"w": "Face",
+"s": 25.65,
+"e": 25.92,
+"scene": "grizzly"
+},
+{
+"w": "à",
+"s": 25.92,
+"e": 26.07,
+"scene": "grizzly"
+},
+{
+"w": "un",
+"s": 26.07,
+"e": 26.23,
+"scene": "grizzly"
+},
+{
+"w": "grizzly :",
+"s": 26.23,
+"e": 26.49,
+"scene": "grizzly"
+},
+{
+"w": "fais",
+"s": 26.9,
+"e": 27.06,
+"scene": "grizzly"
+},
+{
+"w": "le",
+"s": 27.06,
+"e": 27.22,
+"scene": "grizzly"
+},
+{
+"w": "mort.",
+"s": 27.22,
+"e": 27.38,
+"scene": "grizzly"
+},
+{
+"w": "S'il",
+"s": 28.01,
+"e": 28.19,
+"scene": "grizzly"
+},
+{
+"w": "t'attaque,",
+"s": 28.19,
+"e": 28.65,
+"scene": "grizzly"
+},
+{
+"w": "allonge-toi",
+"s": 28.93,
+"e": 29.51,
+"scene": "grizzly"
+},
+{
+"w": "à",
+"s": 29.51,
+"e": 29.69,
+"scene": "grizzly"
+},
+{
+"w": "plat",
+"s": 29.69,
+"e": 29.86,
+"scene": "grizzly"
+},
+{
+"w": "ventre,",
+"s": 29.86,
+"e": 30.17,
+"scene": "grizzly"
+},
+{
+"w": "les",
+"s": 30.4,
+"e": 30.54,
+"scene": "grizzly"
+},
+{
+"w": "mains",
+"s": 30.54,
+"e": 30.67,
+"scene": "grizzly"
+},
+{
+"w": "croisées",
+"s": 30.67,
+"e": 30.91,
+"scene": "grizzly"
+},
+{
+"w": "derrière",
+"s": 30.91,
+"e": 31.24,
+"scene": "grizzly"
+},
+{
+"w": "la",
+"s": 31.24,
+"e": 31.38,
+"scene": "grizzly"
+},
+{
+"w": "nuque",
+"s": 31.38,
+"e": 31.61,
+"scene": "grizzly"
+},
+{
+"w": "et",
+"s": 31.61,
+"e": 31.75,
+"scene": "grizzly"
+},
+{
+"w": "les",
+"s": 31.75,
+"e": 32.01,
+"scene": "grizzly"
+},
+{
+"w": "jambes",
+"s": 32.01,
+"e": 32.25,
+"scene": "grizzly"
+},
+{
+"w": "écartées",
+"s": 32.25,
+"e": 32.72,
+"scene": "grizzly"
+},
+{
+"w": "pour",
+"s": 32.72,
+"e": 32.86,
+"scene": "grizzly"
+},
+{
+"w": "qu'il",
+"s": 32.86,
+"e": 33.21,
+"scene": "grizzly"
+},
+{
+"w": "ne",
+"s": 33.21,
+"e": 33.35,
+"scene": "grizzly"
+},
+{
+"w": "puisse",
+"s": 33.35,
+"e": 33.71,
+"scene": "grizzly"
+},
+{
+"w": "pas",
+"s": 33.71,
+"e": 33.84,
+"scene": "grizzly"
+},
+{
+"w": "te",
+"s": 33.84,
+"e": 33.97,
+"scene": "grizzly"
+},
+{
+"w": "retourner.",
+"s": 33.97,
+"e": 34.31,
+"scene": "grizzly"
+},
+{
+"w": "Garde",
+"s": 34.71,
+"e": 34.99,
+"scene": "grizzly"
+},
+{
+"w": "ton",
+"s": 34.99,
+"e": 35.15,
+"scene": "grizzly"
+},
+{
+"w": "sac",
+"s": 35.15,
+"e": 35.31,
+"scene": "grizzly"
+},
+{
+"w": "à",
+"s": 35.31,
+"e": 35.47,
+"scene": "grizzly"
+},
+{
+"w": "dos :",
+"s": 35.47,
+"e": 35.63,
+"scene": "grizzly"
+},
+{
+"w": "il",
+"s": 35.98,
+"e": 36.14,
+"scene": "grizzly"
+},
+{
+"w": "protège",
+"s": 36.14,
+"e": 36.54,
+"scene": "grizzly"
+},
+{
+"w": "ton",
+"s": 36.54,
+"e": 36.7,
+"scene": "grizzly"
+},
+{
+"w": "dos.",
+"s": 36.7,
+"e": 36.86,
+"scene": "grizzly"
+},
+{
+"w": "Le",
+"s": 37.31,
+"e": 37.47,
+"scene": "grizzly"
+},
+{
+"w": "grizzly",
+"s": 37.47,
+"e": 37.75,
+"scene": "grizzly"
+},
+{
+"w": "attaque",
+"s": 37.75,
+"e": 38.17,
+"scene": "grizzly"
+},
+{
+"w": "surtout",
+"s": 38.17,
+"e": 38.45,
+"scene": "grizzly"
+},
+{
+"w": "pour",
+"s": 38.45,
+"e": 38.61,
+"scene": "grizzly"
+},
+{
+"w": "se",
+"s": 38.61,
+"e": 38.78,
+"scene": "grizzly"
+},
+{
+"w": "défendre.",
+"s": 38.78,
+"e": 39.19,
+"scene": "grizzly"
+},
+{
+"w": "Si",
+"s": 39.63,
+"e": 39.77,
+"scene": "grizzly"
+},
+{
+"w": "tu",
+"s": 39.77,
+"e": 39.92,
+"scene": "grizzly"
+},
+{
+"w": "ne",
+"s": 39.92,
+"e": 40.06,
+"scene": "grizzly"
+},
+{
+"w": "bouges",
+"s": 40.06,
+"e": 40.32,
+"scene": "grizzly"
+},
+{
+"w": "plus,",
+"s": 40.32,
+"e": 40.46,
+"scene": "grizzly"
+},
+{
+"w": "il",
+"s": 40.7,
+"e": 40.86,
+"scene": "grizzly"
+},
+{
+"w": "comprend",
+"s": 40.86,
+"e": 41.13,
+"scene": "grizzly"
+},
+{
+"w": "que",
+"s": 41.13,
+"e": 41.28,
+"scene": "grizzly"
+},
+{
+"w": "tu",
+"s": 41.28,
+"e": 41.43,
+"scene": "grizzly"
+},
+{
+"w": "n'es",
+"s": 41.43,
+"e": 41.59,
+"scene": "grizzly"
+},
+{
+"w": "plus",
+"s": 41.59,
+"e": 41.74,
+"scene": "grizzly"
+},
+{
+"w": "une",
+"s": 41.74,
+"e": 42.01,
+"scene": "grizzly"
+},
+{
+"w": "menace",
+"s": 42.01,
+"e": 42.57,
+"scene": "grizzly"
+},
+{
+"w": "et",
+"s": 42.57,
+"e": 42.72,
+"scene": "grizzly"
+},
+{
+"w": "il",
+"s": 42.72,
+"e": 42.87,
+"scene": "grizzly"
+},
+{
+"w": "finit",
+"s": 42.87,
+"e": 43.14,
+"scene": "grizzly"
+},
+{
+"w": "souvent",
+"s": 43.14,
+"e": 43.41,
+"scene": "grizzly"
+},
+{
+"w": "par",
+"s": 43.41,
+"e": 43.57,
+"scene": "grizzly"
+},
+{
+"w": "partir.",
+"s": 43.57,
+"e": 43.84,
+"scene": "grizzly"
+},
+{
+"w": "Face",
+"s": 44.62,
+"e": 44.93,
+"scene": "noir"
+},
+{
+"w": "à",
+"s": 44.93,
+"e": 45.11,
+"scene": "noir"
+},
+{
+"w": "un",
+"s": 45.11,
+"e": 45.28,
+"scene": "noir"
+},
+{
+"w": "ours",
+"s": 45.28,
+"e": 45.46,
+"scene": "noir"
+},
+{
+"w": "noir :",
+"s": 45.46,
+"e": 45.63,
+"scene": "noir"
+},
+{
+"w": "bats-toi.",
+"s": 46.08,
+"e": 46.5,
+"scene": "noir"
+},
+{
+"w": "Là,",
+"s": 47.01,
+"e": 47.27,
+"scene": "noir"
+},
+{
+"w": "surtout,",
+"s": 47.4,
+"e": 47.78,
+"scene": "noir"
+},
+{
+"w": "ne",
+"s": 47.78,
+"e": 47.99,
+"scene": "noir"
+},
+{
+"w": "fais",
+"s": 47.99,
+"e": 48.2,
+"scene": "noir"
+},
+{
+"w": "pas",
+"s": 48.2,
+"e": 48.42,
+"scene": "noir"
+},
+{
+"w": "le",
+"s": 48.42,
+"e": 48.63,
+"scene": "noir"
+},
+{
+"w": "mort :",
+"s": 48.63,
+"e": 48.84,
+"scene": "noir"
+},
+{
+"w": "ce",
+"s": 49.2,
+"e": 49.32,
+"scene": "noir"
+},
+{
+"w": "serait",
+"s": 49.32,
+"e": 49.53,
+"scene": "noir"
+},
+{
+"w": "comme",
+"s": 49.53,
+"e": 49.75,
+"scene": "noir"
+},
+{
+"w": "te",
+"s": 49.75,
+"e": 49.87,
+"scene": "noir"
+},
+{
+"w": "servir",
+"s": 49.87,
+"e": 50.08,
+"scene": "noir"
+},
+{
+"w": "toi-même",
+"s": 50.08,
+"e": 50.39,
+"scene": "noir"
+},
+{
+"w": "dans",
+"s": 50.39,
+"e": 50.51,
+"scene": "noir"
+},
+{
+"w": "une",
+"s": 50.51,
+"e": 50.72,
+"scene": "noir"
+},
+{
+"w": "assiette.",
+"s": 50.72,
+"e": 51.03,
+"scene": "noir"
+},
+{
+"w": "Fais-toi",
+"s": 51.53,
+"e": 51.94,
+"scene": "noir"
+},
+{
+"w": "grand,",
+"s": 51.94,
+"e": 52.17,
+"scene": "noir"
+},
+{
+"w": "crie",
+"s": 52.42,
+"e": 52.61,
+"scene": "noir"
+},
+{
+"w": "fort",
+"s": 52.61,
+"e": 52.8,
+"scene": "noir"
+},
+{
+"w": "et,",
+"s": 52.8,
+"e": 52.99,
+"scene": "noir"
+},
+{
+"w": "s'il",
+"s": 53.27,
+"e": 53.46,
+"scene": "noir"
+},
+{
+"w": "attaque,",
+"s": 53.46,
+"e": 53.96,
+"scene": "noir"
+},
+{
+"w": "frappe-le",
+"s": 54.16,
+"e": 54.52,
+"scene": "noir"
+},
+{
+"w": "au",
+"s": 54.52,
+"e": 54.66,
+"scene": "noir"
+},
+{
+"w": "visage",
+"s": 54.66,
+"e": 55.01,
+"scene": "noir"
+},
+{
+"w": "et",
+"s": 55.01,
+"e": 55.15,
+"scene": "noir"
+},
+{
+"w": "au",
+"s": 55.15,
+"e": 55.29,
+"scene": "noir"
+},
+{
+"w": "museau",
+"s": 55.29,
+"e": 55.54,
+"scene": "noir"
+},
+{
+"w": "avec",
+"s": 55.54,
+"e": 55.79,
+"scene": "noir"
+},
+{
+"w": "tout",
+"s": 55.79,
+"e": 55.93,
+"scene": "noir"
+},
+{
+"w": "ce",
+"s": 55.93,
+"e": 56.23,
+"scene": "noir"
+},
+{
+"w": "que",
+"s": 56.23,
+"e": 56.37,
+"scene": "noir"
+},
+{
+"w": "tu",
+"s": 56.37,
+"e": 56.51,
+"scene": "noir"
+},
+{
+"w": "as.",
+"s": 56.51,
+"e": 56.65,
+"scene": "noir"
+},
+{
+"w": "Conclusion.",
+"s": 57.11,
+"e": 57.57,
+"scene": "conclusion"
+},
+{
+"w": "Un",
+"s": 57.77,
+"e": 57.9,
+"scene": "conclusion"
+},
+{
+"w": "ours,",
+"s": 57.9,
+"e": 58.03,
+"scene": "conclusion"
+},
+{
+"w": "on",
+"s": 58.03,
+"e": 58.15,
+"scene": "conclusion"
+},
+{
+"w": "le",
+"s": 58.15,
+"e": 58.28,
+"scene": "conclusion"
+},
+{
+"w": "calme",
+"s": 58.28,
+"e": 58.5,
+"scene": "conclusion"
+},
+{
+"w": "en",
+"s": 58.5,
+"e": 58.63,
+"scene": "conclusion"
+},
+{
+"w": "ne",
+"s": 58.63,
+"e": 58.76,
+"scene": "conclusion"
+},
+{
+"w": "bougeant",
+"s": 58.76,
+"e": 58.98,
+"scene": "conclusion"
+},
+{
+"w": "plus.",
+"s": 58.98,
+"e": 59.11,
+"scene": "conclusion"
+},
+{
+"w": "L'autre,",
+"s": 59.52,
+"e": 59.85,
+"scene": "conclusion"
+},
+{
+"w": "il",
+"s": 60.15,
+"e": 60.28,
+"scene": "conclusion"
+},
+{
+"w": "faut",
+"s": 60.28,
+"e": 60.41,
+"scene": "conclusion"
+},
+{
+"w": "lui",
+"s": 60.41,
+"e": 60.55,
+"scene": "conclusion"
+},
+{
+"w": "tenir",
+"s": 60.55,
+"e": 60.78,
+"scene": "conclusion"
+},
+{
+"w": "tête.",
+"s": 60.78,
+"e": 61.02,
+"scene": "conclusion"
+},
+{
+"w": "Comme",
+"s": 61.53,
+"e": 61.73,
+"scene": "conclusion"
+},
+{
+"w": "avec",
+"s": 61.73,
+"e": 61.92,
+"scene": "conclusion"
+},
+{
+"w": "les",
+"s": 61.92,
+"e": 62.04,
+"scene": "conclusion"
+},
+{
+"w": "gens :",
+"s": 62.04,
+"e": 62.15,
+"scene": "conclusion"
+},
+{
+"w": "certains,",
+"s": 62.52,
+"e": 63.06,
+"scene": "conclusion"
+},
+{
+"w": "il",
+"s": 63.25,
+"e": 63.4,
+"scene": "conclusion"
+},
+{
+"w": "vaut",
+"s": 63.4,
+"e": 63.55,
+"scene": "conclusion"
+},
+{
+"w": "mieux",
+"s": 63.55,
+"e": 63.69,
+"scene": "conclusion"
+},
+{
+"w": "les",
+"s": 63.69,
+"e": 63.84,
+"scene": "conclusion"
+},
+{
+"w": "ignorer…",
+"s": 63.84,
+"e": 64.21,
+"scene": "conclusion"
+},
+{
+"w": "et",
+"s": 64.63,
+"e": 64.78,
+"scene": "conclusion"
+},
+{
+"w": "d'autres,",
+"s": 64.78,
+"e": 65.04,
+"scene": "conclusion"
+},
+{
+"w": "il",
+"s": 65.34,
+"e": 65.5,
+"scene": "conclusion"
+},
+{
+"w": "faut",
+"s": 65.5,
+"e": 65.66,
+"scene": "conclusion"
+},
+{
+"w": "les",
+"s": 65.66,
+"e": 65.82,
+"scene": "conclusion"
+},
+{
+"w": "affronter.",
+"s": 65.82,
+"e": 66.22,
+"scene": "conclusion"
+},
+{
+"w": "Et",
+"s": 66.76,
+"e": 66.92,
+"scene": "question"
+},
+{
+"w": "toi,",
+"s": 66.92,
+"e": 67.08,
+"scene": "question"
+},
+{
+"w": "face",
+"s": 67.34,
+"e": 67.58,
+"scene": "question"
+},
+{
+"w": "à",
+"s": 67.58,
+"e": 67.72,
+"scene": "question"
+},
+{
+"w": "un",
+"s": 67.72,
+"e": 67.85,
+"scene": "question"
+},
+{
+"w": "ours,",
+"s": 67.85,
+"e": 67.99,
+"scene": "question"
+},
+{
+"w": "tu",
+"s": 68.33,
+"e": 68.46,
+"scene": "question"
+},
+{
+"w": "ferais",
+"s": 68.46,
+"e": 68.68,
+"scene": "question"
+},
+{
+"w": "le",
+"s": 68.68,
+"e": 68.81,
+"scene": "question"
+},
+{
+"w": "mort",
+"s": 68.81,
+"e": 68.94,
+"scene": "question"
+},
+{
+"w": "ou",
+"s": 68.94,
+"e": 69.29,
+"scene": "question"
+},
+{
+"w": "tu",
+"s": 69.29,
+"e": 69.41,
+"scene": "question"
+},
+{
+"w": "te",
+"s": 69.41,
+"e": 69.54,
+"scene": "question"
+},
+{
+"w": "battrais ?",
+"s": 69.54,
+"e": 69.77,
+"scene": "question"
+},
+{
+"w": "Dis-le",
+"s": 70.12,
+"e": 70.36,
+"scene": "question"
+},
+{
+"w": "en",
+"s": 70.36,
+"e": 70.5,
+"scene": "question"
+},
+{
+"w": "commentaire.",
+"s": 70.5,
+"e": 70.96,
+"scene": "question"
+},
+{
+"w": "Abonne-toi",
+"s": 71.42,
+"e": 71.96,
+"scene": "abonne"
+},
+{
+"w": "pour",
+"s": 71.96,
+"e": 72.12,
+"scene": "abonne"
+},
+{
+"w": "découvrir",
+"s": 72.12,
+"e": 72.54,
+"scene": "abonne"
+},
+{
+"w": "d'autres",
+"s": 72.54,
+"e": 72.83,
+"scene": "abonne"
+},
+{
+"w": "secrets",
+"s": 72.83,
+"e": 73.12,
+"scene": "abonne"
+},
+{
+"w": "du",
+"s": 73.12,
+"e": 73.28,
+"scene": "abonne"
+},
+{
+"w": "monde",
+"s": 73.28,
+"e": 73.57,
+"scene": "abonne"
+},
+{
+"w": "animal !",
+"s": 73.57,
+"e": 73.99,
+"scene": "abonne"
+}
+]
+}
