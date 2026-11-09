@@ -1,0 +1,1662 @@
+{
+"duration": 85.080816,
+"source": "pauses",
+"words": [
+{
+"w": "Saviez-vous",
+"s": 0.0,
+"e": 0.39,
+"scene": "titre"
+},
+{
+"w": "qu'il",
+"s": 0.39,
+"e": 0.66,
+"scene": "titre"
+},
+{
+"w": "existe",
+"s": 0.66,
+"e": 1.06,
+"scene": "titre"
+},
+{
+"w": "un",
+"s": 1.06,
+"e": 1.21,
+"scene": "titre"
+},
+{
+"w": "animal",
+"s": 1.21,
+"e": 1.8,
+"scene": "titre"
+},
+{
+"w": "tellement",
+"s": 1.8,
+"e": 2.19,
+"scene": "titre"
+},
+{
+"w": "bizarre",
+"s": 2.19,
+"e": 2.58,
+"scene": "titre"
+},
+{
+"w": "que",
+"s": 2.58,
+"e": 2.9,
+"scene": "titre"
+},
+{
+"w": "les",
+"s": 2.9,
+"e": 3.05,
+"scene": "titre"
+},
+{
+"w": "scientifiques",
+"s": 3.05,
+"e": 3.56,
+"scene": "titre"
+},
+{
+"w": "ont",
+"s": 3.56,
+"e": 3.71,
+"scene": "titre"
+},
+{
+"w": "d'abord",
+"s": 3.71,
+"e": 3.99,
+"scene": "titre"
+},
+{
+"w": "cru",
+"s": 3.99,
+"e": 4.14,
+"scene": "titre"
+},
+{
+"w": "à",
+"s": 4.14,
+"e": 4.3,
+"scene": "titre"
+},
+{
+"w": "une",
+"s": 4.3,
+"e": 4.57,
+"scene": "titre"
+},
+{
+"w": "blague ?",
+"s": 4.57,
+"e": 4.84,
+"scene": "titre"
+},
+{
+"w": "Un",
+"s": 5.34,
+"e": 5.61,
+"scene": "assemble"
+},
+{
+"w": "bec",
+"s": 5.61,
+"e": 5.87,
+"scene": "assemble"
+},
+{
+"w": "de",
+"s": 5.87,
+"e": 6.14,
+"scene": "assemble"
+},
+{
+"w": "canard,",
+"s": 6.14,
+"e": 6.61,
+"scene": "assemble"
+},
+{
+"w": "un",
+"s": 6.74,
+"e": 6.92,
+"scene": "assemble"
+},
+{
+"w": "corps",
+"s": 6.92,
+"e": 7.11,
+"scene": "assemble"
+},
+{
+"w": "de",
+"s": 7.11,
+"e": 7.29,
+"scene": "assemble"
+},
+{
+"w": "loutre,",
+"s": 7.29,
+"e": 7.62,
+"scene": "assemble"
+},
+{
+"w": "une",
+"s": 7.76,
+"e": 8.06,
+"scene": "assemble"
+},
+{
+"w": "queue",
+"s": 8.06,
+"e": 8.22,
+"scene": "assemble"
+},
+{
+"w": "de",
+"s": 8.22,
+"e": 8.39,
+"scene": "assemble"
+},
+{
+"w": "castor…",
+"s": 8.39,
+"e": 8.69,
+"scene": "assemble"
+},
+{
+"w": "On",
+"s": 9.07,
+"e": 9.23,
+"scene": "assemble"
+},
+{
+"w": "dirait",
+"s": 9.23,
+"e": 9.5,
+"scene": "assemble"
+},
+{
+"w": "qu'on",
+"s": 9.5,
+"e": 9.78,
+"scene": "assemble"
+},
+{
+"w": "l'a",
+"s": 9.78,
+"e": 9.94,
+"scene": "assemble"
+},
+{
+"w": "assemblé",
+"s": 9.94,
+"e": 10.33,
+"scene": "assemble"
+},
+{
+"w": "avec",
+"s": 10.33,
+"e": 10.61,
+"scene": "assemble"
+},
+{
+"w": "les",
+"s": 10.61,
+"e": 10.76,
+"scene": "assemble"
+},
+{
+"w": "restes",
+"s": 10.76,
+"e": 11.04,
+"scene": "assemble"
+},
+{
+"w": "d'autres",
+"s": 11.04,
+"e": 11.31,
+"scene": "assemble"
+},
+{
+"w": "animaux.",
+"s": 11.31,
+"e": 11.71,
+"scene": "assemble"
+},
+{
+"w": "Le",
+"s": 12.2,
+"e": 12.5,
+"scene": "faux"
+},
+{
+"w": "« faux »",
+"s": 12.5,
+"e": 12.94,
+"scene": "faux"
+},
+{
+"w": "animal.",
+"s": 12.94,
+"e": 13.68,
+"scene": "faux"
+},
+{
+"w": "Voici",
+"s": 13.97,
+"e": 14.1,
+"scene": "faux"
+},
+{
+"w": "l'ornithorynque,",
+"s": 14.1,
+"e": 14.4,
+"scene": "faux"
+},
+{
+"w": "qui",
+"s": 14.4,
+"e": 14.47,
+"scene": "faux"
+},
+{
+"w": "vit",
+"s": 14.47,
+"e": 14.54,
+"scene": "faux"
+},
+{
+"w": "en",
+"s": 14.54,
+"e": 14.61,
+"scene": "faux"
+},
+{
+"w": "Australie.",
+"s": 14.61,
+"e": 14.8,
+"scene": "faux"
+},
+{
+"w": "Quand",
+"s": 15.37,
+"e": 15.54,
+"scene": "faux"
+},
+{
+"w": "les",
+"s": 15.54,
+"e": 15.71,
+"scene": "faux"
+},
+{
+"w": "savants",
+"s": 15.71,
+"e": 16.01,
+"scene": "faux"
+},
+{
+"w": "anglais",
+"s": 16.01,
+"e": 16.31,
+"scene": "faux"
+},
+{
+"w": "ont",
+"s": 16.31,
+"e": 16.49,
+"scene": "faux"
+},
+{
+"w": "reçu",
+"s": 16.49,
+"e": 16.79,
+"scene": "faux"
+},
+{
+"w": "le",
+"s": 16.79,
+"e": 16.96,
+"scene": "faux"
+},
+{
+"w": "premier",
+"s": 16.96,
+"e": 17.26,
+"scene": "faux"
+},
+{
+"w": "spécimen,",
+"s": 17.26,
+"e": 17.69,
+"scene": "faux"
+},
+{
+"w": "ils",
+"s": 18.03,
+"e": 18.19,
+"scene": "faux"
+},
+{
+"w": "ont",
+"s": 18.19,
+"e": 18.35,
+"scene": "faux"
+},
+{
+"w": "cru",
+"s": 18.35,
+"e": 18.51,
+"scene": "faux"
+},
+{
+"w": "que",
+"s": 18.51,
+"e": 18.67,
+"scene": "faux"
+},
+{
+"w": "quelqu'un",
+"s": 18.67,
+"e": 19.07,
+"scene": "faux"
+},
+{
+"w": "s'était",
+"s": 19.07,
+"e": 19.36,
+"scene": "faux"
+},
+{
+"w": "moqué",
+"s": 19.36,
+"e": 19.64,
+"scene": "faux"
+},
+{
+"w": "d'eux",
+"s": 19.64,
+"e": 19.8,
+"scene": "faux"
+},
+{
+"w": "en",
+"s": 19.8,
+"e": 20.1,
+"scene": "faux"
+},
+{
+"w": "cousant",
+"s": 20.1,
+"e": 20.38,
+"scene": "faux"
+},
+{
+"w": "un",
+"s": 20.38,
+"e": 20.54,
+"scene": "faux"
+},
+{
+"w": "bec",
+"s": 20.54,
+"e": 20.7,
+"scene": "faux"
+},
+{
+"w": "de",
+"s": 20.7,
+"e": 20.86,
+"scene": "faux"
+},
+{
+"w": "canard",
+"s": 20.86,
+"e": 21.14,
+"scene": "faux"
+},
+{
+"w": "sur",
+"s": 21.14,
+"e": 21.3,
+"scene": "faux"
+},
+{
+"w": "un",
+"s": 21.3,
+"e": 21.46,
+"scene": "faux"
+},
+{
+"w": "autre",
+"s": 21.46,
+"e": 21.75,
+"scene": "faux"
+},
+{
+"w": "animal.",
+"s": 21.75,
+"e": 22.15,
+"scene": "faux"
+},
+{
+"w": "L'un",
+"s": 22.61,
+"e": 22.78,
+"scene": "faux"
+},
+{
+"w": "d'eux",
+"s": 22.78,
+"e": 22.95,
+"scene": "faux"
+},
+{
+"w": "a",
+"s": 22.95,
+"e": 23.12,
+"scene": "faux"
+},
+{
+"w": "même",
+"s": 23.12,
+"e": 23.43,
+"scene": "faux"
+},
+{
+"w": "essayé",
+"s": 23.43,
+"e": 23.73,
+"scene": "faux"
+},
+{
+"w": "d'arracher",
+"s": 23.73,
+"e": 24.17,
+"scene": "faux"
+},
+{
+"w": "le",
+"s": 24.17,
+"e": 24.34,
+"scene": "faux"
+},
+{
+"w": "bec",
+"s": 24.34,
+"e": 24.51,
+"scene": "faux"
+},
+{
+"w": "avec",
+"s": 24.51,
+"e": 24.81,
+"scene": "faux"
+},
+{
+"w": "des",
+"s": 24.81,
+"e": 24.98,
+"scene": "faux"
+},
+{
+"w": "ciseaux",
+"s": 24.98,
+"e": 25.29,
+"scene": "faux"
+},
+{
+"w": "pour",
+"s": 25.29,
+"e": 25.46,
+"scene": "faux"
+},
+{
+"w": "trouver",
+"s": 25.46,
+"e": 25.76,
+"scene": "faux"
+},
+{
+"w": "les",
+"s": 25.76,
+"e": 25.93,
+"scene": "faux"
+},
+{
+"w": "coutures !",
+"s": 25.93,
+"e": 26.37,
+"scene": "faux"
+},
+{
+"w": "Il",
+"s": 26.85,
+"e": 26.97,
+"scene": "faux"
+},
+{
+"w": "n'y",
+"s": 26.97,
+"e": 27.09,
+"scene": "faux"
+},
+{
+"w": "en",
+"s": 27.09,
+"e": 27.2,
+"scene": "faux"
+},
+{
+"w": "avait",
+"s": 27.2,
+"e": 27.54,
+"scene": "faux"
+},
+{
+"w": "aucune :",
+"s": 27.54,
+"e": 27.84,
+"scene": "faux"
+},
+{
+"w": "l'animal",
+"s": 28.22,
+"e": 28.76,
+"scene": "faux"
+},
+{
+"w": "était",
+"s": 28.76,
+"e": 29.28,
+"scene": "faux"
+},
+{
+"w": "bien",
+"s": 29.28,
+"e": 29.5,
+"scene": "faux"
+},
+{
+"w": "réel.",
+"s": 29.5,
+"e": 29.71,
+"scene": "faux"
+},
+{
+"w": "Ni",
+"s": 30.28,
+"e": 30.56,
+"scene": "mammifere"
+},
+{
+"w": "oiseau,",
+"s": 30.56,
+"e": 31.05,
+"scene": "mammifere"
+},
+{
+"w": "ni",
+"s": 31.23,
+"e": 31.45,
+"scene": "mammifere"
+},
+{
+"w": "reptile…",
+"s": 31.45,
+"e": 32.14,
+"scene": "mammifere"
+},
+{
+"w": "mais",
+"s": 32.56,
+"e": 32.73,
+"scene": "mammifere"
+},
+{
+"w": "un",
+"s": 32.73,
+"e": 32.91,
+"scene": "mammifere"
+},
+{
+"w": "peu",
+"s": 32.91,
+"e": 33.09,
+"scene": "mammifere"
+},
+{
+"w": "des",
+"s": 33.09,
+"e": 33.27,
+"scene": "mammifere"
+},
+{
+"w": "deux.",
+"s": 33.27,
+"e": 33.45,
+"scene": "mammifere"
+},
+{
+"w": "L'ornithorynque",
+"s": 33.98,
+"e": 34.63,
+"scene": "mammifere"
+},
+{
+"w": "est",
+"s": 34.63,
+"e": 34.79,
+"scene": "mammifere"
+},
+{
+"w": "un",
+"s": 34.79,
+"e": 34.96,
+"scene": "mammifere"
+},
+{
+"w": "mammifère :",
+"s": 34.96,
+"e": 35.49,
+"scene": "mammifere"
+},
+{
+"w": "il",
+"s": 35.95,
+"e": 36.11,
+"scene": "mammifere"
+},
+{
+"w": "a",
+"s": 36.11,
+"e": 36.26,
+"scene": "mammifere"
+},
+{
+"w": "des",
+"s": 36.26,
+"e": 36.42,
+"scene": "mammifere"
+},
+{
+"w": "poils",
+"s": 36.42,
+"e": 36.57,
+"scene": "mammifere"
+},
+{
+"w": "et",
+"s": 36.57,
+"e": 36.89,
+"scene": "mammifere"
+},
+{
+"w": "nourrit",
+"s": 36.89,
+"e": 37.17,
+"scene": "mammifere"
+},
+{
+"w": "ses",
+"s": 37.17,
+"e": 37.32,
+"scene": "mammifere"
+},
+{
+"w": "petits",
+"s": 37.32,
+"e": 37.59,
+"scene": "mammifere"
+},
+{
+"w": "avec",
+"s": 37.59,
+"e": 37.86,
+"scene": "mammifere"
+},
+{
+"w": "du",
+"s": 37.86,
+"e": 38.02,
+"scene": "mammifere"
+},
+{
+"w": "lait.",
+"s": 38.02,
+"e": 38.17,
+"scene": "mammifere"
+},
+{
+"w": "Mais",
+"s": 38.61,
+"e": 38.79,
+"scene": "mammifere"
+},
+{
+"w": "il",
+"s": 38.79,
+"e": 38.96,
+"scene": "mammifere"
+},
+{
+"w": "pond",
+"s": 38.96,
+"e": 39.14,
+"scene": "mammifere"
+},
+{
+"w": "des",
+"s": 39.14,
+"e": 39.31,
+"scene": "mammifere"
+},
+{
+"w": "œufs,",
+"s": 39.31,
+"e": 39.49,
+"scene": "mammifere"
+},
+{
+"w": "comme",
+"s": 39.77,
+"e": 40.04,
+"scene": "mammifere"
+},
+{
+"w": "un",
+"s": 40.04,
+"e": 40.19,
+"scene": "mammifere"
+},
+{
+"w": "oiseau",
+"s": 40.19,
+"e": 40.46,
+"scene": "mammifere"
+},
+{
+"w": "ou",
+"s": 40.46,
+"e": 40.61,
+"scene": "mammifere"
+},
+{
+"w": "un",
+"s": 40.61,
+"e": 40.77,
+"scene": "mammifere"
+},
+{
+"w": "reptile !",
+"s": 40.77,
+"e": 41.15,
+"scene": "mammifere"
+},
+{
+"w": "Et",
+"s": 41.51,
+"e": 41.64,
+"scene": "mammifere"
+},
+{
+"w": "comme",
+"s": 41.64,
+"e": 41.87,
+"scene": "mammifere"
+},
+{
+"w": "il",
+"s": 41.87,
+"e": 41.99,
+"scene": "mammifere"
+},
+{
+"w": "n'a",
+"s": 41.99,
+"e": 42.12,
+"scene": "mammifere"
+},
+{
+"w": "pas",
+"s": 42.12,
+"e": 42.25,
+"scene": "mammifere"
+},
+{
+"w": "de",
+"s": 42.25,
+"e": 42.37,
+"scene": "mammifere"
+},
+{
+"w": "tétines,",
+"s": 42.37,
+"e": 42.7,
+"scene": "mammifere"
+},
+{
+"w": "son",
+"s": 42.96,
+"e": 43.15,
+"scene": "mammifere"
+},
+{
+"w": "lait",
+"s": 43.15,
+"e": 43.34,
+"scene": "mammifere"
+},
+{
+"w": "sort",
+"s": 43.34,
+"e": 43.52,
+"scene": "mammifere"
+},
+{
+"w": "directement",
+"s": 43.52,
+"e": 44.13,
+"scene": "mammifere"
+},
+{
+"w": "de",
+"s": 44.13,
+"e": 44.32,
+"scene": "mammifere"
+},
+{
+"w": "sa",
+"s": 44.32,
+"e": 44.51,
+"scene": "mammifere"
+},
+{
+"w": "peau,",
+"s": 44.51,
+"e": 44.69,
+"scene": "mammifere"
+},
+{
+"w": "comme",
+"s": 44.97,
+"e": 45.21,
+"scene": "mammifere"
+},
+{
+"w": "de",
+"s": 45.21,
+"e": 45.34,
+"scene": "mammifere"
+},
+{
+"w": "la",
+"s": 45.34,
+"e": 45.48,
+"scene": "mammifere"
+},
+{
+"w": "sueur,",
+"s": 45.48,
+"e": 45.62,
+"scene": "mammifere"
+},
+{
+"w": "et",
+"s": 45.97,
+"e": 46.1,
+"scene": "mammifere"
+},
+{
+"w": "les",
+"s": 46.1,
+"e": 46.23,
+"scene": "mammifere"
+},
+{
+"w": "petits",
+"s": 46.23,
+"e": 46.46,
+"scene": "mammifere"
+},
+{
+"w": "le",
+"s": 46.46,
+"e": 46.59,
+"scene": "mammifere"
+},
+{
+"w": "lèchent.",
+"s": 46.59,
+"e": 46.83,
+"scene": "mammifere"
+},
+{
+"w": "Encore",
+"s": 47.28,
+"e": 47.83,
+"scene": "bizarre"
+},
+{
+"w": "plus",
+"s": 47.83,
+"e": 47.99,
+"scene": "bizarre"
+},
+{
+"w": "bizarre.",
+"s": 47.99,
+"e": 48.4,
+"scene": "bizarre"
+},
+{
+"w": "Il",
+"s": 48.99,
+"e": 49.15,
+"scene": "bizarre"
+},
+{
+"w": "n'a",
+"s": 49.15,
+"e": 49.47,
+"scene": "bizarre"
+},
+{
+"w": "pas",
+"s": 49.47,
+"e": 49.63,
+"scene": "bizarre"
+},
+{
+"w": "d'estomac.",
+"s": 49.63,
+"e": 50.02,
+"scene": "bizarre"
+},
+{
+"w": "Le",
+"s": 50.49,
+"e": 50.65,
+"scene": "bizarre"
+},
+{
+"w": "mâle",
+"s": 50.65,
+"e": 50.91,
+"scene": "bizarre"
+},
+{
+"w": "a",
+"s": 50.91,
+"e": 51.06,
+"scene": "bizarre"
+},
+{
+"w": "un",
+"s": 51.06,
+"e": 51.21,
+"scene": "bizarre"
+},
+{
+"w": "ergot",
+"s": 51.21,
+"e": 51.48,
+"scene": "bizarre"
+},
+{
+"w": "venimeux",
+"s": 51.48,
+"e": 51.86,
+"scene": "bizarre"
+},
+{
+"w": "sur",
+"s": 51.86,
+"e": 52.02,
+"scene": "bizarre"
+},
+{
+"w": "les",
+"s": 52.02,
+"e": 52.17,
+"scene": "bizarre"
+},
+{
+"w": "pattes",
+"s": 52.17,
+"e": 52.43,
+"scene": "bizarre"
+},
+{
+"w": "arrière,",
+"s": 52.43,
+"e": 52.82,
+"scene": "bizarre"
+},
+{
+"w": "assez",
+"s": 53.14,
+"e": 53.44,
+"scene": "bizarre"
+},
+{
+"w": "douloureux",
+"s": 53.44,
+"e": 53.87,
+"scene": "bizarre"
+},
+{
+"w": "pour",
+"s": 53.87,
+"e": 54.05,
+"scene": "bizarre"
+},
+{
+"w": "mettre",
+"s": 54.05,
+"e": 54.35,
+"scene": "bizarre"
+},
+{
+"w": "un",
+"s": 54.35,
+"e": 54.52,
+"scene": "bizarre"
+},
+{
+"w": "homme",
+"s": 54.52,
+"e": 54.82,
+"scene": "bizarre"
+},
+{
+"w": "KO",
+"s": 54.82,
+"e": 55.12,
+"scene": "bizarre"
+},
+{
+"w": "plusieurs",
+"s": 55.12,
+"e": 55.42,
+"scene": "bizarre"
+},
+{
+"w": "jours.",
+"s": 55.42,
+"e": 55.59,
+"scene": "bizarre"
+},
+{
+"w": "Et",
+"s": 56.07,
+"e": 56.23,
+"scene": "bizarre"
+},
+{
+"w": "sous",
+"s": 56.23,
+"e": 56.38,
+"scene": "bizarre"
+},
+{
+"w": "l'eau,",
+"s": 56.38,
+"e": 56.54,
+"scene": "bizarre"
+},
+{
+"w": "il",
+"s": 56.86,
+"e": 57.05,
+"scene": "bizarre"
+},
+{
+"w": "ferme",
+"s": 57.05,
+"e": 57.38,
+"scene": "bizarre"
+},
+{
+"w": "les",
+"s": 57.38,
+"e": 57.57,
+"scene": "bizarre"
+},
+{
+"w": "yeux,",
+"s": 57.57,
+"e": 57.75,
+"scene": "bizarre"
+},
+{
+"w": "les",
+"s": 58.01,
+"e": 58.16,
+"scene": "bizarre"
+},
+{
+"w": "oreilles",
+"s": 58.16,
+"e": 58.53,
+"scene": "bizarre"
+},
+{
+"w": "et",
+"s": 58.53,
+"e": 58.89,
+"scene": "bizarre"
+},
+{
+"w": "le",
+"s": 58.89,
+"e": 59.04,
+"scene": "bizarre"
+},
+{
+"w": "nez :",
+"s": 59.04,
+"e": 59.18,
+"scene": "bizarre"
+},
+{
+"w": "il",
+"s": 59.57,
+"e": 59.74,
+"scene": "bizarre"
+},
+{
+"w": "trouve",
+"s": 59.74,
+"e": 60.04,
+"scene": "bizarre"
+},
+{
+"w": "ses",
+"s": 60.04,
+"e": 60.21,
+"scene": "bizarre"
+},
+{
+"w": "proies",
+"s": 60.21,
+"e": 60.38,
+"scene": "bizarre"
+},
+{
+"w": "grâce",
+"s": 60.38,
+"e": 60.67,
+"scene": "bizarre"
+},
+{
+"w": "à",
+"s": 60.67,
+"e": 60.84,
+"scene": "bizarre"
+},
+{
+"w": "son",
+"s": 60.84,
+"e": 61.01,
+"scene": "bizarre"
+},
+{
+"w": "bec,",
+"s": 61.01,
+"e": 61.18,
+"scene": "bizarre"
+},
+{
+"w": "qui",
+"s": 61.42,
+"e": 61.59,
+"scene": "bizarre"
+},
+{
+"w": "détecte",
+"s": 61.59,
+"e": 62.01,
+"scene": "bizarre"
+},
+{
+"w": "l'électricité",
+"s": 62.01,
+"e": 62.7,
+"scene": "bizarre"
+},
+{
+"w": "de",
+"s": 62.7,
+"e": 62.87,
+"scene": "bizarre"
+},
+{
+"w": "leurs",
+"s": 62.87,
+"e": 63.03,
+"scene": "bizarre"
+},
+{
+"w": "muscles.",
+"s": 63.03,
+"e": 63.33,
+"scene": "bizarre"
+},
+{
+"w": "Conclusion.",
+"s": 63.82,
+"e": 64.72,
+"scene": "conclusion"
+},
+{
+"w": "Les",
+"s": 64.84,
+"e": 64.96,
+"scene": "conclusion"
+},
+{
+"w": "scientifiques",
+"s": 64.96,
+"e": 65.35,
+"scene": "conclusion"
+},
+{
+"w": "ont",
+"s": 65.35,
+"e": 65.46,
+"scene": "conclusion"
+},
+{
+"w": "mis",
+"s": 65.46,
+"e": 65.58,
+"scene": "conclusion"
+},
+{
+"w": "des",
+"s": 65.58,
+"e": 65.7,
+"scene": "conclusion"
+},
+{
+"w": "années",
+"s": 65.7,
+"e": 66.31,
+"scene": "conclusion"
+},
+{
+"w": "à",
+"s": 66.31,
+"e": 66.42,
+"scene": "conclusion"
+},
+{
+"w": "le",
+"s": 66.42,
+"e": 66.54,
+"scene": "conclusion"
+},
+{
+"w": "comprendre,",
+"s": 66.54,
+"e": 66.84,
+"scene": "conclusion"
+},
+{
+"w": "mais",
+"s": 67.05,
+"e": 67.19,
+"scene": "conclusion"
+},
+{
+"w": "aujourd'hui",
+"s": 67.19,
+"e": 67.54,
+"scene": "conclusion"
+},
+{
+"w": "l'ornithorynque",
+"s": 67.54,
+"e": 68.12,
+"scene": "conclusion"
+},
+{
+"w": "est",
+"s": 68.12,
+"e": 68.26,
+"scene": "conclusion"
+},
+{
+"w": "l'un",
+"s": 68.26,
+"e": 68.4,
+"scene": "conclusion"
+},
+{
+"w": "des",
+"s": 68.4,
+"e": 68.54,
+"scene": "conclusion"
+},
+{
+"w": "animaux",
+"s": 68.54,
+"e": 69.04,
+"scene": "conclusion"
+},
+{
+"w": "les",
+"s": 69.04,
+"e": 69.18,
+"scene": "conclusion"
+},
+{
+"w": "plus",
+"s": 69.18,
+"e": 69.32,
+"scene": "conclusion"
+},
+{
+"w": "précieux",
+"s": 69.32,
+"e": 69.57,
+"scene": "conclusion"
+},
+{
+"w": "pour",
+"s": 69.57,
+"e": 69.71,
+"scene": "conclusion"
+},
+{
+"w": "étudier",
+"s": 69.71,
+"e": 70.07,
+"scene": "conclusion"
+},
+{
+"w": "l'évolution.",
+"s": 70.07,
+"e": 70.54,
+"scene": "conclusion"
+},
+{
+"w": "Comme",
+"s": 71.03,
+"e": 71.25,
+"scene": "conclusion"
+},
+{
+"w": "ces",
+"s": 71.25,
+"e": 71.37,
+"scene": "conclusion"
+},
+{
+"w": "gens",
+"s": 71.37,
+"e": 71.49,
+"scene": "conclusion"
+},
+{
+"w": "qui",
+"s": 71.49,
+"e": 71.62,
+"scene": "conclusion"
+},
+{
+"w": "ne",
+"s": 71.62,
+"e": 71.74,
+"scene": "conclusion"
+},
+{
+"w": "ressemblent",
+"s": 71.74,
+"e": 72.05,
+"scene": "conclusion"
+},
+{
+"w": "à",
+"s": 72.05,
+"e": 72.17,
+"scene": "conclusion"
+},
+{
+"w": "personne :",
+"s": 72.17,
+"e": 72.48,
+"scene": "conclusion"
+},
+{
+"w": "on",
+"s": 72.86,
+"e": 73.0,
+"scene": "conclusion"
+},
+{
+"w": "les",
+"s": 73.0,
+"e": 73.13,
+"scene": "conclusion"
+},
+{
+"w": "trouve",
+"s": 73.13,
+"e": 73.37,
+"scene": "conclusion"
+},
+{
+"w": "bizarres",
+"s": 73.37,
+"e": 73.7,
+"scene": "conclusion"
+},
+{
+"w": "au",
+"s": 73.7,
+"e": 73.84,
+"scene": "conclusion"
+},
+{
+"w": "début…",
+"s": 73.84,
+"e": 74.07,
+"scene": "conclusion"
+},
+{
+"w": "avant",
+"s": 74.54,
+"e": 74.75,
+"scene": "conclusion"
+},
+{
+"w": "de",
+"s": 74.75,
+"e": 74.86,
+"scene": "conclusion"
+},
+{
+"w": "comprendre",
+"s": 74.86,
+"e": 75.17,
+"scene": "conclusion"
+},
+{
+"w": "qu'ils",
+"s": 75.17,
+"e": 75.62,
+"scene": "conclusion"
+},
+{
+"w": "sont",
+"s": 75.62,
+"e": 75.74,
+"scene": "conclusion"
+},
+{
+"w": "uniques.",
+"s": 75.74,
+"e": 76.21,
+"scene": "conclusion"
+},
+{
+"w": "Et",
+"s": 76.87,
+"e": 77.02,
+"scene": "question"
+},
+{
+"w": "toi,",
+"s": 77.02,
+"e": 77.18,
+"scene": "question"
+},
+{
+"w": "dans",
+"s": 77.46,
+"e": 77.58,
+"scene": "question"
+},
+{
+"w": "ta",
+"s": 77.58,
+"e": 77.71,
+"scene": "question"
+},
+{
+"w": "famille,",
+"s": 77.71,
+"e": 78.04,
+"scene": "question"
+},
+{
+"w": "qui",
+"s": 78.32,
+"e": 78.47,
+"scene": "question"
+},
+{
+"w": "est",
+"s": 78.47,
+"e": 78.62,
+"scene": "question"
+},
+{
+"w": "l'ornithorynque,",
+"s": 78.62,
+"e": 79.23,
+"scene": "question"
+},
+{
+"w": "celui",
+"s": 79.45,
+"e": 79.68,
+"scene": "question"
+},
+{
+"w": "qui",
+"s": 79.68,
+"e": 79.81,
+"scene": "question"
+},
+{
+"w": "ne",
+"s": 79.81,
+"e": 79.93,
+"scene": "question"
+},
+{
+"w": "ressemble",
+"s": 79.93,
+"e": 80.26,
+"scene": "question"
+},
+{
+"w": "à",
+"s": 80.26,
+"e": 80.39,
+"scene": "question"
+},
+{
+"w": "personne ?",
+"s": 80.39,
+"e": 80.71,
+"scene": "question"
+},
+{
+"w": "Dis-le",
+"s": 81.01,
+"e": 81.26,
+"scene": "question"
+},
+{
+"w": "en",
+"s": 81.26,
+"e": 81.4,
+"scene": "question"
+},
+{
+"w": "commentaire.",
+"s": 81.4,
+"e": 81.86,
+"scene": "question"
+},
+{
+"w": "Abonne-toi",
+"s": 82.29,
+"e": 82.81,
+"scene": "abonne"
+},
+{
+"w": "pour",
+"s": 82.81,
+"e": 82.96,
+"scene": "abonne"
+},
+{
+"w": "découvrir",
+"s": 82.96,
+"e": 83.36,
+"scene": "abonne"
+},
+{
+"w": "d'autres",
+"s": 83.36,
+"e": 83.76,
+"scene": "abonne"
+},
+{
+"w": "secrets",
+"s": 83.76,
+"e": 84.03,
+"scene": "abonne"
+},
+{
+"w": "du",
+"s": 84.03,
+"e": 84.19,
+"scene": "abonne"
+},
+{
+"w": "monde",
+"s": 84.19,
+"e": 84.46,
+"scene": "abonne"
+},
+{
+"w": "animal !",
+"s": 84.46,
+"e": 84.85,
+"scene": "abonne"
+}
+]
+}
