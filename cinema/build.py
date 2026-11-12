@@ -29,6 +29,8 @@ LOOKS = {
                   "curves=all='0/0 0.10/0.085 0.45/0.48 0.85/0.90 1/1',eq=contrast=1.04:saturation=1.0",
     "nuit": "colorbalance=rs=-0.02:bs=0.045:rh=0.035:bh=-0.03,"
             "curves=all='0/0 0.10/0.085 0.32/0.36 0.60/0.70 1/1',eq=contrast=1.03:saturation=1.02",
+    "neon": "colorbalance=rs=-0.01:bs=0.02:rh=0.03:gh=-0.01:bh=-0.02,"
+            "curves=all='0/0 0.10/0.085 0.45/0.47 0.85/0.90 1/1',eq=contrast=1.04:saturation=0.98",
     "bleu": "curves=all='0/0 0.10/0.08 0.40/0.44 0.70/0.79 1/1',eq=contrast=1.05:saturation=1.0",
 }
 POLISH = "hqdn3d=1.2:1.2:2.5:2.5,unsharp=5:5:0.45:5:5:0"
@@ -75,7 +77,7 @@ def build_shots(film, edl):
     out_dir = os.path.join(film, "build", "shots")
     os.makedirs(out_dir, exist_ok=True)
     for i, s in enumerate(edl["shots"]):
-        out = os.path.join(out_dir, f"{i + 1:02d}_{s['id']}.mp4")
+        out = os.path.join(out_dir, f"{s['id']}.mp4")
         key = json.dumps({k: s.get(k) for k in ("scene", "tin", "tout", "slow", "z0", "z1", "c0", "c1", "shake",
                                                 "punch", "look", "trans")}, sort_keys=True) + shot_vf(edl, i)
         stamp = out + ".key"
@@ -209,15 +211,22 @@ def score_and_sfx(film, edl, N):
 
     T = lambda k, edge="t0": sh[k][edge]
 
-    # --- Accroche : flamme, impact, sub.
-    put(sfx, M.flame(1.5), 0.0, -14)
-    a = sh["accroche"]
-    spark = onset_peak(a["src"], a["tin"], a["tout"])
-    if spark is not None:  # gerbe d'étincelles : attaque réelle de la scène source
-        print(f"étincelles : attaque à {spark:.2f}s source -> {spark - a['tin']:.2f}s montage")
-        put(sfx, M.impact(2.0, "A1"), spark - a["tin"], -12)
-    put(sfx, M.impact(4.0, "D1"), T("menace_large"), -6)
-    put(sfx, M.whoosh(0.5), T("menace_large") - 0.35, -14)
+    # --- Ouverture : cœur et nappe sombre sous les insultes, montée sur « Ce soir, j'arrache… »,
+    # impact sur la fissure (attaque détectée par librosa), éclat lumineux, puis noir.
+    t_o, t_e = T("ouverture_mots"), T("ouverture_peau", "t1")
+    put(music, M.drone("C#2", t_e - t_o + 0.6, 0.4, 0.6), t_o, -9)
+    put(music, M.heartbeat(T("ouverture_ce_soir") - t_o, 70, 0.8), t_o, -12)
+    put(music, M.string_pad(["C#3", "E3", "G#3"], T("ouverture_ce_soir") - t_o + 1.0, 1100, 1.0, 1.0), t_o, -13)
+    put(music, M.riser(T("ouverture_peau") - T("ouverture_ce_soir") + 0.3), T("ouverture_ce_soir"), -9)
+    o = sh["ouverture_peau"]
+    crack = onset_peak(o["src"], o["tin"], o["tin"] + 0.8)
+    t_crack = T("ouverture_peau") + ((crack if crack is not None else o["tin"]) - o["tin"])
+    print(f"fissure : attaque à {crack}s source -> {t_crack:.2f}s montage")
+    put(sfx, M.impact(3.0, "C#1"), t_crack, -8)
+    put(music, M.string_pad(["C#3", "G#3", "C#4", "E4"], t_e - t_crack + 0.8, 2600, 0.8, 0.8), t_crack, -10)
+    put(sfx, M.whoosh(0.8), t_e - 0.8, -12)
+    put(sfx, M.impact(4.0, "D1"), t_e, -5)
+    put(sfx, M.sub_drop(2.0), t_e, -8)
     # --- Acte 1 : maison (drone de menace), marché (tendresse).
     put(music, M.drone("D2", T("marche_large") - T("menace_large") + 1.5, 0.8, 1.5), T("menace_large"), -6)
     put(music, M.string_pad(["D3", "F3", "A3"], 6.0, 1200, 2.5, 2.5), T("menace_renella"), -12)
@@ -362,7 +371,7 @@ def build_final(film, edl, dlg, name):
     lst = os.path.join(bd, "concat.txt")
     with open(lst, "w") as f:
         for i, s in enumerate(edl["shots"]):
-            path = os.path.abspath(os.path.join(shots_dir, f"{i + 1:02d}_{s['id']}.mp4"))
+            path = os.path.abspath(os.path.join(shots_dir, f"{s['id']}.mp4"))
             f.write(f"file '{path}'\n")
     os.makedirs(os.path.join(ROOT, "export"), exist_ok=True)
     total = edl["total"]
@@ -378,7 +387,7 @@ def build_final(film, edl, dlg, name):
               f"ass={ass}:fontsdir={FONT_DIR},format=yuv420p[v]")
         run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst,
              "-i", os.path.join(bd, "mix.wav"), "-filter_complex", fc, "-map", "[v]", "-map", "1:a",
-             "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-maxrate", "9M", "-bufsize", "18M", "-profile:v", "high", "-level", "4.2",
+             "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-maxrate", "7500k", "-bufsize", "15M", "-profile:v", "high", "-level", "4.2",
              "-pix_fmt", "yuv420p", "-r", str(FPS), "-g", "60", "-bf", "2",
              "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
              "-c:a", "aac", "-b:a", "256k", "-ar", str(SR), "-ac", "2",
@@ -390,7 +399,7 @@ def build_thumb(film, edl, name, shot_id="jamais", at=2.4):
     from PIL import Image, ImageDraw, ImageFont, ImageFilter
     bd = os.path.join(film, "build")
     i = next(k for k, s in enumerate(edl["shots"]) if s["id"] == shot_id)
-    src = os.path.join(bd, "shots", f"{i + 1:02d}_{shot_id}.mp4")
+    src = os.path.join(bd, "shots", f"{shot_id}.mp4")
     png = os.path.join(bd, "thumb_src.png")
     run(["ffmpeg", "-v", "error", "-y", "-ss", f"{at}", "-i", src, "-frames:v", "1", png])
     im = Image.open(png).convert("RGB")
