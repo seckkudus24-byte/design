@@ -7,71 +7,33 @@
  },
  "shots": [
   {
-   "id": "ouverture_mots",
-   "scene": "00_ouverture",
-   "tin": 0.0,
-   "tout": 3.75,
-   "z0": 1.0,
-   "z1": 1.06,
+   "id": "accroche",
+   "scene": "10_chalumeau",
+   "tin": 0.95,
+   "tout": 2.35,
+   "z0": 1.12,
+   "z1": 1.28,
    "c0": [
     0.5,
     0.42
    ],
-   "look": "neon",
-   "note": "Ouverture : elle lit le papier, en larmes. Scène placée en tête pour donner envie de savoir pourquoi elle se transforme."
-  },
-  {
-   "id": "ouverture_famille",
-   "scene": "00_ouverture",
-   "tin": 3.75,
-   "tout": 6.85,
-   "z0": 1.04,
-   "z1": 1.12,
-   "c0": [
-    0.5,
-    0.4
+   "punch": 0.07,
+   "look": "bleu",
+   "audio": [
+    "01_menace",
+    0.6
    ],
-   "look": "neon"
-  },
-  {
-   "id": "ouverture_ce_soir",
-   "scene": "00_ouverture",
-   "tin": 6.85,
-   "tout": 9.25,
-   "z0": 1.0,
-   "z1": 1.08,
-   "c0": [
-    0.5,
-    0.42
-   ],
-   "punch": 0.04,
-   "look": "neon"
-  },
-  {
-   "id": "ouverture_peau",
-   "scene": "00_ouverture",
-   "tin": 9.25,
-   "tout": 11.85,
-   "z0": 1.0,
-   "z1": 1.1,
-   "c0": [
-    0.5,
-    0.4
-   ],
-   "shake": 3,
-   "punch": 0.06,
-   "look": "neon",
-   "note": "Coupe au sommet de la transformation (éclat de lumière), avant le sourire final : la fin n'est pas révélée."
+   "note": "Accroche : flamme et gerbe d'étincelles (flash-forward) pendant la menace « Tu rentres sans pain »."
   },
   {
    "id": "menace_large",
    "scene": "01_menace",
-   "tin": 0.55,
+   "tin": 2.0,
    "tout": 3.7,
    "z0": 1.0,
    "z1": 1.05,
    "look": "jour_int",
-   "trans": "fondu_noir"
+   "trans": "impact"
   },
   {
    "id": "menace_renella",
@@ -415,5 +377,19 @@
    ],
    "look": "bleu"
   }
- ]
+ ],
+ "thumbnail": {
+  "shot": "jamais",
+  "at": 2.4,
+  "lines": [
+   [
+    "MON CŒUR,",
+    "blanc"
+   ],
+   [
+    "JAMAIS.",
+    "jaune"
+   ]
+  ]
+ }
 }

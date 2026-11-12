@@ -1,0 +1,63 @@
+{
+ "_doc": "Sous-titres DATHINA. Texte = transcription Whisper large-v3 relue. Corrections d'orthographe seulement : « Nettoye » -> « Nettoie », « Datina » -> « Dathina » (même prénom, orthographe unifiée), « gentille » -> « gentil » (elle parle au garçon). « découvrais » (incertain, probabilité 0,73) est écrit « découvrirais », ce qui correspond à la phrase au conditionnel. Les paroles ne sont pas modifiées, même quand elles ne sont pas grammaticales (« Toute ma ville m'ont craché »). Temps = secondes dans la scène source.",
+ "lines": [
+  ["00_ouverture", 0.00, 1.66, "**Crasseuse.** Moche. **Monstre.**"],
+  ["00_ouverture", 1.68, 3.68, "Toute ma ville m'ont craché ces mots à la figure."],
+  ["00_ouverture", 3.88, 5.08, "Ma propre **famille**…"],
+  ["00_ouverture", 5.08, 6.78, "m'a jetée dehors comme une **poubelle**."],
+  ["00_ouverture", 6.90, 7.88, "Ce soir,"],
+  ["00_ouverture", 7.88, 9.46, "j'arrache cette vieille **peau**…"],
+  ["00_ouverture", 9.46, 10.52, "et tout le monde va voir…"],
+  ["00_ouverture", 10.52, 11.66, "qui je suis **vraiment**."],
+
+  ["01_menage", 0.00, 1.54, "Nettoie-moi ça tout de suite,"],
+  ["01_menage", 1.54, 2.24, "**Dathina !**"],
+  ["01_menage", 2.24, 4.90, "Mais maman, c'est Frésita qui a renversé le **café** !"],
+  ["01_menage", 4.90, 6.52, "Waouh ! Maintenant tu m'**accuses** ?"],
+  ["01_menage", 6.52, 7.32, "**Ça suffit !**"],
+  ["01_menage", 7.32, 9.88, "Finis le sol et après tu fais toute la **lessive**."],
+
+  ["02_boutiques", 0.44, 2.70, "Maman, je peux venir faire les boutiques avec vous ?"],
+  ["02_boutiques", 2.70, 4.54, "Avec cette **tête**, tu gâcherais toutes nos photos."],
+  ["02_boutiques", 4.62, 5.64, "Tu restes ici, Dathina."],
+
+  ["03_valise", 0.00, 0.68, "…fais ta **valise**."],
+  ["03_valise", 0.72, 2.20, "Ce soir, tu **quittes** cette maison."],
+  ["03_valise", 2.38, 3.50, "Papa, je t'en supplie,"],
+  ["03_valise", 3.50, 4.52, "j'ai **nulle part** où aller."],
+  ["03_valise", 4.76, 6.52, "Alors trouve-toi un boulot, Dathina."],
+  ["03_valise", 6.76, 8.92, "Enfin, cette maison sentira plus la **crasse**."],
+
+  ["04_boulangerie", 0.00, 2.04, "J'ai vu l'affiche, je peux commencer aujourd'hui."],
+  ["04_boulangerie", 2.14, 2.82, "Avec cette **tête**,"],
+  ["04_boulangerie", 3.02, 4.48, "pas question que tu passes devant mes clients."],
+  ["04_boulangerie", 4.64, 6.52, "S'il vous plaît, j'ai vraiment **besoin** de ce travail."],
+  ["04_boulangerie", 6.84, 8.42, "Reprends ton CV et **dehors !**"],
+
+  ["05_trottoir", 0.00, 0.90, "Wesh, c'est quoi ça ?"],
+  ["05_trottoir", 0.90, 2.54, "Une vraie **crasseuse**, regardez-moi ça !"],
+  ["05_trottoir", 2.54, 3.50, "Attends, bouge pas !"],
+  ["05_trottoir", 3.50, 5.24, "Faut absolument que je **filme** ça !"],
+  ["05_trottoir", 5.24, 7.10, "S'il vous plaît, laissez-moi **tranquille** !"],
+  ["05_trottoir", 7.10, 9.26, "Alors dégage de notre trottoir, la **crasseuse** !"],
+
+  ["06_defense", 0.00, 2.02, "Eh, vous deux, **laissez-la tranquille** !"],
+  ["06_defense", 2.02, 3.18, "Elle vous a rien fait !"],
+  ["06_defense", 3.18, 4.12, "Wesh, calme-toi !"],
+  ["06_defense", 4.12, 5.60, "On rigolait, c'est tout, frère !"],
+
+  ["07_banc", 0.00, 0.94, "Hé, ça va ?"],
+  ["07_banc", 0.94, 2.00, "T'es blessée ?"],
+  ["07_banc", 2.00, 4.52, "J'en ai juste marre que tout le monde me regarde comme un **monstre**."],
+  ["07_banc", 4.66, 6.46, "Avec moi, t'as pas besoin de te **cacher**."],
+  ["07_banc", 6.74, 8.16, "Mais tu me connais à peine."],
+  ["07_banc", 8.52, 9.70, "Alors laisse-moi **changer** ça."],
+  ["07_banc", 9.96, 10.76, "Tiens, mon **numéro**."],
+  ["07_banc", 11.02, 12.82, "Pourquoi t'es si **gentil** avec moi ?"],
+
+  ["08_peau", 0.46, 2.34, "Pourquoi tout le monde m'appelle la **crasseuse** ?"],
+  ["08_peau", 2.70, 4.06, "Si j'arrache cette vieille **peau**,"],
+  ["08_peau", 4.08, 5.56, "peut-être que dessous je découvrirais"],
+  ["08_peau", 5.56, 6.64, "enfin qui je suis **vraiment**."]
+ ]
+}

@@ -1,0 +1,354 @@
+{
+ "_doc": "Liste de montage DATHINA. Ouverture = flash-forward (la laverie, coupée avant la fin de la transformation), puis le récit dans l'ordre des scènes 01 à 08 ; la scène 08 montre enfin la transformation complète. Champs : voir films/renella/edl.json. Transitions : fondu_noir = fondu au noir aller-retour ; noir = fondu au noir puis coupe franche (quand la réplique commence dès la première image) ; impact = entrée depuis le blanc ; whoosh = coupe franche avec souffle.",
+ "title": "DATHINA — Épisode 1",
+ "end_card": {
+  "text": "À SUIVRE…",
+  "dur": 1.8
+ },
+ "thumbnail": {
+  "shot": "ouverture_peau",
+  "at": 0.9,
+  "lines": [
+   [
+    "QUI JE SUIS",
+    "blanc"
+   ],
+   [
+    "VRAIMENT.",
+    "jaune"
+   ]
+  ]
+ },
+ "shots": [
+  {
+   "id": "ouverture_mots",
+   "scene": "00_ouverture",
+   "tin": 0.0,
+   "tout": 3.75,
+   "z0": 1.0,
+   "z1": 1.06,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "look": "neon",
+   "note": "Accroche : elle lit le papier, en larmes (« Crasseuse. Moche. Monstre. »)."
+  },
+  {
+   "id": "ouverture_famille",
+   "scene": "00_ouverture",
+   "tin": 3.75,
+   "tout": 6.85,
+   "z0": 1.04,
+   "z1": 1.12,
+   "c0": [
+    0.5,
+    0.4
+   ],
+   "look": "neon"
+  },
+  {
+   "id": "ouverture_ce_soir",
+   "scene": "00_ouverture",
+   "tin": 6.85,
+   "tout": 9.25,
+   "z0": 1.0,
+   "z1": 1.08,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "punch": 0.04,
+   "look": "neon"
+  },
+  {
+   "id": "ouverture_peau",
+   "scene": "00_ouverture",
+   "tin": 9.25,
+   "tout": 11.85,
+   "z0": 1.0,
+   "z1": 1.1,
+   "c0": [
+    0.5,
+    0.4
+   ],
+   "shake": 3,
+   "punch": 0.06,
+   "look": "neon",
+   "note": "Coupe au sommet de la transformation, avant le visage final : la révélation est gardée pour la fin."
+  },
+  {
+   "id": "menage",
+   "scene": "01_menage",
+   "tin": 0.0,
+   "tout": 10.05,
+   "z0": 1.0,
+   "z1": 1.06,
+   "c0": [
+    0.5,
+    0.45
+   ],
+   "look": "jour_int",
+   "trans": "noir"
+  },
+  {
+   "id": "boutiques",
+   "scene": "02_boutiques",
+   "tin": 0.3,
+   "tout": 6.04,
+   "z0": 1.0,
+   "z1": 1.1,
+   "c0": [
+    0.42,
+    0.45
+   ],
+   "c1": [
+    0.38,
+    0.42
+   ],
+   "look": "jour_int"
+  },
+  {
+   "id": "valise_large",
+   "scene": "03_valise",
+   "tin": 0.0,
+   "tout": 2.31,
+   "z0": 1.0,
+   "z1": 1.05,
+   "look": "jour_int",
+   "trans": "impact"
+  },
+  {
+   "id": "valise_supplie",
+   "scene": "03_valise",
+   "tin": 2.31,
+   "tout": 7.27,
+   "z0": 1.0,
+   "z1": 1.1,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "look": "jour_int"
+  },
+  {
+   "id": "valise_soeur",
+   "scene": "03_valise",
+   "tin": 7.27,
+   "tout": 9.2,
+   "z0": 1.0,
+   "z1": 1.06,
+   "c0": [
+    0.5,
+    0.4
+   ],
+   "look": "jour_int"
+  },
+  {
+   "id": "cv",
+   "scene": "04_boulangerie",
+   "tin": 0.0,
+   "tout": 4.75,
+   "z0": 1.0,
+   "z1": 1.06,
+   "look": "jour",
+   "trans": "whoosh"
+  },
+  {
+   "id": "cv_supplie",
+   "scene": "04_boulangerie",
+   "tin": 4.75,
+   "tout": 6.88,
+   "z0": 1.0,
+   "z1": 1.1,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "look": "jour"
+  },
+  {
+   "id": "dehors",
+   "scene": "04_boulangerie",
+   "tin": 6.88,
+   "tout": 8.75,
+   "z0": 1.04,
+   "z1": 1.0,
+   "shake": 4,
+   "punch": 0.06,
+   "look": "jour"
+  },
+  {
+   "id": "trottoir",
+   "scene": "05_trottoir",
+   "tin": 0.0,
+   "tout": 2.62,
+   "z0": 1.0,
+   "z1": 1.05,
+   "look": "jour",
+   "trans": "whoosh"
+  },
+  {
+   "id": "filme",
+   "scene": "05_trottoir",
+   "tin": 2.62,
+   "tout": 7.33,
+   "z0": 1.0,
+   "z1": 1.08,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "shake": 2,
+   "look": "jour"
+  },
+  {
+   "id": "degage",
+   "scene": "05_trottoir",
+   "tin": 7.33,
+   "tout": 9.45,
+   "z0": 1.0,
+   "z1": 1.06,
+   "shake": 3,
+   "look": "jour"
+  },
+  {
+   "id": "defense",
+   "scene": "06_defense",
+   "tin": 0.0,
+   "tout": 6.04,
+   "z0": 1.0,
+   "z1": 1.06,
+   "punch": 0.05,
+   "look": "jour",
+   "trans": "impact"
+  },
+  {
+   "id": "banc_large",
+   "scene": "07_banc",
+   "tin": 0.0,
+   "tout": 4.62,
+   "z0": 1.0,
+   "z1": 1.05,
+   "c0": [
+    0.5,
+    0.55
+   ],
+   "look": "jour",
+   "trans": "noir"
+  },
+  {
+   "id": "banc_lui",
+   "scene": "07_banc",
+   "tin": 4.62,
+   "tout": 6.62,
+   "z0": 1.32,
+   "z1": 1.38,
+   "c0": [
+    0.7,
+    0.45
+   ],
+   "look": "jour",
+   "note": "Champ-contrechamp recadré dans le plan large : gros plans alternés sur lui et sur elle."
+  },
+  {
+   "id": "banc_elle",
+   "scene": "07_banc",
+   "tin": 6.62,
+   "tout": 8.4,
+   "z0": 1.32,
+   "z1": 1.38,
+   "c0": [
+    0.3,
+    0.45
+   ],
+   "look": "jour"
+  },
+  {
+   "id": "banc_numero",
+   "scene": "07_banc",
+   "tin": 8.4,
+   "tout": 10.9,
+   "z0": 1.15,
+   "z1": 1.22,
+   "c0": [
+    0.58,
+    0.5
+   ],
+   "look": "jour"
+  },
+  {
+   "id": "banc_pourquoi",
+   "scene": "07_banc",
+   "tin": 10.9,
+   "tout": 13.8,
+   "z0": 1.3,
+   "z1": 1.4,
+   "c0": [
+    0.32,
+    0.45
+   ],
+   "look": "jour"
+  },
+  {
+   "id": "peau_lit",
+   "scene": "08_peau",
+   "tin": 0.0,
+   "tout": 2.6,
+   "z0": 1.0,
+   "z1": 1.05,
+   "c0": [
+    0.5,
+    0.45
+   ],
+   "look": "neon",
+   "trans": "fondu_noir"
+  },
+  {
+   "id": "peau_arrache",
+   "scene": "08_peau",
+   "tin": 2.6,
+   "tout": 7.0,
+   "z0": 1.05,
+   "z1": 1.18,
+   "c0": [
+    0.5,
+    0.38
+   ],
+   "c1": [
+    0.5,
+    0.34
+   ],
+   "shake": 2,
+   "look": "neon"
+  },
+  {
+   "id": "peau_ralenti",
+   "scene": "08_peau",
+   "tin": 7.0,
+   "tout": 8.3,
+   "slow": 1.5,
+   "z0": 1.18,
+   "z1": 1.1,
+   "c0": [
+    0.5,
+    0.36
+   ],
+   "look": "neon",
+   "note": "Ralenti sur l'éclat de la transformation."
+  },
+  {
+   "id": "revelation",
+   "scene": "08_peau",
+   "tin": 8.3,
+   "tout": 10.04,
+   "z0": 1.1,
+   "z1": 1.0,
+   "c0": [
+    0.5,
+    0.38
+   ],
+   "look": "neon"
+  }
+ ]
+}

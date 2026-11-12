@@ -68,7 +68,7 @@ def shot_vf(edl, i):
     if s.get("trans") == "fondu_noir":
         vf.append(f"fade=t=in:st=0:d={DIP}")
     nxt = edl["shots"][i + 1] if i + 1 < len(edl["shots"]) else None
-    if nxt and nxt.get("trans") == "fondu_noir":
+    if nxt and nxt.get("trans") in ("fondu_noir", "noir"):
         vf.append(f"fade=t=out:st={dur - DIP:.3f}:d={DIP}")
     return ",".join(vf)
 
@@ -147,7 +147,7 @@ def build_audio(film, edl):
             and not s.get("audio") and not shots[i - 1].get("slow")
         fin = DIP if s.get("trans") == "fondu_noir" else (0.004 if prev_cont else 0.012)
         nxt = shots[i + 1] if i + 1 < len(shots) else None
-        fout = DIP if nxt and nxt.get("trans") == "fondu_noir" else 0.012
+        fout = DIP if nxt and nxt.get("trans") in ("fondu_noir", "noir") else 0.012
         if i == len(shots) - 1:
             fout = 0.03
         x = fade_edges(x, fin, fout)
@@ -195,7 +195,9 @@ def write_wav(path, x):
 
 
 def score_and_sfx(film, edl, N):
-    """Partition (musique) et effets, placés d'après les plans de l'EDL."""
+    """Partition et effets : les repères propres à chaque film sont dans <film>/bande_son.py,
+    fonction cues(c) ; c fournit put, T, sh, music, sfx, M (score.py), onset_peak et edl."""
+    import importlib.util
     music = np.zeros((N, 2))
     sfx = np.zeros((N, 2))
     sh = {s["id"]: s for s in edl["shots"]}
@@ -207,94 +209,18 @@ def score_and_sfx(film, edl, N):
         if i < 0:
             x, i = x[-i:], 0
         n = min(len(x), N - i)
-        buf[i:i + n] += x[:n] * 10 ** (gain_db / 20)
+        if n > 0:
+            buf[i:i + n] += x[:n] * 10 ** (gain_db / 20)
 
-    T = lambda k, edge="t0": sh[k][edge]
-
-    # --- Ouverture : cœur et nappe sombre sous les insultes, montée sur « Ce soir, j'arrache… »,
-    # impact sur la fissure (attaque détectée par librosa), éclat lumineux, puis noir.
-    t_o, t_e = T("ouverture_mots"), T("ouverture_peau", "t1")
-    put(music, M.drone("C#2", t_e - t_o + 0.6, 0.4, 0.6), t_o, -9)
-    put(music, M.heartbeat(T("ouverture_ce_soir") - t_o, 70, 0.8), t_o, -12)
-    put(music, M.string_pad(["C#3", "E3", "G#3"], T("ouverture_ce_soir") - t_o + 1.0, 1100, 1.0, 1.0), t_o, -13)
-    put(music, M.riser(T("ouverture_peau") - T("ouverture_ce_soir") + 0.3), T("ouverture_ce_soir"), -9)
-    o = sh["ouverture_peau"]
-    crack = onset_peak(o["src"], o["tin"], o["tin"] + 0.8)
-    t_crack = T("ouverture_peau") + ((crack if crack is not None else o["tin"]) - o["tin"])
-    print(f"fissure : attaque à {crack}s source -> {t_crack:.2f}s montage")
-    put(sfx, M.impact(3.0, "C#1"), t_crack, -8)
-    put(music, M.string_pad(["C#3", "G#3", "C#4", "E4"], t_e - t_crack + 0.8, 2600, 0.8, 0.8), t_crack, -10)
-    put(sfx, M.whoosh(0.8), t_e - 0.8, -12)
-    put(sfx, M.impact(4.0, "D1"), t_e, -5)
-    put(sfx, M.sub_drop(2.0), t_e, -8)
-    # --- Acte 1 : maison (drone de menace), marché (tendresse).
-    put(music, M.drone("D2", T("marche_large") - T("menace_large") + 1.5, 0.8, 1.5), T("menace_large"), -6)
-    put(music, M.string_pad(["D3", "F3", "A3"], 6.0, 1200, 2.5, 2.5), T("menace_renella"), -12)
-    put(sfx, M.whoosh(0.6), T("marche_large") - 0.4, -12)
-    put(music, M.string_pad(["A#2", "D3", "F3", "A3"], T("voleuse") - T("marche_large") + 0.6, 1600, 1.0, 1.0),
-        T("marche_large"), -10)
-    for k, (note, dt) in enumerate((("D4", 0.0), ("F4", 0.75), ("A4", 1.5), ("G4", 2.6), ("F4", 3.4),
-                                    ("E4", 4.6), ("D4", 5.5), ("A3", 6.8))):
-        put(music, M.piano(note, 3.0, 0.8), T("marche_pain") + 0.3 + dt, -9)
-    # --- Le vol découvert : pulsation qui accélère, montée jusqu'à la chute.
-    t_v, t_fall = T("voleuse"), T("chute_ralenti")
-    put(music, M.pulse(t_fall - t_v, 100, "D2", accel=True), t_v, -8)
-    put(music, M.riser(t_fall - T("citron")), T("citron"), -10)
-    put(sfx, M.impact(3.0, "D1"), T("voleuse"), -12)
-    # Chute : impact calé sur l'attaque réelle de la chute (librosa) dans la scène source.
-    # Chute : impacts calés sur les attaques réelles détectées par librosa dans la scène source
-    # (atterrissage dans la boue pendant « chute », pain qui s'écrase pendant le ralenti).
-    s, r = sh["chute"], sh["chute_ralenti"]
-    hit = onset_peak(s["src"], s["tin"], s["tout"])
-    t_hit = T("chute") + ((hit if hit is not None else s["tin"]) - s["tin"])
-    print(f"chute : attaque détectée à {hit}s source -> {t_hit:.2f}s montage")
-    splat = onset_peak(r["src"], r["tin"] + 0.2, r["tout"])
-    if splat is not None:
-        t_splat = T("chute_ralenti") + (splat - r["tin"]) * r["slow"]
-        print(f"pain écrasé : attaque à {splat:.2f}s source -> {t_splat:.2f}s montage (ralenti)")
-        put(sfx, M.impact(3.0, "G1"), t_splat, -12)
-    put(sfx, M.impact(4.5, "C#1"), t_hit, -4)
-    put(sfx, M.sub_drop(2.5), t_hit, -8)
-    put(music, M.string_pad(["D3", "D#3", "A3"], T("arretez") - T("chute_ralenti") + 0.5, 900, 1.5, 0.8),
-        T("chute_ralenti"), -11)
-    put(music, M.drone("D2", T("rencontre") - T("citron_moque") + 1.5, 1.0, 1.5), T("citron_moque"), -9)
-    # Granito intervient.
-    put(sfx, M.whoosh(0.5), T("arretez") - 0.35, -10)
-    put(sfx, M.impact(3.0, "F1"), T("arretez"), -8)
-    # --- Rencontre : thème tendre (Fa majeur / Ré mineur).
-    t_r = T("rencontre")
-    put(music, M.string_pad(["F3", "A3", "C4"], 7.0, 1500, 2.0, 2.5), t_r, -12)
-    put(music, M.string_pad(["D3", "F3", "A3", "C4"], T("ruelle") - t_r - 5.5, 1500, 2.0, 1.5), t_r + 5.5, -12)
-    for note, dt in (("A4", 0.6), ("C5", 1.4), ("F4", 2.4), ("E4", 5.8), ("D4", 6.6), ("A4", 8.0), ("F4", 9.0),
-                     ("D4", 11.0), ("E4", 11.8), ("F4", 12.4)):
-        put(music, M.piano(note, 3.0, 0.7), t_r + dt, -10)
-    # --- Nuit : ruelle (vent, cœur), cabane (tension).
-    t_n = T("ruelle")
-    put(sfx, M.wind(edl["total"] - t_n), t_n, -24)
-    put(music, M.heartbeat(T("baril") - t_n, 64), t_n, -10)
-    put(music, M.drone("D2", T("photo") - t_n + 1.0, 2.0, 1.0), t_n, -8)
-    put(music, M.string_pad(["D3", "D#3", "G#3"], T("baril") - T("trou_mur") + 0.5, 1000, 2.0, 0.5), T("trou_mur"), -12)
-    s = sh["baril"]
-    hit = onset_peak(s["src"], 0.0, 2.6)
-    t_b = T("baril") + (hit or 0.0)
-    print(f"baril : attaque détectée à {hit:.2f}s source -> {t_b:.2f}s montage")
-    put(sfx, M.impact(3.5, "D1"), t_b, -9)
-    put(music, M.string_pad(["D3", "F3", "G#3", "C4"], T("photo") - T("ombre") + 0.5, 1300, 2.5, 1.0), T("ombre"), -11)
-    # Photo / larmes : piano triste.
-    t_p = T("photo")
-    put(music, M.string_pad(["A#2", "D3", "F3"], T("chalumeau") - t_p + 0.3, 1100, 1.5, 0.6), t_p, -11)
-    for note, dt in (("F4", 0.3), ("E4", 1.2), ("D4", 2.1), ("A3", 3.4), ("A#3", 4.6), ("A3", 5.6), ("D4", 6.4)):
-        put(music, M.piano(note, 3.0, 0.75), t_p + dt, -9)
-    # --- Final : chalumeau, montée, coupe au noir.
-    t_c, t_end = T("chalumeau"), T("j_arrive", "t1")
-    put(sfx, M.impact(3.0, "D1"), t_c, -8)
-    put(sfx, M.flame(t_end - t_c), t_c, -20)
-    put(music, M.pulse(t_end - t_c, 92, "D2", accel=True), t_c, -9)
-    put(music, M.drone("D2", t_end - t_c + 0.2, 1.0, 0.2), t_c, -8)
-    put(music, M.riser(t_end - T("j_arrive") + 1.2), T("j_arrive") - 1.2, -8)
-    put(sfx, M.impact(5.0, "D1"), t_end, -3)
-    put(sfx, M.sub_drop(3.0), t_end, -6)
-    put(music, M.string_pad(["D3", "A3", "D4"], edl["end_card"]["dur"], 900, 0.05, 1.5), t_end, -16)
+    class C:
+        pass
+    c = C()
+    c.put, c.music, c.sfx, c.M, c.sh, c.edl, c.onset_peak = put, music, sfx, M, sh, edl, onset_peak
+    c.T = lambda k, edge="t0": sh[k][edge]
+    spec = importlib.util.spec_from_file_location("bande_son", os.path.join(film, "bande_son.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod.cues(c)
     return music, sfx
 
 
@@ -395,10 +321,11 @@ def build_final(film, edl, dlg, name):
         print("OK ->", out)
 
 
-def build_thumb(film, edl, name, shot_id="jamais", at=2.4):
+def build_thumb(film, edl, name):
     from PIL import Image, ImageDraw, ImageFont, ImageFilter
     bd = os.path.join(film, "build")
-    i = next(k for k, s in enumerate(edl["shots"]) if s["id"] == shot_id)
+    th = edl["thumbnail"]
+    shot_id, at = th["shot"], th["at"]
     src = os.path.join(bd, "shots", f"{shot_id}.mp4")
     png = os.path.join(bd, "thumb_src.png")
     run(["ffmpeg", "-v", "error", "-y", "-ss", f"{at}", "-i", src, "-frames:v", "1", png])
@@ -415,9 +342,12 @@ def build_thumb(film, edl, name, shot_id="jamais", at=2.4):
     def center(text, y, f, fill, stroke):
         w = dr.textlength(text, font=f)
         dr.text(((W - w) / 2, y), text, font=f, fill=fill, stroke_width=stroke, stroke_fill=(0, 0, 0))
-    center("MON CŒUR,", 1260, font, (255, 255, 255), 8)
-    center("JAMAIS.", 1430, font, (255, 212, 0), 8)
-    center(edl["title"].upper(), 1640, small, (230, 230, 230), 5)
+    colors = {"blanc": (255, 255, 255), "jaune": (255, 212, 0)}
+    y = 1260
+    for text, col in th["lines"]:
+        center(text, y, font, colors[col], 8)
+        y += 170
+    center(edl["title"].upper(), y + 40, small, (230, 230, 230), 5)
     out = os.path.join(ROOT, "export", f"{name}_miniature.jpg")
     im.save(out, quality=94)
     print("OK ->", out)

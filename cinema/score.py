@@ -215,3 +215,23 @@ def tick_clock(d, period=1.0):
         i = int(s * SR)
         out[i:i + n] += c[:len(out) - i]
     return stereo(norm(out, 0.5))
+
+
+def shimmer(d, root="A5", seed=5):
+    """Scintillement : cloches aiguës aléatoires sur une nappe haute (éclat lumineux, magie)."""
+    r = np.random.default_rng(seed)
+    t = t_axis(d)
+    n = len(t)
+    out = np.zeros(n)
+    base = hz(root)
+    ratios = (1, 1.25, 1.5, 2, 2.5, 3)
+    for s in r.uniform(0, max(d - 0.3, 0.01), int(d * 9)):
+        f = base * r.choice(ratios)
+        m = int(0.9 * SR)
+        tt = np.arange(m) / SR
+        b = (np.sin(2 * np.pi * f * tt) + 0.3 * np.sin(2 * np.pi * 2.76 * f * tt)) * np.exp(-tt * 5) * r.uniform(0.3, 1)
+        i = int(s * SR)
+        out[i:i + m] += b[:n - i]
+    pad = sum(np.sin(2 * np.pi * base * k * t * (1 + 0.002 * np.sin(2 * np.pi * 5 * t))) for k in (0.5, 0.75, 1)) * 0.15
+    x = (out + pad) * adsr(n, 0.4, min(1.5, d / 2))
+    return reverb(norm(x, 0.6), size=3.5, mix=0.5)
