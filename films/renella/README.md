@@ -1,6 +1,6 @@
 # RENELLA — Épisode 1 (short TikTok)
 
-Montage vertical 9:16, 1080 × 1920, 30 i/s, H.264 + AAC 256 kb/s, environ 90 s.
+Montage vertical 9:16, 1080 × 1920, 30 i/s, H.264 High (≈ 9 Mb/s) + AAC 256 kb/s 48 kHz, 89,9 s, −14 LUFS / −1,5 dBTP.
 
 ## Livrables (`export/`)
 

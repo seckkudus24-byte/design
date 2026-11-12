@@ -338,19 +338,19 @@ def write_ass(edl, dlg, path, with_dialogue=True):
     lines = ["[Script Info]", "ScriptType: v4.00+", f"PlayResX: {W}", f"PlayResY: {H}", "WrapStyle: 0",
              "ScaledBorderAndShadow: yes", "", "[V4+ Styles]", st,
              # Zone sûre TikTok : bas (~25 %) et rail droit (~150 px) occupés par l'interface.
-             "Style: Dlg,Anton,84,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1.5,0,1,6,2,2,110,170,560,1",
-             "Style: Narr,Anton,74,&H00F0F0F0,&H00FFFFFF,&H00000000,&H96000000,0,1,0,0,100,100,1.5,0,1,5,2,2,110,170,560,1",
+             "Style: Dlg,Anton,96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1.5,0,1,6.5,2,2,100,160,560,1",
+             "Style: Narr,Anton,86,&H00F0F0F0,&H00FFFFFF,&H00000000,&H96000000,0,1,0,0,100,100,1.5,0,1,5,2,2,110,170,560,1",
              "Style: Card,Anton,124,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,6,0,1,0,0,5,60,60,0,1",
-             "Style: Small,Anton,52,&H00B4B4B4,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,0,0,5,60,60,0,1",
+             "Style: Small,Anton,56,&H00D2D2D2,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,0,0,5,60,60,0,1",
              "", "[Events]", "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text"]
     if with_dialogue:
         for t0, t1, text, style in subtitle_events(edl, dlg):
             lines.append(f"Dialogue: 0,{ass_time(t0)},{ass_time(t1)},{style},,0,0,0,,{pop}{ass_text(text)}")
     t0 = edl["shot_frames"] / FPS
     t1 = edl["total"]
-    lines.append(f"Dialogue: 0,{ass_time(t0 + 0.45)},{ass_time(t1)},Card,,0,0,0,,"
+    lines.append(f"Dialogue: 0,{ass_time(t0 + 0.25)},{ass_time(t1)},Card,,0,0,0,,"
                  r"{\fad(350,250)\pos(540,930)}" + edl["end_card"]["text"])
-    lines.append(f"Dialogue: 0,{ass_time(t0 + 0.9)},{ass_time(t1)},Small,,0,0,0,,"
+    lines.append(f"Dialogue: 0,{ass_time(t0 + 0.55)},{ass_time(t1)},Small,,0,0,0,,"
                  r"{\fad(350,250)\pos(540,1060)}" + edl["title"].upper())
     open(path, "w", encoding="utf-8").write("\n".join(lines) + "\n")
 
@@ -374,11 +374,11 @@ def build_final(film, edl, dlg, name):
         fc = (f"[0:v]setpts=PTS-STARTPTS[a];color=c=black:s={W}x{H}:r={FPS}:d={end_d:.3f},format=yuv420p[b];"
               f"[a][b]concat=n=2:v=1:a=0,"
               # Finition : vignettage léger et grain argentique fin (luminance seule, temporel).
-              f"vignette=angle=0.32:mode=forward,noise=c0s=5:c0f=t+u,"
+              f"vignette=angle=0.32:mode=forward,noise=c0s=3:c0f=t+u,"
               f"ass={ass}:fontsdir={FONT_DIR},format=yuv420p[v]")
         run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst,
              "-i", os.path.join(bd, "mix.wav"), "-filter_complex", fc, "-map", "[v]", "-map", "1:a",
-             "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-profile:v", "high", "-level", "4.2",
+             "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-maxrate", "9M", "-bufsize", "18M", "-profile:v", "high", "-level", "4.2",
              "-pix_fmt", "yuv420p", "-r", str(FPS), "-g", "60", "-bf", "2",
              "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709",
              "-c:a", "aac", "-b:a", "256k", "-ar", str(SR), "-ac", "2",
