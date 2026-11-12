@@ -1,0 +1,381 @@
+{
+ "_doc": "Liste de montage. Chaque plan : scène, entrée/sortie (s, dans la source), cadrage numérique (z0/z1 zoom, c0/c1 centre normalisé), ralenti (slow), tremblé (shake, px), coup de zoom (punch), étalonnage (look), transition d'entrée (trans), audio (null = son synchrone ; [scène, entrée] = son d'une autre source, montage décalé). Toutes les scènes sont utilisées ; seuls les temps morts sont coupés.",
+ "title": "RENELLA — Épisode 1",
+ "end_card": {
+  "text": "À SUIVRE…",
+  "dur": 1.6
+ },
+ "shots": [
+  {
+   "id": "accroche",
+   "scene": "10_chalumeau",
+   "tin": 0.95,
+   "tout": 2.35,
+   "z0": 1.12,
+   "z1": 1.28,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "punch": 0.07,
+   "look": "bleu",
+   "audio": [
+    "01_menace",
+    0.6
+   ],
+   "note": "Accroche : flamme et gerbe d'étincelles (flash-forward) pendant la menace « Tu rentres sans pain »."
+  },
+  {
+   "id": "menace_large",
+   "scene": "01_menace",
+   "tin": 2.0,
+   "tout": 3.7,
+   "z0": 1.0,
+   "z1": 1.05,
+   "look": "jour_int",
+   "trans": "impact"
+  },
+  {
+   "id": "menace_renella",
+   "scene": "01_menace",
+   "tin": 3.71,
+   "tout": 6.74,
+   "z0": 1.0,
+   "z1": 1.12,
+   "c0": [
+    0.5,
+    0.45
+   ],
+   "c1": [
+    0.5,
+    0.4
+   ],
+   "look": "jour_int"
+  },
+  {
+   "id": "menace_pomandro",
+   "scene": "01_menace",
+   "tin": 6.76,
+   "tout": 9.4,
+   "z0": 1.06,
+   "z1": 1.0,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "shake": 3,
+   "look": "jour_int"
+  },
+  {
+   "id": "marche_large",
+   "scene": "02_marche",
+   "tin": 1.7,
+   "tout": 2.45,
+   "z0": 1.0,
+   "z1": 1.04,
+   "look": "jour",
+   "trans": "whoosh"
+  },
+  {
+   "id": "marche_pain",
+   "scene": "02_marche",
+   "tin": 2.46,
+   "tout": 6.41,
+   "z0": 1.0,
+   "z1": 1.08,
+   "c0": [
+    0.5,
+    0.45
+   ],
+   "look": "jour"
+  },
+  {
+   "id": "marche_granito",
+   "scene": "02_marche",
+   "tin": 6.9,
+   "tout": 9.75,
+   "z0": 1.0,
+   "z1": 1.1,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "c1": [
+    0.5,
+    0.38
+   ],
+   "look": "jour"
+  },
+  {
+   "id": "voleuse",
+   "scene": "03_voleuse",
+   "tin": 0.25,
+   "tout": 6.45,
+   "z0": 1.0,
+   "z1": 1.08,
+   "shake": 4,
+   "punch": 0.05,
+   "look": "jour"
+  },
+  {
+   "id": "citron",
+   "scene": "03_voleuse",
+   "tin": 6.46,
+   "tout": 8.82,
+   "z0": 1.06,
+   "z1": 1.0,
+   "c0": [
+    0.5,
+    0.4
+   ],
+   "shake": 4,
+   "look": "jour"
+  },
+  {
+   "id": "foule",
+   "scene": "03_voleuse",
+   "tin": 8.83,
+   "tout": 9.45,
+   "z0": 1.0,
+   "z1": 1.04,
+   "look": "jour"
+  },
+  {
+   "id": "chute",
+   "scene": "04_boue",
+   "tin": 0.6,
+   "tout": 1.4,
+   "z0": 1.0,
+   "z1": 1.02,
+   "look": "jour"
+  },
+  {
+   "id": "chute_ralenti",
+   "scene": "04_boue",
+   "tin": 1.4,
+   "tout": 2.9,
+   "slow": 1.6,
+   "z0": 1.02,
+   "z1": 1.12,
+   "c0": [
+    0.45,
+    0.62
+   ],
+   "c1": [
+    0.42,
+    0.66
+   ],
+   "look": "jour",
+   "note": "Ralenti dramatique : le pain s'écrase dans la boue."
+  },
+  {
+   "id": "citron_moque",
+   "scene": "04_boue",
+   "tin": 6.3,
+   "tout": 10.85,
+   "z0": 1.0,
+   "z1": 1.08,
+   "c0": [
+    0.5,
+    0.48
+   ],
+   "look": "jour"
+  },
+  {
+   "id": "arretez",
+   "scene": "04_boue",
+   "tin": 12.9,
+   "tout": 16.45,
+   "z0": 1.0,
+   "z1": 1.06,
+   "punch": 0.05,
+   "shake": 3,
+   "look": "jour",
+   "trans": "impact"
+  },
+  {
+   "id": "rencontre",
+   "scene": "05_granito",
+   "tin": 0.0,
+   "tout": 4.6,
+   "z0": 1.0,
+   "z1": 1.06,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "look": "jour"
+  },
+  {
+   "id": "secret",
+   "scene": "05_granito",
+   "tin": 5.4,
+   "tout": 9.4,
+   "z0": 1.0,
+   "z1": 1.1,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "c1": [
+    0.5,
+    0.38
+   ],
+   "look": "jour"
+  },
+  {
+   "id": "attends",
+   "scene": "05_granito",
+   "tin": 10.4,
+   "tout": 13.95,
+   "z0": 1.0,
+   "z1": 1.05,
+   "look": "jour"
+  },
+  {
+   "id": "ruelle",
+   "scene": "06_ruelle",
+   "tin": 0.45,
+   "tout": 3.85,
+   "z0": 1.0,
+   "z1": 1.08,
+   "c0": [
+    0.5,
+    0.45
+   ],
+   "look": "crepuscule",
+   "trans": "fondu_noir"
+  },
+  {
+   "id": "trou_mur",
+   "scene": "07_cabane",
+   "tin": 0.15,
+   "tout": 5.3,
+   "z0": 1.0,
+   "z1": 1.1,
+   "c0": [
+    0.55,
+    0.45
+   ],
+   "look": "nuit"
+  },
+  {
+   "id": "approche",
+   "scene": "07_cabane",
+   "tin": 5.33,
+   "tout": 7.85,
+   "z0": 1.0,
+   "z1": 1.06,
+   "shake": 2,
+   "look": "nuit"
+  },
+  {
+   "id": "baril",
+   "scene": "08_mur",
+   "tin": 0.0,
+   "tout": 2.66,
+   "z0": 1.0,
+   "z1": 1.04,
+   "punch": 0.05,
+   "shake": 4,
+   "look": "nuit"
+  },
+  {
+   "id": "ombre",
+   "scene": "08_mur",
+   "tin": 2.67,
+   "tout": 7.91,
+   "z0": 1.0,
+   "z1": 1.08,
+   "look": "nuit"
+  },
+  {
+   "id": "granito_temoin",
+   "scene": "08_mur",
+   "tin": 7.92,
+   "tout": 10.5,
+   "z0": 1.0,
+   "z1": 1.12,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "look": "nuit"
+  },
+  {
+   "id": "photo",
+   "scene": "09_photo",
+   "tin": 0.0,
+   "tout": 2.95,
+   "z0": 1.0,
+   "z1": 1.06,
+   "look": "nuit"
+  },
+  {
+   "id": "larmes",
+   "scene": "09_photo",
+   "tin": 2.96,
+   "tout": 6.95,
+   "z0": 1.0,
+   "z1": 1.1,
+   "c0": [
+    0.5,
+    0.4
+   ],
+   "look": "nuit"
+  },
+  {
+   "id": "chalumeau",
+   "scene": "10_chalumeau",
+   "tin": 0.45,
+   "tout": 3.54,
+   "z0": 1.0,
+   "z1": 1.06,
+   "look": "bleu",
+   "trans": "impact"
+  },
+  {
+   "id": "masque",
+   "scene": "10_chalumeau",
+   "tin": 3.55,
+   "tout": 4.45,
+   "z0": 1.0,
+   "z1": 1.08,
+   "look": "bleu"
+  },
+  {
+   "id": "jamais",
+   "scene": "10_chalumeau",
+   "tin": 4.46,
+   "tout": 8.4,
+   "z0": 1.0,
+   "z1": 1.12,
+   "c0": [
+    0.5,
+    0.42
+   ],
+   "c1": [
+    0.5,
+    0.38
+   ],
+   "look": "bleu"
+  },
+  {
+   "id": "j_arrive",
+   "scene": "10_chalumeau",
+   "tin": 8.42,
+   "tout": 11.45,
+   "z0": 1.0,
+   "z1": 1.16,
+   "c0": [
+    0.5,
+    0.45
+   ],
+   "c1": [
+    0.55,
+    0.4
+   ],
+   "look": "bleu"
+  }
+ ]
+}
