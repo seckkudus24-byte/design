@@ -33,7 +33,8 @@ TOKEN = os.environ.get("D2F_TOKEN", "")
 MAX_BYTES = int(os.environ.get("D2F_MAX_MB", "2048")) * 1024 * 1024
 
 app = FastAPI(title="Douyin → France AI")
-jobs = JobManager(DATA, MODELS)
+# D2F_RUNNER=modal : le déploiement cloud choisit l'exécuteur GPU distant puis appelle jobs.start()
+jobs = JobManager(DATA, MODELS, autostart=os.environ.get("D2F_RUNNER", "local") == "local")
 _up_lock = threading.Lock()
 
 
@@ -65,7 +66,8 @@ def health():
 @app.get("/api/config")
 def config():
     return {"methods": METHODS, "paused": jobs.paused, "token_required": bool(TOKEN),
-            "max_duration_s": MAX_DURATION_S, "device": describe(),
+            "max_duration_s": MAX_DURATION_S,
+            "device": {**describe(), "label": os.environ.get("D2F_BACKEND_LABEL", "")},
             "resolutions": {"auto": "1080p minimum (recommandé)", "1080p": "1080p exact", "source": "Résolution d'origine"}}
 
 

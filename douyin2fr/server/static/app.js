@@ -49,7 +49,7 @@ async function init() {
   rs.value = localStorageGet("d2f_res") || "auto";
   rs.onchange = () => localStorageSet("d2f_res", rs.value);
   const dv = cfg.device || {};
-  $("#devState").textContent = dv.gpu ? "GPU" : `CPU · ${dv.cpu_threads || "?"} cœurs`;
+  $("#devState").textContent = dv.label || (dv.gpu ? "GPU" : `CPU · ${dv.cpu_threads || "?"} cœurs`);
   $("#maxDur").textContent = Math.round(cfg.max_duration_s / 60) + " min";
   $("#pauseBtn").onclick = async () => {
     const r = await api(`/api/queue/${paused ? "resume" : "pause"}`, { method: "POST" });
@@ -240,6 +240,7 @@ function buildDetail(j) {
       ["Temps de nettoyage", (j.timings.clean_s || s.seconds || 0) + " s"],
       ["Moteur", s.method || ""],
       ["Export", s.output_size || ""],
+      ...(s.device ? [["Matériel utilisé", s.device]] : []),
     ];
     if (tot) {
       items.push(["Arrière-plan réel récupéré", Math.round(100 * s.px_direct / tot) + " %"]);

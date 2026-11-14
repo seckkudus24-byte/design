@@ -1,0 +1,70 @@
+# Déploiement cloud de Douyin → France AI sur Modal — lancé À LA MAIN uniquement
+# (onglet Actions → « Déployer Douyin → France AI (Modal) » → Run workflow), depuis l'iPhone.
+#
+# Secrets du dépôt à créer une fois (Settings → Secrets and variables → Actions) :
+#   MODAL_TOKEN_ID, MODAL_TOKEN_SECRET : jeton API Modal (modal.com → Settings → API Tokens)
+#   D2F_APP_PASSWORD                   : mot de passe de l'application (long, à garder pour soi)
+name: Déployer Douyin → France AI (Modal)
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "deploy = mettre en ligne / mettre à jour ; stop = tout arrêter (plus aucun coût)"
+        type: choice
+        options: [deploy, stop]
+        default: deploy
+      gpu:
+        description: "GPU utilisé pour les traitements"
+        type: choice
+        options: [L4, T4]
+        default: L4
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-modal
+  cancel-in-progress: false
+
+jobs:
+  modal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+      MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+      D2F_GPU: ${{ inputs.gpu }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Vérifier les secrets
+        env:
+          APP_PASSWORD: ${{ secrets.D2F_APP_PASSWORD }}
+        run: |
+          missing=""
+          [ -n "$MODAL_TOKEN_ID" ] || missing="$missing MODAL_TOKEN_ID"
+          [ -n "$MODAL_TOKEN_SECRET" ] || missing="$missing MODAL_TOKEN_SECRET"
+          [ -n "$APP_PASSWORD" ] || missing="$missing D2F_APP_PASSWORD"
+          if [ -n "$missing" ]; then echo "::error::Secrets manquants :$missing (voir douyin2fr/CLOUD_IPHONE.md)"; exit 1; fi
+          [ ${#APP_PASSWORD} -ge 12 ] || { echo "::error::D2F_APP_PASSWORD doit faire au moins 12 caractères"; exit 1; }
+      - run: pip install modal==1.6.4
+      - name: Arrêter l'application
+        if: inputs.action == 'stop'
+        run: modal app stop douyin2fr --yes || true
+      - name: Mot de passe de l'application (secret Modal)
+        if: inputs.action == 'deploy'
+        env:
+          APP_PASSWORD: ${{ secrets.D2F_APP_PASSWORD }}
+        run: modal secret create d2f-app "D2F_TOKEN=$APP_PASSWORD" --force > /dev/null
+      - name: Déployer
+        if: inputs.action == 'deploy'
+        working-directory: douyin2fr
+        run: |
+          modal deploy deploy/modal_app.py 2>&1 | tee deploy.log
+          url=$(grep -Eo 'https://[a-zA-Z0-9.-]+\.modal\.run' deploy.log | head -1)
+          echo "### Application en ligne" >> "$GITHUB_STEP_SUMMARY"
+          echo "Ouvrez sur l'iPhone : **$url**" >> "$GITHUB_STEP_SUMMARY"
+          echo "(saisissez le mot de passe D2F_APP_PASSWORD à la première ouverture)" >> "$GITHUB_STEP_SUMMARY"

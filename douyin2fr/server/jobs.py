@@ -10,8 +10,9 @@ import traceback
 import uuid
 from dataclasses import asdict, dataclass, field
 
-from d2f.pipeline import METHODS, Analysis, analyze, clean, preview_frames
-from d2f.video_io import VideoError, check_duration, probe
+from d2f.pipeline import METHODS
+from d2f.video_io import VideoError, check_duration, probe  # noqa: F401
+from .runners import LocalRunner
 
 # États : queued → analyzing → analyzed → (queued_clean → cleaning) → done
 #         error / cancelled à tout moment
@@ -35,6 +36,7 @@ class Job:
     previews: list = field(default_factory=list)
     stats: dict = field(default_factory=dict)
     timings: dict = field(default_factory=dict)
+    remote_call: str = ""   # identifiant de l'appel GPU distant en cours (reprise après redémarrage)
 
     def public(self):
         d = asdict(self)
@@ -43,9 +45,10 @@ class Job:
 
 
 class JobManager:
-    def __init__(self, data_dir: str, models_dir: str):
+    def __init__(self, data_dir: str, models_dir: str, runner=None, autostart: bool = True):
         self.data_dir = os.path.abspath(data_dir)
         self.models_dir = models_dir
+        self.runner = runner or LocalRunner(self.data_dir, models_dir)
         os.makedirs(self.data_dir, exist_ok=True)
         self.jobs: dict[str, Job] = {}
         self.queue: list[tuple[str, str]] = []  # (job_id, action)
@@ -56,8 +59,16 @@ class JobManager:
         self._cancel: set[str] = set()
         self.retention_days = float(os.environ.get("D2F_RETENTION_DAYS", "7"))
         self._load()
-        threading.Thread(target=self._worker, daemon=True).start()
-        threading.Thread(target=self._janitor, daemon=True).start()
+        self._started = False
+        if autostart:
+            self.start()
+
+    def start(self):
+        """Démarre le traitement de la file (après avoir éventuellement choisi un autre `runner`)."""
+        if not self._started:
+            self._started = True
+            threading.Thread(target=self._worker, daemon=True).start()
+            threading.Thread(target=self._janitor, daemon=True).start()
 
     def _janitor(self):
         """Supprime les vidéos (originales et résultats) plus anciennes que D2F_RETENTION_DAYS."""
@@ -106,7 +117,8 @@ class JobManager:
                 continue
             try:
                 with open(p, encoding="utf-8") as f:
-                    job = Job(**json.load(f))
+                    d = json.load(f)
+                job = Job(**{k: v for k, v in d.items() if k in Job.__dataclass_fields__})
             except Exception:
                 continue
             if job.status in ("analyzing", "queued"):
@@ -145,6 +157,7 @@ class JobManager:
             self._save(job)
             if job.status == "queued":
                 self.queue.append((jid, "analyze"))
+        self.runner.after_upload()
         self.wake.set()
         return job
 
@@ -223,34 +236,25 @@ class JobManager:
                 if jid in self.jobs:
                     self._save(job)
 
+    def save(self, job: Job):
+        with self.lock:
+            if job.id in self.jobs:
+                self._save(job)
+
     def _run(self, job: Job, action: str):
         cancel = lambda: job.id in self._cancel  # noqa: E731
 
         def progress(stage, p, msg):
             job.stage, job.progress, job.message = stage, round(float(p), 4), msg
 
-        src = self.original(job.id)
-        if action == "analyze":
-            job.status = "analyzing"
-            t = time.time()
-            a = analyze(src, self.models_dir, progress=progress, cancel=cancel)
-            a.save(self.path(job.id, "analysis.json"))
-            job.summary = a.summary()
-            progress("analyse", 1.0, "Préparation des aperçus")
-            prev_dir = self.path(job.id, "previews")
-            job.previews = [os.path.basename(p) for p in preview_frames(a, prev_dir)]
-            job.timings["analyze_s"] = round(time.time() - t, 1)
-            job.status, job.progress = "analyzed", 1.0
-            if job.auto_clean:
-                job.status = "queued_clean"
-                with self.lock:
-                    self.queue.append((job.id, "clean"))
-        else:
-            job.status = "cleaning"
-            a = Analysis.load(self.path(job.id, "analysis.json"))
-            a.video = src
-            t = time.time()
-            job.stats = clean(a, self.path(job.id, "result.mp4"), job.method, self.models_dir,
-                              progress=progress, cancel=cancel, resolution=job.resolution)
-            job.timings["clean_s"] = round(time.time() - t, 1)
-            job.status, job.progress = "done", 1.0
+        job.status = "analyzing" if action == "analyze" else "cleaning"
+        job.progress, job.error = 0.0, ""
+        self.save(job)
+        upd = self.runner.run(job, action, progress, cancel)
+        for k, v in upd.items():
+            if hasattr(job, k):
+                setattr(job, k, v)
+        if action == "analyze" and job.auto_clean:
+            job.status = "queued_clean"
+            with self.lock:
+                self.queue.append((job.id, "clean"))
