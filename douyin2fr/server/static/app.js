@@ -176,6 +176,19 @@ function buildDetail(j) {
     const a = document.createElement("a");
     a.className = "btn"; a.textContent = "⬇ Télécharger le MP4"; a.href = withTok(`/api/jobs/${j.id}/result?download=1`);
     act.appendChild(a);
+    // iPhone : la feuille de partage permet « Enregistrer la vidéo » directement dans Photos.
+    if (navigator.canShare && navigator.canShare({ files: [new File([""], "t.mp4", { type: "video/mp4" })] })) {
+      btn("Enregistrer dans Photos / Partager", "", async (ev) => {
+        const b = ev.target; const old = b.textContent; b.disabled = true; b.textContent = "Préparation…";
+        try {
+          const r = await fetch(withTok(`/api/jobs/${j.id}/result`));
+          const blob = await r.blob();
+          const name = j.name.replace(/\.[^.]+$/, "") + "_sans_sous-titres.mp4";
+          await navigator.share({ files: [new File([blob], name, { type: "video/mp4" })] });
+        } catch (e) { if (e.name !== "AbortError") alert("Partage impossible : " + e.message + "\nUtilisez « Télécharger le MP4 »."); }
+        b.disabled = false; b.textContent = old;
+      });
+    }
   }
   if (RUNNING.has(j.status) || j.status.startsWith("queued")) btn("Annuler", "ghost", () => api(`/api/jobs/${j.id}/cancel`, { method: "POST" }).then(poll));
   btn("Supprimer", "ghost danger", async () => {
@@ -276,4 +289,5 @@ function lightbox(src) {
   d.onclick = () => d.remove(); document.body.appendChild(d);
 }
 
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(() => {});
 init();

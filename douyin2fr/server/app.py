@@ -6,6 +6,8 @@ Variables d'environnement :
   D2F_TOKEN   jeton d'accès optionnel (obligatoire si le serveur est exposé)
   D2F_HOST / D2F_PORT
   D2F_MAX_MB  taille max d'un import (défaut 2048)
+  D2F_RETENTION_DAYS  suppression automatique des vidéos après N jours (défaut 7, 0 = jamais)
+  D2F_DEVICE  auto | gpu | cpu
 """
 from __future__ import annotations
 
@@ -48,6 +50,13 @@ def _job(jid: str):
     if jid not in jobs.jobs:
         raise HTTPException(404, "Vidéo introuvable")
     return jobs.jobs[jid]
+
+
+@app.get("/healthz")
+def health():
+    import shutil as _sh
+    free = _sh.disk_usage(jobs.data_dir).free
+    return {"ok": True, "current": jobs.current, "queued": len(jobs.queue), "disk_free_gb": round(free / 2**30, 1)}
 
 
 @app.get("/api/config")

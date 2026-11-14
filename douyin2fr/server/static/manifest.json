@@ -1,2 +1,17 @@
-{"name":"Douyin → France AI","short_name":"Douyin→FR","start_url":"/","display":"standalone",
- "background_color":"#0b0d12","theme_color":"#0b0d12","icons":[{"src":"icon.png","sizes":"180x180","type":"image/png"}]}
+{
+  "name": "Douyin → France AI",
+  "short_name": "Douyin→FR",
+  "description": "Suppression des sous-titres chinois incrustés",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0d12",
+  "theme_color": "#0b0d12",
+  "lang": "fr",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

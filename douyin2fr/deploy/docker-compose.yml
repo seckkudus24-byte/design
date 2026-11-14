@@ -1,0 +1,39 @@
+# Déploiement avec HTTPS automatique (Let's Encrypt) sur un serveur ayant un nom de domaine.
+#   1) DNS : un enregistrement A de votre domaine (ex. d2f.mondomaine.fr) vers l'IP du serveur
+#   2) cp deploy/.env.example deploy/.env  puis remplir DOMAIN et D2F_TOKEN
+#   3) docker compose -f deploy/docker-compose.yml --env-file deploy/.env up -d --build
+# GPU NVIDIA : décommenter le bloc « deploy » et les deux build args.
+services:
+  app:
+    build:
+      context: ..
+      # args:
+      #   BASE: nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04
+      #   ORT: onnxruntime-gpu
+    environment:
+      D2F_TOKEN: ${D2F_TOKEN:?D2F_TOKEN obligatoire}
+      D2F_RETENTION_DAYS: ${D2F_RETENTION_DAYS:-7}
+      D2F_MAX_MB: ${D2F_MAX_MB:-2048}
+    volumes:
+      - d2f-data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz')"]
+      interval: 60s
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices: [{ driver: nvidia, count: 1, capabilities: [gpu] }]
+  caddy:
+    image: caddy:2
+    ports: ["80:80", "443:443"]
+    environment:
+      DOMAIN: ${DOMAIN:?DOMAIN obligatoire}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+    depends_on: [app]
+    restart: unless-stopped
+volumes:
+  d2f-data:
+  caddy-data:

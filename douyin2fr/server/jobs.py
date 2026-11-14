@@ -54,8 +54,24 @@ class JobManager:
         self.paused = False
         self.current: str | None = None
         self._cancel: set[str] = set()
+        self.retention_days = float(os.environ.get("D2F_RETENTION_DAYS", "7"))
         self._load()
         threading.Thread(target=self._worker, daemon=True).start()
+        threading.Thread(target=self._janitor, daemon=True).start()
+
+    def _janitor(self):
+        """Supprime les vidéos (originales et résultats) plus anciennes que D2F_RETENTION_DAYS."""
+        while True:
+            if self.retention_days > 0:
+                limit = time.time() - self.retention_days * 86400
+                for jid, job in list(self.jobs.items()):
+                    if job.created < limit and self.current != jid and job.status not in ("queued", "queued_clean"):
+                        self.delete(jid)
+                for f in os.listdir(self.data_dir):  # envois interrompus
+                    p = os.path.join(self.data_dir, f)
+                    if f.endswith(".upload") and os.path.getmtime(p) < time.time() - 86400:
+                        os.remove(p)
+            time.sleep(3600)
 
     # ------------------------------------------------------------ stockage
     def dir(self, jid):
