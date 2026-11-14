@@ -7,7 +7,7 @@ const STATUS = {
 };
 const RUNNING = new Set(["analyzing", "cleaning"]);
 let token = new URLSearchParams(location.search).get("token") || localStorageGet("d2f_token") || "";
-let jobs = [], selected = null, methods = {}, paused = false, renderedKey = "";
+let jobs = [], selected = null, methods = {}, resolutions = {}, paused = false, renderedKey = "";
 
 function localStorageGet(k) { try { return localStorage.getItem(k); } catch { return null; } }
 function localStorageSet(k, v) { try { localStorage.setItem(k, v); } catch {} }
@@ -37,6 +37,12 @@ async function init() {
   for (const [k, v] of Object.entries(methods)) sel.add(new Option(v, k));
   sel.value = localStorageGet("d2f_method") || "temporal";
   sel.onchange = () => localStorageSet("d2f_method", sel.value);
+  resolutions = cfg.resolutions;
+  const rs = $("#resSel");
+  for (const [k, v] of Object.entries(resolutions)) rs.add(new Option(v, k));
+  rs.value = localStorageGet("d2f_res") || "auto";
+  rs.onchange = () => localStorageSet("d2f_res", rs.value);
+  $("#maxDur").textContent = Math.round(cfg.max_duration_s / 60) + " min";
   $("#pauseBtn").onclick = async () => {
     const r = await api(`/api/queue/${paused ? "resume" : "pause"}`, { method: "POST" });
     paused = r.paused; renderQueue();
@@ -56,11 +62,13 @@ async function upload(files) {
   for (const f of files) fd.append("files", f);
   fd.append("method", $("#methodSel").value);
   fd.append("auto_clean", $("#autoClean").checked);
+  fd.append("resolution", $("#resSel").value);
   const drop = $("#drop");
   drop.querySelector("b").textContent = `Envoi de ${files.length} fichier(s)…`;
   try {
     const r = await api("/api/jobs", { method: "POST", body: fd });
     if (r.jobs.length) selected = r.jobs[0].id;
+    if (r.errors && r.errors.length) alert("Vidéo(s) refusée(s) :\n" + r.errors.join("\n"));
   } catch (e) { alert("Import impossible : " + e.message); }
   drop.querySelector("b").textContent = "Importer des vidéos";
   $("#fileInput").value = "";
@@ -126,8 +134,12 @@ function buildDetail(j) {
     for (const [k, v] of Object.entries(methods)) sel.add(new Option(v, k));
     sel.value = j.method;
     act.appendChild(sel);
+    const rsel = document.createElement("select");
+    for (const [k, v] of Object.entries(resolutions)) rsel.add(new Option("Export : " + v, k));
+    rsel.value = j.resolution || "auto";
+    act.appendChild(rsel);
     btn(j.status === "done" ? "Relancer le nettoyage" : "Supprimer les sous-titres chinois", "primary", async () => {
-      const fd = new FormData(); fd.append("method", sel.value);
+      const fd = new FormData(); fd.append("method", sel.value); fd.append("resolution", rsel.value);
       try { await api(`/api/jobs/${j.id}/clean`, { method: "POST", body: fd }); poll(); } catch (e) { alert(e.message); }
     });
   }
@@ -166,7 +178,8 @@ function buildDetail(j) {
     const tot = s.px_total || 0;
     const items = [
       ["Temps de nettoyage", (j.timings.clean_s || s.seconds || 0) + " s"],
-      ["Moteur", methods[s.method] ? s.method : s.method || ""],
+      ["Moteur", s.method || ""],
+      ["Export", s.output_size || ""],
     ];
     if (tot) {
       items.push(["Arrière-plan réel récupéré", Math.round(100 * s.px_direct / tot) + " %"]);

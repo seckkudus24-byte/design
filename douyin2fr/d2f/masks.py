@@ -75,6 +75,16 @@ class MaskBuilder:
             m[y0:y1, x0:x1] = 255
         return m
 
+    def mask_crop(self, t: int, x0: int, y0: int, x1: int, y1: int) -> np.ndarray:
+        """Masque de l'image t limité à une région (évite d'allouer un masque pleine taille)."""
+        m = np.zeros((y1 - y0, x1 - x0), np.uint8)
+        for b in self.boxes(t):
+            bx0, by0, bx1, by1 = self.padded(b)
+            ax0, ay0, ax1, ay1 = max(bx0, x0), max(by0, y0), min(bx1, x1), min(by1, y1)
+            if ax1 > ax0 and ay1 > ay0:
+                m[ay0 - y0:ay1 - y0, ax0 - x0:ax1 - x0] = 255
+        return m
+
     def coverage(self) -> float:
         """Part des images contenant au moins une zone à effacer."""
         if self.n_frames == 0:

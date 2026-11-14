@@ -14,7 +14,13 @@ import time
 from .pipeline import METHODS, Analysis, analyze, clean, preview_frames
 
 
+_last = [0.0]
+
+
 def _progress(stage, p, msg):
+    if p < 1.0 and time.time() - _last[0] < 0.5:
+        return
+    _last[0] = time.time()
     sys.stderr.write(f"\r[{stage}] {p * 100:5.1f}%  {msg[:50]:<50}")
     sys.stderr.flush()
     if p >= 1.0:
@@ -40,6 +46,8 @@ def main(argv=None):
     c.add_argument("--method", default="temporal", choices=list(METHODS))
     c.add_argument("--stride", type=int, default=3)
     c.add_argument("--crf", type=int, default=16)
+    c.add_argument("--resolution", default="auto", choices=["auto", "1080p", "source"],
+                   help="auto = 1080p minimum (défaut) ; 1080p = petit côté 1080 ; source = inchangé")
 
     args = ap.parse_args(argv)
     region = tuple(map(float, args.region.split(","))) if getattr(args, "region", None) else None
@@ -59,10 +67,16 @@ def main(argv=None):
             res = analyze(args.video, args.models, args.stride, progress=_progress)
             res.save(os.path.splitext(args.output)[0] + ".analysis.json")
         t = time.time()
-        stats = clean(res, args.output, args.method, args.models, args.crf, _progress)
+        stats = clean(res, args.output, args.method, args.models, args.crf, _progress,
+                      resolution=args.resolution)
         print(json.dumps(stats, indent=1))
         print(f"Vidéo nettoyée : {args.output} ({time.time() - t:.1f} s)")
 
 
 if __name__ == "__main__":
-    main()
+    from .video_io import VideoError
+    try:
+        main()
+    except VideoError as e:
+        sys.stderr.write(f"\nErreur : {e}\n")
+        sys.exit(2)

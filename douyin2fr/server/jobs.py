@@ -11,7 +11,7 @@ import uuid
 from dataclasses import asdict, dataclass, field
 
 from d2f.pipeline import METHODS, Analysis, analyze, clean, preview_frames
-from d2f.video_io import VideoError, probe
+from d2f.video_io import VideoError, check_duration, probe
 
 # États : queued → analyzing → analyzed → (queued_clean → cleaning) → done
 #         error / cancelled à tout moment
@@ -28,6 +28,7 @@ class Job:
     message: str = ""
     error: str = ""
     method: str = "temporal"
+    resolution: str = "auto"
     auto_clean: bool = False
     info: dict = field(default_factory=dict)
     summary: dict = field(default_factory=dict)
@@ -96,7 +97,12 @@ class JobManager:
         self.queue.sort(key=lambda q: self.jobs[q[0]].created)
 
     # ------------------------------------------------------------- actions
-    def add(self, filename: str, src_path: str, method: str, auto_clean: bool) -> Job:
+    def add(self, filename: str, src_path: str, method: str, auto_clean: bool,
+            resolution: str = "auto") -> Job:
+        """Ajoute une vidéo. Lève VideoError (fichier refusé et supprimé) si elle est
+        illisible ou dépasse 5 minutes."""
+        info = probe(src_path)
+        check_duration(info)
         jid = uuid.uuid4().hex[:12]
         os.makedirs(self.dir(jid), mode=0o700)
         ext = os.path.splitext(filename)[1].lower()
@@ -107,14 +113,11 @@ class JobManager:
         os.chmod(dst, 0o400)  # l'original n'est jamais modifié
         safe_name = os.path.basename(filename)[:120] or "video"
         job = Job(jid, safe_name, time.time(), method=method if method in METHODS else "temporal",
+                  resolution=resolution if resolution in ("auto", "1080p", "source") else "auto",
                   auto_clean=auto_clean)
-        try:
-            info = probe(dst)
-            job.info = {"width": info.width, "height": info.height, "fps": round(info.fps_float, 3),
-                        "duration": round(info.duration, 2), "frames": info.nb_frames,
-                        "audio": info.has_audio}
-        except VideoError as e:
-            job.status, job.error = "error", str(e)
+        job.info = {"width": info.width, "height": info.height, "fps": round(info.fps_float, 3),
+                    "duration": round(info.duration, 2), "frames": info.nb_frames,
+                    "audio": info.has_audio}
         with self.lock:
             self.jobs[jid] = job
             self._save(job)
@@ -123,13 +126,15 @@ class JobManager:
         self.wake.set()
         return job
 
-    def request_clean(self, jid: str, method: str):
+    def request_clean(self, jid: str, method: str, resolution: str | None = None):
         with self.lock:
             job = self.jobs[jid]
             if job.status not in ("analyzed", "done", "error", "cancelled") or not os.path.exists(
                     self.path(jid, "analysis.json")):
                 raise ValueError("La vidéo doit d'abord être analysée.")
             job.method = method if method in METHODS else job.method
+            if resolution in ("auto", "1080p", "source"):
+                job.resolution = resolution
             job.status, job.progress, job.error, job.message = "queued_clean", 0.0, "", ""
             self.queue.append((jid, "clean"))
             self._save(job)
@@ -224,6 +229,6 @@ class JobManager:
             a.video = src
             t = time.time()
             job.stats = clean(a, self.path(job.id, "result.mp4"), job.method, self.models_dir,
-                              progress=progress, cancel=cancel)
+                              progress=progress, cancel=cancel, resolution=job.resolution)
             job.timings["clean_s"] = round(time.time() - t, 1)
             job.status, job.progress = "done", 1.0

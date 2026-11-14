@@ -18,6 +18,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from d2f.pipeline import METHODS
+from d2f.video_io import MAX_DURATION_S, VideoError
 from .jobs import JobManager
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -50,7 +51,9 @@ def _job(jid: str):
 
 @app.get("/api/config")
 def config():
-    return {"methods": METHODS, "paused": jobs.paused, "token_required": bool(TOKEN)}
+    return {"methods": METHODS, "paused": jobs.paused, "token_required": bool(TOKEN),
+            "max_duration_s": MAX_DURATION_S,
+            "resolutions": {"auto": "1080p minimum (recommandé)", "1080p": "1080p exact", "source": "Résolution d'origine"}}
 
 
 @app.get("/api/jobs")
@@ -60,8 +63,8 @@ def list_jobs():
 
 @app.post("/api/jobs")
 async def upload(files: list[UploadFile] = File(...), method: str = Form("temporal"),
-                 auto_clean: bool = Form(False)):
-    created = []
+                 auto_clean: bool = Form(False), resolution: str = Form("auto")):
+    created, errors = [], []
     for uf in files:
         fd, tmp = tempfile.mkstemp(dir=jobs.data_dir, suffix=".upload")
         size = 0
@@ -72,11 +75,14 @@ async def upload(files: list[UploadFile] = File(...), method: str = Form("tempor
                     if size > MAX_BYTES:
                         raise HTTPException(413, f"Fichier trop volumineux (> {MAX_BYTES >> 20} Mo)")
                     out.write(chunk)
-            created.append(jobs.add(uf.filename or "video.mp4", tmp, method, auto_clean).public())
+            try:
+                created.append(jobs.add(uf.filename or "video.mp4", tmp, method, auto_clean, resolution).public())
+            except VideoError as e:
+                errors.append(f"{uf.filename} : {e}")
         finally:
             if os.path.exists(tmp):
                 os.remove(tmp)
-    return {"jobs": created}
+    return {"jobs": created, "errors": errors}
 
 
 @app.get("/api/jobs/{jid}")
@@ -85,10 +91,10 @@ def get_job(jid: str):
 
 
 @app.post("/api/jobs/{jid}/clean")
-def start_clean(jid: str, method: str = Form("temporal")):
+def start_clean(jid: str, method: str = Form("temporal"), resolution: str = Form("auto")):
     _job(jid)
     try:
-        jobs.request_clean(jid, method)
+        jobs.request_clean(jid, method, resolution)
     except ValueError as e:
         raise HTTPException(409, str(e))
     return jobs.jobs[jid].public()

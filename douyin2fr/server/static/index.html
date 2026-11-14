@@ -21,11 +21,13 @@
       <input id="fileInput" type="file" accept="video/*" multiple hidden>
       <div class="drop-icon">＋</div>
       <div><b>Importer des vidéos</b></div>
-      <div class="muted small">Glissez-déposez ou cliquez · plusieurs fichiers acceptés</div>
+      <div class="muted small">Glissez-déposez ou cliquez · plusieurs fichiers · <span id="maxDur">5 min</span> maximum par vidéo</div>
     </label>
     <div class="opts">
       <label class="small muted">Moteur de suppression</label>
       <select id="methodSel"></select>
+      <label class="small muted">Export MP4</label>
+      <select id="resSel"></select>
       <label class="check"><input id="autoClean" type="checkbox"> Nettoyer automatiquement après l'analyse</label>
     </div>
     <div class="list-head"><span>Vidéos</span><span id="count" class="muted small"></span></div>

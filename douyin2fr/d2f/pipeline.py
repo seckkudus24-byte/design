@@ -13,7 +13,7 @@ import numpy as np
 from .detect import Box, SubtitleDetector
 from .inpaint import get_image_inpainter
 from .masks import MaskBuilder, draw_overlay
-from .video_io import FrameReader, FrameWriter, VideoInfo, probe
+from .video_io import FrameReader, FrameWriter, VideoInfo, check_duration, output_size, probe
 
 Progress = Callable[[str, float, str], None]
 
@@ -79,9 +79,18 @@ def _noop(*_):
     pass
 
 
+def _eta(t0: float, p: float) -> str:
+    el = time.time() - t0
+    if p < 0.02 or el < 5:
+        return ""
+    rest = el * (1 - p) / p
+    return f" · reste ≈ {int(rest // 60)} min {int(rest % 60):02d} s" if rest >= 60 else f" · reste ≈ {int(rest)} s"
+
+
 def analyze(video: str, models_dir: str = "models", stride: int = 3, only_chinese: bool = True,
             region=None, progress: Progress = _noop, cancel=None) -> Analysis:
     info = probe(video)
+    check_duration(info)
     det = SubtitleDetector(models_dir=models_dir, only_chinese=only_chinese, region=region)
     a = Analysis(video, info.width, info.height, info.fps_float, info.nb_frames, stride)
     t0 = time.time()
@@ -93,7 +102,8 @@ def analyze(video: str, models_dir: str = "models", stride: int = 3, only_chines
             if i % stride == 0:
                 a.keyframes[i] = det.detect(frame)
                 if i % (stride * 5) == 0:
-                    progress("analyse", min(1.0, i / max(1, info.nb_frames)), f"Image {i}/{info.nb_frames}")
+                    p = min(0.999, i / max(1, info.nb_frames))
+                    progress("analyse", p, f"Image {i}/{info.nb_frames}" + _eta(t0, p))
             n = i + 1
     a.nb_frames = n
     a.seconds = time.time() - t0
@@ -162,49 +172,69 @@ def _bands(masks: list[np.ndarray], margin: int, h: int, w: int):
 
 def clean(analysis: Analysis, out_path: str, method: str = "temporal", models_dir: str = "models",
           crf: int = 16, progress: Progress = _noop, cancel=None, mask_kw: dict | None = None,
-          chunk: int = 150, overlap: int = 12, lookahead: int = 24) -> dict:
-    """Supprime les sous-titres. La vidéo est traitée par clips de `chunk` images,
-    recadrés sur les bandes de texte. Les `overlap` dernières images de chaque
-    clip servent de référence au suivant (continuité), et `lookahead` images
-    futures sont fournies comme sources supplémentaires."""
+          chunk: int = 120, overlap: int = 12, lookahead: int = 24, resolution: str = "auto") -> dict:
+    """Supprime les sous-titres sur toute la vidéo (≤ 5 min).
+
+    Traitement en flux par segments de `chunk` images recadrés sur les bandes de
+    texte : la mémoire reste bornée quelle que soit la durée. Les `overlap`
+    dernières images finalisées d'un segment servent de référence au suivant
+    (aucune rupture entre segments) et `lookahead` images futures sont fournies
+    comme sources. Le son d'origine est recopié tel quel, à la même cadence."""
     info: VideoInfo = probe(analysis.video)
+    check_duration(info)
     mb = analysis.mask_builder(**(mask_kw or {}))
     engine = make_engine(method, models_dir)
     t0 = time.time()
     tmp = out_path + ".part.mp4"
-    writer = FrameWriter(tmp, info, crf=crf, audio_from=analysis.video)
+    size = output_size(info, resolution)
+    writer = FrameWriter(tmp, info, crf=crf, audio_from=analysis.video, size=size)
     W, H = info.width, info.height
     margin = max(32, int(0.05 * max(W, H)))
     total = max(1, analysis.nb_frames)
     state = {"written": 0}
+    zero = np.zeros((H, W), np.uint8)
+
+    def check_cancel():
+        if cancel and cancel():
+            raise InterruptedError("Traitement annulé")
 
     def process(carry, core, ahead):
-        """carry : images finales précédentes ; core : à produire ; ahead : sources futures."""
+        """carry : images finales précédentes ; core : à produire ; ahead : sources futures.
+        Les masques sont régénérés à la demande depuis les boîtes (pas de masques pleine taille en mémoire)."""
+        idx = [i for _, i in core] + [i for _, i in ahead]
         frames = [f for f, _ in carry] + [f for f, _ in core] + [f for f, _ in ahead]
-        masks = [np.zeros((H, W), np.uint8)] * len(carry) + [m for _, m in core] + [m for _, m in ahead]
-        out = [f.copy() for f, _ in core]
-        bands = _bands(masks[len(carry):], margin, H, W)
+        union = zero.copy()
+        for i in idx:
+            for b in mb.boxes(i):
+                x0, y0, x1, y1 = mb.padded(b)
+                union[y0:y1, x0:x1] = 255
+        out = [f for f, _ in core]
+        bands = _bands([union], margin, H, W)
         for bi, (x0, y0, x1, y1) in enumerate(bands):
             crops = [np.ascontiguousarray(f[y0:y1, x0:x1]) for f in frames]
-            mcrops = [np.ascontiguousarray(m[y0:y1, x0:x1]) for m in masks]
+            mcrops = [zero[y0:y1, x0:x1]] * len(carry) + [mb.mask_crop(i, x0, y0, x1, y1) for i in idx]
 
             def prog(p, bi=bi):
-                done = state["written"] + len(core) * (bi + p) / len(bands)
-                progress("nettoyage", min(0.999, done / total), "Reconstruction")
+                check_cancel()
+                done = (state["written"] + len(core) * (bi + p) / len(bands)) / total
+                progress("nettoyage", min(0.999, done), f"Image {int(done * total)}/{total}" + _eta(t0, done))
 
             res = engine.inpaint_clip(crops, mcrops, known=len(carry), progress=prog)
+            # Écriture en place : les bandes ne se chevauchent pas et les images du segment
+            # courant ne servent plus de source après ce point (économise une copie par image).
             for i in range(len(core)):
-                out[i][y0:y1, x0:x1] = res[len(carry) + i]
+                if res[len(carry) + i] is not crops[len(carry) + i]:
+                    out[i][y0:y1, x0:x1] = res[len(carry) + i]
+            del crops, mcrops, res
         return out
 
     carry: list = []
-    pending: list = []  # (frame, mask)
+    pending: list = []  # (image, indice)
     try:
         with FrameReader(info) as r:
             for i, frame in enumerate(r):
-                if cancel and cancel():
-                    raise InterruptedError("Traitement annulé")
-                pending.append((frame, mb.mask(i)))
+                check_cancel()
+                pending.append((frame, i))
                 if len(pending) >= chunk + lookahead:
                     core, ahead = pending[:chunk], pending[chunk:]
                     out = process(carry, core, ahead)
@@ -213,11 +243,13 @@ def clean(analysis: Analysis, out_path: str, method: str = "temporal", models_di
                     state["written"] += len(out)
                     carry = [(f, None) for f in out[-overlap:]]
                     pending = ahead
+                    del out, core
             if pending:
                 out = process(carry, pending, [])
                 for f in out:
                     writer.write(f)
                 state["written"] += len(out)
+        progress("nettoyage", 0.999, "Finalisation du MP4")
         writer.close()
     except BaseException:
         writer.abort()
@@ -228,6 +260,8 @@ def clean(analysis: Analysis, out_path: str, method: str = "temporal", models_di
     stats = dict(getattr(engine, "stats", {}) or {})
     if hasattr(getattr(engine, "fallback", None), "calls"):
         stats["model_calls"] = engine.fallback.calls
+    stats["frames_written"] = state["written"]
+    stats["output_size"] = f"{size[0]}x{size[1]}"
     stats["seconds"] = round(time.time() - t0, 1)
     stats["method"] = method
     progress("nettoyage", 1.0, "Terminé")

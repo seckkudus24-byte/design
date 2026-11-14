@@ -4,7 +4,10 @@ Application de traitement vidéo qui **supprime les sous-titres chinois incrust�
 Douyin et **reconstruit l'arrière-plan** caché derrière eux (video inpainting), avant les étapes
 de traduction, voix et sous-titres français.
 
-> **État actuel (MVP v0.1)** : la fonctionnalité centrale — détection + suppression + reconstruction —
+> **Vidéos acceptées : de quelques secondes à 5 minutes maximum** (au-delà, l'import est refusé
+> avec un message clair). Toute l'architecture est dimensionnée pour cette durée.
+>
+> **État actuel (MVP v0.2)** : la fonctionnalité centrale — détection + suppression + reconstruction —
 > est implémentée, testée et mesurée (voir « Résultats mesurés »). Traduction, voix, sous-titres FR et
 > recadrage 9:16/16:9/1:1 **ne sont pas encore implémentés** (étapes 2 à 4 du plan).
 
@@ -28,7 +31,11 @@ En ligne de commande :
 python -m d2f.cli analyze ma_video.mp4 --previews apercus/   # détection seule + images d'aperçu
 python -m d2f.cli clean   ma_video.mp4 -o propre.mp4         # analyse + suppression
 python -m d2f.cli clean   ma_video.mp4 -o propre.mp4 --method temporal-fast   # plus rapide, sans LaMa
+python -m d2f.cli clean   ma_video.mp4 -o propre.mp4 --resolution source      # garder la résolution d'origine
 ```
+
+Export : `--resolution auto` (défaut) = **1080p minimum** (une source 720p est agrandie en 1080p,
+une source 4K reste en 4K), `1080p` = toujours 1080p, `source` = inchangé.
 
 Options utiles : `--stride N` (OCR une image sur N, défaut 3), `--all-text` (effacer tout texte, pas
 seulement le chinois), `--region 0,0.3,1,0.9` (ne chercher que dans une zone de l'écran).
@@ -117,7 +124,20 @@ Protection des fichiers : serveur limité à `127.0.0.1` par défaut ; expositio
 
 ---
 
-## 5. Résultats mesurés (MVP)
+## 5. Conception pour des vidéos de 5 minutes maximum
+
+| Exigence | Solution |
+|---|---|
+| Durée 0,3 s – 5 min | Vérifiée à l'import (interface, API, ligne de commande) ; refus explicite au-delà |
+| Toute la durée traitée | OCR sur 1 image sur 3 de toute la vidéo, masques image par image, aucune image sautée |
+| Qualité constante | Traitement par **segments de 120 images** ; chaque segment reçoit les 12 dernières images *déjà nettoyées* du précédent (référence) et 24 images futures (sources) → pas de rupture aux jointures ; mêmes paramètres du début à la fin |
+| Mémoire bornée | Lecture en flux (FFmpeg), seul le segment courant est en mémoire, recadré sur la bande de texte ; masques régénérés à la demande ; caches limités. Mémoire indépendante de la durée (mesures §6) |
+| Pas de blocage | Erreurs FFmpeg redirigées vers un fichier (un tube non lu peut figer FFmpeg sur une longue vidéo) ; arrêt propre en cas d'erreur ; annulation prise en compte en quelques secondes, même au milieu d'un segment |
+| Synchronisation audio/vidéo | Décodage à cadence constante sur la chronologie du fichier (fréquence variable des téléphones et retard de début de piste compensés) ; même nombre d'images et même cadence en sortie ; audio d'origine recopié sans réencodage. Vérifié par un test « flash + bip » avec piste vidéo décalée de 0,4 s |
+| Sans GPU | Tout fonctionne sur CPU ; le moteur temporel limite les appels au modèle LaMa (le plus coûteux) aux zones jamais visibles |
+| Progression | Pourcentage, image en cours et **temps restant estimé**, pour l'analyse et le nettoyage |
+
+## 6. Résultats mesurés
 
 Banc d'essai : 4 cœurs CPU, **sans GPU**. Vidéos réelles (sans texte) sur lesquelles on a incrusté
 des sous-titres chinois style Douyin (blanc, contour noir, mot-clé jaune, milieu d'écran) avec
@@ -143,7 +163,7 @@ Lecture honnête :
   mal complété en bord de fenêtre) et dérive de la propagation dans un seul sens (passée en
   bidirectionnelle).
 
-## 6. Coûts estimés
+## 7. Coûts estimés
 
 **Mesures CPU (4 cœurs)** — analyse ≈ 0,08 s/image en 1080p ; nettoyage ≈ 0,8 s/image (scène où
 le fond est récupérable) à 2–4 s/image (scène difficile où LaMa travaille souvent, estimation
@@ -164,7 +184,7 @@ extrapolée de la danseuse en 480p). À 30 images/s :
   gratuit ; traduction par LLM via API < 0,02 € par minute de dialogue ; voix : Piper gratuit, ou
   API vocale premium ≈ 0,10–0,30 € par minute.
 
-## 7. Plan de développement
+## 8. Plan de développement
 
 1. ✅ **Suppression des sous-titres (MVP)** — détection, masques, reconstruction temporelle, interface,
    lots, comparaison avant/après, tests mesurés.
