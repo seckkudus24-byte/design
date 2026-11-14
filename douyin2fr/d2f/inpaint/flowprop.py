@@ -58,6 +58,27 @@ def harmonic_fill(img: np.ndarray, hole: np.ndarray, iters: int = 40) -> np.ndar
     return est
 
 
+def shot_ids(grays: list[np.ndarray], diff_thr: float = 28.0, corr_thr: float = 0.55) -> list[int]:
+    """Numéro de plan de chaque image (détection des coupes franches).
+
+    Une coupe = forte différence de la vignette ET histogrammes peu corrélés. On ne
+    cherche jamais de fond dans un autre plan : inutile (rejeté de toute façon) et
+    risqué (décor d'une autre scène)."""
+    ids, cur, prev_t, prev_h = [], 0, None, None
+    for g in grays:
+        t = cv2.resize(g, (64, 16), interpolation=cv2.INTER_AREA).astype(np.float32)
+        h = cv2.calcHist([g], [0], None, [32], [0, 256])
+        cv2.normalize(h, h)
+        if prev_t is not None:
+            d = float(np.abs(t - prev_t).mean())
+            c = float(cv2.compareHist(prev_h, h, cv2.HISTCMP_CORREL))
+            if d > diff_thr and c < corr_thr:
+                cur += 1
+        ids.append(cur)
+        prev_t, prev_h = t, h
+    return ids
+
+
 def complete_flow(fl: np.ndarray, hole: np.ndarray) -> np.ndarray:
     """Complète un champ de flux dans `hole`. Le flux étant lisse, on interpole à
     demi-résolution (4x moins de calcul) puis on affine à pleine résolution."""
@@ -92,7 +113,7 @@ class FlowPropInpainter(ClipInpainter):
     def __init__(self, fallback: ImageInpainter, near=(1, 2, 3, 4, 6, 8, 12), far_step: int = 10,
                  far_max: int = 60, ring_thresh: float = 9.0, tau: float = 6.0, model_age: float = 30.0,
                  flow_scale: float | None = None, feather: float = 1.2, texture_k: float = 0.5,
-                 workers: int | None = None):
+                 workers: int | None = None, use_shots: bool = True):
         self.fallback = fallback
         self.near = sorted(set(near))
         self.far = [d for d in range(far_step, far_max + 1, far_step) if d > max(self.near)]
@@ -100,6 +121,7 @@ class FlowPropInpainter(ClipInpainter):
         self.flow_scale, self.feather, self.texture_k = flow_scale, feather, texture_k
         # Parallélisme : OpenCV et NumPy libèrent le GIL, des threads suffisent.
         self.workers = max(1, workers or os.cpu_count() or 1)
+        self.use_shots = use_shots
         self._tls = threading.local()
         self._lock = threading.Lock()
         self.timing = {"prepare_s": 0.0, "direct_s": 0.0, "propagate_s": 0.0, "fuse_s": 0.0}
@@ -126,6 +148,7 @@ class FlowPropInpainter(ClipInpainter):
         res = list(self._pool.map(prep, range(len(frames))))
         self.G = [r[0] for r in res]
         self.Hs = [r[1] for r in res]
+        self.shot = shot_ids(self.G) if self.use_shots else [0] * len(self.G)
         self.gy, self.gx = np.mgrid[0:h, 0:w].astype(np.float32)
         self.flows: dict = {}
 
@@ -231,7 +254,7 @@ class FlowPropInpainter(ClipInpainter):
         val = np.zeros(F[t].shape, np.uint8)
         for d in offsets:
             s_ = t + d
-            if not (0 <= s_ < N) or not rem.any():
+            if not (0 <= s_ < N) or not rem.any() or self.shot[s_] != self.shot[t]:
                 continue
             fl = self._flow(t, s_, cache=abs(d) == 1)
             mx, my = self.gx + fl[..., 0], self.gy + fl[..., 1]
@@ -294,7 +317,7 @@ class FlowPropInpainter(ClipInpainter):
                 age = np.zeros(Mt.shape, np.float32)
                 rem = Mt & ~got
                 p = t - step
-                if rem.any() and p in outs:
+                if rem.any() and p in outs and self.shot[p] == self.shot[t]:
                     fl = self._flow(t, p, cache=True)
                     warped, oob, mx, my = self._warp(outs[p], fl)
                     acc, vals = self._accept(self._geometry(t), warped, oob, rem)
