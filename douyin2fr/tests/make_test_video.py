@@ -47,7 +47,7 @@ def main():
     a = ap.parse_args()
 
     w, h, duration = probe(a.src)
-    size = int(w * 0.062)
+    size = int(min(w, h) * 0.062)
     outline = max(2, int(size * 0.09))
     y = int(h * a.pos)
     ass = [

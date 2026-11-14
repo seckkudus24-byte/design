@@ -33,6 +33,7 @@ def main():
     clean_p, sub_p, an_p, *results = args
     fps = probe(clean_p).fps_float
     per_win = {r: {} for r in results}
+    per_flk = {}
     mb = Analysis.load(an_p).mask_builder()
     gens = [frames(clean_p), frames(sub_p)] + [frames(r) for r in results]
     cover_hit = cover_tot = 0
@@ -62,8 +63,14 @@ def main():
                     pw[1] += d.size
                 if prev is not None:
                     pc, po = prev[0], prev[1:]
-                    acc[r]["flk"] += float(np.abs(o.astype(np.float32)[m] - po[results.index(r)].astype(np.float32)[m]).mean())
-                    acc[r]["flk_ref"] += float(np.abs(c.astype(np.float32)[m] - pc.astype(np.float32)[m]).mean())
+                    fo = float(np.abs(o.astype(np.float32)[m] - po[results.index(r)].astype(np.float32)[m]).mean())
+                    fc = float(np.abs(c.astype(np.float32)[m] - pc.astype(np.float32)[m]).mean())
+                    acc[r]["flk"] += fo
+                    acc[r]["flk_ref"] += fc
+                    if window:
+                        pf = per_flk.setdefault(r, {}).setdefault(int(i / fps // window), [0.0, 0.0])
+                        pf[0] += fo
+                        pf[1] += fc
         prev = [c] + outs
         i += 1
     rep = {"frames": i, "mask_coverage_%": round(100 * cover_hit / max(1, cover_tot), 3),
@@ -77,6 +84,9 @@ def main():
         if window:
             rep[r]["mean_abs_err_per_window"] = {
                 f"{int(w * window)}s": round(v[0] / max(1, v[1]), 2) for w, v in sorted(per_win[r].items())}
+            rep[r]["flicker_ratio_per_window"] = {
+                f"{int(w * window)}s": round(v[0] / max(1e-6, v[1]), 2)
+                for w, v in sorted(per_flk.get(r, {}).items())}
     print(json.dumps(rep, indent=1))
 
 
