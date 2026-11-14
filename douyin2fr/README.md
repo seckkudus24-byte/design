@@ -137,31 +137,32 @@ Protection des fichiers : serveur limité à `127.0.0.1` par défaut ; expositio
 | Sans GPU | Tout fonctionne sur CPU ; le moteur temporel limite les appels au modèle LaMa (le plus coûteux) aux zones jamais visibles |
 | Progression | Pourcentage, image en cours et **temps restant estimé**, pour l'analyse et le nettoyage |
 
-## 6. Résultats mesurés
+## 6. Résultats mesurés (test 5 minutes, novembre 2026)
 
-Banc d'essai : 4 cœurs CPU, **sans GPU**. Vidéos réelles (sans texte) sur lesquelles on a incrusté
-des sous-titres chinois style Douyin (blanc, contour noir, mot-clé jaune, milieu d'écran) avec
-`tests/make_test_video.py` — la vidéo propre d'origine sert de vérité terrain (`tests/evaluate.py`).
+Banc d'essai : CPU 4 cœurs, **sans GPU**. Sous-titres chinois style Douyin incrustés sur des vidéos
+réelles ; la vidéo d'origine sans texte sert de vérité terrain (`tests/evaluate.py`), et l'OCR est
+relancé sur le résultat pour chercher des traces (`tests/residual_ocr.py`, seuil abaissé à 0,3).
 
-| Vidéo | Méthode | Pixels de texte oubliés | Erreur moy. dans la zone (↓) | PSNR zone (↑) | Temps |
-|---|---|---|---|---|---|
-| Éventail, 1080×1920, 113 img., texte sur l'objet en mouvement | Diffusion OpenCV | 0 | 16,6 | 20,0 dB | 18 s |
-| | **Temporel (défaut)** | 0 | **8,1** | **25,2 dB** | 89 s |
-| Danseuse, 854×480, 90 img., caméra en mouvement, texte sur la personne et la foule | Diffusion OpenCV | 25 px / 1,3 M | 43,8 | 12,8 dB | 7 s |
-| | **Temporel (défaut)** | 25 px / 1,3 M | **33,3** | **14,0 dB** | 99 s |
+| | Éventail 5 min (1080×1920, 9 005 images) | Scènes animées, extrait 30 s (1920×1080, 720 images, 7 plans) |
+|---|---|---|
+| Analyse OCR | 9 min 20 s | 48 s |
+| Nettoyage | 60 min | 29 min 35 s (87 % dans LaMa) |
+| Pixels de texte non couverts | 332 sur 5 min (bords anticrénelés) | 252 |
+| Texte chinois retrouvé après nettoyage | **0** image sur 1 501 vérifiées | **0** image sur 240 |
+| Erreur moy. dans la zone (0–255, ↓) | 11,0 (9 à 12 par tranche de 10 s, sans dérive) | 24,1 (19,5 à 31,6) |
+| Scintillement (1,0 = comme l'original) | 1,26 | 0,97 |
+| Pic de RAM | 2,3 Go | 2,6 Go |
 
-Lecture honnête :
+**Verdict visuel — critère principal : pas encore satisfaisant pour les sujets en mouvement.**
 
-- **Détection** : 100 % des pixels du texte couverts sur l'éventail, 99,998 % sur la danseuse ; texte
-  chinois reconnu à l'identique. Aucune ligne n'est oubliée.
-- **Éventail** : le texte disparaît sans trace visible ; ~85 % de la zone est reconstruite avec le
-  *vrai* arrière-plan récupéré dans les autres images. Léger flou ponctuel sur les doigts en mouvement.
-- **Danseuse** (cas difficile : foule texturée + panoramique) : plus aucun caractère, mais des
-  **raccords en blocs et des zones floues restent visibles** à l'arrêt sur image. C'est le cas où
-  un moteur vidéo neuronal (ProPainter, sur GPU) devrait apporter le plus. Prochaine priorité.
-- Deux défauts trouvés et corrigés pendant les tests : texte fantôme recopié par LaMa (masque
-  mal complété en bord de fenêtre) et dérive de la propagation dans un seul sens (passée en
-  bidirectionnelle).
+- Le texte est supprimé partout, sans caractère résiduel détectable.
+- Fonds fixes ou lents (sol, eau, mur, animal immobile, bateau) : reconstruction très propre.
+- Sujets en mouvement qui traversent la zone du texte (main, roue de vélo, cou de cygne, danseur,
+  roue de bus) : **déformations visibles** — pouce « fondu », blocs rectangulaires, roue floue.
+  C'est la limite de la méthode actuelle (récupération du fond réel + LaMa image par image) :
+  elle ne « comprend » pas un objet qui bouge derrière le texte.
+- Biais connu du test « éventail » : la vidéo a été fabriquée en bouclant 15 s avec des passages
+  à l'envers ; le test « scènes animées » (90 séquences DAVIS différentes, sens normal) n'a pas ce biais.
 
 ## 7. Performances, GPU et coûts
 
