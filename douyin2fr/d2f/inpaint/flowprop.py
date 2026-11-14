@@ -22,6 +22,11 @@ de neurones vidéo) :
 """
 from __future__ import annotations
 
+import os
+import threading
+import time
+from concurrent.futures import ThreadPoolExecutor
+
 import cv2
 import numpy as np
 
@@ -86,13 +91,18 @@ class FlowPropInpainter(ClipInpainter):
 
     def __init__(self, fallback: ImageInpainter, near=(1, 2, 3, 4, 6, 8, 12), far_step: int = 10,
                  far_max: int = 60, ring_thresh: float = 9.0, tau: float = 6.0, model_age: float = 30.0,
-                 flow_scale: float | None = None, feather: float = 1.2, texture_k: float = 0.5):
+                 flow_scale: float | None = None, feather: float = 1.2, texture_k: float = 0.5,
+                 workers: int | None = None):
         self.fallback = fallback
         self.near = sorted(set(near))
         self.far = [d for d in range(far_step, far_max + 1, far_step) if d > max(self.near)]
         self.ring_thresh, self.tau, self.model_age = ring_thresh, tau, model_age
         self.flow_scale, self.feather, self.texture_k = flow_scale, feather, texture_k
-        self.dis = cv2.DISOpticalFlow_create(cv2.DISOPTICAL_FLOW_PRESET_MEDIUM)
+        # Parallélisme : OpenCV et NumPy libèrent le GIL, des threads suffisent.
+        self.workers = max(1, workers or os.cpu_count() or 1)
+        self._tls = threading.local()
+        self._lock = threading.Lock()
+        self.timing = {"prepare_s": 0.0, "direct_s": 0.0, "propagate_s": 0.0, "fuse_s": 0.0}
         self.stats = {"masked_frames": 0, "px_total": 0, "px_direct": 0, "px_propagated": 0,
                       "px_model": 0, "model_frames": 0}
 
@@ -103,24 +113,31 @@ class FlowPropInpainter(ClipInpainter):
         self.s = s = self.flow_scale or (0.5 if max(h, w) >= 900 else 1.0)
         self.sw, self.sh = max(8, int(round(w * s))), max(8, int(round(h * s)))
         self.M = [m > 0 for m in masks]
-        self.G, self.Hs = [], []
-        for f, m in zip(frames, self.M):
+
+        def prep(i):
+            f, m = frames[i], self.M[i]
             g = cv2.resize(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY), (self.sw, self.sh), interpolation=cv2.INTER_AREA)
             hs = cv2.resize(m.astype(np.uint8), (self.sw, self.sh), interpolation=cv2.INTER_NEAREST)
             hs = cv2.dilate(hs, np.ones((3, 3), np.uint8))
             if hs.any():
                 g = cv2.inpaint(g, hs, 3, cv2.INPAINT_TELEA)
-            self.G.append(np.ascontiguousarray(g))
-            self.Hs.append(hs)
+            return np.ascontiguousarray(g), hs
+
+        res = list(self._pool.map(prep, range(len(frames))))
+        self.G = [r[0] for r in res]
+        self.Hs = [r[1] for r in res]
         self.gy, self.gx = np.mgrid[0:h, 0:w].astype(np.float32)
         self.flows: dict = {}
-        self.geom: dict = {}
+
+    def _dis(self):
+        d = getattr(self._tls, "dis", None)
+        if d is None:
+            d = self._tls.dis = cv2.DISOpticalFlow_create(cv2.DISOPTICAL_FLOW_PRESET_MEDIUM)
+        return d
 
     def _geometry(self, t):
         """Anneau de pixels connus autour du trou, découpage en tuiles (étiquettes),
         niveaux de gris et texture de l'image t. Calculé une fois par image."""
-        if t in self.geom:
-            return self.geom[t]
         Mt = self.M[t]
         n, _, st, _ = cv2.connectedComponentsWithStats(Mt.astype(np.uint8))
         hh = max(8, int(np.median(st[1:, cv2.CC_STAT_HEIGHT]))) if n > 1 else 8
@@ -143,8 +160,7 @@ class FlowPropInpainter(ClipInpainter):
         r_gray = Gt.ravel()[ridx]
         r_bgr = self.F[t].reshape(-1, 3)[ridx].astype(np.float32)
         r_grad = grad.ravel()[ridx]
-        self.geom[t] = (lab, nlab, ridx, r_lab, r_gray, r_bgr, r_grad)
-        return self.geom[t]
+        return (lab, nlab, ridx, r_lab, r_gray, r_bgr, r_grad)
 
     def _flow(self, t, s_, cache=False):
         """Flux t→s_ à pleine résolution du clip. Seuls les flux entre voisins
@@ -152,7 +168,7 @@ class FlowPropInpainter(ClipInpainter):
         key = (t, s_)
         fl = self.flows.get(key)
         if fl is None:
-            fl = self.dis.calc(self.G[t], self.G[s_], None)
+            fl = self._dis().calc(self.G[t], self.G[s_], None)
             fl = complete_flow(fl, self.Hs[t])
             if cache:
                 self.flows[key] = fl.astype(np.float16)
@@ -166,10 +182,10 @@ class FlowPropInpainter(ClipInpainter):
         oob = (mx < 0) | (my < 0) | (mx > self.w - 1) | (my > self.h - 1)
         return out, oob, mx, my
 
-    def _accept(self, t, warped, bad, want):
+    def _accept(self, geom, warped, bad, want):
         """Tuiles où la source est bien alignée (vérifié sur l'anneau de pixels connus),
         avec correction de luminosité par tuile. Renvoie (masque accepté, valeurs float Nx3)."""
-        lab, nlab, ridx, r_lab, r_gray, r_bgr, r_grad = self._geometry(t)
+        lab, nlab, ridx, r_lab, r_gray, r_bgr, r_grad = geom
         usable = want & ~bad
         if nlab <= 0 or not usable.any():
             return np.zeros_like(want), None
@@ -193,46 +209,75 @@ class FlowPropInpainter(ClipInpainter):
         return acc, vals
 
     # ---------------------------------------------------------------- passes
-    def inpaint_clip(self, frames, masks, known=0, progress=None):
+    def inpaint_clip(self, frames, masks, known=0, progress=None, n_targets=None):
+        """`n_targets` : nombre d'images à produire après les `known` premières ; les
+        suivantes ne servent que de sources (gain de temps sur le chevauchement)."""
         N = len(frames)
+        end = N if n_targets is None else min(N, known + n_targets)
+        self._pool = ThreadPoolExecutor(self.workers)
+        try:
+            return self._run(frames, masks, known, end, progress)
+        finally:
+            self._pool.shutdown()
+            self.flows = {}
+            self.F = None
+
+    def _direct(self, t, offsets):
+        """Observations directes pour l'image t (exécuté en parallèle)."""
+        F, N = self.F, len(self.F)
+        Mt = self.M[t]
+        geom = self._geometry(t)
+        rem = Mt.copy()
+        val = np.zeros(F[t].shape, np.uint8)
+        for d in offsets:
+            s_ = t + d
+            if not (0 <= s_ < N) or not rem.any():
+                continue
+            fl = self._flow(t, s_, cache=abs(d) == 1)
+            mx, my = self.gx + fl[..., 0], self.gy + fl[..., 1]
+            # Test peu coûteux d'abord : la source voit-elle au moins un pixel encore manquant ?
+            # (si son propre sous-titre recouvre tout, inutile de la déformer — résultat identique)
+            wm = cv2.remap(self.M[s_].astype(np.uint8), mx, my, cv2.INTER_NEAREST,
+                           borderMode=cv2.BORDER_CONSTANT, borderValue=1) > 0
+            if not (rem & ~wm).any():
+                continue
+            warped = cv2.remap(F[s_], mx, my, cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
+            oob = (mx < 0) | (my < 0) | (mx > self.w - 1) | (my > self.h - 1)
+            acc, vals = self._accept(geom, warped, wm | oob, rem)
+            if acc.any():
+                val[acc] = np.clip(vals + 0.5, 0, 255).astype(np.uint8)
+                rem &= ~acc
+        return val, Mt & ~rem
+
+    def _run(self, frames, masks, known, end, progress):
+        N = len(frames)
+        tic = time.perf_counter()
         self._prepare(frames, masks)
+        self.timing["prepare_s"] += time.perf_counter() - tic
+        tic = time.perf_counter()
         self.F = F = frames
         prog = (lambda p: progress(p)) if progress else (lambda p: None)
-        todo = [t for t in range(N) if self.M[t].any()]
+        todo = [t for t in range(N) if t < end and self.M[t].any()]
         if not todo:
             return list(frames)
         steps = 3 * len(todo)
         done = 0
 
         # 1) observations directes : vrais pixels de l'arrière-plan pris dans les autres images
-        direct = {}
         offsets = []
         for d in self.near + self.far:
             offsets += [-d, d]
-        for t in todo:
+        direct = {}
+        for t, r in zip(todo, self._pool.map(lambda t: self._direct(t, offsets), todo)):
+            direct[t] = r
             Mt = self.M[t]
-            rem = Mt.copy()
-            val = np.zeros(F[t].shape, np.uint8)
-            for d in offsets:
-                s_ = t + d
-                if not (0 <= s_ < N) or not rem.any():
-                    continue
-                fl = self._flow(t, s_, cache=abs(d) == 1)
-                warped, oob, mx, my = self._warp(F[s_], fl)
-                wm = cv2.remap(self.M[s_].astype(np.uint8), mx, my, cv2.INTER_NEAREST,
-                               borderMode=cv2.BORDER_CONSTANT, borderValue=1) > 0
-                acc, vals = self._accept(t, warped, wm | oob, rem)
-                if acc.any():
-                    val[acc] = np.clip(vals + 0.5, 0, 255).astype(np.uint8)
-                    rem &= ~acc
-            got = Mt & ~rem
-            direct[t] = (val, got)
             self.stats["px_total"] += int(Mt.sum())
-            self.stats["px_direct"] += int(got.sum())
+            self.stats["px_direct"] += int(r[1].sum())
             self.stats["masked_frames"] += 1
-            self._trim_geom(keep=t)
             done += 1
             prog(done / steps)
+        self.timing["direct_s"] += time.perf_counter() - tic
+        tic = time.perf_counter()
 
         # 2) propagation avant / arrière avec « âge » par pixel
         def propagate(order, step, ref_out=None):
@@ -252,7 +297,7 @@ class FlowPropInpainter(ClipInpainter):
                 if rem.any() and p in outs:
                     fl = self._flow(t, p, cache=True)
                     warped, oob, mx, my = self._warp(outs[p], fl)
-                    acc, vals = self._accept(t, warped, oob, rem)
+                    acc, vals = self._accept(self._geometry(t), warped, oob, rem)
                     if acc.any():
                         base[acc] = vals
                         pa = ages[p].astype(np.float32) if ages[p] is not None else np.zeros_like(age)
@@ -272,43 +317,36 @@ class FlowPropInpainter(ClipInpainter):
                         self.stats["model_frames"] += 1
                 outs[t] = np.clip(base + 0.5, 0, 255).astype(np.uint8)
                 ages[t] = np.minimum(age, 60000).astype(np.float16)
-                self._trim_geom(keep=t)
                 done += 1
                 prog(done / steps)
             return outs, ages
 
-        fwd = propagate(range(N), +1)
-        bwd = propagate(range(N - 1, -1, -1), -1, ref_out=fwd)
-        self.flows, self.geom = {}, {}
+        fwd = propagate(range(end), +1)
+        bwd = propagate(range(end - 1, -1, -1), -1, ref_out=fwd)
+        self.flows = {}
+        self.timing["propagate_s"] += time.perf_counter() - tic
+        tic = time.perf_counter()
 
-        # 3) fusion pondérée par l'âge + fondu de bord
-        result = []
-        for t in range(N):
+        # 3) fusion pondérée par l'âge + fondu de bord (parallèle)
+        def fuse(t):
             Mt = self.M[t]
-            if t < known or not Mt.any():
-                result.append(F[t])
-                continue
+            if t < known or t >= end or not Mt.any():
+                return F[t]
             of, af = fwd[0][t].astype(np.float32), fwd[1][t].astype(np.float32)
             ob, ab = bwd[0][t].astype(np.float32), bwd[1][t].astype(np.float32)
             m = np.minimum(af, ab)
             wf = np.exp(-(af - m) / self.tau)[..., None]
             wb = np.exp(-(ab - m) / self.tau)[..., None]
             comp = (of * wf + ob * wb) / (wf + wb)
-            self.stats["px_propagated"] += int((Mt & ~direct[t][1]).sum())
             a = Mt.astype(np.float32)
             if self.feather > 0:
                 a = np.maximum(a, cv2.GaussianBlur(a, (0, 0), self.feather))
-            ft = F[t].astype(np.float32)
-            res = comp * a[..., None] + ft * (1 - a[..., None])
-            result.append(np.clip(res + 0.5, 0, 255).astype(np.uint8))
-            # libère au fur et à mesure
-            fwd[0][t] = bwd[0][t] = None
-            direct.pop(t, None)
-        self.F = None
-        return result
+            res = comp * a[..., None] + F[t].astype(np.float32) * (1 - a[..., None])
+            return np.clip(res + 0.5, 0, 255).astype(np.uint8)
 
-    def _trim_geom(self, keep, size=4):
-        """La géométrie se recalcule vite : on n'en garde que quelques-unes (mémoire bornée)."""
-        if len(self.geom) > size:
-            for k in [k for k in self.geom if k != keep][:len(self.geom) - size]:
-                del self.geom[k]
+        result = list(self._pool.map(fuse, range(N)))
+        self.timing["fuse_s"] += time.perf_counter() - tic
+        for t in todo:
+            if known <= t < end:
+                self.stats["px_propagated"] += int((self.M[t] & ~direct[t][1]).sum())
+        return result

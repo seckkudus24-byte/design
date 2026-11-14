@@ -60,9 +60,12 @@ class SubtitleDetector:
                  limit_side_len: int = 960):
         from rapidocr_onnxruntime import RapidOCR
 
+        from .device import use_gpu
+
         kwargs = dict(det_limit_side_len=limit_side_len, det_limit_type="max",
                       det_box_thresh=0.5, det_unclip_ratio=1.8, text_score=min_score,
-                      min_height=10, det_model_path=None, rec_model_path=None)
+                      min_height=10, det_model_path=None, rec_model_path=None,
+                      det_use_cuda=use_gpu(), rec_use_cuda=use_gpu())
         # Modèles PP-OCRv4 (meilleurs) s'ils ont été téléchargés, sinon PP-OCRv3 embarqués.
         if models_dir:
             det = os.path.join(models_dir, "ch_PP-OCRv4_det_infer.onnx")

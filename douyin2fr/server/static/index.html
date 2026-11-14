@@ -2,7 +2,14 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Douyin→FR">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="manifest" href="manifest.json">
 <title>Douyin → France AI</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -10,6 +17,7 @@
 <header class="top">
   <div class="brand"><span class="logo">抖</span><span>Douyin <b>→</b> France <em>AI</em></span></div>
   <div class="queue-ctl">
+    <span id="devState" class="pill dev"></span>
     <span id="queueState" class="pill">File active</span>
     <button id="pauseBtn" class="btn ghost">Mettre en pause</button>
   </div>
@@ -21,7 +29,8 @@
       <input id="fileInput" type="file" accept="video/*" multiple hidden>
       <div class="drop-icon">＋</div>
       <div><b>Importer des vidéos</b></div>
-      <div class="muted small">Glissez-déposez ou cliquez · plusieurs fichiers · <span id="maxDur">5 min</span> maximum par vidéo</div>
+      <div class="up hidden"><div id="upBar"></div></div>
+      <div class="muted small">Touchez pour choisir dans Photos ou Fichiers · glissez-déposez sur ordinateur · plusieurs fichiers · <span id="maxDur">5 min</span> maximum par vidéo</div>
     </label>
     <div class="opts">
       <label class="small muted">Moteur de suppression</label>

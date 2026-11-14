@@ -163,26 +163,56 @@ Lecture honnête :
   mal complété en bord de fenêtre) et dérive de la propagation dans un seul sens (passée en
   bidirectionnelle).
 
-## 7. Coûts estimés
+## 7. Performances, GPU et coûts
 
-**Mesures CPU (4 cœurs)** — analyse ≈ 0,08 s/image en 1080p ; nettoyage ≈ 0,8 s/image (scène où
-le fond est récupérable) à 2–4 s/image (scène difficile où LaMa travaille souvent, estimation
-extrapolée de la danseuse en 480p). À 30 images/s :
+### Où va le temps (mesuré, 1080×1920, CPU 4 cœurs)
 
-| Durée | CPU local (4 cœurs) | GPU cloud *(estimation, non mesurée)* |
+| Étape | Coût | Accélérable par |
 |---|---|---|
-| 1 min | ≈ 25 min à 2 h | ≈ 8–20 min → 0,10 à 0,30 € |
-| 3 min | ≈ 1 h 15 à 6 h | ≈ 25–60 min → 0,30 à 0,80 € |
-| 5 min | ≈ 2 h à 10 h | ≈ 40–100 min → 0,50 à 1,30 € |
+| Analyse OCR (1 image sur 3) | ≈ 0,19 s par image-clé → **≈ 9 min pour 5 min de vidéo** | **GPU** (OCR en CUDA) |
+| Flux optique + récupération du vrai fond | ≈ 75 % du nettoyage | **Cœurs CPU** (parallélisé) |
+| LaMa (zones jamais visibles) | 3,3 s par fenêtre 512² sur CPU ; 0 à 15 % des images | **GPU** (×50 à ×100) |
+| Encodage H.264 + relectures | quelques % | — |
 
-- **Coût local** : uniquement l'électricité (quelques centimes). Aucun abonnement.
-- **Infrastructure** : un GPU cloud à la demande se loue ~0,40–0,80 €/h (RTX 4090 / A10 chez les
-  loueurs à l'heure). Le gain GPU vient de LaMa (≈ 3,3 s par fenêtre sur CPU, quelques dizaines de ms
-  sur GPU) ; le flux optique reste sur CPU dans cette version.
-- **API** : **aucune** pour la suppression des sous-titres. Pour les étapes futures (ordre de grandeur
-  à vérifier sur les grilles tarifaires au moment de l'intégration) : transcription Whisper local
-  gratuit ; traduction par LLM via API < 0,02 € par minute de dialogue ; voix : Piper gratuit, ou
-  API vocale premium ≈ 0,10–0,30 € par minute.
+Optimisations réalisées, **sans aucune perte de qualité** (sortie identique au bit près, vérifié) :
+calcul vectorisé de la validation, flux complété à demi-résolution, parallélisme multi-cœurs
+(54 s → 32 s sur un clip de 113 images), chargement de LaMa à la demande, mémoire limitée aux
+seules bandes de texte (pic 3,8 Go → 1,3 Go).
+
+### GPU
+
+`onnxruntime-gpu` installé + carte NVIDIA → l'OCR et LaMa passent automatiquement sur GPU
+(`D2F_DEVICE=auto|gpu|cpu`). Le flux optique reste sur CPU : il faut donc **un GPU accompagné de
+plusieurs cœurs CPU** (cas standard des offres cloud : 8 à 16 vCPU avec une RTX 4090).
+⚠️ Le chemin GPU n'a **pas pu être exécuté** dans l'environnement de développement (aucun GPU) :
+les gains GPU ci-dessous sont des estimations, à confirmer au premier essai sur une machine louée.
+
+### Location dans le cloud
+
+`Dockerfile` fourni (variante GPU et CPU). Exemple sur un GPU loué à l'heure :
+
+```bash
+docker build -t douyin2fr --build-arg BASE=nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04 --build-arg ORT=onnxruntime-gpu .
+docker run --gpus all -p 8000:8000 -e D2F_TOKEN=<secret long> -v d2f-data:/app/data douyin2fr
+```
+
+Puis ouvrir `https://<adresse-du-pod>:8000/?token=<secret>` depuis l'iPhone. Utiliser l'URL HTTPS
+fournie par l'hébergeur (proxy HTTPS RunPod, Cloudflare Tunnel…) : le jeton ne doit pas circuler
+en HTTP clair sur Internet.
+
+### Utilisation depuis l'iPhone (Safari)
+
+- Interface adaptée au téléphone, sans défilement horizontal (vérifié en émulation iPhone 14) ;
+  boutons ≥ 44 px ; champs en 16 px (pas de zoom automatique de Safari).
+- Import depuis **Photos ou Fichiers**, avec **barre de progression de l'envoi** (une vidéo de 5 min
+  fait 200 à 500 Mo).
+- Le traitement continue sur le serveur si l'écran se verrouille ; la progression reprend à la
+  réouverture.
+- Résultat : MP4 H.264 lisible par l'iPhone ; « Télécharger le MP4 » l'enregistre dans Fichiers
+  (puis Partager → Enregistrer la vidéo pour l'avoir dans Photos).
+- « Ajouter à l'écran d'accueil » : icône et ouverture plein écran comme une application.
+- Accès : à la maison, `D2F_HOST=0.0.0.0 D2F_TOKEN=<secret> python -m server.app` sur l'ordinateur,
+  puis `http://<ip-de-l-ordinateur>:8000/?token=<secret>` sur le même Wi-Fi ; ailleurs, la version cloud.
 
 ## 8. Plan de développement
 

@@ -85,6 +85,36 @@ select{background:var(--panel2);border:1px solid var(--line);border-radius:10px;
 .stat b{display:block;font-size:20px}
 .lightbox{position:fixed;inset:0;background:#000d;display:grid;place-items:center;z-index:20;cursor:zoom-out}
 .lightbox img{max-width:95vw;max-height:92vh;border-radius:8px}
-@media (max-width:860px){.layout{grid-template-columns:1fr}.side{border-right:0;border-bottom:1px solid var(--line)}.detail{padding:16px}}
+.up{height:6px;background:#252a37;border-radius:9px;overflow:hidden;margin:10px 0 6px}
+.up div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s}
+.drop.busy{pointer-events:none;border-color:var(--accent2)}
+body{padding-bottom:env(safe-area-inset-bottom)}
+.top{padding-top:max(14px,env(safe-area-inset-top))}
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr;min-height:0}
+  .side{border-right:0;border-bottom:1px solid var(--line);padding:14px}
+  .jobs{max-height:40vh}
+  .detail{padding:14px 14px 40px}
+  .top{padding-left:14px;padding-right:14px}
+  .brand{font-size:16px}
+  .queue-ctl .pill{display:none}
+  .btn{padding:11px 14px}               /* cibles tactiles ≥ 44 px */
+  select{padding:11px 8px;font-size:16px} /* 16 px : évite le zoom automatique de Safari */
+  .d-actions{width:100%}
+  .d-actions select,.d-actions .btn,.d-actions a.btn{flex:1 1 100%;max-width:none;text-align:center}
+  .stage video{max-height:62vh}
+  .compare.side .stage video{max-height:50vh}
+  .handle span{width:42px;height:42px}
+  .player{flex-wrap:wrap}
+  .empty{margin:3vh auto}
+  .empty h2{font-size:21px}
+}
 a.btn{text-decoration:none;color:var(--text);display:inline-block}
 .d-actions select{max-width:280px}
+/* Les éléments de grille/flex ne doivent jamais imposer leur largeur intrinsèque (vidéo 1080 px…) */
+.layout>*,.detail,.card,.compare,.stage{min-width:0}
+.stage{max-width:100%}
+.stage video{width:auto;height:auto;max-width:100%}
+.card-h>*{min-width:0}
+.a-sum{overflow-wrap:anywhere}
+.pill.dev{background:#16232b;color:var(--accent2)}

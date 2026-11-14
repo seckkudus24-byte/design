@@ -18,7 +18,8 @@ class ClipInpainter:
     name = "clip"
 
     def inpaint_clip(self, frames: list[np.ndarray], masks: list[np.ndarray], known: int = 0,
-                     progress: Callable[[float], None] | None = None) -> list[np.ndarray]:
+                     progress: Callable[[float], None] | None = None,
+                     n_targets: int | None = None) -> list[np.ndarray]:
         raise NotImplementedError
 
 
@@ -30,10 +31,11 @@ class PerFrameClipInpainter(ClipInpainter):
         self.name = image_inpainter.name
         self.stats = {}
 
-    def inpaint_clip(self, frames, masks, known=0, progress=None):
+    def inpaint_clip(self, frames, masks, known=0, progress=None, n_targets=None):
+        end = len(frames) if n_targets is None else known + n_targets
         out = []
         for i, (f, m) in enumerate(zip(frames, masks)):
-            out.append(self.inp(f, m) if i >= known and m.any() else f)
+            out.append(self.inp(f, m) if known <= i < end and m.any() else f)
             if progress:
                 progress((i + 1) / len(frames))
         return out

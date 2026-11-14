@@ -18,6 +18,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from d2f.pipeline import METHODS
+from d2f.device import describe
 from d2f.video_io import MAX_DURATION_S, VideoError
 from .jobs import JobManager
 
@@ -52,7 +53,7 @@ def _job(jid: str):
 @app.get("/api/config")
 def config():
     return {"methods": METHODS, "paused": jobs.paused, "token_required": bool(TOKEN),
-            "max_duration_s": MAX_DURATION_S,
+            "max_duration_s": MAX_DURATION_S, "device": describe(),
             "resolutions": {"auto": "1080p minimum (recommandé)", "1080p": "1080p exact", "source": "Résolution d'origine"}}
 
 

@@ -42,6 +42,8 @@ async function init() {
   for (const [k, v] of Object.entries(resolutions)) rs.add(new Option(v, k));
   rs.value = localStorageGet("d2f_res") || "auto";
   rs.onchange = () => localStorageSet("d2f_res", rs.value);
+  const dv = cfg.device || {};
+  $("#devState").textContent = dv.gpu ? "GPU" : `CPU · ${dv.cpu_threads || "?"} cœurs`;
   $("#maxDur").textContent = Math.round(cfg.max_duration_s / 60) + " min";
   $("#pauseBtn").onclick = async () => {
     const r = await api(`/api/queue/${paused ? "resume" : "pause"}`, { method: "POST" });
@@ -56,6 +58,24 @@ async function init() {
   setInterval(poll, 1000);
 }
 
+function uploadXHR(fd, onProgress) {
+  // XMLHttpRequest plutôt que fetch : seul moyen d'avoir la progression d'envoi (utile en 4G/5G).
+  return new Promise((resolve, reject) => {
+    const x = new XMLHttpRequest();
+    x.open("POST", "/api/jobs");
+    if (token) x.setRequestHeader("x-token", token);
+    x.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total);
+    x.onload = () => {
+      let body = {};
+      try { body = JSON.parse(x.responseText); } catch {}
+      if (x.status === 401) { token = prompt("Jeton d'accès :") || ""; localStorageSet("d2f_token", token); return reject(new Error("Jeton requis, réessayez.")); }
+      x.status < 300 ? resolve(body) : reject(new Error(body.detail || x.statusText || "Erreur réseau"));
+    };
+    x.onerror = () => reject(new Error("Connexion interrompue pendant l'envoi."));
+    x.send(fd);
+  });
+}
+
 async function upload(files) {
   if (!files || !files.length) return;
   const fd = new FormData();
@@ -63,16 +83,25 @@ async function upload(files) {
   fd.append("method", $("#methodSel").value);
   fd.append("auto_clean", $("#autoClean").checked);
   fd.append("resolution", $("#resSel").value);
-  const drop = $("#drop");
-  drop.querySelector("b").textContent = `Envoi de ${files.length} fichier(s)…`;
+  const drop = $("#drop"), label = drop.querySelector("b"), bar = $("#upBar");
+  const mb = [...files].reduce((a, f) => a + f.size, 0) / 1048576;
+  drop.classList.add("busy"); bar.parentElement.classList.remove("hidden");
   try {
-    const r = await api("/api/jobs", { method: "POST", body: fd });
-    if (r.jobs.length) selected = r.jobs[0].id;
+    const r = await uploadXHR(fd, (p) => {
+      bar.style.width = (p * 100).toFixed(1) + "%";
+      label.textContent = p < 1 ? `Envoi… ${Math.round(p * 100)} % (${mb.toFixed(0)} Mo)` : "Vérification de la vidéo…";
+    });
+    if (r.jobs && r.jobs.length) { selected = r.jobs[0].id; renderedKey = ""; showDetailOnMobile(); }
     if (r.errors && r.errors.length) alert("Vidéo(s) refusée(s) :\n" + r.errors.join("\n"));
   } catch (e) { alert("Import impossible : " + e.message); }
-  drop.querySelector("b").textContent = "Importer des vidéos";
+  drop.classList.remove("busy"); bar.parentElement.classList.add("hidden"); bar.style.width = "0";
+  label.textContent = "Importer des vidéos";
   $("#fileInput").value = "";
   poll();
+}
+
+function showDetailOnMobile() {
+  if (window.matchMedia("(max-width: 860px)").matches) setTimeout(() => $("#detail").scrollIntoView({ behavior: "smooth" }), 150);
 }
 
 async function poll() {
@@ -103,7 +132,7 @@ function renderList() {
     li.innerHTML = `<div class="n"></div><div class="s"><span class="${statusClass(j.status)}">${STATUS[j.status] || j.status}</span><span>${RUNNING.has(j.status) ? pct + " %" : (j.info.duration ? fmtT(j.info.duration) : "")}</span></div>` +
       (RUNNING.has(j.status) ? `<div class="mini"><div style="width:${pct}%"></div></div>` : "");
     li.querySelector(".n").textContent = j.name;
-    li.onclick = () => { selected = j.id; renderedKey = ""; renderList(); renderDetail(); };
+    li.onclick = () => { selected = j.id; renderedKey = ""; renderList(); renderDetail(); showDetailOnMobile(); };
     ul.appendChild(li);
   }
 }

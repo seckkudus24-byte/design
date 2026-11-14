@@ -30,17 +30,29 @@ def ensure_model(models_dir: str) -> str:
 class LamaInpainter(ImageInpainter):
     name = "lama"
 
-    def __init__(self, models_dir: str = "models", threads: int | None = None, use_gpu: bool = False):
+    def __init__(self, models_dir: str = "models", threads: int | None = None, use_gpu: bool | None = None):
         import onnxruntime as ort
 
-        opts = ort.SessionOptions()
-        if threads:
-            opts.intra_op_num_threads = threads
-        providers = ["CPUExecutionProvider"]
-        if use_gpu and "CUDAExecutionProvider" in ort.get_available_providers():
-            providers.insert(0, "CUDAExecutionProvider")
-        self.sess = ort.InferenceSession(ensure_model(models_dir), opts, providers=providers)
+        from ..device import use_gpu as _auto_gpu
+        if use_gpu is None:
+            use_gpu = _auto_gpu()
+        self._ort, self._threads, self._gpu = ort, threads, use_gpu
+        self.model_path = ensure_model(models_dir)
+        self._sess = None  # chargé seulement au premier besoin (≈ 8 s sur CPU)
         self.calls = 0
+
+    @property
+    def sess(self):
+        if self._sess is None:
+            ort = self._ort
+            opts = ort.SessionOptions()
+            if self._threads:
+                opts.intra_op_num_threads = self._threads
+            providers = ["CPUExecutionProvider"]
+            if self._gpu and "CUDAExecutionProvider" in ort.get_available_providers():
+                providers.insert(0, "CUDAExecutionProvider")
+            self._sess = ort.InferenceSession(self.model_path, opts, providers=providers)
+        return self._sess
 
     def _run512(self, crop: np.ndarray, mask: np.ndarray) -> np.ndarray:
         m2 = (mask > 0).astype(np.float32)
