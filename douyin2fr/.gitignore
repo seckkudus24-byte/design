@@ -1,0 +1,6 @@
+models/*.onnx
+models/.cache/
+data/
+__pycache__/
+*.pyc
+.pytest_cache/

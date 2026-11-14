@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Douyin → France AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">抖</span><span>Douyin <b>→</b> France <em>AI</em></span></div>
+  <div class="queue-ctl">
+    <span id="queueState" class="pill">File active</span>
+    <button id="pauseBtn" class="btn ghost">Mettre en pause</button>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="side">
+    <label id="drop" class="drop">
+      <input id="fileInput" type="file" accept="video/*" multiple hidden>
+      <div class="drop-icon">＋</div>
+      <div><b>Importer des vidéos</b></div>
+      <div class="muted small">Glissez-déposez ou cliquez · plusieurs fichiers acceptés</div>
+    </label>
+    <div class="opts">
+      <label class="small muted">Moteur de suppression</label>
+      <select id="methodSel"></select>
+      <label class="check"><input id="autoClean" type="checkbox"> Nettoyer automatiquement après l'analyse</label>
+    </div>
+    <div class="list-head"><span>Vidéos</span><span id="count" class="muted small"></span></div>
+    <ul id="jobList" class="jobs"></ul>
+  </aside>
+
+  <section class="detail" id="detail">
+    <div class="empty">
+      <h2>Supprimez les sous-titres chinois incrustés</h2>
+      <p class="muted">Importez une vidéo Douyin que vous êtes autorisé à réutiliser. L'IA détecte les caractères chinois,
+        les efface et reconstruit l'arrière-plan image par image.</p>
+      <ol class="steps">
+        <li class="on">Importation</li><li class="on">Analyse</li><li class="on">Nettoyage</li>
+        <li class="soon">Traduction <small>bientôt</small></li><li class="soon">Voix <small>bientôt</small></li>
+        <li class="soon">Sous-titres FR <small>bientôt</small></li><li class="on">Export MP4</li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<template id="detailTpl">
+  <div class="d-head">
+    <div>
+      <h2 class="d-name"></h2>
+      <div class="d-meta muted small"></div>
+    </div>
+    <div class="d-actions"></div>
+  </div>
+  <div class="progress-wrap hidden">
+    <div class="progress"><div class="bar"></div></div>
+    <div class="progress-txt small"><span class="p-stage"></span><b class="p-pct"></b></div>
+  </div>
+  <div class="err hidden"></div>
+
+  <div class="card compare-card hidden">
+    <div class="card-h"><b>Avant / après</b>
+      <div class="seg"><button data-v="split" class="on">Curseur</button><button data-v="side">Côte à côte</button></div>
+    </div>
+    <div class="compare split">
+      <div class="stage">
+        <video class="v-after" muted playsinline preload="auto"></video>
+        <div class="before-clip"><video class="v-before" muted playsinline preload="auto"></video></div>
+        <div class="handle"><span></span></div>
+        <span class="tag tl">Original</span><span class="tag tr">Nettoyé</span>
+      </div>
+    </div>
+    <div class="player">
+      <button class="btn small play">▶ Lecture</button>
+      <input class="seek" type="range" min="0" max="1000" value="0">
+      <span class="time small muted">0:00</span>
+      <label class="check small"><input class="sound" type="checkbox"> Son</label>
+    </div>
+  </div>
+
+  <div class="card analysis-card hidden">
+    <div class="card-h"><b>Détection</b><span class="muted small a-sum"></span></div>
+    <div class="thumbs"></div>
+    <details class="lines"><summary class="small">Texte chinois reconnu</summary><ul></ul></details>
+  </div>
+
+  <div class="card stats-card hidden">
+    <div class="card-h"><b>Rapport de reconstruction</b></div>
+    <div class="stats"></div>
+  </div>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>
