@@ -11,9 +11,11 @@ Variables d'environnement :
 """
 from __future__ import annotations
 
+import json
 import os
 import secrets
 import tempfile
+import threading
 
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, JSONResponse
@@ -32,6 +34,7 @@ MAX_BYTES = int(os.environ.get("D2F_MAX_MB", "2048")) * 1024 * 1024
 
 app = FastAPI(title="Douyin → France AI")
 jobs = JobManager(DATA, MODELS)
+_up_lock = threading.Lock()
 
 
 @app.middleware("http")
@@ -93,6 +96,96 @@ async def upload(files: list[UploadFile] = File(...), method: str = Form("tempor
             if os.path.exists(tmp):
                 os.remove(tmp)
     return {"jobs": created, "errors": errors}
+
+
+# ---------------------------------------------------------------- envoi par morceaux
+# Les tunnels/proxys gratuits (Cloudflare : 100 Mo par requête) et les réseaux mobiles imposent
+# d'envoyer les grosses vidéos en morceaux, avec reprise possible si la connexion coupe.
+CHUNK = int(float(os.environ.get("D2F_CHUNK_MB", "16")) * 1024 * 1024)
+UP_DIR = os.path.join(jobs.data_dir, "uploads")
+os.makedirs(UP_DIR, exist_ok=True)
+
+
+def _up_paths(uid: str):
+    if not uid.isalnum() or len(uid) != 32:
+        raise HTTPException(404, "Envoi inconnu")
+    meta = os.path.join(UP_DIR, uid + ".json")
+    if not os.path.exists(meta):
+        raise HTTPException(404, "Envoi inconnu ou expiré")
+    return meta, os.path.join(UP_DIR, uid + ".part")
+
+
+@app.post("/api/uploads")
+async def upload_init(request: Request):
+    d = await request.json()
+    size = int(d.get("size", 0))
+    if size <= 0 or size > MAX_BYTES:
+        raise HTTPException(413, f"Taille invalide ou fichier trop volumineux (> {MAX_BYTES >> 20} Mo)")
+    uid = secrets.token_hex(16)
+    meta = {"filename": str(d.get("filename") or "video.mp4")[:200], "size": size,
+            "method": str(d.get("method") or "temporal"), "auto_clean": bool(d.get("auto_clean")),
+            "resolution": str(d.get("resolution") or "auto"), "received": []}
+    with open(os.path.join(UP_DIR, uid + ".part"), "wb") as f:
+        f.truncate(size)
+    with open(os.path.join(UP_DIR, uid + ".json"), "w") as f:
+        json.dump(meta, f)
+    return {"upload_id": uid, "chunk_size": CHUNK, "chunks": -(-size // CHUNK)}
+
+
+@app.get("/api/uploads/{uid}")
+def upload_status(uid: str):
+    meta, _ = _up_paths(uid)
+    with open(meta) as f:
+        return json.load(f)
+
+
+@app.put("/api/uploads/{uid}/{index}")
+async def upload_chunk(uid: str, index: int, request: Request):
+    meta_p, part = _up_paths(uid)
+    with open(meta_p) as f:
+        meta = json.load(f)
+    n = -(-meta["size"] // CHUNK)
+    if not 0 <= index < n:
+        raise HTTPException(400, "Morceau hors limites")
+    expected = min(CHUNK, meta["size"] - index * CHUNK)
+    data = bytearray()
+    async for c in request.stream():
+        data += c
+        if len(data) > expected:
+            raise HTTPException(400, "Morceau trop grand")
+    if len(data) != expected:
+        raise HTTPException(400, f"Morceau incomplet ({len(data)}/{expected} octets)")
+    with open(part, "r+b") as f:
+        f.seek(index * CHUNK)
+        f.write(data)
+    with _up_lock:
+        with open(meta_p) as f:
+            meta = json.load(f)
+        if index not in meta["received"]:
+            meta["received"].append(index)
+        with open(meta_p, "w") as f:
+            json.dump(meta, f)
+    return {"ok": True, "received": len(meta["received"]), "chunks": n}
+
+
+@app.post("/api/uploads/{uid}/finish")
+def upload_finish(uid: str):
+    meta_p, part = _up_paths(uid)
+    with open(meta_p) as f:
+        meta = json.load(f)
+    n = -(-meta["size"] // CHUNK)
+    missing = sorted(set(range(n)) - set(meta["received"]))
+    if missing:
+        raise HTTPException(409, f"Morceaux manquants : {missing[:10]}")
+    try:
+        job = jobs.add(meta["filename"], part, meta["method"], meta["auto_clean"], meta["resolution"])
+    except VideoError as e:
+        raise HTTPException(422, f"{meta['filename']} : {e}")
+    finally:
+        for p in (part, meta_p):
+            if os.path.exists(p):
+                os.remove(p)
+    return {"jobs": [job.public()], "errors": []}
 
 
 @app.get("/api/jobs/{jid}")

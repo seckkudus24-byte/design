@@ -1,6 +1,6 @@
 // Service worker minimal : rend l'application installable et ouvre l'interface hors ligne.
 // Ne met JAMAIS en cache l'API ni les vidéos (données privées et volumineuses).
-const CACHE = "d2f-shell-v1";
+const CACHE = "d2f-shell-v2";
 const SHELL = ["/", "/index.html", "/style.css", "/app.js", "/manifest.json", "/icon-192.png", "/icon-512.png"];
 self.addEventListener("install", (e) => e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())));
 self.addEventListener("activate", (e) => e.waitUntil(

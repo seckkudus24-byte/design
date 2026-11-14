@@ -46,8 +46,8 @@ class LamaInpainter(ImageInpainter):
         if self._sess is None:
             ort = self._ort
             opts = ort.SessionOptions()
-            if self._threads:
-                opts.intra_op_num_threads = self._threads
+            from ..device import cpu_count
+            opts.intra_op_num_threads = self._threads or cpu_count()
             providers = ["CPUExecutionProvider"]
             if self._gpu and "CUDAExecutionProvider" in ort.get_available_providers():
                 providers.insert(0, "CUDAExecutionProvider")

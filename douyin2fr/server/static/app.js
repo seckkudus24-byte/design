@@ -31,6 +31,12 @@ const withTok = (u) => token ? u + (u.includes("?") ? "&" : "?") + "token=" + en
 const fmtT = (s) => isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}` : "0:00";
 
 async function init() {
+  // Import actif immédiatement (avant même la réponse du serveur)
+  const drop = $("#drop"), input = $("#fileInput");
+  input.onchange = () => upload(input.files);
+  ["dragenter", "dragover"].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.add("over"); }));
+  ["dragleave", "drop"].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.remove("over"); }));
+  drop.addEventListener("drop", ev => upload(ev.dataTransfer.files));
   const cfg = await api("/api/config");
   methods = cfg.methods;
   const sel = $("#methodSel");
@@ -49,51 +55,63 @@ async function init() {
     const r = await api(`/api/queue/${paused ? "resume" : "pause"}`, { method: "POST" });
     paused = r.paused; renderQueue();
   };
-  const drop = $("#drop"), input = $("#fileInput");
-  input.onchange = () => upload(input.files);
-  ["dragenter", "dragover"].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.add("over"); }));
-  ["dragleave", "drop"].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.remove("over"); }));
-  drop.addEventListener("drop", ev => upload(ev.dataTransfer.files));
   poll();
   setInterval(poll, 1000);
 }
 
-function uploadXHR(fd, onProgress) {
-  // XMLHttpRequest plutôt que fetch : seul moyen d'avoir la progression d'envoi (utile en 4G/5G).
+function putChunk(url, blob, onProgress) {
+  // XMLHttpRequest : seul moyen d'avoir la progression d'envoi.
   return new Promise((resolve, reject) => {
     const x = new XMLHttpRequest();
-    x.open("POST", "/api/jobs");
+    x.open("PUT", url);
     if (token) x.setRequestHeader("x-token", token);
-    x.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total);
-    x.onload = () => {
-      let body = {};
-      try { body = JSON.parse(x.responseText); } catch {}
-      if (x.status === 401) { token = prompt("Jeton d'accès :") || ""; localStorageSet("d2f_token", token); return reject(new Error("Jeton requis, réessayez.")); }
-      x.status < 300 ? resolve(body) : reject(new Error(body.detail || x.statusText || "Erreur réseau"));
-    };
-    x.onerror = () => reject(new Error("Connexion interrompue pendant l'envoi."));
-    x.send(fd);
+    x.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded);
+    x.onload = () => x.status < 300 ? resolve() : reject(new Error((() => { try { return JSON.parse(x.responseText).detail; } catch { return x.statusText; } })()));
+    x.onerror = () => reject(new Error("réseau"));
+    x.send(blob);
   });
+}
+
+async function uploadOne(file, opts, onProgress) {
+  // Envoi par morceaux de 16 Mo (limite des tunnels gratuits ~100 Mo/requête) avec reprise.
+  const init = await api("/api/uploads", { method: "POST", headers: { "content-type": "application/json" },
+    body: JSON.stringify({ filename: file.name, size: file.size, ...opts }) });
+  const { upload_id: uid, chunk_size: cs, chunks } = init;
+  let done = 0;
+  for (let i = 0; i < chunks; i++) {
+    const blob = file.slice(i * cs, Math.min(file.size, (i + 1) * cs));
+    for (let attempt = 0; ; attempt++) {
+      try { await putChunk(`/api/uploads/${uid}/${i}`, blob, (l) => onProgress((done + l) / file.size)); break; }
+      catch (e) {
+        if (attempt >= 5) throw new Error(`envoi interrompu (${e.message})`);
+        await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));  // connexion mobile instable : on réessaie
+      }
+    }
+    done += blob.size;
+    onProgress(done / file.size);
+  }
+  return api(`/api/uploads/${uid}/finish`, { method: "POST" });
 }
 
 async function upload(files) {
   if (!files || !files.length) return;
-  const fd = new FormData();
-  for (const f of files) fd.append("files", f);
-  fd.append("method", $("#methodSel").value);
-  fd.append("auto_clean", $("#autoClean").checked);
-  fd.append("resolution", $("#resSel").value);
+  const opts = { method: $("#methodSel").value || "temporal", auto_clean: $("#autoClean").checked, resolution: $("#resSel").value || "auto" };
   const drop = $("#drop"), label = drop.querySelector("b"), bar = $("#upBar");
-  const mb = [...files].reduce((a, f) => a + f.size, 0) / 1048576;
   drop.classList.add("busy"); bar.parentElement.classList.remove("hidden");
-  try {
-    const r = await uploadXHR(fd, (p) => {
-      bar.style.width = (p * 100).toFixed(1) + "%";
-      label.textContent = p < 1 ? `Envoi… ${Math.round(p * 100)} % (${mb.toFixed(0)} Mo)` : "Vérification de la vidéo…";
-    });
-    if (r.jobs && r.jobs.length) { selected = r.jobs[0].id; renderedKey = ""; showDetailOnMobile(); }
-    if (r.errors && r.errors.length) alert("Vidéo(s) refusée(s) :\n" + r.errors.join("\n"));
-  } catch (e) { alert("Import impossible : " + e.message); }
+  const list = [...files], errors = [];
+  for (let k = 0; k < list.length; k++) {
+    const f = list[k], mb = f.size / 1048576;
+    const pre = list.length > 1 ? `${k + 1}/${list.length} · ` : "";
+    try {
+      const r = await uploadOne(f, opts, (p) => {
+        bar.style.width = (p * 100).toFixed(1) + "%";
+        label.textContent = p < 1 ? `${pre}Envoi… ${Math.round(p * 100)} % (${mb.toFixed(0)} Mo)` : `${pre}Vérification de la vidéo…`;
+      });
+      if (r.jobs && r.jobs.length) { selected = r.jobs[0].id; renderedKey = ""; }
+    } catch (e) { errors.push(`${f.name} : ${e.message}`); }
+  }
+  if (errors.length) alert("Import impossible :\n" + errors.join("\n"));
+  else showDetailOnMobile();
   drop.classList.remove("busy"); bar.parentElement.classList.add("hidden"); bar.style.width = "0";
   label.textContent = "Importer des vidéos";
   $("#fileInput").value = "";

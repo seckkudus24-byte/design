@@ -16,6 +16,36 @@
 | Sécurité | Jeton d'accès obligatoire dès que le serveur est exposé ; vidéos supprimées après 7 jours |
 | GPU distant | Image Docker GPU (`Dockerfile`) : OCR + LaMa sur CUDA automatiquement |
 
+## Option retenue — Votre ordinateur + Cloudflare Tunnel (gratuit)
+
+Une seule commande, sur Mac ou Linux (Python 3.10+ et FFmpeg requis) :
+
+```bash
+cd douyin2fr
+./start.sh
+```
+
+Le script installe tout la première fois (environnement Python isolé, modèle LaMa), crée un jeton
+d'accès secret (fichier `.d2f_token`), démarre le serveur, ouvre une **adresse HTTPS publique**
+`https://xxxx.trycloudflare.com` et affiche un **QR code** à scanner avec l'iPhone.
+
+- Coût : **0 €** (pas de compte Cloudflare nécessaire).
+- Le traitement utilise le processeur (et la carte NVIDIA s'il y en a une) de votre ordinateur, qui
+  doit rester allumé pendant l'utilisation.
+- Les vidéos sont envoyées par morceaux de 16 Mo (le tunnel gratuit refuse les requêtes de plus
+  de 100 Mo) avec reprise automatique si la connexion mobile coupe.
+- ⚠ L'adresse `trycloudflare.com` **change à chaque lancement** : l'icône installée sur l'écran
+  d'accueil ne fonctionnera plus au lancement suivant. Pour une adresse fixe, deux solutions :
+  - **Tailscale Funnel** (gratuit, compte Tailscale) : adresse stable `https://<machine>.<réseau>.ts.net`
+    → `tailscale funnel 8000` puis `./start.sh --local`.
+  - **Tunnel Cloudflare nommé** (compte Cloudflare gratuit + nom de domaine ≈ 10 €/an).
+- Windows : non testé ; utiliser WSL (Ubuntu) puis `./start.sh`, ou me demander un script dédié.
+- `./start.sh --local` : uniquement sur l'ordinateur (http://127.0.0.1:8000).
+
+> Hugging Face Spaces a été essayé (novembre 2026) : l'hébergement d'une application Docker
+> y exige désormais l'abonnement PRO (≈ 9 $/mois). Le script `deploy/publish_hf_space.py` et
+> `deploy/hf-space/` restent prêts si vous souscrivez un jour cet abonnement.
+
 ## Option A — GPU loué à la demande (recommandée pour démarrer)
 
 Le serveur complet tourne sur une machine GPU que **vous allumez seulement quand vous en avez

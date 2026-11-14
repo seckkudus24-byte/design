@@ -96,7 +96,7 @@ def test_end_to_end(tmp_path):
     out = tmp_path / "out.mp4"
     stats = clean(a, str(out), method="temporal-fast")
     info = probe(str(out))
-    assert info.has_audio and info.width == 480 and info.height == 640
+    assert info.has_audio and (info.width, info.height) == (1080, 1440)  # export 1080p minimum
     assert stats["px_total"] > 0
     det = SubtitleDetector(models_dir=os.path.join(ROOT, "models"))
     with FrameReader(info) as r:

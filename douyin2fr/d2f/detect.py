@@ -58,9 +58,21 @@ class SubtitleDetector:
     def __init__(self, models_dir: str | None = None, only_chinese: bool = True,
                  min_score: float = 0.5, region: tuple[float, float, float, float] | None = None,
                  limit_side_len: int = 960):
+        import onnxruntime as ort
+        import rapidocr_onnxruntime.utils as rutils
         from rapidocr_onnxruntime import RapidOCR
 
-        from .device import use_gpu
+        from .device import cpu_count, use_gpu
+
+        # RapidOCR ne règle pas le nombre de threads : on l'aligne sur les cœurs réellement disponibles.
+        n_threads = cpu_count()
+
+        class _Opts(ort.SessionOptions):
+            def __init__(self):
+                super().__init__()
+                self.intra_op_num_threads = n_threads
+
+        rutils.SessionOptions = _Opts
 
         kwargs = dict(det_limit_side_len=limit_side_len, det_limit_type="max",
                       det_box_thresh=0.5, det_unclip_ratio=1.8, text_score=min_score,

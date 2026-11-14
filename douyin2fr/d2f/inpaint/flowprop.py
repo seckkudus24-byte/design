@@ -120,7 +120,8 @@ class FlowPropInpainter(ClipInpainter):
         self.ring_thresh, self.tau, self.model_age = ring_thresh, tau, model_age
         self.flow_scale, self.feather, self.texture_k = flow_scale, feather, texture_k
         # Parallélisme : OpenCV et NumPy libèrent le GIL, des threads suffisent.
-        self.workers = max(1, workers or os.cpu_count() or 1)
+        from ..device import cpu_count
+        self.workers = max(1, workers or cpu_count())
         self.use_shots = use_shots
         self._tls = threading.local()
         self._lock = threading.Lock()

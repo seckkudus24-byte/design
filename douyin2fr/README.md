@@ -19,9 +19,12 @@ de traduction, voix et sous-titres français.
 
 ```bash
 cd douyin2fr
-pip install -r requirements.txt          # Python 3.10+ et FFmpeg requis
-python -m server.app                     # → http://127.0.0.1:8000
+./start.sh            # installe tout, démarre le serveur et ouvre une adresse HTTPS pour l'iPhone (QR code)
+./start.sh --local    # uniquement sur cet ordinateur
 ```
+
+Installation manuelle : `pip install -r requirements.txt` puis `python -m server.app`
+(Python 3.10+ et FFmpeg requis). Mise en ligne et iPhone : voir **DEPLOY.md**.
 
 Le modèle LaMa (≈ 200 Mo) est téléchargé automatiquement depuis Hugging Face au premier nettoyage.
 

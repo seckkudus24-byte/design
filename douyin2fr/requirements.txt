@@ -1,12 +1,11 @@
-# Cœur (CPU, open source)
-numpy>=1.26
-opencv-python-headless>=4.9
-onnxruntime>=1.17          # remplacer par onnxruntime-gpu pour utiliser une carte NVIDIA
-rapidocr_onnxruntime>=1.2  # PP-OCR (Baidu PaddleOCR) en ONNX, modèles chinois inclus
-huggingface_hub>=0.20      # téléchargement automatique du modèle LaMa
-# Interface web
-fastapi>=0.110
-uvicorn>=0.29
-python-multipart>=0.0.9
+# Versions testées (CPU). Pour un GPU NVIDIA : remplacer onnxruntime par onnxruntime-gpu.
+numpy==2.5.3
+opencv-python-headless==5.0.0.93
+onnxruntime==1.29.0
+rapidocr_onnxruntime==1.2.3   # PP-OCR (PaddleOCR) en ONNX, modèles chinois inclus
+huggingface_hub==2.4.0           # téléchargement automatique du modèle LaMa
+fastapi==0.162.7
+uvicorn==0.54.0
+python-multipart==0.0.32
 # Tests
 pytest>=8

@@ -67,10 +67,14 @@ class JobManager:
                 for jid, job in list(self.jobs.items()):
                     if job.created < limit and self.current != jid and job.status not in ("queued", "queued_clean"):
                         self.delete(jid)
-                for f in os.listdir(self.data_dir):  # envois interrompus
-                    p = os.path.join(self.data_dir, f)
-                    if f.endswith(".upload") and os.path.getmtime(p) < time.time() - 86400:
-                        os.remove(p)
+                for d in (self.data_dir, os.path.join(self.data_dir, "uploads")):  # envois interrompus
+                    if not os.path.isdir(d):
+                        continue
+                    for f in os.listdir(d):
+                        p = os.path.join(d, f)
+                        if f.endswith((".upload", ".part", ".json")) and d != self.data_dir or f.endswith(".upload"):
+                            if os.path.isfile(p) and os.path.getmtime(p) < time.time() - 86400:
+                                os.remove(p)
             time.sleep(3600)
 
     # ------------------------------------------------------------ stockage
@@ -95,6 +99,8 @@ class JobManager:
 
     def _load(self):
         for jid in os.listdir(self.data_dir):
+            if jid == "uploads":
+                continue
             p = self.path(jid, "job.json")
             if not os.path.exists(p):
                 continue
