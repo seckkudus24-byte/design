@@ -1,4 +1,4 @@
-# ATLAS SECRET · Kaliningrad : prototype des scènes 1 et 2
+# ATLAS SECRET · Kaliningrad : prototype des scènes 1 et 2 (version 2)
 
 Prototype visuel du plan de production V2 (scène 1, « le hook », de 0:00 à 0:06,5 ; scène 2, « localisation », de 0:06,5 à 0:16).
 Format vertical 1080 × 1920, 30 i/s, environ 16 s.
@@ -54,3 +54,15 @@ MAP_PROVIDER=maptiler MAP_KEY=votre_cle npm run render
 MAP_PROVIDER=mapbox   MAP_KEY=votre_cle npm run render
 ```
 Un fournisseur à clé exige d'adapter le crédit dans `src/config/style.ts` à ses conditions. Le relief fusionné ne fonctionne qu'avec les tuiles servies par `tileserver.mjs`.
+
+## Version 2 : ce qui a changé
+| Domaine | Changement | Fichier |
+|---|---|---|
+| Caméra | Trajectoire **continue**, sans arrêt aux images-clés (interpolation cubique monotone de la position, du zoom, de l'inclinaison et de la rotation). Départ en vue large de l'Europe du Nord, approche progressive de Kaliningrad avec un glissement latéral, puis élévation vers une vue cartographique plus large. | `src/camera.ts` (`cameraSpline`), `CAMERA` dans `src/config/scenes.ts` |
+| Scène 1 | Russie continentale identifiable dès l'ouverture ; pointillé avec « ? » ; révélation de l'oblast (contour lumineux, puis ambre) avec un léger assombrissement alentour (isolement) ; titre en Playfair Display, fondu et resserrement de l'espacement, sans effet lettre par lettre. | `OVERLAYS`, `Overlays.tsx` (`Title`, `Spot`) |
+| Scène 2 | Noms des pays progressifs ; chiffre « 1 million » en typographie éditoriale ; distance tracée sur le **grand cercle** (géodésique réelle) avec compteur, puis la mention « À vol d'oiseau · distance la plus courte entre les frontières, pas un trajet routier ». | `Overlays.tsx` (`Stat`, `Measure`) |
+| Étiquettes | Une étiquette dont le lieu sort du cadre s'efface au lieu de se coller au bord de l'écran. | `Overlays.tsx` (`Label`) |
+| Sous-titres | Montserrat 50 px, contour léger et ombre douce ; centrés à 72,5 % de la hauteur, 820 px de large au maximum (zone sûre TikTok). | `src/Subtitles.tsx`, `src/config/style.ts` |
+| Netteté | Tuiles plus fines (`tileSize` 192) et suréchantillonnage ×1,25. | `src/config/carte.ts` |
+
+Vérification géographique de la ligne de distance (`npm run data` puis contrôle sur le grand cercle) : 363 km de l'oblast à la Russie continentale. La ligne traverse la Lituanie (≈ 240 km), puis la Lettonie, et arrive au point où se rejoignent les frontières lettone, biélorusse et russe.

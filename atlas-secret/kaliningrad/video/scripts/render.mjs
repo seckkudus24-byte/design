@@ -21,7 +21,7 @@ const chromiumOptions = { gl: "angle" };
 const browserExecutable = "/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell";
 const composition = await selectComposition({ serveUrl, id: "Prototype", browserExecutable, chromiumOptions });
 const N = composition.durationInFrames;
-const common = { composition, serveUrl, browserExecutable, chromiumOptions, timeoutInMilliseconds: 400000 };
+const common = { composition, serveUrl, browserExecutable, chromiumOptions, timeoutInMilliseconds: 1500000 };
 
 const t0 = Date.now();
 for (let i = 0; i < PARTS; i++) {

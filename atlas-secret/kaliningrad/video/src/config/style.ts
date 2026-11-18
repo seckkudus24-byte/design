@@ -3,6 +3,7 @@ import "@fontsource/oswald/500.css";
 import "@fontsource/oswald/600.css";
 import "@fontsource/playfair-display/400-italic.css";
 import "@fontsource/playfair-display/600.css";
+import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 
@@ -16,9 +17,9 @@ export const STYLE = {
   display: "Oswald, sans-serif",           // titres, dates, lieux
   serif: "'Playfair Display', serif",      // noms de mers, noms historiques
   sans: "Montserrat, sans-serif",          // sous-titres, légendes
-  subtitleSize: 54,
-  subtitleY: 0.755,         // centre des sous-titres (zone sûre TikTok)
-  subtitleMaxWidth: 880,
+  subtitleSize: 50,
+  subtitleY: 0.725,         // centre des sous-titres : au-dessus de la légende et des boutons TikTok
+  subtitleMaxWidth: 820,    // ne déborde pas sous la colonne d'icônes à droite
   safeTop: 150,
   safeSide: 48,
   brand: "ATLAS SECRET",

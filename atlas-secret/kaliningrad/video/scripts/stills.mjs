@@ -19,7 +19,7 @@ fs.mkdirSync("out/stills", { recursive: true });
 const files = [];
 for (const s of times) {
   const output = `out/stills/t_${s.toFixed(2)}.jpg`;
-  await renderStill({ composition, serveUrl, frame: Math.min(composition.durationInFrames - 1, Math.round(s * 30)), output, imageFormat: "jpeg", puppeteerInstance: browser, timeoutInMilliseconds: 400000 });
+  await renderStill({ composition, serveUrl, frame: Math.min(composition.durationInFrames - 1, Math.round(s * 30)), output, imageFormat: "jpeg", puppeteerInstance: browser, timeoutInMilliseconds: 1500000 });
   files.push(output); console.log("✓", output);
 }
 await browser.close({ silent: true });

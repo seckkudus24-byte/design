@@ -14,8 +14,8 @@ export const Subtitles: React.FC<{ t: number }> = ({ t }) => {
   return (
     <div style={{ position: "absolute", left: 0, right: 0, top: `${STYLE.subtitleY * 100}%`, display: "flex", justifyContent: "center" }}>
       <div style={{ transform: `translateY(-50%) translateY(${(1 - p) * 10}px)`, opacity: p, maxWidth: STYLE.subtitleMaxWidth, textAlign: "center",
-        fontFamily: STYLE.sans, fontWeight: 800, fontSize: STYLE.subtitleSize, lineHeight: 1.22, color: "#fff", textWrap: "balance" as any,
-        WebkitTextStroke: "6px rgba(0,0,0,0.9)", paintOrder: "stroke fill", textShadow: "0 3px 10px rgba(0,0,0,0.7)" }}>
+        fontFamily: STYLE.sans, fontWeight: 700, fontSize: STYLE.subtitleSize, lineHeight: 1.28, color: "#fff", textWrap: "balance" as any, letterSpacing: 0.2,
+        WebkitTextStroke: "3px rgba(0,0,0,0.55)", paintOrder: "stroke fill", textShadow: "0 2px 3px rgba(0,0,0,0.9), 0 0 18px rgba(0,0,0,0.75)" }}>
         {parts.map((x, k) => x.startsWith("**") ? <span key={k} style={{ color: STYLE.kal }}>{x.slice(2, -2)}</span> : <span key={k}>{x}</span>)}
       </div>
     </div>

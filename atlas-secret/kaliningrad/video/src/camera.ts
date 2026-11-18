@@ -73,3 +73,41 @@ export function cameraAt(keys: Key[], t: number): Camera {
   const z = ks[ks.length - 1];
   return { ...z, zoom: z.zoom + 0.03 * (t - z.t) };
 }
+
+/**
+ * Trajectoire continue (aucun arrêt aux images-clés) : interpolation cubique monotone
+ * (Fritsch–Carlson) de chaque grandeur — position Mercator, zoom, inclinaison, rotation.
+ * La vitesse varie sans à-coup ; le départ et l'arrivée sont adoucis.
+ */
+export function cameraSpline(keys: Key[], t: number): Camera {
+  const ks = keys.map((k) => ({ t: T(k.at), v: [mx(k.lng), my(k.lat), k.zoom, k.pitch ?? 0, k.bearing ?? 0] }));
+  const n = ks.length;
+  if (t <= ks[0].t) return fromV(ks[0].v);
+  if (t >= ks[n - 1].t) return fromV(ks[n - 1].v);
+  const C = 5;
+  // pentes par canal
+  const m: number[][] = Array.from({ length: n }, () => Array(C).fill(0));
+  for (let c = 0; c < C; c++) {
+    const d = [] as number[];
+    for (let i = 0; i < n - 1; i++) d.push((ks[i + 1].v[c] - ks[i].v[c]) / (ks[i + 1].t - ks[i].t));
+    for (let i = 1; i < n - 1; i++) {
+      if (d[i - 1] * d[i] <= 0) m[i][c] = 0;
+      else {
+        const h0 = ks[i].t - ks[i - 1].t, h1 = ks[i + 1].t - ks[i].t;
+        const w1 = 2 * h1 + h0, w2 = h1 + 2 * h0;
+        m[i][c] = (w1 + w2) / (w1 / d[i - 1] + w2 / d[i]);
+      }
+    }
+    m[0][c] = 0; // départ adouci
+    m[n - 1][c] = d[n - 2] * 0.5; // la caméra continue de glisser en fin de plan
+  }
+  let i = 0;
+  while (t > ks[i + 1].t) i++;
+  const h = ks[i + 1].t - ks[i].t, s = (t - ks[i].t) / h;
+  const h00 = 2 * s ** 3 - 3 * s ** 2 + 1, h10 = s ** 3 - 2 * s ** 2 + s, h01 = -2 * s ** 3 + 3 * s ** 2, h11 = s ** 3 - s ** 2;
+  const v = ks[i].v.map((a, c) => h00 * a + h10 * h * m[i][c] + h01 * ks[i + 1].v[c] + h11 * h * m[i + 1][c]);
+  return fromV(v);
+}
+function fromV(v: number[]): Camera {
+  return { lng: ilng(v[0]), lat: ilat(v[1]), zoom: v[2], pitch: v[3], bearing: v[4] };
+}

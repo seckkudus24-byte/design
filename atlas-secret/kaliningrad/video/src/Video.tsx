@@ -3,7 +3,7 @@ import { AbsoluteFill, Audio, Sequence, continueRender, delayRender, interpolate
 import { MapStage } from "./map/MapStage";
 import { Overlays } from "./overlays/Overlays";
 import { Subtitles } from "./Subtitles";
-import { cameraAt } from "./camera";
+import { cameraSpline } from "./camera";
 import { CAMERA, FADE_TO_PAST, OVERLAYS, WHOOSH_AT } from "./config/scenes";
 import { FPS, SEGS, T, TOTAL } from "./timeline";
 import { STYLE } from "./config/style";
@@ -18,13 +18,13 @@ export const Video: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: "#03070f" }}>
       <AbsoluteFill style={{ filter: past ? `saturate(${1 - 0.45 * past}) sepia(${0.18 * past})` : undefined }}>
-        <MapStage camera={cameraAt(CAMERA, t)}>
+        <MapStage camera={cameraSpline(CAMERA, t)}>
           <Overlays items={OVERLAYS} t={t} />
         </MapStage>
       </AbsoluteFill>
       {/* vignette cinéma + dégradé de lisibilité en haut et en bas */}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 42%, rgba(0,0,0,0) 58%, rgba(0,0,0,0.38) 100%)" }} />
-      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(3,7,15,0.35) 0%, rgba(3,7,15,0) 14%, rgba(3,7,15,0) 64%, rgba(3,7,15,0.45) 100%)" }} />
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(3,7,15,0.4) 0%, rgba(3,7,15,0) 16%, rgba(3,7,15,0) 60%, rgba(3,7,15,0.55) 100%)" }} />
       <Subtitles t={t} />
       {/* signature ATLAS SECRET */}
       <div style={{ position: "absolute", left: STYLE.safeSide, top: 160, display: "flex", alignItems: "center", gap: 12, opacity: 0.9 }}>

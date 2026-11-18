@@ -8,6 +8,8 @@ export type BordersO = Life & { type: "borders"; opacity?: number };
 export type LabelO = Life & { type: "label"; text: string; at: LngLat; kind: "country" | "sea" | "place"; color?: string; size?: number };
 export type TitleO = Life & { type: "title"; text: string; caption?: string; y?: number };
 export type LinkO = Life & { type: "link"; a: LngLat; b: LngLat; mark?: string };
-export type MeasureO = Life & { type: "measure"; a: LngLat; b: LngLat; km: number; until: TimeRef; caption: string };
+export type MeasureO = Life & { type: "measure"; a: LngLat; b: LngLat; km: number; until: TimeRef; caption: string; note?: string };
 export type StatO = Life & { type: "stat"; value: string; caption: string; y?: number };
-export type Overlay = RegionO | BordersO | LabelO | TitleO | LinkO | MeasureO | StatO;
+/** Assombrissement léger de tout sauf certaines régions (isolement, focalisation). */
+export type SpotO = Life & { type: "spot"; keep: GeoId[]; opacity: number };
+export type Overlay = RegionO | BordersO | LabelO | TitleO | LinkO | MeasureO | StatO | SpotO;

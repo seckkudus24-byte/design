@@ -15,9 +15,9 @@ export const MAP = {
   relief: ip.relief ?? true,
   demMaxZoom: 11,
   /** Taille d'affichage d'une tuile 256 px : < 256 = tuiles plus détaillées (plus lent). */
-  tileSize: ip.tileSize ?? 208,
+  tileSize: ip.tileSize ?? 192,
   /** Suréchantillonnage du rendu WebGL. */
-  pixelRatio: ip.pr ?? 1.2,
+  pixelRatio: ip.pr ?? 1.25,
   /** Remonte le point visé de raise/2 px pour laisser la place aux sous-titres. */
   raise: ip.raise ?? 300,
   space: "#03070f",

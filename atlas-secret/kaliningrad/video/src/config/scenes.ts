@@ -1,8 +1,9 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// PROTOTYPE — scènes 1 et 2 du plan V2 (caméra + calques), calés sur la voix off.
+// PROTOTYPE V2 — scènes 1 et 2 du plan V2, calées sur la voix off.
 // Temps : secondes, ou relatifs aux segments de narration.json ("s2b@0.5", "s1d:end+0.3").
-// Caméra : lng/lat, zoom MapLibre, pitch (inclinaison °), bearing (rotation °),
-//          fly = ampleur du vol (0,9 par défaut).
+// Caméra : trajectoire CONTINUE passant par ces points (src/camera.ts → cameraSpline) :
+//   lng/lat = centre, zoom MapLibre, pitch = inclinaison (°), bearing = rotation (°).
+// Segments de voix (≈) : s1a 0,3–1,7 · s1b 2,1–3,1 · s1c 3,6–4,3 · s1d 4,6–6,0 · s2a 6,6–9,7 · s2b 10,2–14,9
 // ─────────────────────────────────────────────────────────────────────────────
 import type { Key } from "../camera";
 import type { Overlay } from "../overlays/types";
@@ -10,46 +11,53 @@ import { STYLE } from "./style";
 import { MEASURE_KAL_RUS } from "../map/geo";
 
 export const CAMERA: Key[] = [
-  // Scène 1 — plan rapproché sur l'oblast, au bord de la Baltique
-  { at: 0, lng: 20.3, lat: 54.78, zoom: 8.35, pitch: 40, bearing: -14 },
-  { at: "s1b", lng: 20.36, lat: 54.78, zoom: 8.12, pitch: 38, bearing: -12, ease: "linear" },
-  // recul cinématographique : la Russie continentale apparaît à l'est
-  { at: "s1d@0.5", lng: 25.8, lat: 56.0, zoom: 5.0, pitch: 12, bearing: 0, fly: 0.6, ease: "inOut" },
-  { at: "s2a", lng: 26.0, lat: 56.0, zoom: 5.07, pitch: 12, ease: "linear" },
-  // Scène 2 — on se recentre sur l'oblast, entre Pologne et Lituanie
-  { at: "s2a@0.95", lng: 22.2, lat: 54.75, zoom: 6.1, pitch: 22, fly: 0.4 },
-  { at: "s2b@0.15", lng: 22.4, lat: 54.8, zoom: 6.02, pitch: 22, ease: "linear" },
-  // la caméra suit la mesure jusqu'à la Russie continentale
-  { at: "s2b:end", lng: 25.5, lat: 55.45, zoom: 5.5, pitch: 16, fly: 0.3, ease: "inOut" },
-  { at: "end", lng: 25.65, lat: 55.5, zoom: 5.55, pitch: 16, ease: "linear" },
+  // Scène 1 — vue large de l'Europe du Nord, puis lente approche de Kaliningrad,
+  // avec un glissement latéral (centre et rotation) qui donne la profondeur.
+  { at: 0, lng: 26.5, lat: 58.4, zoom: 4.05, pitch: 18, bearing: -14 },
+  { at: "s1b", lng: 24.6, lat: 57.3, zoom: 4.45, pitch: 24, bearing: -9 },
+  { at: "s1c", lng: 22.4, lat: 55.95, zoom: 5.25, pitch: 30, bearing: -3 },
+  { at: "s1d@0.6", lng: 21.0, lat: 55.0, zoom: 6.35, pitch: 36, bearing: 3 },
+  { at: "s2a@0.1", lng: 20.85, lat: 54.88, zoom: 6.55, pitch: 37, bearing: 5 },
+  // Scène 2 — la caméra s'élève vers une vue cartographique plus large…
+  { at: "s2a@0.9", lng: 22.6, lat: 55.05, zoom: 5.65, pitch: 26, bearing: 2 },
+  // … puis accompagne la mesure jusqu'à la Russie continentale.
+  { at: "s2b@0.75", lng: 24.9, lat: 55.5, zoom: 5.4, pitch: 20, bearing: -1 },
+  { at: "end", lng: 25.3, lat: 55.6, zoom: 5.36, pitch: 19, bearing: -2 },
 ];
 
-const M = MEASURE_KAL_RUS; // plus courte distance oblast → Russie continentale (Natural Earth 1:10M)
+// Plus courte distance oblast → Russie continentale, sur le grand cercle (Natural Earth 1:10M) :
+// 363 km, à travers la Lituanie (≈ 240 km) puis la Lettonie, jusqu'au point où se rejoignent
+// les frontières lettone, biélorusse et russe.
+const M = MEASURE_KAL_RUS;
 
 export const OVERLAYS: Overlay[] = [
-  { type: "borders", from: 0.1, opacity: 0.75 },
-  { type: "region", id: "POL", fill: STYLE.neutral, opacity: 0.12, stroke: "rgba(255,255,255,0.9)", strokeWidth: 1.6, draw: 0.9, from: "s2a@0.3" },
-  { type: "region", id: "LTU", fill: STYLE.neutral, opacity: 0.12, stroke: "rgba(255,255,255,0.9)", strokeWidth: 1.6, draw: 0.9, from: "s2a@0.55" },
-  { type: "region", id: "RUS_MAIN", fill: STYLE.russia, opacity: 0.4, stroke: "#E0464F", strokeWidth: 1.6, draw: 1.4, from: "s1c" },
-  { type: "region", id: "KAL", fill: STYLE.kal, opacity: 0.3, stroke: STYLE.kal, strokeWidth: 2.6, glow: true, draw: 1.3, from: 0 },
+  { type: "borders", from: 0, opacity: 0.6 },
+  // Scène 2 : Pologne et Lituanie en ton neutre
+  { type: "region", id: "POL", fill: STYLE.neutral, opacity: 0.1, stroke: "rgba(255,255,255,0.85)", strokeWidth: 1.4, draw: 1.0, from: "s2a@0.32" },
+  { type: "region", id: "LTU", fill: STYLE.neutral, opacity: 0.1, stroke: "rgba(255,255,255,0.85)", strokeWidth: 1.4, draw: 1.0, from: "s2a@0.5" },
+  // Scène 1 : la Russie continentale apparaît d'emblée (« une région de Russie… »)
+  { type: "region", id: "RUS_MAIN", fill: STYLE.russia, opacity: 0.38, stroke: "#E0464F", strokeWidth: 1.5, draw: 1.6, from: "s1a@0.35" },
+  // Isolement : tout s'assombrit légèrement autour de l'oblast au moment de la révélation
+  { type: "spot", keep: ["KAL"], opacity: 0.32, from: "s1c", to: "s2a@0.35", fadeOut: 0.8 },
+  // Révélation de Kaliningrad : contour lumineux qui se dessine, puis remplissage ambre
+  { type: "region", id: "KAL", fill: STYLE.kal, opacity: 0.3, stroke: STYLE.kal, strokeWidth: 2.4, glow: true, draw: 1.1, from: "s1c" },
 
-  // Scène 1
-  { type: "label", kind: "sea", text: "Mer Baltique", at: [18.7, 56.35], from: "s1b@0.4" },
-  { type: "label", kind: "country", text: "RUSSIE", at: [32.5, 57.2], size: 44, from: "s1c" },
-  { type: "link", a: M.from, b: M.to, mark: "?", from: "s1c@0.2", to: "s2a@0.2" },
-  { type: "title", text: "KALININGRAD", caption: "TERRITOIRE RUSSE", from: "s1d@0.25", to: "s2a@0.12", fadeOut: 0.35 },
+  { type: "label", kind: "country", text: "RUSSIE", at: [31.0, 56.3], size: 42, from: "s1a@0.7" },
+  { type: "link", a: M.from, b: M.to, mark: "?", from: "s1b@0.2", to: "s1d@0.4" },
+  { type: "title", text: "KALININGRAD", caption: "TERRITOIRE RUSSE", from: "s1d@0.2", to: "s2a@0.1", fadeOut: 0.45 },
 
-  // Scène 2
-  { type: "label", kind: "place", text: "KALININGRAD", at: [19.85, 55.2], from: "s2a@0.5" },
-  { type: "label", kind: "country", text: "POLOGNE", at: [20.4, 53.55], from: "s2a@0.35" },
-  { type: "label", kind: "country", text: "LITUANIE", at: [24.2, 54.25], from: "s2a@0.6" },
-  { type: "stat", value: "≈ 1 000 000", caption: "HABITANTS · RECENSEMENT 2021", from: "s2a@0.22", to: "s2b@0.2" },
-  { type: "label", kind: "country", text: "LETTONIE", at: [25.9, 56.85], size: 34, from: "s2b@0.45" },
-  { type: "label", kind: "country", text: "BIÉLORUSSIE", at: [27.0, 54.0], size: 34, from: "s2b@0.55" },
-  { type: "measure", a: M.from, b: M.to, km: M.km, until: "s2b@0.9", caption: "au plus court, à vol d'oiseau", from: "s2b@0.15" },
+  // Scène 2 : noms qui apparaissent progressivement
+  { type: "label", kind: "sea", text: "Mer Baltique", at: [18.6, 56.2], from: "s2a@0.1" },
+  { type: "label", kind: "country", text: "POLOGNE", at: [20.5, 53.5], from: "s2a@0.35" },
+  { type: "label", kind: "country", text: "LITUANIE", at: [23.7, 54.3], size: 34, from: "s2a@0.55" },
+  { type: "label", kind: "place", text: "KALININGRAD", at: [20.6, 55.05], size: 32, from: "s2a@0.7" },
+  { type: "stat", value: "1 million", caption: "D'HABITANTS · RECENSEMENT 2021", from: "s2a@0.32", to: "s2b@0.12" },
+  { type: "label", kind: "country", text: "LETTONIE", at: [26.2, 56.95], size: 32, from: "s2b@0.5" },
+  { type: "label", kind: "country", text: "BIÉLORUSSIE", at: [28.0, 54.75], size: 32, from: "s2b@0.65" },
+  { type: "measure", a: M.from, b: M.to, km: M.km, until: "s2b@0.8", caption: "À VOL D'OISEAU", note: "Distance la plus courte entre les frontières, pas un trajet routier", from: "s2b@0.12" },
 ];
 
 /** Fin du prototype : légère désaturation (annonce la bascule vers le passé, scène 3). */
-export const FADE_TO_PAST = { from: "s2b:end+0.35" };
-/** Souffle accompagnant le grand recul de la scène 1. */
-export const WHOOSH_AT = "s1c@0.2";
+export const FADE_TO_PAST = { from: "s2b:end+0.4" };
+/** Souffle accompagnant l'approche de la caméra (scène 1). */
+export const WHOOSH_AT = "s1b@0.6";

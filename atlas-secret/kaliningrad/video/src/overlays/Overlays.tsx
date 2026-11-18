@@ -64,9 +64,11 @@ const Link: React.FC<{ o: O.LinkO } & P> = ({ o, t, local, alpha }) => {
 /* Étiquette cartographique (pays, mer, lieu) */
 const Label: React.FC<{ o: O.LabelO } & P> = ({ o, local, alpha }) => {
   const { project } = useMap();
-  const { width } = useVideoConfig();
+  const { width, height } = useVideoConfig();
   const [x0, y] = project(o.at);
-  const p = soft(clamp(local / 0.7));
+  // Une étiquette dont le lieu sort du cadre s'efface (elle ne se colle pas au bord de l'écran).
+  const inFrame = Math.min(clamp((x0 + 40) / 120), clamp((width + 40 - x0) / 120), clamp((y - 40) / 120), clamp((height * 0.66 - y) / 120));
+  const p = soft(clamp(local / 0.7)) * inFrame;
   const base: React.CSSProperties = o.kind === "sea"
     ? { fontFamily: STYLE.serif, fontStyle: "italic", fontWeight: 400, fontSize: o.size ?? 40, letterSpacing: 4, color: "rgba(214,232,255,0.92)" }
     : o.kind === "country"
@@ -80,68 +82,94 @@ const Label: React.FC<{ o: O.LabelO } & P> = ({ o, local, alpha }) => {
   );
 };
 
-/* Titre révélé lettre par lettre */
+/* Titre : fondu sobre, l'espacement des lettres se resserre lentement */
 const Title: React.FC<{ o: O.TitleO } & P> = ({ o, local, alpha }) => {
-  const n = o.text.length;
-  const lp = clamp((local - 0.15) / 0.5);
+  const a = soft(clamp(local / 1.1));
+  const rule = out(clamp((local - 0.35) / 0.9));
+  const cap = soft(clamp((local - 0.7) / 0.8));
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: o.y ?? 270, textAlign: "center", opacity: alpha }}>
-      <div style={{ fontFamily: STYLE.display, fontWeight: 600, fontSize: 112, letterSpacing: 16, color: "#fff", paddingLeft: 16,
-        textShadow: "0 4px 18px rgba(0,0,0,0.75)" }}>
-        {o.text.split("").map((c, i) => {
-          const a = clamp((local - (i / n) * 0.7) / 0.35);
-          return <span key={i} style={{ opacity: a, display: "inline-block", transform: `translateY(${(1 - out(a)) * 18}px)`, filter: `blur(${(1 - a) * 6}px)` }}>{c}</span>;
-        })}
-      </div>
-      <div style={{ margin: "10px auto 0", height: 3, width: 420 * out(lp), background: STYLE.kal, boxShadow: `0 0 12px ${STYLE.kal}` }} />
-      {o.caption && <div style={{ marginTop: 14, fontFamily: STYLE.display, fontWeight: 400, fontSize: 32, letterSpacing: 8, color: "rgba(255,255,255,0.85)",
-        opacity: clamp((local - 0.6) / 0.4), textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}>{o.caption}</div>}
+    <div style={{ position: "absolute", left: 0, right: 0, top: o.y ?? 250, textAlign: "center", opacity: alpha }}>
+      <div style={{ fontFamily: STYLE.serif, fontWeight: 600, fontSize: 92, letterSpacing: 26 - 12 * a, paddingLeft: 26 - 12 * a, color: "#fff", opacity: a,
+        textShadow: "0 4px 22px rgba(0,0,0,0.8)" }}>{o.text}</div>
+      <div style={{ margin: "14px auto 0", height: 2, width: 360 * rule, background: `linear-gradient(90deg, transparent, ${STYLE.kal}, transparent)` }} />
+      {o.caption && <div style={{ marginTop: 14, fontFamily: STYLE.display, fontWeight: 400, fontSize: 28, letterSpacing: 9, paddingLeft: 9, color: "rgba(255,255,255,0.82)",
+        opacity: cap, textShadow: "0 2px 8px rgba(0,0,0,0.8)" }}>{o.caption}</div>}
     </div>
   );
 };
 
-/* Carte chiffre (population…) */
+/* Chiffre clé : typographie éditoriale, sans cadre */
 const Stat: React.FC<{ o: O.StatO } & P> = ({ o, local, alpha }) => {
-  const p = out(clamp(local / 0.6));
+  const a = soft(clamp(local / 0.8));
+  const rule = out(clamp((local - 0.25) / 0.8));
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: o.y ?? 230, display: "flex", justifyContent: "center", opacity: p * alpha }}>
-      <div style={{ transform: `translateY(${(1 - p) * 16}px)`, textAlign: "center", padding: "14px 34px 16px", borderTop: `3px solid ${STYLE.kal}`,
-        background: "linear-gradient(180deg, rgba(5,10,20,0.62), rgba(5,10,20,0.35))", backdropFilter: "blur(3px)" }}>
-        <div style={{ fontFamily: STYLE.display, fontWeight: 600, fontSize: 84, letterSpacing: 2, color: "#fff", lineHeight: 1 }}>{o.value}</div>
-        <div style={{ marginTop: 8, fontFamily: STYLE.sans, fontWeight: 700, fontSize: 26, letterSpacing: 1.5, color: "rgba(255,255,255,0.82)" }}>{o.caption}</div>
-      </div>
+    <div style={{ position: "absolute", left: 0, right: 0, top: o.y ?? 215, textAlign: "center", opacity: a * alpha, transform: `translateY(${(1 - a) * 10}px)` }}>
+      <div style={{ fontFamily: STYLE.serif, fontWeight: 600, fontSize: 96, color: "#fff", lineHeight: 1, textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>{o.value}</div>
+      <div style={{ margin: "14px auto 10px", height: 2, width: 220 * rule, background: STYLE.kal }} />
+      <div style={{ fontFamily: STYLE.display, fontWeight: 400, fontSize: 28, letterSpacing: 8, paddingLeft: 8, color: "rgba(255,255,255,0.85)", textShadow: "0 2px 8px rgba(0,0,0,0.85)" }}>{o.caption}</div>
     </div>
   );
 };
 
-/* Mesure animée : ligne + compteur de kilomètres */
+/* Point du grand cercle entre a et b (fraction f) : la ligne suit la vraie géodésique */
+function slerp(a: [number, number], b: [number, number], f: number): [number, number] {
+  const r = Math.PI / 180, v = (p: [number, number]) => [Math.cos(p[1] * r) * Math.cos(p[0] * r), Math.cos(p[1] * r) * Math.sin(p[0] * r), Math.sin(p[1] * r)];
+  const A = v(a), B = v(b), om = Math.acos(Math.min(1, A[0] * B[0] + A[1] * B[1] + A[2] * B[2])), s = Math.sin(om);
+  const k1 = Math.sin((1 - f) * om) / s, k2 = Math.sin(f * om) / s, P = [0, 1, 2].map((i) => k1 * A[i] + k2 * B[i]);
+  return [Math.atan2(P[1], P[0]) / r, Math.atan2(P[2], Math.hypot(P[0], P[1])) / r];
+}
+
+/* Mesure : géodésique animée + compteur de kilomètres + précision « à vol d'oiseau » */
 const Measure: React.FC<{ o: O.MeasureO } & P> = ({ o, t, local, alpha }) => {
   const { project } = useMap();
+  const { width } = useVideoConfig();
   const dur = Math.max(0.5, T(o.until) - T(o.from));
   const p = soft(clamp(local / dur));
+  const N = 48, pts: [number, number][] = [];
+  for (let i = 0; i <= Math.ceil(N * p); i++) pts.push(project(slerp(o.a, o.b, Math.min(p, i / N))));
   const [ax, ay] = project(o.a), [bx, by] = project(o.b);
-  const ex = ax + (bx - ax) * p, ey = ay + (by - ay) * p;
+  const [ex, ey] = pts[pts.length - 1];
+  const d = pts.map((q, i) => (i ? "L" : "M") + q[0].toFixed(1) + " " + q[1].toFixed(1)).join("");
   const ang = (Math.atan2(by - ay, bx - ax) * 180) / Math.PI;
   const km = Math.round(o.km * p);
-  const cap = out(clamp((local - dur) / 0.5));
-  const lx = (ax + ex) / 2, ly = (ay + ey) / 2;
+  const cap = soft(clamp((local - dur) / 0.7));
+  const [mxp, myp] = project(slerp(o.a, o.b, 0.5));
+  const cx = Math.max(220, Math.min(width - 220, mxp));
   return (
     <>
       <svg style={{ position: "absolute", inset: 0, opacity: alpha, overflow: "visible" }} width="100%" height="100%">
-        <line x1={ax} y1={ay} x2={ex} y2={ey} stroke={STYLE.kal} strokeWidth={4} strokeDasharray="14 9" strokeLinecap="round" style={{ filter: `drop-shadow(0 0 6px ${STYLE.kal})` }} />
-        <line x1={ax - 12 * Math.sin(ang * Math.PI / 180)} y1={ay + 12 * Math.cos(ang * Math.PI / 180)} x2={ax + 12 * Math.sin(ang * Math.PI / 180)} y2={ay - 12 * Math.cos(ang * Math.PI / 180)} stroke="#fff" strokeWidth={3} />
-        <circle cx={ex} cy={ey} r={7} fill="#fff" stroke={STYLE.kal} strokeWidth={3} />
-        {p >= 0.999 && <circle cx={bx} cy={by} r={9 + 3 * Math.sin(t * 5)} fill="none" stroke={STYLE.russia} strokeWidth={3} />}
+        <path d={d} fill="none" stroke="rgba(0,0,0,0.55)" strokeWidth={7} strokeLinecap="round" />
+        <path d={d} fill="none" stroke={STYLE.kal} strokeWidth={3.2} strokeDasharray="12 8" strokeLinecap="round" style={{ filter: `drop-shadow(0 0 5px ${STYLE.kal})` }} />
+        <circle cx={ax} cy={ay} r={6} fill={STYLE.kal} stroke="#fff" strokeWidth={2} />
+        <circle cx={ex} cy={ey} r={6} fill="#fff" stroke={STYLE.kal} strokeWidth={2.5} />
+        {p >= 0.999 && <circle cx={bx} cy={by} r={10 + 2 * Math.sin(t * 4)} fill="none" stroke={STYLE.russia} strokeWidth={2.5} />}
       </svg>
-      <div style={{ position: "absolute", left: lx, top: ly, transform: `translate(-50%,-50%) rotate(${ang}deg) translateY(-56px)`, opacity: alpha * clamp(local / 0.3),
-        fontFamily: STYLE.display, fontWeight: 600, fontSize: 66, color: "#fff", whiteSpace: "nowrap", textShadow: "0 0 12px rgba(0,0,0,0.85), 0 3px 4px rgba(0,0,0,0.9)" }}>
-        {km} <span style={{ fontSize: 40, fontWeight: 500 }}>km</span>
+      <div style={{ position: "absolute", left: cx, top: myp, transform: `translate(-50%,-50%) rotate(${ang}deg) translateY(-50px)`, opacity: alpha * clamp(local / 0.35),
+        fontFamily: STYLE.serif, fontWeight: 600, fontSize: 60, color: "#fff", whiteSpace: "nowrap", textShadow: "0 0 14px rgba(0,0,0,0.9), 0 3px 4px rgba(0,0,0,0.9)" }}>
+        {km} <span style={{ fontFamily: STYLE.display, fontSize: 34, fontWeight: 500, letterSpacing: 2 }}>km</span>
       </div>
-      <div style={{ position: "absolute", left: lx, top: ly, transform: `translate(-50%,-50%) rotate(${ang}deg) translateY(34px)`, opacity: alpha * cap,
-        fontFamily: STYLE.sans, fontWeight: 700, fontSize: 25, color: "rgba(255,255,255,0.9)", whiteSpace: "nowrap", textShadow: "0 2px 6px rgba(0,0,0,0.9)" }}>
-        {o.caption}
+      {/* Précision de lecture, à l'horizontale en haut de l'écran : bien lisible, ne gêne pas la carte */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: 230, textAlign: "center", opacity: alpha * cap, transform: `translateY(${(1 - cap) * 8}px)`,
+        textShadow: "0 2px 8px rgba(0,0,0,0.95)" }}>
+        <div style={{ fontFamily: STYLE.display, fontWeight: 500, fontSize: 34, letterSpacing: 10, paddingLeft: 10, color: "#fff" }}>{o.caption}</div>
+        <div style={{ margin: "12px auto 10px", height: 2, width: 200 * cap, background: STYLE.kal }} />
+        {o.note && <div style={{ marginTop: 8, fontFamily: STYLE.sans, fontWeight: 600, fontSize: 22, color: "rgba(255,255,255,0.75)" }}>{o.note}</div>}
       </div>
     </>
+  );
+};
+
+/* Isolement : la région gardée reste lumineuse, le reste s'assombrit légèrement (bords adoucis) */
+const Spot: React.FC<{ o: O.SpotO } & P> = ({ o, local, alpha, uid }) => {
+  const { project, camera } = useMap();
+  const { width, height } = useVideoConfig();
+  const holes = o.keep.map((id) => regionPath(id, project, visibility(camera))).join("");
+  const a = soft(clamp(local / 1.0)) * alpha;
+  return (
+    <g>
+      <defs><filter id={`f${uid}`} x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation={18} /></filter></defs>
+      <path d={`M-200 -200H${width + 200}V${height + 200}H-200Z${holes}`} fillRule="evenodd" fill="#02050c" opacity={o.opacity * a} filter={`url(#f${uid})`} />
+    </g>
   );
 };
 
@@ -155,6 +183,7 @@ export const Overlays: React.FC<{ items: O.Overlay[]; t: number }> = ({ items, t
     const p: P = { t, local: t - from, alpha: t > to ? 1 - clamp((t - to) / fo) : 1, uid: `${o.type}${i}` };
     switch (o.type) {
       case "region": shapes.push(<Region key={i} o={o} {...p} />); break;
+      case "spot": shapes.push(<Spot key={i} o={o} {...p} />); break;
       case "borders": shapes.push(<Borders key={i} o={o} {...p} />); break;
       case "link": rest.push(<Link key={i} o={o} {...p} />); break;
       case "label": rest.push(<Label key={i} o={o} {...p} />); break;

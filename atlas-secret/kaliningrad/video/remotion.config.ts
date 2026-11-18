@@ -8,4 +8,4 @@ Config.setChromiumOpenGlRenderer("angle");
 Config.setVideoImageFormat("jpeg");
 Config.setJpegQuality(92);
 Config.setConcurrency(Number(process.env.CONCURRENCY || 3));
-Config.setDelayRenderTimeoutInMilliseconds(400000);
+Config.setDelayRenderTimeoutInMilliseconds(1500000);

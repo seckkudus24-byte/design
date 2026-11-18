@@ -58,6 +58,13 @@ async function tile(z, x, y, dem = false) {
   return pending.get(k);
 }
 
+// Calculs Python (ombrage, fusion) limités à 4 en parallèle pour ne pas étouffer le rendu.
+let pyActive = 0; const pyQueue = [];
+const py = (args) => new Promise((ok, ko) => {
+  const run = () => { pyActive++; execFile("python3", args, (e) => { pyActive--; const nx = pyQueue.shift(); if (nx) nx(); e ? ko(e) : ok(); }); };
+  if (pyActive < 4) run(); else pyQueue.push(run);
+});
+
 // Ombrage du relief précalculé (scripts/shade.py) à partir des tuiles d'altitude.
 const SHADE_CACHE = path.resolve("cache/tiles/shade");
 const shading = new Map();
@@ -72,7 +79,7 @@ async function shade(z, x, y) {
       }
       await Promise.all(jobs);
       fs.mkdirSync(path.dirname(file), { recursive: true });
-      await new Promise((ok, ko) => execFile("python3", ["-I", "scripts/shade.py", z, x, y, DEM_CACHE, file], (e) => (e ? ko(e) : ok())));
+      await py(["-I", "scripts/shade.py", z, x, y, DEM_CACHE, file]);
       return fs.readFileSync(file);
     })().catch((e) => { console.error("ombrage", z, x, y, e.message); return null; }).finally(() => shading.delete(file)));
   }
@@ -93,7 +100,7 @@ async function satRelief(z, x, y) {
       if (!sat) return null;
       if (!sh) return sat;
       fs.mkdirSync(path.dirname(file), { recursive: true });
-      await new Promise((ok, ko) => execFile("python3", ["-I", "scripts/compose.py", path.join(CACHE, `${z}/${x}/${y}.jpg`), path.join(SHADE_CACHE, `${z}/${x}/${y}.png`), file], (e) => (e ? ko(e) : ok())));
+      await py(["-I", "scripts/compose.py", path.join(CACHE, `${z}/${x}/${y}.jpg`), path.join(SHADE_CACHE, `${z}/${x}/${y}.png`), file]);
       return fs.readFileSync(file);
     })().catch((e) => { console.error("relief", z, x, y, e.message); return null; }).finally(() => composing.delete(file)));
   }
