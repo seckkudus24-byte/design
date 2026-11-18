@@ -98,7 +98,7 @@ export function cameraSpline(keys: Key[], t: number): Camera {
         m[i][c] = (w1 + w2) / (w1 / d[i - 1] + w2 / d[i]);
       }
     }
-    m[0][c] = 0; // départ adouci
+    m[0][c] = d[0] * 0.6; // la caméra est déjà en mouvement à la première image
     m[n - 1][c] = d[n - 2] * 0.5; // la caméra continue de glisser en fin de plan
   }
   let i = 0;

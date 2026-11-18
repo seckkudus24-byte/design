@@ -104,7 +104,7 @@ const Stat: React.FC<{ o: O.StatO } & P> = ({ o, local, alpha }) => {
   const rule = out(clamp((local - 0.25) / 0.8));
   return (
     <div style={{ position: "absolute", left: 0, right: 0, top: o.y ?? 215, textAlign: "center", opacity: a * alpha, transform: `translateY(${(1 - a) * 10}px)` }}>
-      <div style={{ fontFamily: STYLE.serif, fontWeight: 600, fontSize: 96, color: "#fff", lineHeight: 1, textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>{o.value}</div>
+      <div style={{ fontFamily: STYLE.serif, fontWeight: 600, fontSize: 96, fontVariantNumeric: "lining-nums", color: "#fff", lineHeight: 1, textShadow: "0 4px 20px rgba(0,0,0,0.8)" }}>{o.value}</div>
       <div style={{ margin: "14px auto 10px", height: 2, width: 220 * rule, background: STYLE.kal }} />
       <div style={{ fontFamily: STYLE.display, fontWeight: 400, fontSize: 28, letterSpacing: 8, paddingLeft: 8, color: "rgba(255,255,255,0.85)", textShadow: "0 2px 8px rgba(0,0,0,0.85)" }}>{o.caption}</div>
     </div>
@@ -131,7 +131,7 @@ const Measure: React.FC<{ o: O.MeasureO } & P> = ({ o, t, local, alpha }) => {
   const [ex, ey] = pts[pts.length - 1];
   const d = pts.map((q, i) => (i ? "L" : "M") + q[0].toFixed(1) + " " + q[1].toFixed(1)).join("");
   const ang = (Math.atan2(by - ay, bx - ax) * 180) / Math.PI;
-  const km = Math.round(o.km * p);
+  const num = soft(clamp((local - dur) / 0.5)); // chiffre final seulement, après le tracé
   const cap = soft(clamp((local - dur) / 0.7));
   const [mxp, myp] = project(slerp(o.a, o.b, 0.5));
   const cx = Math.max(220, Math.min(width - 220, mxp));
@@ -144,16 +144,16 @@ const Measure: React.FC<{ o: O.MeasureO } & P> = ({ o, t, local, alpha }) => {
         <circle cx={ex} cy={ey} r={6} fill="#fff" stroke={STYLE.kal} strokeWidth={2.5} />
         {p >= 0.999 && <circle cx={bx} cy={by} r={10 + 2 * Math.sin(t * 4)} fill="none" stroke={STYLE.russia} strokeWidth={2.5} />}
       </svg>
-      <div style={{ position: "absolute", left: cx, top: myp, transform: `translate(-50%,-50%) rotate(${ang}deg) translateY(-50px)`, opacity: alpha * clamp(local / 0.35),
-        fontFamily: STYLE.serif, fontWeight: 600, fontSize: 60, color: "#fff", whiteSpace: "nowrap", textShadow: "0 0 14px rgba(0,0,0,0.9), 0 3px 4px rgba(0,0,0,0.9)" }}>
-        {km} <span style={{ fontFamily: STYLE.display, fontSize: 34, fontWeight: 500, letterSpacing: 2 }}>km</span>
+      <div style={{ position: "absolute", left: cx, top: myp, transform: `translate(-50%,-50%) rotate(${ang}deg) translateY(${-50 + (1 - num) * 10}px)`, opacity: alpha * num,
+        fontFamily: STYLE.serif, fontWeight: 600, fontSize: 60, fontVariantNumeric: "lining-nums", color: "#fff", whiteSpace: "nowrap", textShadow: "0 0 14px rgba(0,0,0,0.9), 0 3px 4px rgba(0,0,0,0.9)" }}>
+        ≈ {o.km} <span style={{ fontFamily: STYLE.display, fontSize: 34, fontWeight: 500, letterSpacing: 2 }}>km</span>
       </div>
       {/* Précision de lecture, à l'horizontale en haut de l'écran : bien lisible, ne gêne pas la carte */}
       <div style={{ position: "absolute", left: 0, right: 0, top: 230, textAlign: "center", opacity: alpha * cap, transform: `translateY(${(1 - cap) * 8}px)`,
         textShadow: "0 2px 8px rgba(0,0,0,0.95)" }}>
         <div style={{ fontFamily: STYLE.display, fontWeight: 500, fontSize: 34, letterSpacing: 10, paddingLeft: 10, color: "#fff" }}>{o.caption}</div>
         <div style={{ margin: "12px auto 10px", height: 2, width: 200 * cap, background: STYLE.kal }} />
-        {o.note && <div style={{ marginTop: 8, fontFamily: STYLE.sans, fontWeight: 600, fontSize: 22, color: "rgba(255,255,255,0.75)" }}>{o.note}</div>}
+        {o.note && <div style={{ marginTop: 8, fontFamily: STYLE.sans, fontWeight: 600, fontSize: 25, color: "rgba(255,255,255,0.82)" }}>{o.note}</div>}
       </div>
     </>
   );

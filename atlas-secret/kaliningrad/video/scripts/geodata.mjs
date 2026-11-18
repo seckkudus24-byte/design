@@ -102,5 +102,24 @@ const kalPts = kal.flatMap((p) => p[0]);
 const mainPts = main.flatMap((p) => p[0]).filter((q) => q[0] < 32 && q[1] < 60);
 let best = [1e9];
 for (const a of kalPts) for (const b of mainPts) { const d = hav(a, b); if (d < best[0]) best = [d, a, b]; }
-fs.writeFileSync(path.join(OUT, "measure.json"), JSON.stringify({ km: Math.round(best[0]), from: best[1], to: best[2] }));
-console.log(`distance la plus courte oblast → Russie continentale : ${best[0].toFixed(1)} km`, best[1], "→", best[2]);
+// Distance précise entre les deux points retenus, sur l'ellipsoïde WGS84 (formule inverse de Vincenty).
+function vincenty([L1, p1], [L2, p2]) {
+  const a = 6378137, f = 1 / 298.257223563, b = a * (1 - f), r = Math.PI / 180;
+  const L = (L2 - L1) * r, U1 = Math.atan((1 - f) * Math.tan(p1 * r)), U2 = Math.atan((1 - f) * Math.tan(p2 * r));
+  const sU1 = Math.sin(U1), cU1 = Math.cos(U1), sU2 = Math.sin(U2), cU2 = Math.cos(U2);
+  let l = L, ss, cs, sg, ca2, c2m;
+  for (let i = 0; i < 200; i++) {
+    const sl = Math.sin(l), cl = Math.cos(l);
+    ss = Math.sqrt((cU2 * sl) ** 2 + (cU1 * sU2 - sU1 * cU2 * cl) ** 2); cs = sU1 * sU2 + cU1 * cU2 * cl; sg = Math.atan2(ss, cs);
+    const sa = (cU1 * cU2 * sl) / ss; ca2 = 1 - sa * sa; c2m = cs - (2 * sU1 * sU2) / ca2;
+    const C = (f / 16) * ca2 * (4 + f * (4 - 3 * ca2)), lp = l;
+    l = L + (1 - C) * f * sa * (sg + C * ss * (c2m + C * cs * (-1 + 2 * c2m * c2m)));
+    if (Math.abs(l - lp) < 1e-12) break;
+  }
+  const u2 = (ca2 * (a * a - b * b)) / (b * b), A = 1 + (u2 / 16384) * (4096 + u2 * (-768 + u2 * (320 - 175 * u2))), B = (u2 / 1024) * (256 + u2 * (-128 + u2 * (74 - 47 * u2)));
+  const ds = B * ss * (c2m + (B / 4) * (cs * (-1 + 2 * c2m * c2m) - (B / 6) * c2m * (-3 + 4 * ss * ss) * (-3 + 4 * c2m * c2m)));
+  return (b * A * (sg - ds)) / 1000;
+}
+const kmWgs = vincenty(best[1], best[2]);
+fs.writeFileSync(path.join(OUT, "measure.json"), JSON.stringify({ km: Math.round(kmWgs), kmSphere: Math.round(best[0] * 10) / 10, kmWgs84: Math.round(kmWgs * 10) / 10, from: best[1], to: best[2] }));
+console.log(`distance la plus courte oblast → Russie continentale : ${kmWgs.toFixed(1)} km (ellipsoïde WGS84) / ${best[0].toFixed(1)} km (sphère)`, best[1], "→", best[2]);

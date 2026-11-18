@@ -66,3 +66,24 @@ Un fournisseur à clé exige d'adapter le crédit dans `src/config/style.ts` à 
 | Netteté | Tuiles plus fines (`tileSize` 192) et suréchantillonnage ×1,25. | `src/config/carte.ts` |
 
 Vérification géographique de la ligne de distance (`npm run data` puis contrôle sur le grand cercle) : 363 km de l'oblast à la Russie continentale. La ligne traverse la Lituanie (≈ 240 km), puis la Lettonie, et arrive au point où se rejoignent les frontières lettone, biélorusse et russe.
+
+## Version 3 : précision et contrôle technique
+**Distance :** les deux points sont calculés par `npm run data` (plus courte distance entre les sommets des frontières Natural Earth 1:10M) :
+- départ : 22,821° E, 54,885° N, pointe est de l'oblast, sur la frontière lituanienne ;
+- arrivée : 28,149° E, 56,142° N, frontière de la Russie continentale (région de Pskov), près du tripoint Lettonie–Biélorussie–Russie.
+
+| Méthode | Distance |
+|---|---|
+| Ellipsoïde WGS84, formule de Vincenty (**valeur affichée**) | **364,4 km** |
+| Sphère (haversine) | 363,3 km |
+| Contrôle avec les données 1:50M | 364,8 km (WGS84) |
+
+Le chiffre n'apparaît qu'une fois la ligne entièrement tracée : aucun compteur intermédiaire ne peut être lu comme une donnée. Il s'affiche en chiffres alignés : les chiffres elzéviriens de Playfair faisaient lire « 364 » comme « 304 » sur un téléphone.
+
+**Scène 1 :** le pointillé avec « ? » a été retiré. Il n'était pas appelé par la narration, et il doublait la ligne de mesure de la scène 2.
+
+**Caméra :** elle démarre déjà en mouvement et garde une dérive lente jusqu'à la dernière image. `node out/camcheck.mjs` analyse la trajectoire (après `npx esbuild scripts/camcheck.ts --bundle --platform=node --format=esm --outfile=out/camcheck.mjs --loader:.css=empty --loader:.woff=empty --loader:.woff2=empty`).
+
+**Vérification d'un rendu :** `bash scripts/verify.sh out/kaliningrad_prototype.mp4` donne la résolution, la cadence, le nombre d'images, la durée, les codecs, le rapport d'aspect, les images noires, la sonie et les pics de mouvement.
+
+**Livraison :** la vidéo est aussi fournie dans une archive, non versionnée : `cd rendu && zip -0 kaliningrad_prototype_1080x1920.zip kaliningrad_prototype.mp4 kaliningrad_prototype.srt verification.txt`. Un fichier compressé dans une archive n'est pas réencodé par les aperçus des messageries ou des applications, qui peuvent réduire une vidéo à 512 × 910 pour l'affichage.

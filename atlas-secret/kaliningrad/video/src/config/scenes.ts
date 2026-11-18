@@ -22,12 +22,14 @@ export const CAMERA: Key[] = [
   { at: "s2a@0.9", lng: 22.6, lat: 55.05, zoom: 5.65, pitch: 26, bearing: 2 },
   // … puis accompagne la mesure jusqu'à la Russie continentale.
   { at: "s2b@0.75", lng: 24.9, lat: 55.5, zoom: 5.4, pitch: 20, bearing: -1 },
-  { at: "end", lng: 25.3, lat: 55.6, zoom: 5.36, pitch: 19, bearing: -2 },
+  { at: "end", lng: 25.75, lat: 55.68, zoom: 5.3, pitch: 18, bearing: -4 },
 ];
 
-// Plus courte distance oblast → Russie continentale, sur le grand cercle (Natural Earth 1:10M) :
-// 363 km, à travers la Lituanie (≈ 240 km) puis la Lettonie, jusqu'au point où se rejoignent
-// les frontières lettone, biélorusse et russe.
+// Plus courte distance oblast → Russie continentale (Natural Earth 1:10M, calculée par `npm run data`) :
+// départ 22,821° E 54,885° N (pointe est de l'oblast, frontière lituanienne) ;
+// arrivée 28,149° E 56,142° N (région de Pskov, près du tripoint Lettonie–Biélorussie–Russie).
+// 364,4 km sur l'ellipsoïde WGS84 (363,3 km sur la sphère ; 364,8 km avec les données 1:50M).
+// La ligne suit le grand cercle : Lituanie (≈ 240 km) puis Lettonie.
 const M = MEASURE_KAL_RUS;
 
 export const OVERLAYS: Overlay[] = [
@@ -43,7 +45,6 @@ export const OVERLAYS: Overlay[] = [
   { type: "region", id: "KAL", fill: STYLE.kal, opacity: 0.3, stroke: STYLE.kal, strokeWidth: 2.4, glow: true, draw: 1.1, from: "s1c" },
 
   { type: "label", kind: "country", text: "RUSSIE", at: [31.0, 56.3], size: 42, from: "s1a@0.7" },
-  { type: "link", a: M.from, b: M.to, mark: "?", from: "s1b@0.2", to: "s1d@0.4" },
   { type: "title", text: "KALININGRAD", caption: "TERRITOIRE RUSSE", from: "s1d@0.2", to: "s2a@0.1", fadeOut: 0.45 },
 
   // Scène 2 : noms qui apparaissent progressivement
