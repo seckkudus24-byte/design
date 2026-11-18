@@ -1,0 +1,24 @@
+// Géométries des scènes 3 à 13 (npm run data:episode → public/geo/ep).
+import UKR from "../../public/geo/ep/UKR.json";
+import FIN from "../../public/geo/ep/FIN.json";
+import DEU from "../../public/geo/ep/DEU.json";
+import SWE from "../../public/geo/ep/SWE.json";
+import LAND from "../../public/geo/ep/LAND.json";
+import H_DE from "../../public/geo/ep/H_DE.json";
+import H_EP from "../../public/geo/ep/H_EP.json";
+import H_PL from "../../public/geo/ep/H_PL.json";
+import H_DZ from "../../public/geo/ep/H_DZ.json";
+import L_PL_LT from "../../public/geo/ep/L_PL_LT.json";
+import L_SOV from "../../public/geo/ep/L_SOV.json";
+import L_KAL_LAND from "../../public/geo/ep/L_KAL_LAND.json";
+import L_KAL_COAST from "../../public/geo/ep/L_KAL_COAST.json";
+import L_1945 from "../../public/geo/ep/L_1945.json";
+import C_ISKANDER from "../../public/geo/ep/C_ISKANDER.json";
+import SUWALKI from "../../public/geo/suwalki.json";
+type Pos = [number, number];
+export const EPOLY = { UKR, FIN, DEU, SWE, LAND, H_DE, H_EP, H_PL, H_DZ } as unknown as Record<string, { coordinates: Pos[][][] }>;
+export const ELINES = { L_PL_LT, L_SOV, L_KAL_LAND, L_KAL_COAST, L_1945 } as unknown as Record<string, { coordinates: Pos[][] }>;
+export const ISKANDER = C_ISKANDER as unknown as { center: Pos; km: number; ring: Pos[] };
+export const SUWALKI_M = SUWALKI as unknown as { km: number; kmWgs84: number; from: Pos; to: Pos };
+export type EPolyId = keyof typeof EPOLY | string;
+export type ELineId = keyof typeof ELINES | string;

@@ -14,7 +14,7 @@ const browser = await openBrowser("chrome", {
   browserExecutable: "/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell",
   chromiumOptions: { gl: "angle" },
 });
-const composition = await selectComposition({ serveUrl, id: "Prototype", puppeteerInstance: browser });
+const composition = await selectComposition({ serveUrl, id: process.env.COMP || "Prototype", puppeteerInstance: browser });
 fs.mkdirSync("out/stills", { recursive: true });
 const files = [];
 for (const s of times) {

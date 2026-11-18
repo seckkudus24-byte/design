@@ -16,7 +16,7 @@ export const useMap = () => useContext(MapCtx);
  * Chaque image : jumpTo(camera) puis attente de l'événement "idle"
  * (toutes les tuiles chargées et dessinées) avant la capture.
  */
-export const MapStage: React.FC<{ camera: Camera; children?: React.ReactNode }> = ({ camera, children }) => {
+export const MapStage: React.FC<{ camera: Camera; children?: React.ReactNode; mapFilter?: string }> = ({ camera, children, mapFilter }) => {
   const { width, height } = useVideoConfig();
   const el = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<maplibregl.Map | null>(null);
@@ -75,7 +75,7 @@ export const MapStage: React.FC<{ camera: Camera; children?: React.ReactNode }> 
 
   return (
     <AbsoluteFill style={{ background: MAP.space }}>
-      <div ref={el} style={{ position: "absolute", top: -MAP.raise, width, height: height + MAP.raise, filter: MAP.grade }} />
+      <div ref={el} style={{ position: "absolute", top: -MAP.raise, width, height: height + MAP.raise, filter: mapFilter ? `${MAP.grade} ${mapFilter}` : MAP.grade }} />
       <MapCtx.Provider value={{ project, camera, ready: !!map }}>{map ? children : null}</MapCtx.Provider>
     </AbsoluteFill>
   );

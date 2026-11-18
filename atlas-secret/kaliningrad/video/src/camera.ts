@@ -12,6 +12,8 @@ export type Key = Camera & {
    * comme le flyTo des cartes interactives.
    */
   fly?: number;
+  /** Vitesse imposée en ce point (par canal : x, y Mercator, zoom, inclinaison, rotation ; unités/s). */
+  slope?: number[];
 };
 
 const EASE = {
@@ -24,8 +26,8 @@ const EASE = {
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 // Mercator normalisé [0,1]
-const mx = (lng: number) => (lng + 180) / 360;
-const my = (lat: number) => (1 - Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360)) / Math.PI) / 2;
+export const mx = (lng: number) => (lng + 180) / 360;
+export const my = (lat: number) => (1 - Math.log(Math.tan(Math.PI / 4 + (lat * Math.PI) / 360)) / Math.PI) / 2;
 const ilng = (x: number) => x * 360 - 180;
 const ilat = (y: number) => (Math.atan(Math.sinh(Math.PI * (1 - 2 * y))) * 180) / Math.PI;
 const VIEW = 1080 / 512; // largeur de vue en tuiles « monde » à zoom 0
@@ -101,6 +103,7 @@ export function cameraSpline(keys: Key[], t: number): Camera {
     m[0][c] = d[0] * 0.6; // la caméra est déjà en mouvement à la première image
     m[n - 1][c] = d[n - 2] * 0.5; // la caméra continue de glisser en fin de plan
   }
+  keys.forEach((k, i) => { if (k.slope) for (let c = 0; c < C; c++) m[i][c] = k.slope[c]; });
   let i = 0;
   while (t > ks[i + 1].t) i++;
   const h = ks[i + 1].t - ks[i].t, s = (t - ks[i].t) / h;

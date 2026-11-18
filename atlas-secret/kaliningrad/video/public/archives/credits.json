@@ -1,0 +1,56 @@
+{
+ "chateau": {
+  "titre": "File:Königsberg Castle.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:K%C3%B6nigsberg_Castle.jpg",
+  "LicenseShortName": "Public domain",
+  "Artist": "Auteur inconnu (photochrome)",
+  "DateTimeOriginal": "entre 1894 et 1900",
+  "largeur_vignette": 1280,
+  "legende": "Château de Königsberg, vers 1900"
+ },
+ "kant": {
+  "titre": "File:Immanuel Kant - Gemaelde 1.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Immanuel_Kant_-_Gemaelde_1.jpg",
+  "LicenseShortName": "Public domain",
+  "Artist": "Johann Gottlieb Becker",
+  "DateTimeOriginal": "1768",
+  "largeur_vignette": 960,
+  "legende": "Emmanuel Kant, portrait de 1768"
+ },
+ "ruines": {
+  "titre": "File:Zerstörung Königsbergs.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Zerst%C3%B6rung_K%C3%B6nigsbergs.jpg",
+  "LicenseShortName": "Public domain",
+  "Artist": "Fritz Krauskopf (1882–1945)",
+  "DateTimeOriginal": "août 1944",
+  "largeur_vignette": 500,
+  "legende": "Königsberg après les raids, août 1944"
+ },
+ "potsdam": {
+  "titre": "File:Attlee, Truman and Stalin at Potsdam.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Attlee%2C_Truman_and_Stalin_at_Potsdam.jpg",
+  "LicenseShortName": "Public domain",
+  "Artist": "Photographe officiel (US)",
+  "DateTimeOriginal": "1er août 1945",
+  "largeur_vignette": 1280,
+  "legende": "Attlee, Truman et Staline à Potsdam, 1945"
+ },
+ "kalinine": {
+  "titre": "File:Калинин М. И. (1920) (cropped).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%B0%D0%BB%D0%B8%D0%BD%D0%B8%D0%BD_%D0%9C._%D0%98._%281920%29_%28cropped%29.jpg",
+  "LicenseShortName": "Public domain",
+  "Artist": "Auteur inconnu",
+  "DateTimeOriginal": "années 1920",
+  "largeur_vignette": 500,
+  "legende": "Mikhaïl Kalinine, années 1920"
+ },
+ "iskander": {
+  "titre": "File:CombatLaunching2018-08.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:CombatLaunching2018-08.jpg",
+  "LicenseShortName": "CC BY 4.0",
+  "Artist": "Алексей Иванов (mil.ru)",
+  "DateTimeOriginal": "2 mars 2018",
+  "largeur_vignette": 1280,
+  "legende": "Lanceur Iskander-M (exercice de 2018, lieu non précisé)"
+ }
+}

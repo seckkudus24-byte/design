@@ -28,7 +28,7 @@ export function visibility(cam: { lng: number; lat: number; zoom: number }): Vis
 }
 
 /** Chemin SVG d'une liste d'anneaux projetés (sommets < 0,7 px fusionnés, points cachés exclus). */
-function ringsPath(rings: Pos[][], project: Project, close: boolean, vis?: Visible) {
+export function ringsPath(rings: Pos[][], project: Project, close: boolean, vis?: Visible) {
   let d = "";
   for (const ring of rings) {
     let px = NaN, py = NaN, n = 0;
