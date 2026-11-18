@@ -99,9 +99,13 @@ const Card: React.FC<{ o: O.CardO } & P> = ({ o, local, alpha, exit }) => {
 /* ── Nom de ville (écriture / désagrégation) ── */
 const City: React.FC<{ o: O.CityO } & P> = ({ o, t, local, alpha }) => {
   const { project } = useMap();
-  const [x, y0] = project(o.at);
+  const { width } = useVideoConfig();
+  const [x0, y0] = project(o.at);
   const y = y0 + (o.dy ?? -70);
   const past = o.style === "past";
+  // reste dans les marges de sécurité (largeur estimée du texte)
+  const fs = o.size ?? (past ? 78 : 64), half = (o.text.length * fs * (past ? 0.5 : 0.62) + (past ? 0 : o.text.length * 8)) / 2;
+  const x = Math.max(half + STYLE.safeSide, Math.min(width - half - STYLE.safeSide, x0));
   const dz = o.dissolveAt !== undefined ? t - T(o.dissolveAt) : -1;
   const n = o.text.length;
   return (

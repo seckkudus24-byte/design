@@ -1,0 +1,34 @@
+// Analyse de la trajectoire de caméra : vitesse à l'écran et accélération, image par image.
+import { cameraEpisode } from "../src/config/episode";
+import { CAMERA_EP as CAMERA } from "../src/config/episode";
+import { FPS, TOTAL_FRAMES } from "../src/timeline";
+const mx = (l: number) => (l + 180) / 360;
+const my = (la: number) => (1 - Math.log(Math.tan(Math.PI / 4 + (la * Math.PI) / 360)) / Math.PI) / 2;
+const rows: number[][] = [];
+for (let f = 0; f < TOTAL_FRAMES; f++) rows.push([f, ...Object.values(cameraEpisode(f / FPS)) as number[]]);
+const sp: number[] = [];
+for (let i = 1; i < rows.length; i++) {
+  const [, l0, a0, z0, p0, b0] = rows[i - 1], [, l1, a1, z1, p1, b1] = rows[i];
+  const world = 512 * 2 ** ((z0 + z1) / 2);
+  const pan = Math.hypot(mx(l1) - mx(l0), my(a1) - my(a0)) * world;      // px/image
+  const zoom = Math.abs(z1 - z0) * 1080 * Math.LN2 / 2;                    // px/image équivalents au bord
+  const rot = (Math.abs(b1 - b0) + Math.abs(p1 - p0)) * Math.PI / 180 * 540;
+  sp.push(pan + zoom + rot);
+}
+const acc = sp.slice(1).map((v, i) => Math.abs(v - sp[i]));
+const pct = (a: number[], q: number) => [...a].sort((x, y) => x - y)[Math.floor(q * (a.length - 1))];
+console.log(`vitesse écran (px/image) : min ${Math.min(...sp).toFixed(2)} · médiane ${pct(sp, 0.5).toFixed(1)} · max ${Math.max(...sp).toFixed(1)}`);
+console.log(`variation de vitesse d'une image à l'autre (px) : médiane ${pct(acc, 0.5).toFixed(2)} · 99e centile ${pct(acc, 0.99).toFixed(2)} · max ${Math.max(...acc).toFixed(2)} à l'image ${acc.indexOf(Math.max(...acc)) + 1}`);
+console.log("images quasi immobiles (< 0,3 px/image) :", sp.filter((v) => v < 0.3).length);
+console.log("profil (1 valeur / 0,5 s) :", sp.filter((_, i) => i % 15 === 0).map((v) => v.toFixed(1)).join(" "));
+// pics d'accélération par seconde de film
+const per: string[] = [];
+for (let s = 0; s < Math.ceil(TOTAL_FRAMES / FPS); s++) { const w = acc.slice(s * FPS, (s + 1) * FPS); if (w.length) per.push(`${s}s:${Math.max(...w).toFixed(1)}`); }
+console.log("accélération max par seconde :", per.join(" "));
+const slow: number[] = []; sp.forEach((v, i) => { if (v < 0.3) slow.push(i + 1); });
+const runs: string[] = []; let a = -1, b = -1;
+for (const f of slow) { if (f === b + 1) b = f; else { if (a >= 0) runs.push(`${(a / FPS).toFixed(1)}–${(b / FPS).toFixed(1)}s`); a = b = f; } }
+if (a >= 0) runs.push(`${(a / FPS).toFixed(1)}–${(b / FPS).toFixed(1)}s`);
+console.log("plages quasi immobiles :", runs.join(" "));
+const mi = sp.indexOf(Math.max(...sp)); console.log("vitesse max à", (mi / FPS).toFixed(1), "s");
+console.log("vitesse 15,5–18 s :", sp.slice(465, 540).filter((_, i) => i % 5 === 0).map((v) => v.toFixed(1)).join(" "));

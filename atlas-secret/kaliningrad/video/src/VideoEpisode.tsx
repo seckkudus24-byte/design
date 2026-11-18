@@ -4,8 +4,7 @@ import { MapStage } from "./map/MapStage";
 import { Overlays } from "./overlays/Overlays";
 import { EpisodeOverlays } from "./overlays/Episode";
 import { Subtitles } from "./Subtitles";
-import { cameraSpline } from "./camera";
-import { CAMERA_EP, EP, GRADE, MODERN_EP, PROTO_EP } from "./config/episode";
+import { EP, GRADE, MODERN_EP, PROTO_EP, cameraEpisode } from "./config/episode";
 import { FPS, SEGS, T } from "./timeline";
 import { STYLE } from "./config/style";
 
@@ -32,7 +31,7 @@ export const VideoEpisode: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: "#03070f" }}>
       <AbsoluteFill style={{ filter }}>
-        <MapStage camera={cameraSpline(CAMERA_EP, t)} mapFilter={mapFilter}>
+        <MapStage camera={cameraEpisode(t)} mapFilter={mapFilter}>
           <EpisodeOverlays items={EP} t={t} layer="map" />
           <Overlays items={OVER} t={t} />
           <EpisodeOverlays items={EP} t={t} layer="ui" />

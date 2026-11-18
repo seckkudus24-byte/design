@@ -5,7 +5,7 @@
 // Sources des données affichées : voir README (section « Épisode complet »).
 // ─────────────────────────────────────────────────────────────────────────────
 import type { Key } from "../camera";
-import { mx, my } from "../camera";
+import { mx, my, cameraSpline } from "../camera";
 import type { Overlay } from "../overlays/types";
 import type { EpOverlay } from "../overlays/episodeTypes";
 import { CAMERA as PROTO_CAMERA, OVERLAYS as PROTO_OVERLAYS } from "./scenes";
@@ -34,53 +34,72 @@ const endSlope = v(b).map((x, i) => ((x - v(a)[i]) / dt) * 0.5);
 export const CAMERA_EP: Key[] = [
   ...pk.slice(0, -1),
   { ...b, slope: endSlope },
-  // 3 — Kaliningrad vue du ciel, lente poussée
-  { at: "s3a@0.9", lng: 20.62, lat: 54.82, zoom: 8.2, pitch: 34, bearing: 0 },
-  { at: "s3b:end", lng: 20.51, lat: 54.715, zoom: 9.55, pitch: 40, bearing: 4 },
-  { at: "s4a", lng: 20.51, lat: 54.71, zoom: 9.85, pitch: 40, bearing: 5 },
-  // 4 — recul à l'échelle de la Prusse, travelling latéral
-  { at: "s4b@0.55", lng: 20.95, lat: 54.35, zoom: 7.15, pitch: 28, bearing: 2 },
-  { at: "s4c:end", lng: 21.55, lat: 54.15, zoom: 6.9, pitch: 24, bearing: -2 },
-  // 5 — Berlin et Königsberg dans le même cadre
-  { at: "s5b@0.35", lng: 17.2, lat: 53.6, zoom: 5.75, pitch: 16, bearing: 0 },
-  { at: "s5b:end+0.15", lng: 17.0, lat: 53.55, zoom: 5.7, pitch: 16, bearing: 0 },
-  // 6 — gros plan sur la ville, puis recul pour l'encerclement
-  { at: "s6b@0.25", lng: 20.5, lat: 54.72, zoom: 9.6, pitch: 36, bearing: 0 },
-  { at: "s6b:end", lng: 20.5, lat: 54.71, zoom: 9.85, pitch: 36, bearing: 2 },
-  { at: "s6c@0.55", lng: 20.5, lat: 54.69, zoom: 8.6, pitch: 30, bearing: 0 },
-  { at: "s6c:end+0.3", lng: 20.55, lat: 54.62, zoom: 7.8, pitch: 26, bearing: -1 },
-  // 7 — Potsdam : partage de la Prusse-Orientale, léger mouvement le long de la ligne
-  { at: "s7a@0.45", lng: 20.7, lat: 54.15, zoom: 6.8, pitch: 20, bearing: 0 },
-  { at: "s7c:end", lng: 21.6, lat: 54.05, zoom: 6.7, pitch: 22, bearing: -3 },
-  // 8 — changement de nom, puis recul pour les flux
-  { at: "s8a@0.5", lng: 20.51, lat: 54.71, zoom: 9.2, pitch: 34, bearing: 0 },
-  { at: "s8b@0.45", lng: 19.6, lat: 54.3, zoom: 6.0, pitch: 18, bearing: 0 },
-  { at: "s8b:end", lng: 20.2, lat: 54.25, zoom: 5.15, pitch: 14, bearing: 0 },
-  // 9 — la carte se déroule vers l'est : la Baltique jusqu'à Moscou
-  { at: "s9a@0.55", lng: 28.5, lat: 55.6, zoom: 4.55, pitch: 10, bearing: 0 },
-  { at: "s9c", lng: 29.0, lat: 55.7, zoom: 4.5, pitch: 10, bearing: 0 },
-  { at: "s9d:end", lng: 27.3, lat: 55.4, zoom: 4.75, pitch: 12, bearing: 0 },
-  { at: "s9e:end", lng: 22.6, lat: 55.0, zoom: 5.6, pitch: 18, bearing: 0 },
-  // 10 — l'oblast, la Baltique et la Lituanie (jusqu'au golfe de Finlande pour les liaisons)
-  { at: "s10a@0.6", lng: 23.0, lat: 56.4, zoom: 5.2, pitch: 14, bearing: 0 },
-  { at: "s10c", lng: 23.9, lat: 57.25, zoom: 4.9, pitch: 12, bearing: 0 },
-  { at: "s10d:end", lng: 23.6, lat: 57.15, zoom: 4.95, pitch: 12, bearing: 0 },
-  // 11 — plongée sur Baltiïsk, puis recul pendant le cercle de portée
-  { at: "s11a@0.85", lng: 19.95, lat: 54.655, zoom: 10.5, pitch: 42, bearing: -10 },
-  { at: "s11b:end", lng: 19.92, lat: 54.648, zoom: 10.8, pitch: 44, bearing: -12 },
-  { at: "s11c@0.6", lng: 21.3, lat: 54.65, zoom: 6.3, pitch: 22, bearing: 0 },
-  { at: "s11d@0.65", lng: 21.9, lat: 54.6, zoom: 4.55, pitch: 10, bearing: 0 },
-  { at: "s11d:end", lng: 22.3, lat: 54.6, zoom: 4.6, pitch: 10, bearing: 0 },
-  // 12 — glissement vers le corridor de Suwałki, puis recul sur les pays baltes
-  { at: "s12a@0.75", lng: 23.15, lat: 54.25, zoom: 7.35, pitch: 38, bearing: 10 },
-  { at: "s12c:end", lng: 23.2, lat: 54.15, zoom: 7.55, pitch: 40, bearing: 12 },
-  { at: "s12d:end", lng: 24.6, lat: 56.0, zoom: 5.55, pitch: 20, bearing: 0 },
+  // 3 — plongée lente vers Kaliningrad vue du ciel (≈ 3 s), puis poussée
+  { at: "s3b@0.2", lng: 22.5, lat: 55.2, zoom: 6.25, pitch: 26, bearing: -2 },
+  { at: "s3b:end+0.2", lng: 20.8, lat: 54.8, zoom: 7.55, pitch: 33, bearing: 2 },
+  { at: "s4a:end", lng: 20.56, lat: 54.73, zoom: 8.25, pitch: 36, bearing: 4 },
+  // 4 — recul à l'échelle de la Prusse, travelling latéral continu
+  { at: "s4b@0.6", lng: 20.95, lat: 54.4, zoom: 7.3, pitch: 28, bearing: 2 },
+  { at: "s4c:end", lng: 21.5, lat: 54.2, zoom: 6.85, pitch: 24, bearing: -2 },
+  // 5 — Berlin et Königsberg dans le même cadre, dérive lente
+  { at: "s5b@0.2", lng: 17.6, lat: 53.7, zoom: 5.8, pitch: 16, bearing: 0 },
+  { at: "s5b:end", lng: 17.1, lat: 53.6, zoom: 5.72, pitch: 15, bearing: -1 },
+  // 6 — la guerre : descente vers la ville pendant « Puis vient la guerre », puis recul
+  { at: "s6b@0.6", lng: 20.47, lat: 54.72, zoom: 8.55, pitch: 33, bearing: 0 },
+  { at: "s6b:end+0.1", lng: 20.5, lat: 54.71, zoom: 8.85, pitch: 35, bearing: 2 },
+  { at: "s6c@0.6", lng: 20.52, lat: 54.68, zoom: 8.2, pitch: 30, bearing: 0 },
+  { at: "s6c:end+0.3", lng: 20.6, lat: 54.6, zoom: 7.7, pitch: 26, bearing: -1 },
+  // 7 — Potsdam : partage, mouvement continu le long de la ligne
+  { at: "s7a@0.5", lng: 20.65, lat: 54.2, zoom: 6.85, pitch: 21, bearing: 0 },
+  { at: "s7b@0.5", lng: 21.15, lat: 54.12, zoom: 6.75, pitch: 22, bearing: -2 },
+  { at: "s7c:end", lng: 21.55, lat: 54.05, zoom: 6.85, pitch: 24, bearing: -3 },
+  // 8 — descente vers le nom, puis recul pour les flux
+  { at: "s8a@0.75", lng: 20.55, lat: 54.7, zoom: 8.45, pitch: 32, bearing: 0 },
+  { at: "s8b@0.3", lng: 20.2, lat: 54.55, zoom: 7.2, pitch: 24, bearing: 0 },
+  { at: "s8b:end", lng: 20.0, lat: 54.25, zoom: 5.3, pitch: 14, bearing: 0 },
+  // 9 — la carte se déroule vers l'est, puis lente poussée vers l'oblast
+  { at: "s9a:end", lng: 28.2, lat: 55.6, zoom: 4.6, pitch: 10, bearing: 0 },
+  { at: "s9c@0.5", lng: 27.4, lat: 55.55, zoom: 4.74, pitch: 11, bearing: 0 },
+  { at: "s9d:end", lng: 26.0, lat: 55.3, zoom: 4.98, pitch: 13, bearing: 0 },
+  { at: "s9e:end", lng: 23.0, lat: 55.05, zoom: 5.5, pitch: 17, bearing: -1 },
+  // 10 — l'oblast, la Baltique et la Lituanie, puis élargissement vers le golfe de Finlande
+  { at: "s10a@0.7", lng: 23.2, lat: 56.3, zoom: 5.2, pitch: 14, bearing: 0 },
+  { at: "s10c@0.2", lng: 23.8, lat: 57.1, zoom: 4.95, pitch: 12, bearing: 1 },
+  { at: "s10d@0.3", lng: 24.1, lat: 57.35, zoom: 4.88, pitch: 12, bearing: 1.5 },
+  // 11 — plongée progressive sur Baltiïsk (≈ 4 s), dérive, puis recul pendant le cercle de portée
+  { at: "s11b@0.5", lng: 20.02, lat: 54.67, zoom: 8.75, pitch: 36, bearing: -7 },
+  { at: "s11b:end", lng: 19.95, lat: 54.655, zoom: 9.35, pitch: 40, bearing: -10 },
+  { at: "s11c@0.65", lng: 21.2, lat: 54.65, zoom: 6.6, pitch: 24, bearing: -2 },
+  { at: "s11d@0.65", lng: 21.9, lat: 54.6, zoom: 4.65, pitch: 11, bearing: 0 },
+  { at: "s11d:end+0.2", lng: 22.3, lat: 54.55, zoom: 4.75, pitch: 13, bearing: 2 },
+  // 12 — glissement vers le corridor de Suwałki, dérive, puis recul sur les pays baltes
+  { at: "s12a:end", lng: 23.1, lat: 54.28, zoom: 7.15, pitch: 36, bearing: 9 },
+  { at: "s12c:end", lng: 23.25, lat: 54.12, zoom: 7.5, pitch: 40, bearing: 12 },
+  { at: "s12d:end", lng: 24.4, lat: 55.9, zoom: 5.6, pitch: 22, bearing: 2 },
   // 13 — les trois noms sur la ville, puis long recul jusqu'au globe
-  { at: "s13a@0.5", lng: 20.52, lat: 54.72, zoom: 7.7, pitch: 24, bearing: 0 },
-  { at: "s13c", lng: 20.6, lat: 54.7, zoom: 6.5, pitch: 18, bearing: 0 },
-  { at: "s13d:end", lng: 20.5, lat: 54.7, zoom: 3.3, pitch: 0, bearing: 0 },
-  { at: "end", lng: 20.5, lat: 54.7, zoom: 2.95, pitch: 0, bearing: 0 },
+  { at: "s13b", lng: 20.6, lat: 54.75, zoom: 7.25, pitch: 24, bearing: 0 },
+  { at: "s13c", lng: 20.55, lat: 54.72, zoom: 6.7, pitch: 20, bearing: 0 },
+  { at: "s13d:end", lng: 20.5, lat: 54.7, zoom: 3.4, pitch: 2, bearing: 0 },
+  { at: "end", lng: 20.5, lat: 54.7, zoom: 3.0, pitch: 0, bearing: 0 },
 ];
+
+/** Caméra de l'épisode : trajectoire continue + lissage temporel (gaussien, σ = 0,45 s) après la jonction,
+ *  pour supprimer les à-coups aux images-clés. Jusqu'à la fin de la scène 2 : trajectoire du prototype, inchangée. */
+export function cameraEpisode(t: number) {
+  const raw = cameraSpline(CAMERA_EP, t);
+  const w = Math.max(0, Math.min(1, (t - PROTO_END) / 0.8));
+  if (w <= 0) return raw;
+  const sig = 0.45, dt = 1 / 30, N = Math.ceil((2.5 * sig) / dt);
+  const acc = [0, 0, 0, 0, 0]; let tot = 0;
+  for (let k = -N; k <= N; k++) {
+    const tk = Math.max(PROTO_END, t + k * dt), c = cameraSpline(CAMERA_EP, tk), g = Math.exp(-((k * dt) ** 2) / (2 * sig * sig));
+    const v = [mx(c.lng), my(c.lat), c.zoom, c.pitch ?? 0, c.bearing ?? 0];
+    v.forEach((x, i) => (acc[i] += g * x)); tot += g;
+  }
+  const sm = acc.map((x) => x / tot), rv = [mx(raw.lng), my(raw.lat), raw.zoom, raw.pitch ?? 0, raw.bearing ?? 0];
+  const e = w * w * (3 - 2 * w), v = rv.map((x, i) => x + (sm[i] - x) * e);
+  return { lng: v[0] * 360 - 180, lat: (Math.atan(Math.sinh(Math.PI * (1 - 2 * v[1]))) * 180) / Math.PI, zoom: v[2], pitch: v[3], bearing: v[4] };
+}
 
 // ── Étalonnage : désaturation de fin de scène 2 (p), sépia « archives » (q) des scènes 4 à 8,
 //    retour aux couleurs actuelles en 1991 (scène 9). ──

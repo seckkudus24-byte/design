@@ -89,3 +89,55 @@ Le chiffre n'apparaît qu'une fois la ligne entièrement tracée : aucun compteu
 **Vérification d'un rendu :** `bash scripts/verify.sh out/kaliningrad_prototype.mp4` donne la résolution, la cadence, le nombre d'images, la durée, les codecs, le rapport d'aspect, les images noires, la sonie et les pics de mouvement.
 
 **Livraison :** la vidéo est aussi fournie dans une archive, non versionnée : `cd rendu && zip -0 kaliningrad_prototype_1080x1920.zip kaliningrad_prototype.mp4 kaliningrad_prototype.srt verification.txt`. Un fichier compressé dans une archive n'est pas réencodé par les aperçus des messageries ou des applications, qui peuvent réduire une vidéo à 512 × 910 pour l'affichage.
+
+---
+
+# Épisode complet (scènes 1 à 13)
+
+## Reproduire le rendu
+```bash
+npm run data            # données des scènes 1–2 (frontières, mesure 363 km)
+npm run data:episode    # données des scènes 3–13 (lignes, zones historiques, cercle Iskander)
+python3 scripts/archives_direct.py   # images d'archives (vignettes Wikimedia Commons) + licences
+npm run voice           # voix off complète (scènes 3–13 : débit 0,94, même voix)
+npm run music           # musique + effets (synthèse) et positions des effets
+npm run render:episode  # → out/kaliningrad_episode1.mp4 + .srt
+```
+`render:episode` **réutilise les 478 images validées des scènes 1–2** (`out/proto/video_scenes_1_2.mp4`). Si ce fichier manque, il les re-rend depuis la composition « Prototype », qui est figée. La suite (composition « Episode ») est rendue par tranches reprenables (`out/ep/part_N.mp4`), puis l'audio est mixé par `scripts/mixaudio.mjs`, avec une musique qui s'efface sous la voix (compression déclenchée par la voix).
+
+## Fichiers
+| Fichier | Rôle |
+|---|---|
+| `src/config/narration.json` | Voix off des 13 scènes (texte du plan V2, découpé en segments ; `tts` = graphie phonétique pour Königsberg, Suwałki, Królewiec, Iskander, URSS) |
+| `src/config/episode.ts` | Caméra et calques des scènes 3–13, raccord de vitesse avec la scène 2, étalonnage |
+| `src/overlays/Episode.tsx` | Nouveaux éléments : tampons de date, archives épinglées, noms qui se désagrègent, zones historiques, flèches, anneau, flux, itinéraires, cercle de portée, frise, badge, noms empilés, écran de fin |
+| `src/VideoEpisode.tsx` | Composition « Episode » ; le sépia « archives » ne s'applique qu'à la carte, les couleurs-codes restent justes |
+| `scripts/geodata_episode.mjs` | Données des scènes 3–13 |
+| `scripts/archives_direct.py` | Images d'archives et licences |
+| `scripts/music.py`, `scripts/mixaudio.mjs` | Bande-son et mixage |
+
+## Sources des données affichées
+| Scène | Donnée | Source |
+|---|---|---|
+| 4 | 1255, 1701, Kant (1724–1804) | Plan V2 (F4–F6) : Wikipedia, Stanford Encyclopedia of Philosophy |
+| 5 | Corridor polonais, frontières de 1930 | **historical-basemaps** (A. Ourednik, GPL-3.0), précision « échelle continentale » : affiché en **zones adoucies**, avec la mention « tracé simplifié » à l'écran |
+| 6 | Août 1944, 6–9 avril 1945, capitulation le 9 avril | Plan V2 (F8–F9) ; directions d'attaque **schématiques** : 43ᵉ et 50ᵉ armées au nord et au nord-ouest, 11ᵉ armée de la Garde au sud (Wikipedia, *Battle of Königsberg*) |
+| 7 | Potsdam, ligne de partage | Protocole de Potsdam (Avalon, FRUS) ; la ligne tracée est la **frontière actuelle oblast–Pologne**, fixée par l'accord polono-soviétique du **16 août 1945** ; règlement définitif : traité « 2+4 » (1990) |
+| 8 | 4 juillet 1946, 1947–1948 | Plan V2 (F11–F12) ; flux sans chiffres |
+| 9 | 7 avril 1946, 11 mars 1990, 6 sept. 1991, 26 déc. 1991 | Plan V2 (F11, F23) ; limites des républiques = frontières actuelles (inchangées en 1991) ; l'Ukraine fait partie de l'URSS |
+| 10 | OTAN / UE, liaisons | Plan V2 (F15, F24) ; ferry **Baltiïsk – Oust-Louga** (Rosmorport, PortNews) ; vols par les **eaux internationales de la Baltique** depuis 2022 (Rosaviatsia, via Interfax / TASS) ; train via la Lituanie (document de transit facilité depuis 2003). Tracés schématiques |
+| 11 | Baltiïsk, Iskander depuis 2018, 500 km | Plan V2 (F16–F17) ; cercle géodésique de 500 km centré sur **Tcherniakhovsk**, base de la 152ᵉ brigade de missiles de la Garde (Jamestown, Russian Defense Policy, 2018) |
+| 12 | ≈ 104 km, ≈ 65 km | Frontière Pologne–Lituanie : 104,3 km (garde-frontières lituaniens) ; 65,4 km à vol d'oiseau oblast–Biélorussie, calculés (geoBoundaries + Natural Earth, WGS84) |
+| 13 | Königsberg 1255–1946, Kaliningrad depuis 1946, Królewiec (2023) | Plan V2 (F4, F11, F20) |
+
+## Images d'archives (Wikimedia Commons)
+| Scène | Image | Auteur | Licence |
+|---|---|---|---|
+| 4 | Château de Königsberg, vers 1900 (photochrome) | inconnu | domaine public |
+| 4 | Emmanuel Kant, 1768 | Johann Gottlieb Becker | domaine public |
+| 6 | Königsberg après les raids, août 1944 | Fritz Krauskopf (1882–1945) | domaine public |
+| 7 | Attlee, Truman et Staline à Potsdam, 1945 | photographe officiel (US) | domaine public |
+| 8 | Mikhaïl Kalinine, années 1920 | inconnu | domaine public |
+| 11 | Lanceur Iskander-M (exercice de 2018, lieu non précisé) | Алексей Иванов (mil.ru) | **CC BY 4.0** : crédit incrusté sous l'image |
+
+Une légende factuelle est incrustée sous chaque image. Depuis cet environnement, Wikimedia limite l'API et les fichiers originaux (erreur 429) : le script télécharge les vignettes standard (500 à 1 280 px) et recopie les licences vérifiées lors de la sélection.
