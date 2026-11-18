@@ -1,0 +1,28 @@
+import React from "react";
+import { Easing } from "remotion";
+import { LINES } from "./timeline";
+import { STYLE } from "./config/style";
+
+const clamp = (x: number) => Math.max(0, Math.min(1, x));
+
+/** Sous-titres synchronisés : une phrase à la fois, **mot** = surligné. */
+export const Subtitles: React.FC<{ t: number }> = ({ t }) => {
+  const i = LINES.findIndex((l, k) => t >= l.start - 0.05 && t < (LINES[k + 1]?.start ?? Infinity) - 0.05 && t < l.end + 0.6);
+  if (i < 0) return null;
+  const l = LINES[i];
+  const p = Easing.bezier(0.34, 1.56, 0.64, 1)(clamp((t - l.start + 0.05) / 0.18));
+  const parts = l.text.split(/(\*\*[^*]+\*\*)/).filter(Boolean);
+  return (
+    <div style={{ position: "absolute", left: 60, right: 60, top: `${STYLE.subtitleY * 100}%`, display: "flex", justifyContent: "center" }}>
+      <div style={{
+        transform: `translateY(-50%) scale(${0.85 + 0.15 * p})`, opacity: clamp(p * 1.5), textAlign: "center",
+        fontFamily: STYLE.subtitleFont, fontWeight: 900, fontSize: STYLE.subtitleSize, lineHeight: 1.18, color: "#fff",
+        WebkitTextStroke: "11px #000", paintOrder: "stroke fill", textShadow: "0 6px 14px rgba(0,0,0,0.65)", letterSpacing: 0.5,
+      }}>
+        {parts.map((s, k) => s.startsWith("**")
+          ? <span key={k} style={{ color: STYLE.accent }}>{s.slice(2, -2)}</span>
+          : <span key={k}>{s}</span>)}
+      </div>
+    </div>
+  );
+};

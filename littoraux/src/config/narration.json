@@ -1,0 +1,28 @@
+{
+  "_aide": "Texte de la voix off. 'text' = sous-titre affiché (**mot** = surligné en jaune). 'tts' = texte prononcé si différent (chiffres en toutes lettres). Après modification : npm run voice",
+  "voice": "fr_FR-siwis-medium",
+  "lengthScale": 0.9,
+  "gapAfter": 0.12,
+  "lines": [
+    { "id": "l01", "text": "Tu peux le croire ?", "pauseAfter": 0.05 },
+    { "id": "l02", "text": "Certains pays ont un littoral **ridiculement court**," },
+    { "id": "l03", "text": "au point d'avoir failli devenir des pays **enclavés**.", "pauseAfter": 0.35 },
+    { "id": "l04", "text": "**Numéro 4** : la République du Congo.", "tts": "Numéro quatre : la République du Congo." },
+    { "id": "l05", "text": "Un territoire immense," },
+    { "id": "l06", "text": "mais seulement **170 km** de côtes.", "tts": "mais seulement cent soixante-dix kilomètres de côtes." },
+    { "id": "l07", "text": "Les deux Congo n'ont vraiment pas de chance :" },
+    { "id": "l08", "text": "leurs accès à la mer sont **minuscules**.", "pauseAfter": 0.45 },
+    { "id": "l09", "text": "**Numéro 3** : la Gambie.", "tts": "Numéro trois : la Gambie." },
+    { "id": "l10", "text": "Ce pays s'étire sur **500 km**,", "tts": "Ce pays s'étire sur cinq cents kilomètres," },
+    { "id": "l11", "text": "mais n'a que **80 km** de côtes.", "tts": "mais n'a que quatre-vingts kilomètres de côtes." },
+    { "id": "l12", "text": "Sur la carte," },
+    { "id": "l13", "text": "on dirait que le **Sénégal** l'enveloppe entièrement.", "pauseAfter": 0.35 },
+    { "id": "l14", "text": "**Numéro 2** : le Togo.", "tts": "Numéro deux : le Togo." },
+    { "id": "l15", "text": "Son littoral ne mesure que **56 km**,", "tts": "Son littoral ne mesure que cinquante-six kilomètres," },
+    { "id": "l16", "text": "et le **Bénin** a presque fini par boucher ce petit bout de côte." },
+    { "id": "l17", "text": "Pauvre Togo !", "pauseAfter": 0.45 },
+    { "id": "l18", "text": "**Numéro 1** : la Palestine.", "tts": "Numéro un : la Palestine." },
+    { "id": "l19", "text": "Sans les **40 km** de côtes que conserve la bande de Gaza,", "tts": "Sans les quarante kilomètres de côtes que conserve la bande de Gaza," },
+    { "id": "l20", "text": "la Palestine serait **totalement enclavée**.", "pauseAfter": 1.2 }
+  ]
+}
