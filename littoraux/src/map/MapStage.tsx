@@ -30,11 +30,11 @@ export const MapStage: React.FC<{ camera: Camera; children?: React.ReactNode }> 
         projection: { type: "globe" },
         sky: MAP.sky as any,
         sources: {
-          sat: { type: "raster", tiles: [MAP.tileUrl], tileSize: 256, maxzoom: MAP.maxTileZoom, attribution: "" },
+          sat: { type: "raster", tiles: [MAP.tileUrl], tileSize: MAP.tileSize, maxzoom: MAP.maxTileZoom, attribution: "" },
         },
         layers: [
           { id: "bg", type: "background", paint: { "background-color": MAP.space } },
-          { id: "sat", type: "raster", source: "sat", paint: { "raster-saturation": MAP.saturation, "raster-contrast": MAP.contrast, "raster-brightness-min": MAP.brightnessMin, "raster-brightness-max": MAP.brightnessMax, "raster-fade-duration": 0 } },
+          { id: "sat", type: "raster", source: "sat", paint: { "raster-saturation": MAP.saturation, "raster-contrast": MAP.contrast, "raster-brightness-min": MAP.brightnessMin, "raster-brightness-max": MAP.brightnessMax, "raster-fade-duration": 0, "raster-resampling": "linear" } },
         ],
       },
       center: [camera.lng, camera.lat],
@@ -42,11 +42,12 @@ export const MapStage: React.FC<{ camera: Camera; children?: React.ReactNode }> 
       interactive: false,
       attributionControl: false,
       fadeDuration: 0,
-      pixelRatio: 1,
+      pixelRatio: MAP.pixelRatio,
       maxPitch: 85,
       canvasContextAttributes: { preserveDrawingBuffer: true, antialias: true },
     } as any);
-    m.once("load", () => { setMap(m); continueRender(initHandle); });
+    m.once("load", () => {
+      setMap(m); continueRender(initHandle); });
     return () => m.remove();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -69,12 +70,12 @@ export const MapStage: React.FC<{ camera: Camera; children?: React.ReactNode }> 
   const project: Project = (p) => {
     if (!map) return [0, 0];
     const pt = map.project(p);
-    return [pt.x, pt.y];
+    return [pt.x, pt.y - MAP.raise];
   };
 
   return (
     <AbsoluteFill style={{ background: MAP.space }}>
-      <div ref={el} style={{ position: "absolute", width, height }} />
+      <div ref={el} style={{ position: "absolute", top: -MAP.raise, width, height: height + MAP.raise, filter: MAP.grade }} />
       <MapCtx.Provider value={{ project, camera, ready: !!map }}>{map ? children : null}</MapCtx.Provider>
     </AbsoluteFill>
   );

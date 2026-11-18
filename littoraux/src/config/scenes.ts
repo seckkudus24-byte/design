@@ -4,27 +4,27 @@
 //   "l06@0.5" = milieu de la phrase l06, "l08:end+0.3" = 0,3 s après sa fin.
 // Ainsi, si la narration change de durée, tout se recale automatiquement.
 // Caméra : lng/lat = centre, zoom (MapLibre), pitch = inclinaison 3D (°),
-// bearing = rotation (°), arc = dézoom au milieu d'un vol entre deux régions.
+// bearing = rotation (°), fly = ampleur du vol (0 = trajet droit, 0.9 par défaut, >1 = prend plus d'altitude).
 // ─────────────────────────────────────────────────────────────────────────────
 import type { Key } from "../camera";
 import type { Overlay } from "../overlays/types";
 import { TOTAL } from "../timeline";
 
-/** Changements de séquence : flash + « whoosh ». */
+/** Changements de séquence : « whoosh » sonore pendant le vol de caméra. */
 export const TRANSITIONS = ["l04", "l09", "l14", "l18"];
 
 export const CAMERA: Key[] = [
-  // ── Ouverture : le globe tourne vers l'Afrique
-  { at: 0, lng: -32, lat: 4, zoom: 2.05 },
-  { at: "l01:end+0.1", lng: 17, lat: -3, zoom: 2.85, ease: "inOut" },
+  // ── Ouverture : survol de l'Afrique de l'Ouest vers l'Afrique centrale
+  { at: 0, lng: 2, lat: 8, zoom: 4.25 },
+  { at: "l01:end+0.1", lng: 17, lat: -2, zoom: 3.95, ease: "soft" },
   // plongée sur la minuscule côte de la RD Congo
-  { at: "l02@0.85", lng: 12.45, lat: -5.9, zoom: 8.4, pitch: 40, ease: "inOut" },
+  { at: "l02@0.9", lng: 12.4, lat: -5.9, zoom: 8.2, pitch: 38 },
   // retour à l'échelle du continent
-  { at: "l03@0.4", lng: 20, lat: -2, zoom: 3.15, pitch: 0, ease: "inOut" },
-  { at: "l03:end+0.3", lng: 19.5, lat: -2.5, zoom: 3.3, ease: "linear" },
+  { at: "l03@0.45", lng: 19, lat: -2.5, zoom: 4.15, pitch: 0 },
+  { at: "l03:end+0.3", lng: 18.5, lat: -3, zoom: 4.22, ease: "linear" },
 
   // ── N° 4 : République du Congo
-  { at: "l04@0.75", lng: 15.0, lat: -0.7, zoom: 6.1, pitch: 15, arc: 0.6 },
+  { at: "l04@0.75", lng: 15.0, lat: -0.7, zoom: 6.1, pitch: 15 },
   { at: "l05:end", lng: 15.3, lat: -0.9, zoom: 6.0, pitch: 28, bearing: -8, ease: "linear" },
   { at: "l06@0.45", lng: 11.8, lat: -4.45, zoom: 8.25, pitch: 48, bearing: -15 },
   { at: "l06:end+0.1", lng: 11.75, lat: -4.5, zoom: 8.4, pitch: 50, bearing: -18, ease: "linear" },
@@ -34,23 +34,23 @@ export const CAMERA: Key[] = [
   { at: "l08:end+0.45", lng: 12.55, lat: -5.7, zoom: 8.3, pitch: 44, ease: "linear" },
 
   // ── N° 3 : Gambie
-  { at: "l09@0.8", lng: -15.35, lat: 13.5, zoom: 7.55, pitch: 10, bearing: 0, arc: 3.2 },
+  { at: "l09@0.8", lng: -15.35, lat: 13.5, zoom: 7.55, pitch: 10, bearing: 0, fly: 1.15 },
   { at: "l10:end", lng: -15.25, lat: 13.55, zoom: 7.6, pitch: 16, ease: "linear" },
-  { at: "l11@0.4", lng: -16.68, lat: 13.33, zoom: 9.35, pitch: 45, bearing: 10 },
-  { at: "l11:end+0.1", lng: -16.7, lat: 13.32, zoom: 9.5, pitch: 48, bearing: 12, ease: "linear" },
+  { at: "l11@0.4", lng: -16.68, lat: 13.33, zoom: 9.35, pitch: 36, bearing: 10 },
+  { at: "l11:end+0.1", lng: -16.7, lat: 13.32, zoom: 9.5, pitch: 38, bearing: 12, ease: "linear" },
   { at: "l13@0.3", lng: -14.6, lat: 14.2, zoom: 6.45, pitch: 20, bearing: 0 },
   { at: "l13:end+0.35", lng: -14.6, lat: 14.25, zoom: 6.55, pitch: 22, ease: "linear" },
 
   // ── N° 2 : Togo
-  { at: "l14@0.8", lng: 0.95, lat: 8.55, zoom: 7.3, pitch: 10, arc: 1.4 },
-  { at: "l15@0.45", lng: 1.4, lat: 6.02, zoom: 9.8, pitch: 46 },
-  { at: "l15:end", lng: 1.4, lat: 6.01, zoom: 9.95, pitch: 48, ease: "linear" },
+  { at: "l14@0.8", lng: 0.95, lat: 8.55, zoom: 7.3, pitch: 10 },
+  { at: "l15@0.45", lng: 1.4, lat: 6.3, zoom: 9.8, pitch: 46 },
+  { at: "l15:end", lng: 1.4, lat: 6.29, zoom: 9.95, pitch: 48, ease: "linear" },
   { at: "l16@0.35", lng: 1.75, lat: 6.7, zoom: 8.0, pitch: 30 },
   { at: "l16:end", lng: 1.7, lat: 6.65, zoom: 8.12, pitch: 32, ease: "linear" },
   { at: "l17:end+0.45", lng: 1.45, lat: 6.85, zoom: 8.2, pitch: 30, ease: "linear" },
 
   // ── N° 1 : Palestine
-  { at: "l18@0.85", lng: 34.95, lat: 31.85, zoom: 8.0, pitch: 15, bearing: 0, arc: 3.0 },
+  { at: "l18@0.85", lng: 34.95, lat: 31.85, zoom: 8.0, pitch: 15, bearing: 0, fly: 1.15 },
   { at: "l19@0.4", lng: 34.37, lat: 31.42, zoom: 10.0, pitch: 42, bearing: -35 },
   { at: "l19:end", lng: 34.37, lat: 31.42, zoom: 10.15, pitch: 45, bearing: -40, ease: "linear" },
   { at: "l20@0.4", lng: 35.0, lat: 31.8, zoom: 7.5, pitch: 12, bearing: 0 },
@@ -60,8 +60,8 @@ export const CAMERA: Key[] = [
 // L'ordre de la liste = ordre d'empilement (le dernier est au-dessus).
 export const OVERLAYS: Overlay[] = [
   // ── Ouverture
-  { type: "country", id: "AFRICA", fill: "#c4161c", outline: false, wave: false, opacity: 0.9, draw: 0.01, fillDelay: 0, from: "l03@0.45", to: "l03:end+0.25" },
-  { type: "country", id: "COD", fill: "#1e8fff", outline: false, wave: false, draw: 0.01, fillDelay: 0, opacity: 0.95, from: 0.35, to: "l03:end+0.25" },
+  { type: "country", id: "AFRICA", fill: "#c4161c", outline: false, wave: false, opacity: 0.52, draw: 0.01, fillDelay: 0, from: "l03@0.45", to: "l03:end+0.25" },
+  { type: "country", id: "COD", fill: "#1e8fff", outline: "#8fd0ff", wave: false, draw: 0.5, fillDelay: 0.2, opacity: 0.58, from: 0.35, to: "l03:end+0.25" },
   { type: "coast", id: "COD", clip: [12, -6.3, 12.45, -5.5], from: "l02@0.6", to: "l03@0.3" },
   { type: "scribble", at: [12.32, -5.92], r: 110, from: "l02@0.65", to: "l03@0.25" },
   { type: "arrows", points: [[17, -1.5], [16, -4.5], [18, -7]], dir: [-300, 60], bend: -60, from: "l03@0.3", to: "l03:end+0.2" },
@@ -96,7 +96,7 @@ export const OVERLAYS: Overlay[] = [
   { type: "face", at: [1.0, 7.5], size: 170, mood: "cry", from: "l17-0.15", to: "l17:end+0.4" },
 
   // ── N° 1 : Palestine
-  { type: "country", id: "GAZ", fill: "#1f9d3a", opacity: 0.85, wave: false, from: "l18@0.3", to: "l20@0.25" },
+  { type: "country", id: "GAZ", fill: "#1f9d3a", opacity: 0.55, wave: false, from: "l18@0.3", to: "l20@0.25" },
   { type: "country", id: "WEB", flag: "PSE", from: "l18@0.3" },
   { type: "label", text: "Palestine", at: [35.25, 32.3], dy: -220, from: "l18@0.5", to: "l19@0.15" },
   { type: "label", text: "Bande de Gaza", at: [34.43, 31.5], dy: -240, size: 50, from: "l19@0.1", to: "l19:end" },

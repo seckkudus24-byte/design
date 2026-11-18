@@ -13,11 +13,11 @@ export const Subtitles: React.FC<{ t: number }> = ({ t }) => {
   const p = Easing.bezier(0.34, 1.56, 0.64, 1)(clamp((t - l.start + 0.05) / 0.18));
   const parts = l.text.split(/(\*\*[^*]+\*\*)/).filter(Boolean);
   return (
-    <div style={{ position: "absolute", left: 60, right: 60, top: `${STYLE.subtitleY * 100}%`, display: "flex", justifyContent: "center" }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top: `${STYLE.subtitleY * 100}%`, display: "flex", justifyContent: "center" }}>
       <div style={{
-        transform: `translateY(-50%) scale(${0.85 + 0.15 * p})`, opacity: clamp(p * 1.5), textAlign: "center",
-        fontFamily: STYLE.subtitleFont, fontWeight: 900, fontSize: STYLE.subtitleSize, lineHeight: 1.18, color: "#fff",
-        WebkitTextStroke: "11px #000", paintOrder: "stroke fill", textShadow: "0 6px 14px rgba(0,0,0,0.65)", letterSpacing: 0.5,
+        transform: `translateY(-50%) scale(${0.92 + 0.08 * p})`, opacity: clamp(p * 1.5), textAlign: "center", maxWidth: STYLE.subtitleMaxWidth,
+        fontFamily: STYLE.subtitleFont, fontWeight: 800, fontSize: STYLE.subtitleSize, lineHeight: 1.2, color: "#fff", textWrap: "balance" as any,
+        WebkitTextStroke: "7px rgba(0,0,0,0.92)", paintOrder: "stroke fill", textShadow: "0 3px 10px rgba(0,0,0,0.7)", letterSpacing: 0.3,
       }}>
         {parts.map((s, k) => s.startsWith("**")
           ? <span key={k} style={{ color: STYLE.accent }}>{s.slice(2, -2)}</span>

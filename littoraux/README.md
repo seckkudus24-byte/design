@@ -42,14 +42,27 @@ Les tuiles satellites sont mises en cache dans `cache/tiles/`. Un nouveau rendu 
 **Types de calques :** `country` (contour lumineux, puis drapeau ou couleur ondulant, avec un `shift` animé possible), `label`, `coast` (littoral calculé automatiquement, avec texte de mesure), `arrows`, `measure`, `scribble`, `mask`, `face`.
 
 ## Fournisseur de cartes (clé API facultative)
-Par défaut, l'imagerie vient de **Sentinel-2 cloudless 2016 d'EOX**, sans clé, sous licence CC BY 4.0 (le crédit est incrusté). Pour utiliser MapTiler ou Mapbox :
+Par défaut, l'imagerie vient de **Sentinel-2 cloudless 2020 d'EOX**, sans clé. C'est une mosaïque homogène et détaillée, sous licence **CC BY-NC-SA 4.0 : usage non commercial uniquement**. Le crédit est incrusté en bas de l'image.
+Pour un usage commercial (vidéo monétisée), deux options :
+- passer à la mosaïque 2016 (licence CC BY 4.0, quelques coutures de teinte) : `EOX_LAYER=s2cloudless_3857 npm run render`, puis adapter `credits` dans `src/config/style.ts` ;
+- utiliser un fournisseur sous licence commerciale, avec votre clé :
 ```bash
 MAP_PROVIDER=maptiler MAP_KEY=votre_cle npm run render
 MAP_PROVIDER=mapbox   MAP_KEY=votre_cle npm run render
 ```
 
 ## Licences
-- Imagerie : Sentinel-2 cloudless 2016, © EOX IT Services GmbH, CC BY 4.0 (contient des données Copernicus Sentinel modifiées).
+- Imagerie : Sentinel-2 cloudless 2020 by EOX IT Services GmbH, CC BY-NC-SA 4.0, non commercial (contient des données Copernicus Sentinel 2020 modifiées). La version 2016 est sous CC BY 4.0.
 - Frontières : Natural Earth, domaine public.
 - Musique et effets : synthétisés par `scripts/music.py`.
 - Remotion : gratuit pour les particuliers et les structures de 3 personnes ou moins (licence d'entreprise au-delà).
+
+## Version 2 : améliorations visuelles
+| Domaine | Fichier(s) | Changement |
+|---|---|---|
+| Fond satellite | `src/config/carte.ts`, `src/map/MapStage.tsx`, `scripts/tileserver.mjs` | Mosaïque EOX 2020 homogène (plus de couture de teinte), tuiles d'un niveau plus détaillé (`tileSize: 192`), suréchantillonnage ×1,25, atmosphère limitée au globe (plus de voile gris), étalonnage plus naturel |
+| Caméra | `src/camera.ts` | Trajectoires de vol continues (van Wijk & Nuij, comme le `flyTo` des cartes web) : la caméra prend de l'altitude selon la distance puis redescend, sans arc artificiel ni vue d'océan vide ; courbes de vitesse adoucies |
+| Cadrage | `MAP.raise` | La carte est dessinée plus haute que l'écran : le sujet reste au-dessus des sous-titres, sans fausser le chargement des tuiles |
+| Pays | `src/overlays/Overlays.tsx`, `STYLE.flagOpacity` / `fillOpacity` | Drapeaux et couleurs semi-transparents (relief, forêts et villes visibles), ondulation discrète, contour fin à trois couches (halo, trait, filet clair) |
+| Transitions | `src/Video.tsx` | Flashs blancs supprimés ; passage d'un pays à l'autre par vol de caméra et « whoosh » sonore ; zoom minimal relevé pour ne jamais montrer le noir de l'espace |
+| Textes | `src/Subtitles.tsx`, `src/config/style.ts` | Sous-titres plus bas (zone sûre TikTok), plus fins, sur 900 px maximum ; étiquettes, mesures et textes de côte contraints à l'écran |

@@ -11,6 +11,8 @@ const clamp = (x: number) => Math.max(0, Math.min(1, x));
 const out = Easing.bezier(0.16, 1, 0.3, 1);
 const back = Easing.bezier(0.34, 1.56, 0.64, 1);
 const FADE = 0.4;
+const SAFE = 40;       // marge latérale (px)
+const SAFE_TOP = 150;  // marge haute (interface TikTok)
 
 type P = { t: number; local: number; alpha: number; uid: string };
 
@@ -37,19 +39,19 @@ const Country: React.FC<{ o: O.CountryO } & P> = ({ o, t, local, alpha, uid }) =
         <clipPath id={`c${uid}`}><path d={d} fillRule="evenodd" /></clipPath>
         <filter id={`w${uid}`} x="-10%" y="-10%" width="120%" height="120%">
           <feTurbulence type="fractalNoise" baseFrequency={`${(3 / Math.max(fb.w, 50)).toFixed(4)} ${(6 / Math.max(fb.h, 50)).toFixed(4)}`} numOctaves={2} seed={4} />
-          <feDisplacementMap in="SourceGraphic" scale={wave ? Math.min(fb.w, fb.h) * (0.05 + 0.03 * Math.sin(t * 2.4)) : 0} xChannelSelector="R" yChannelSelector="G" />
+          <feDisplacementMap in="SourceGraphic" scale={wave ? Math.min(fb.w, fb.h) * (0.03 + 0.015 * Math.sin(t * 2.4)) : 0} xChannelSelector="R" yChannelSelector="G" />
         </filter>
         <linearGradient id={`b${uid}`} gradientUnits="userSpaceOnUse" x1={fb.x} y1={fb.y} x2={fb.x + period} y2={fb.y + period * 0.55}
           spreadMethod="repeat" gradientTransform={`translate(${phase} 0)`}>
-          <stop offset="0" stopColor="#000" stopOpacity="0.32" />
+          <stop offset="0" stopColor="#000" stopOpacity="0.22" />
           <stop offset="0.25" stopColor="#000" stopOpacity="0" />
-          <stop offset="0.5" stopColor="#fff" stopOpacity="0.38" />
+          <stop offset="0.5" stopColor="#fff" stopOpacity="0.3" />
           <stop offset="0.75" stopColor="#fff" stopOpacity="0" />
-          <stop offset="1" stopColor="#000" stopOpacity="0.32" />
+          <stop offset="1" stopColor="#000" stopOpacity="0.22" />
         </linearGradient>
       </defs>
       {(o.flag || o.fill) && fillP > 0 && (
-        <g opacity={fillP * (o.opacity ?? 0.97)} style={{ filter: "drop-shadow(0 10px 8px rgba(0,0,0,0.55))" }}>
+        <g opacity={fillP * (o.opacity ?? (o.flag ? STYLE.flagOpacity : STYLE.fillOpacity))} style={{ filter: "drop-shadow(0 3px 5px rgba(0,0,0,0.35))" }}>
           <g clipPath={`url(#c${uid})`}>
             <g transform={`translate(${cx} ${cy}) scale(${sc}) translate(${-cx} ${-cy})`}>
               <g filter={wave ? `url(#w${uid})` : undefined}>
@@ -65,9 +67,15 @@ const Country: React.FC<{ o: O.CountryO } & P> = ({ o, t, local, alpha, uid }) =
         </g>
       )}
       {outline && (
-        <path d={d} fill="none" stroke={outline} strokeWidth={STYLE.outlineWidth} strokeLinejoin="round" pathLength={1}
-          strokeDasharray="1 1" strokeDashoffset={1 - drawP}
-          style={{ filter: `drop-shadow(0 0 5px ${outline}) drop-shadow(0 0 14px ${outline})` }} />
+        <g style={{ filter: `drop-shadow(0 0 6px ${outline})` }}>
+          {/* halo doux + trait net (fin) */}
+          <path d={d} fill="none" stroke={outline} strokeOpacity={0.35} strokeWidth={STYLE.outlineWidth * 3} strokeLinejoin="round" pathLength={1}
+            strokeDasharray="1 1" strokeDashoffset={1 - drawP} style={{ filter: "blur(3px)" }} />
+          <path d={d} fill="none" stroke={outline} strokeWidth={STYLE.outlineWidth} strokeLinejoin="round" pathLength={1}
+            strokeDasharray="1 1" strokeDashoffset={1 - drawP} />
+          <path d={d} fill="none" stroke="#fff" strokeOpacity={0.8} strokeWidth={STYLE.outlineWidth * 0.4} strokeLinejoin="round" pathLength={1}
+            strokeDasharray="1 1" strokeDashoffset={1 - drawP} />
+        </g>
       )}
     </g>
   );
@@ -76,21 +84,24 @@ const Country: React.FC<{ o: O.CountryO } & P> = ({ o, t, local, alpha, uid }) =
 /* ---------- Étiquette ---------- */
 const Label: React.FC<{ o: O.LabelO } & P> = ({ o, local, alpha }) => {
   const { project } = useMap();
+  const { width } = useVideoConfig();
   const [x, y] = project(o.at);
-  const bx = x + (o.dx ?? 0), by = y + (o.dy ?? -180);
+  const size = o.size ?? STYLE.labelSize;
+  const bw = o.text.length * size * 0.47 + 50, bh = size * 1.2 + 16;
+  const bx = Math.max(bw / 2 + SAFE, Math.min(width - bw / 2 - SAFE, x + (o.dx ?? 0)));
+  const by = Math.max(bh + SAFE_TOP, y + (o.dy ?? -180));
   const lp = out(clamp(local / 0.3)), bp = out(clamp((local - 0.18) / 0.35));
-  const size = o.size ?? 56;
   const chars = Math.round(o.text.length * clamp((local - 0.2) / 0.4));
   return (
     <>
       <svg style={{ position: "absolute", inset: 0, overflow: "visible", opacity: alpha }} width="100%" height="100%">
-        <circle cx={x} cy={y} r={7 * lp} fill="#fff" />
-        <line x1={x} y1={y} x2={x + (bx - x) * lp} y2={y + (by - y) * lp} stroke="#fff" strokeWidth={3} />
+        <circle cx={x} cy={y} r={6 * lp} fill="#fff" stroke="rgba(0,0,0,.4)" strokeWidth={2} />
+        <line x1={x} y1={y} x2={x + (bx - x) * lp} y2={y + (by - y) * lp} stroke="#fff" strokeWidth={2.5} style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,.6))" }} />
       </svg>
       <div style={{
         position: "absolute", left: bx, top: by, transform: `translate(-50%, -100%) scale(${0.8 + 0.2 * bp})`, transformOrigin: "50% 100%",
-        opacity: bp * alpha, padding: "6px 22px 10px", border: "3px solid #fff", background: "rgba(8,12,20,0.38)",
-        fontFamily: STYLE.labelFont, fontWeight: 600, fontSize: size, color: "#fff", whiteSpace: "nowrap", lineHeight: 1.1,
+        opacity: bp * alpha, padding: "4px 20px 8px", border: "2px solid rgba(255,255,255,0.95)", background: "rgba(6,10,18,0.45)",
+        backdropFilter: "blur(2px)", fontFamily: STYLE.labelFont, fontWeight: 500, letterSpacing: 0.5, fontSize: size, color: "#fff", whiteSpace: "nowrap", lineHeight: 1.1,
         textShadow: "0 2px 6px rgba(0,0,0,0.7)", boxShadow: "0 6px 18px rgba(0,0,0,0.35)",
       }}>
         <span>{o.text.slice(0, chars)}</span><span style={{ opacity: 0 }}>{o.text.slice(chars)}</span>
@@ -114,11 +125,12 @@ const Coast: React.FC<{ o: O.CoastO } & P> = ({ o, t, local, alpha }) => {
     if (ang > 90) ang -= 180; if (ang < -90) ang += 180;
     const n = ((ang + 90) * Math.PI) / 180, off = (o.textOffset ?? 70) * (o.side ?? 1);
     const tp = out(clamp((local - 0.6) / 0.4));
+    const W = 1080, lx = Math.max(140, Math.min(W - 140, m[0] + Math.cos(n) * off)), ly = Math.max(SAFE_TOP, m[1] + Math.sin(n) * off);
     label = (
       <div style={{
-        position: "absolute", left: m[0] + Math.cos(n) * off, top: m[1] + Math.sin(n) * off,
+        position: "absolute", left: lx, top: ly,
         transform: `translate(-50%,-50%) rotate(${ang}deg) scale(${0.6 + 0.4 * back(tp)})`, opacity: tp * alpha,
-        fontFamily: STYLE.labelFont, fontWeight: 700, fontSize: 64, color: "#fff", whiteSpace: "nowrap",
+        fontFamily: STYLE.labelFont, fontWeight: 600, fontSize: 58, color: "#fff", whiteSpace: "nowrap",
         textShadow: "0 0 10px rgba(0,0,0,.8), 0 3px 4px rgba(0,0,0,.9)",
       }}>{o.text}</div>
     );
@@ -177,8 +189,10 @@ const Arrows: React.FC<{ o: O.ArrowsO } & P> = ({ o, local, alpha }) => {
 /* ---------- Mesure ---------- */
 const Measure: React.FC<{ o: O.MeasureO } & P> = ({ o, local, alpha }) => {
   const { project } = useMap();
-  const [ax, ay] = project(o.a), [bx0, by0] = project(o.b);
-  const dy = o.dy ?? -120, y = Math.min(ay, by0) + dy;
+  const { width } = useVideoConfig();
+  const [ax0, ay] = project(o.a), [bx1, by0] = project(o.b);
+  const ax = Math.max(SAFE, ax0), bx0 = Math.min(width - SAFE - 30, bx1);
+  const dy = o.dy ?? -120, y = Math.max(SAFE_TOP + 110, Math.min(ay, by0) + dy);
   const p = out(clamp(local / 0.8));
   const bx = ax + (bx0 - ax) * p;
   const tp = out(clamp((local - 0.5) / 0.4));
@@ -186,11 +200,11 @@ const Measure: React.FC<{ o: O.MeasureO } & P> = ({ o, local, alpha }) => {
     <>
       <svg style={{ position: "absolute", inset: 0, opacity: alpha, overflow: "visible" }} width="100%" height="100%">
         <line x1={ax} y1={y} x2={bx - 20} y2={y} stroke="#fff" strokeWidth={10} strokeLinecap="round" style={{ filter: "drop-shadow(0 3px 4px rgba(0,0,0,.6))" }} />
-        <polygon points={`${bx + 26},${y} ${bx - 24},${y - 24} ${bx - 24},${y + 24}`} fill={STYLE.coast} stroke="#fff" strokeWidth={3} />
+        <polygon points={`${bx + 26},${y} ${bx - 24},${y - 24} ${bx - 24},${y + 24}`} fill={STYLE.coast} stroke="#fff" strokeWidth={2.5} style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,.6))" }} />
       </svg>
       <div style={{
         position: "absolute", left: (ax + bx0) / 2, top: y - 18, transform: `translate(-50%,-100%) scale(${0.6 + 0.4 * back(tp)})`, opacity: tp * alpha,
-        fontFamily: STYLE.labelFont, fontWeight: 700, fontSize: 84, color: "#fff", textShadow: "0 0 12px rgba(0,0,0,.7), 0 4px 4px rgba(0,0,0,.9)",
+        fontFamily: STYLE.labelFont, fontWeight: 600, fontSize: 78, color: "#fff", textShadow: "0 0 12px rgba(0,0,0,.7), 0 4px 4px rgba(0,0,0,.9)",
       }}>{o.text}</div>
     </>
   );
@@ -225,7 +239,7 @@ const Mask: React.FC<{ o: O.MaskO } & P> = ({ o, local, alpha }) => {
   return (
     <svg style={{ position: "absolute", inset: 0 }} width="100%" height="100%">
       <path d={`M-50 -50H${width + 50}V${height + 50}H-50Z${holes}`} fillRule="evenodd" fill={o.color} opacity={(o.opacity ?? 0.8) * p * alpha} style={{ mixBlendMode: "multiply" }} />
-      <path d={`M-50 -50H${width + 50}V${height + 50}H-50Z${holes}`} fillRule="evenodd" fill={o.color} opacity={0.35 * p * alpha} />
+      <path d={`M-50 -50H${width + 50}V${height + 50}H-50Z${holes}`} fillRule="evenodd" fill={o.color} opacity={0.14 * p * alpha} />
     </svg>
   );
 };

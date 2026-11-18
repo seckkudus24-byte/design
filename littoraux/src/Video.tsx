@@ -8,14 +8,8 @@ import { CAMERA, OVERLAYS, TRANSITIONS } from "./config/scenes";
 import { FPS, LINES, T, TOTAL } from "./timeline";
 import { STYLE } from "./config/style";
 
-const Flash: React.FC<{ t: number }> = ({ t }) => {
-  let a = 0;
-  for (const ref of TRANSITIONS) {
-    const d = t - (T(ref) + 0.05);
-    if (d > -0.08 && d < 0.35) a = Math.max(a, d < 0 ? (d + 0.08) / 0.08 : 1 - d / 0.35);
-  }
-  return a > 0 ? <AbsoluteFill style={{ background: "#fff", opacity: a * 0.45, mixBlendMode: "screen" }} /> : null;
-};
+// Transitions : pas de flash. Le passage d'un pays à l'autre est un vol de caméra continu
+// (voir src/camera.ts), souligné par un « whoosh » sonore (TRANSITIONS dans scenes.ts).
 
 export const Video: React.FC = () => {
   const frame = useCurrentFrame();
@@ -29,8 +23,7 @@ export const Video: React.FC = () => {
         <Overlays items={OVERLAYS} t={t} />
       </MapStage>
       {/* étalonnage : vignette + légère dominante chaude */}
-      <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.5) 100%)" }} />
-      <Flash t={t} />
+      <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.32) 100%)" }} />
       <Subtitles t={t} />
       {STYLE.watermark && (
         <div style={{ position: "absolute", left: 40, bottom: 120, fontFamily: STYLE.subtitleFont, fontWeight: 800, fontSize: 34, color: "#fff",
