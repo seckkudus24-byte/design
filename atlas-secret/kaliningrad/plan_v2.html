@@ -1,0 +1,232 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Kaliningrad – Plan de production V2</title><style>
+@page { size: A4; margin: 16mm 15mm 18mm;}
+:root { --ink:#1b1f27; --muted:#5b6472; --accent:#b3202a; --amber:#d98a1c; --line:#d9dde3; --soft:#f4f5f7; }
+* { box-sizing: border-box; }
+body { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; color: var(--ink); font-size: 9.6pt; line-height: 1.45; margin: 0; }
+h1 { font-size: 24pt; margin: 0 0 4px; letter-spacing: .5px; }
+h2 { font-size: 14pt; margin: 22px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--accent); break-after: avoid; }
+h3 { font-size: 11pt; margin: 14px 0 4px; color: var(--accent); break-after: avoid; }
+a { color: #1f4fb4; text-decoration: none; }
+.cover { background: #0e1626; color: #fff; padding: 28px 26px; border-radius: 6px; margin-bottom: 14px; }
+.cover .brand { color: var(--amber); font-weight: 700; letter-spacing: 3px; font-size: 10pt; }
+.cover .sub { color: #c9d3e3; margin-top: 6px; }
+.meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.meta span { background: rgba(255,255,255,.1); padding: 3px 9px; border-radius: 3px; font-size: 8.8pt; }
+.note { background: var(--soft); border-left: 3px solid var(--amber); padding: 8px 10px; margin: 10px 0; }
+table { width: 100%; border-collapse: collapse; margin: 6px 0 10px; font-size: 8.4pt; }
+th, td { border: 1px solid var(--line); padding: 4px 6px; vertical-align: top; text-align: left; }
+th { background: #e9ecf1; }
+tr { break-inside: avoid; }
+.tag { display: inline-block; padding: 0 5px; border-radius: 3px; font-size: 7.8pt; font-weight: 700; }
+.fait { background: #e3f1e6; color: #1e6b33; }
+.ana { background: #fbe9d0; color: #8a4f00; }
+.narr p { margin: 0 0 6px; padding-left: 26px; text-indent: -26px; }
+.narr b { color: var(--accent); display: inline-block; width: 26px; text-indent: 0; }
+.scene { border: 1px solid var(--line); border-radius: 5px; padding: 8px 10px; margin: 8px 0; break-inside: avoid; }
+.scene h3 { margin-top: 0; }
+.scene .vo { font-style: italic; background: var(--soft); padding: 5px 8px; margin: 4px 0 6px; }
+.scene dl { display: grid; grid-template-columns: 105px 1fr; gap: 2px 8px; margin: 0; }
+.scene dt { font-weight: 700; color: var(--muted); }
+.scene dd { margin: 0; }
+.sw { display: inline-block; width: 11px; height: 11px; border-radius: 2px; vertical-align: -1px; margin-right: 4px; border: 1px solid #0002; }
+ul { margin: 4px 0 8px; padding-left: 18px; }
+li { margin-bottom: 2px; }
+.pb { break-before: page; }
+.small { font-size: 8.4pt; color: var(--muted); }
+
+.tc { font-family: "DejaVu Sans Mono", monospace; font-weight: 700; color: var(--accent); white-space: nowrap; }
+.osd { background: #0e1626; color: #fff; padding: 5px 8px; border-radius: 4px; margin: 2px 0 6px; font-size: 8.6pt; }
+.osd div { padding: 1px 0; }
+.osd div::before { content: "▸ "; color: var(--amber); }
+.warn { background: #fdecea; border-left: 3px solid var(--accent); padding: 6px 9px; margin: 6px 0; font-size: 8.8pt; }
+.chg td:first-child { width: 22px; text-align: center; font-weight: 700; }
+</style></head><body>
+<div class="cover"><div class="brand">ATLAS SECRET · ÉPISODE 1</div><h1>KALININGRAD</h1>
+<div style="font-size:13pt">Le territoire russe isolé au cœur de l'Europe</div>
+<div class="sub">Plan de production · <b>VERSION FINALE V2</b> · prêt pour la création vidéo</div>
+<div class="meta"><span>Vertical 9:16 · 1080×1920 · 30 i/s</span><span>Durée : 2:00 (voix ≈ 1:59)</span><span>Narration : 324 mots · 13 scènes</span><span>V2 · 18 novembre 2026</span></div></div>
+<h2>Sommaire</h2><ol><li>Corrections apportées depuis la V1</li><li>Narration finale et timings définitifs</li><li>Storyboard final scène par scène</li><li>Faits vérifiés et sources</li><li>Direction artistique (inchangée)</li><li>Ressources nécessaires et précautions de licence</li><li>Notes pour la production</li></ol>
+<div class="note">Inchangés par rapport à la V1 : le concept, le hook, l'ordre chronologique, les 13 scènes, la direction artistique, le style des cartes et l'identité ATLAS SECRET.</div>
+<h2>1. Corrections apportées depuis la V1</h2><table class="chg"><tr><th>#</th><th>Problème</th><th>Correction V2</th></tr>
+<tr><td>1</td><td>« L&#x27;enclave est encerclée »</td><td>Formulation exacte : « Sur terre, Kaliningrad ne touche plus que l&#x27;Alliance. Vers la Russie : la mer, les airs… ou le transit par la Lituanie. » Visuel : côte baltique soulignée en ambre, aucun anneau fermé (scène 10).</td></tr>
+<tr><td>2</td><td>Corridor de Suwałki ambigu</td><td>Défini comme la frontière polono-lituanienne entre l&#x27;oblast et la Biélorussie. Deux mesures distinctes à l&#x27;écran : frontière ≈ 104 km (tracé réel) et ≈ 65 km à vol d&#x27;oiseau entre l&#x27;oblast et la Biélorussie (scène 12).</td></tr>
+<tr><td>3</td><td>Chronologie de 1991 trop rapide</td><td>Rattachement de 1946 à la RSFS de Russie, limite intérieure sans effet en URSS, puis indépendance lituanienne (proclamée en 1990, reconnue le 6 septembre 1991) et fin de l&#x27;URSS (26 décembre 1991), qui transforment ces limites en frontières d&#x27;État. Frise de dates à l&#x27;écran (scène 9).</td></tr>
+<tr><td>4</td><td>Potsdam simplifié</td><td>Accord « de principe » sur le transfert du nord à l&#x27;URSS, sud sous administration polonaise, caractère provisoire en attendant le règlement de paix, règlement définitif en 1990 (traité « 2+4 »). Région de Memel exclue du partage sur la carte (scène 7).</td></tr>
+<tr><td>5</td><td>Portée Iskander présentée comme une menace</td><td>« Portée annoncée, jusqu&#x27;à 500 km » ; cercle tireté neutre, sans remplissage rouge, avec la mention « rayon théorique : il ne désigne pas de cibles » (scène 11).</td></tr>
+<tr><td>6</td><td>Expressions sensationnalistes</td><td>« bastion » → « position militaire clé » ; « point sensible » → « l&#x27;enjeu s&#x27;appelle » ; « encerclée » supprimé ; « Le piège de 1991 » → « 1991 : la séparation » ; « La preuve que… » → « une frontière… qui pèse encore sur l&#x27;équilibre de la région ».</td></tr>
+<tr><td>7</td><td>Durée réelle</td><td>Nouvelle estimation au débit réel, en comptant les années prononcées en toutes lettres : la V1 dépassait 2 min. Narration V2 : 324 mots, ≈ 1:59 de voix. Certaines dates passent de la voix à l&#x27;écran (1255, 1701, 104 km).</td></tr>
+<tr><td>8</td><td>Cohérence des timings</td><td>Timings recalculés phrase par phrase, continus de 0:00 à 2:00, sans chevauchement ni trou (tableau section 2).</td></tr>
+</table>
+<h2>2. Narration finale et timings définitifs</h2>
+<table><tr><th>Scène</th><th>Timecode</th><th>Voix off (texte exact)</th></tr>
+<tr><td>1. Le hook</td><td class="tc">0:00,0 – 0:06,5</td><td>Imaginez une région de Russie… qui ne touche pas la Russie. Elle existe. Elle s&#x27;appelle Kaliningrad.</td></tr>
+<tr><td>2. Où se trouve Kaliningrad</td><td class="tc">0:06,5 – 0:16,0</td><td>Un million d&#x27;habitants, entre la Pologne et la Lituanie. Et par la terre, plus de trois cent cinquante kilomètres de pays étrangers la séparent de la Russie.</td></tr>
+<tr><td>3. Le mystère</td><td class="tc">0:16,0 – 0:20,5</td><td>Comment en est-on arrivé là ? Tout commence… sous un autre nom.</td></tr>
+<tr><td>4. Königsberg</td><td class="tc">0:20,5 – 0:27,5</td><td>Königsberg. Fondée par les chevaliers Teutoniques, elle devient le cœur de la Prusse… et la ville du philosophe Kant.</td></tr>
+<tr><td>5. Une première séparation</td><td class="tc">0:27,5 – 0:32,5</td><td>Après la Première Guerre mondiale, un corridor polonais la sépare déjà du reste de l&#x27;Allemagne.</td></tr>
+<tr><td>6. La guerre</td><td class="tc">0:32,5 – 0:42,0</td><td>Puis vient la guerre. Ravagée par les bombes britanniques en 1944, la ville est prise par l&#x27;Armée rouge en avril 1945.</td></tr>
+<tr><td>7. Potsdam</td><td class="tc">0:42,0 – 0:52,0</td><td>À Potsdam, les Alliés acceptent en principe de confier Königsberg et ses environs à l&#x27;URSS, et le sud de la Prusse-Orientale à l&#x27;administration polonaise… en attendant un traité de paix.</td></tr>
+<tr><td>8. Kaliningrad</td><td class="tc">0:52,0 – 0:59,0</td><td>En 1946, la ville devient Kaliningrad. Ses derniers habitants allemands sont expulsés, remplacés par des Soviétiques.</td></tr>
+<tr><td>9. 1991 : la séparation</td><td class="tc">0:59,0 – 1:13,0</td><td>Moscou la rattache à la Russie soviétique, pas à la Lituanie voisine. Une simple limite intérieure… jusqu&#x27;en 1991 : la Lituanie indépendante, l&#x27;URSS dissoute, ces limites deviennent des frontières d&#x27;État. Kaliningrad est coupée du reste de la Russie.</td></tr>
+<tr><td>10. Entourée par l&#x27;Alliance, ouverte sur la mer</td><td class="tc">1:13,0 – 1:25,0</td><td>En 2004, la Lituanie rejoint l&#x27;OTAN et l&#x27;Union européenne, comme la Pologne. Sur terre, Kaliningrad ne touche plus que l&#x27;Alliance. Vers la Russie : la mer, les airs… ou le transit par la Lituanie.</td></tr>
+<tr><td>11. Une position militaire clé</td><td class="tc">1:25,0 – 1:38,0</td><td>Pour Moscou, c&#x27;est une position militaire clé : la base principale de sa flotte de la Baltique et, depuis 2018, des missiles Iskander à capacité nucléaire. Leur portée annoncée, jusqu&#x27;à cinq cents kilomètres, inquiète ses voisins.</td></tr>
+<tr><td>12. Le corridor de Suwałki</td><td class="tc">1:38,0 – 1:50,0</td><td>Pour l&#x27;OTAN, l&#x27;enjeu s&#x27;appelle le corridor de Suwałki : la frontière polono-lituanienne, entre Kaliningrad et la Biélorussie, alliée de Moscou. Soixante-cinq kilomètres à vol d&#x27;oiseau… seul lien terrestre entre les pays baltes et leurs alliés.</td></tr>
+<tr><td>13. Conclusion</td><td class="tc">1:50,0 – 2:00,0</td><td>Königsberg, Kaliningrad… et pour la Pologne, Królewiec. Une ville, trois noms. Et une frontière tracée en 1945 qui pèse encore sur l&#x27;équilibre de la région.</td></tr>
+</table>
+<div class="note"><b>Base de calcul :</b> ≈ 3,2 unités prononcées par seconde (années lues en toutes lettres), plus les pauses (0,4 à 0,7 s entre scènes, 1 s finale). Débit documentaire soutenu, naturel pour TikTok. Une fois la voix enregistrée, les timings seront recalés automatiquement sur la voix réelle ; une tolérance de ± 3 s sur le total est normale.</div>
+<h3>Indications de jeu</h3><ul><li>Ton grave et posé, sans emphase dramatique.</li><li>Silences courts sur les points de suspension (« … qui ne touche pas la Russie », « … sous un autre nom », « … jusqu'en 1991 »).</li><li>Légère accélération dans la scène 9, ralentissement dans la conclusion.</li></ul>
+<h2>3. Storyboard final scène par scène</h2>
+<div class="scene"><h3>Scène 1 — Le hook · <span class="tc">0:00,0 – 0:06,5</span></h3>
+<div class="vo">« Imaginez une région de Russie… qui ne touche pas la Russie. Elle existe. Elle s&#x27;appelle Kaliningrad. »</div>
+<dl><dt>À l'écran</dt><dd>Plan rapproché satellite sur une forme ambre isolée au bord de la mer, sans nom. Recul : apparaissent la Russie continentale en rouge à l&#x27;est, puis la Lituanie, la Lettonie et la Biélorussie entre les deux.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>KALININGRAD (titre révélé lettre par lettre sur « Elle s&#x27;appelle… »)</div></div></dd>
+<dt>Caméra</dt><dd>Vol continu : zoom 9 sur la côte de l&#x27;oblast → zoom 4,2 (Europe de l&#x27;Est), inclinaison 20° → 0°.</dd><dt>Graphismes</dt><dd>Oblast en ambre lumineux ; Russie en rouge semi-transparent (le terrain reste visible) ; tireté lumineux entre les deux avec un « ? ».</dd>
+<dt>Transition</dt><dd>Le mouvement de caméra continue vers la scène 2, sans coupe.</dd><dt>Sources</dt><dd>F2</dd></dl></div>
+<div class="scene"><h3>Scène 2 — Où se trouve Kaliningrad · <span class="tc">0:06,5 – 0:16,0</span></h3>
+<div class="vo">« Un million d&#x27;habitants, entre la Pologne et la Lituanie. Et par la terre, plus de trois cent cinquante kilomètres de pays étrangers la séparent de la Russie. »</div>
+<dl><dt>À l'écran</dt><dd>La Pologne et la Lituanie s&#x27;affichent avec leur nom ; la mer Baltique est nommée. Une ligne de mesure part de la frontière est de l&#x27;oblast vers la Russie continentale (région de Pskov).</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>≈ 1 000 000 habitants (recensement 2021)</div><div>≈ 360 km au plus court, à vol d&#x27;oiseau, jusqu&#x27;à la Russie continentale</div></div></dd>
+<dt>Caméra</dt><dd>Léger zoom avant, puis panoramique vers l&#x27;est en suivant la ligne de mesure.</dd><dt>Graphismes</dt><dd>Frontières qui se dessinent ; ligne tiretée avec compteur de km ; noms des pays traversés (Lituanie, Lettonie ou Biélorussie).</dd>
+<dt>Transition</dt><dd>La ligne se fige, la carte se désature légèrement (bascule vers le passé).</dd><dt>Sources</dt><dd>F1, F2, F3</dd></dl></div>
+<div class="scene"><h3>Scène 3 — Le mystère · <span class="tc">0:16,0 – 0:20,5</span></h3>
+<div class="vo">« Comment en est-on arrivé là ? Tout commence… sous un autre nom. »</div>
+<dl><dt>À l'écran</dt><dd>La ville de Kaliningrad vue du ciel. Son nom se brouille et se désagrège, laissant un emplacement vide.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>(aucun texte : le nom « KALININGRAD » disparaît)</div></div></dd>
+<dt>Caméra</dt><dd>Lente poussée vers la ville (zoom 9 → 11).</dd><dt>Graphismes</dt><dd>Désagrégation du nom en particules.</dd>
+<dt>Transition</dt><dd>Fondu enchaîné vers une carte ancienne sépia, même cadrage.</dd><dt>Sources</dt><dd>Aucune (transition narrative)</dd></dl></div>
+<div class="scene"><h3>Scène 4 — Königsberg · <span class="tc">0:20,5 – 0:27,5</span></h3>
+<div class="vo">« Königsberg. Fondée par les chevaliers Teutoniques, elle devient le cœur de la Prusse… et la ville du philosophe Kant. »</div>
+<dl><dt>À l'écran</dt><dd>« Königsberg » s&#x27;inscrit à l&#x27;emplacement vide. Gravure du château, puis portrait de Kant dans des cadres épinglés à la ville.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>1255 · fondation par l&#x27;ordre Teutonique</div><div>1701 · couronnement du premier roi en Prusse</div><div>Emmanuel Kant (1724–1804)</div></div></dd>
+<dt>Caméra</dt><dd>Recul jusqu&#x27;à l&#x27;échelle de la Prusse-Orientale, puis travelling latéral lent pendant les dates.</dd><dt>Graphismes</dt><dd>Nom en police à empattements, ton sépia ; contour de la Prusse-Orientale en noir et gris ; images d&#x27;archives avec léger zoom.</dd>
+<dt>Transition</dt><dd>Les images d&#x27;archives se replient dans le point de la ville.</dd><dt>Sources</dt><dd>F4, F5, F6</dd></dl></div>
+<div class="scene"><h3>Scène 5 — Une première séparation · <span class="tc">0:27,5 – 0:32,5</span></h3>
+<div class="vo">« Après la Première Guerre mondiale, un corridor polonais la sépare déjà du reste de l&#x27;Allemagne. »</div>
+<dl><dt>À l'écran</dt><dd>Allemagne de l&#x27;entre-deux-guerres en gris. Le corridor polonais apparaît en blanc et rouge et isole la Prusse-Orientale.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>1919 · traité de Versailles</div><div>Corridor polonais</div></div></dd>
+<dt>Caméra</dt><dd>Recul pour cadrer Berlin et Königsberg ensemble.</dd><dt>Graphismes</dt><dd>Le corridor s&#x27;ouvre comme une coupure animée. Le territoire de Memel, au nord, détaché en 1920, reste en hachures neutres, sans commentaire.</dd>
+<dt>Transition</dt><dd>Zoom avant vers Königsberg, la carte s&#x27;assombrit.</dd><dt>Sources</dt><dd>F7, F22</dd></dl></div>
+<div class="scene"><h3>Scène 6 — La guerre · <span class="tc">0:32,5 – 0:42,0</span></h3>
+<div class="vo">« Puis vient la guerre. Ravagée par les bombes britanniques en 1944, la ville est prise par l&#x27;Armée rouge en avril 1945. »</div>
+<dl><dt>À l'écran</dt><dd>Photo du centre historique en ruines. Puis grandes flèches soviétiques qui encerclent la ville.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>Août 1944 · raids de la RAF</div><div>6–9 avril 1945 · assaut soviétique</div><div>9 avril 1945 · capitulation de la garnison</div></div></dd>
+<dt>Caméra</dt><dd>Gros plan sur la ville, puis recul progressif pour montrer l&#x27;encerclement.</dd><dt>Graphismes</dt><dd>Flèches d&#x27;offensive rouges venant de l&#x27;est et du sud ; anneau d&#x27;encerclement qui se referme ; carte assombrie.</dd>
+<dt>Transition</dt><dd>Recul continu jusqu&#x27;à l&#x27;échelle de la Prusse-Orientale.</dd><dt>Sources</dt><dd>F8, F9</dd></dl></div>
+<div class="scene"><h3>Scène 7 — Potsdam · <span class="tc">0:42,0 – 0:52,0</span></h3>
+<div class="vo">« À Potsdam, les Alliés acceptent en principe de confier Königsberg et ses environs à l&#x27;URSS, et le sud de la Prusse-Orientale à l&#x27;administration polonaise… en attendant un traité de paix. »</div>
+<dl><dt>À l'écran</dt><dd>Photo de la conférence (Attlee, Truman, Staline). Puis la Prusse-Orientale coupée par la ligne décrite au protocole (de la baie de Dantzig, au nord de Braunsberg et de Goldap, jusqu&#x27;à la jonction avec la Lituanie).</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>Potsdam · 17 juillet – 2 août 1945</div><div>Nord : transfert à l&#x27;URSS accepté « en principe »</div><div>Sud : placé sous administration polonaise</div><div>Frontière provisoire, en attendant le règlement de paix</div><div>Règlement définitif : traité « 2+4 », 1990 (petit, en fin de scène)</div></div></dd>
+<dt>Caméra</dt><dd>Plan fixe sur la photo, puis léger mouvement le long de la ligne.</dd><dt>Graphismes</dt><dd>Ligne d&#x27;abord tiretée (provisoire), qui ne devient pleine qu&#x27;à l&#x27;apparition de « 1990 ». Nord en rouge soviétique, sud en couleur Pologne. La région de Klaipėda (Memel) n&#x27;entre pas dans ce partage : hachures neutres.</dd>
+<dt>Transition</dt><dd>Le nom « Königsberg » s&#x27;efface sur la partie nord.</dd><dt>Sources</dt><dd>F10, F21, F22</dd></dl></div>
+<div class="scene"><h3>Scène 8 — Kaliningrad · <span class="tc">0:52,0 – 0:59,0</span></h3>
+<div class="vo">« En 1946, la ville devient Kaliningrad. Ses derniers habitants allemands sont expulsés, remplacés par des Soviétiques. »</div>
+<dl><dt>À l'écran</dt><dd>« Königsberg » est remplacé par « Kaliningrad ». Portrait de Kalinine. Fins flux de population : vers l&#x27;ouest (expulsions), vers l&#x27;est (arrivées).</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>4 juillet 1946 · Königsberg devient Kaliningrad</div><div>1947–1948 · expulsion des derniers habitants allemands</div></div></dd>
+<dt>Caméra</dt><dd>Zoom avant au changement de nom, puis recul pour montrer les flux.</dd><dt>Graphismes</dt><dd>Animation de remplacement du nom ; flèches de flux fines, sans chiffres (estimations divergentes).</dd>
+<dt>Transition</dt><dd>La carte se déroule vers l&#x27;est pour montrer l&#x27;URSS.</dd><dt>Sources</dt><dd>F11, F12</dd></dl></div>
+<div class="scene"><h3>Scène 9 — 1991 : la séparation · <span class="tc">0:59,0 – 1:13,0</span></h3>
+<div class="vo">« Moscou la rattache à la Russie soviétique, pas à la Lituanie voisine. Une simple limite intérieure… jusqu&#x27;en 1991 : la Lituanie indépendante, l&#x27;URSS dissoute, ces limites deviennent des frontières d&#x27;État. Kaliningrad est coupée du reste de la Russie. »</div>
+<dl><dt>À l'écran</dt><dd>L&#x27;URSS avec ses limites internes en fins tiretés gris (RSFS de Russie, RSS de Lituanie, de Lettonie, de Biélorussie). L&#x27;oblast est relié par un trait à la RSFS de Russie. À « 1991 », les tiretés deviennent des frontières pleines et lumineuses ; Lituanie, Lettonie et Biélorussie prennent leur couleur d&#x27;État ; l&#x27;oblast reste seul en rouge.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>7 avril 1946 · région rattachée à la RSFS de Russie</div><div>11 mars 1990 · la Lituanie proclame son indépendance</div><div>6 sept. 1991 · indépendance reconnue par l&#x27;URSS</div><div>26 déc. 1991 · fin de l&#x27;URSS</div></div></dd>
+<dt>Caméra</dt><dd>Plan large de la Baltique à Moscou, puis lente poussée vers l&#x27;oblast sur « coupée du reste de la Russie ».</dd><dt>Graphismes</dt><dd>Tiretés → traits pleins ; l&#x27;oblast pulse doucement ; frise chronologique en bas d&#x27;écran.</dd>
+<dt>Transition</dt><dd>Le rouge de l&#x27;URSS se retire, seul l&#x27;oblast reste coloré.</dd><dt>Sources</dt><dd>F11, F13, F14, F23</dd></dl></div>
+<div class="scene"><h3>Scène 10 — Entourée par l&#x27;Alliance, ouverte sur la mer · <span class="tc">1:13,0 – 1:25,0</span></h3>
+<div class="vo">« En 2004, la Lituanie rejoint l&#x27;OTAN et l&#x27;Union européenne, comme la Pologne. Sur terre, Kaliningrad ne touche plus que l&#x27;Alliance. Vers la Russie : la mer, les airs… ou le transit par la Lituanie. »</div>
+<dl><dt>À l'écran</dt><dd>La Pologne et la Lituanie se colorent en bleu OTAN. La frontière terrestre de l&#x27;oblast est soulignée en bleu, sa côte baltique en ambre (accès à la mer). Trois tracés apparaissent : route maritime, arc aérien vers Moscou, voie ferrée à travers la Lituanie.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>Pologne : OTAN 1999 · UE 2004</div><div>Lituanie : OTAN et UE 2004</div><div>Mer · air · rail (transit facilité par la Lituanie depuis 2003)</div></div></dd>
+<dt>Caméra</dt><dd>Recul pour cadrer l&#x27;oblast, la Baltique et la Lituanie.</dd><dt>Graphismes</dt><dd>Pictogrammes discrets (bateau, avion, train) au bout de chaque tracé. Pas d&#x27;anneau fermé : la côte reste visiblement ouverte.</dd>
+<dt>Transition</dt><dd>Zoom avant vers Baltiïsk.</dd><dt>Sources</dt><dd>F15, F24</dd></dl></div>
+<div class="scene"><h3>Scène 11 — Une position militaire clé · <span class="tc">1:25,0 – 1:38,0</span></h3>
+<div class="vo">« Pour Moscou, c&#x27;est une position militaire clé : la base principale de sa flotte de la Baltique et, depuis 2018, des missiles Iskander à capacité nucléaire. Leur portée annoncée, jusqu&#x27;à cinq cents kilomètres, inquiète ses voisins. »</div>
+<dl><dt>À l'écran</dt><dd>Gros plan satellite sur Baltiïsk et son chenal. Pictogramme Iskander. Un cercle de portée s&#x27;étend, puis s&#x27;estompe.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>Baltiïsk · base principale de la flotte russe de la Baltique</div><div>Depuis 2018 · Iskander déployés en permanence</div><div>Portée maximale annoncée : jusqu&#x27;à 500 km</div><div>Rayon théorique : il ne désigne pas de cibles (sous le cercle)</div></div></dd>
+<dt>Caméra</dt><dd>Plongée inclinée (≈ 40°) sur Baltiïsk, puis recul pendant l&#x27;expansion du cercle.</dd><dt>Graphismes</dt><dd>Cercle tireté fin, ton gris-ambre, sans remplissage rouge et sans pays colorés « en alerte » ; il disparaît après environ 2 s.</dd>
+<dt>Transition</dt><dd>La caméra glisse vers le sud-est, vers le corridor de Suwałki.</dd><dt>Sources</dt><dd>F16, F17</dd></dl></div>
+<div class="scene"><h3>Scène 12 — Le corridor de Suwałki · <span class="tc">1:38,0 – 1:50,0</span></h3>
+<div class="vo">« Pour l&#x27;OTAN, l&#x27;enjeu s&#x27;appelle le corridor de Suwałki : la frontière polono-lituanienne, entre Kaliningrad et la Biélorussie, alliée de Moscou. Soixante-cinq kilomètres à vol d&#x27;oiseau… seul lien terrestre entre les pays baltes et leurs alliés. »</div>
+<dl><dt>À l'écran</dt><dd>La frontière Pologne–Lituanie est surlignée sur toute sa longueur. Une mesure distincte, en ligne droite, relie l&#x27;oblast à la Biélorussie. Flèche de liaison de la Pologne vers les pays baltes.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>Corridor de Suwałki</div><div>Frontière Pologne–Lituanie : ≈ 104 km</div><div>≈ 65 km à vol d&#x27;oiseau entre Kaliningrad et la Biélorussie</div><div>Badge ANALYSE sur « l&#x27;enjeu »</div></div></dd>
+<dt>Caméra</dt><dd>Plongée inclinée sur le corridor, puis recul pour cadrer l&#x27;Estonie, la Lettonie et la Lituanie.</dd><dt>Graphismes</dt><dd>Deux styles bien distincts : la frontière (trait lumineux qui suit le tracé réel) et la mesure (double flèche droite, tiretée). La Biélorussie en rouge clair.</dd>
+<dt>Transition</dt><dd>La caméra prend de l&#x27;altitude jusqu&#x27;à l&#x27;échelle de l&#x27;Europe.</dd><dt>Sources</dt><dd>F18, F19, F25</dd></dl></div>
+<div class="scene"><h3>Scène 13 — Conclusion · <span class="tc">1:50,0 – 2:00,0</span></h3>
+<div class="vo">« Königsberg, Kaliningrad… et pour la Pologne, Królewiec. Une ville, trois noms. Et une frontière tracée en 1945 qui pèse encore sur l&#x27;équilibre de la région. »</div>
+<dl><dt>À l'écran</dt><dd>Les trois noms s&#x27;empilent sur la ville, chacun dans sa police d&#x27;époque. Recul vers l&#x27;Europe entière, l&#x27;oblast seul en lumière. Les dates de la vidéo défilent brièvement.</dd>
+<dt>Textes affichés</dt><dd><div class="osd"><div>Königsberg · 1255–1946</div><div>Kaliningrad · depuis 1946</div><div>Królewiec · nom polonais recommandé depuis 2023</div><div>Logo ATLAS SECRET (1:58,5 – 2:00)</div></div></dd>
+<dt>Caméra</dt><dd>Recul lent et continu jusqu&#x27;au globe.</dd><dt>Graphismes</dt><dd>Défilé des dates : 1255 · 1701 · 1919 · 1945 · 1946 · 1991 · 2004 · 2018.</dd>
+<dt>Transition</dt><dd>Fondu au noir lent sur la dernière note ; la voix se termine vers 1:59.</dd><dt>Sources</dt><dd>F20, F10</dd></dl></div>
+<h2>4. Faits vérifiés et sources</h2><div class="note"><span class="tag fait">FAIT</span> vérifié dans des sources fiables · <span class="tag ana">ANALYSE</span> interprétation géopolitique, signalée à l'écran par le badge « ANALYSE ».</div>
+<table><tr><th>#</th><th>Fait</th><th>Statut</th><th>Sources</th></tr>
+<tr><td>F1</td><td>L'oblast compte environ <b>1 million d'habitants</b> (recensement 2021 : 1 029 966) et environ 15 100 km².</td><td><span class="tag fait">FAIT</span></td><td><a href="https://www.citypopulation.de/en/russia/kaliningrad">citypopulation.de</a>, <a href="https://www.wikipedia.org/wiki/Oblast_Kaliningrad">Wikipedia</a></td></tr>
+<tr><td>F2</td><td>Frontières terrestres avec la Pologne et la Lituanie uniquement ; façade sur la mer Baltique ; aucune frontière avec la Russie.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://kyivindependent.com/why-the-baltic-states-fear-russias-kaliningrad-exclave/">Kyiv Independent</a>, <a href="https://sovereignlimits.com/boundaries/lithuania-russia-kaliningrad-land">Sovereign Limits</a></td></tr>
+<tr><td>F3</td><td>Distance la plus courte entre l'oblast et la Russie continentale : <b>≈ 363 km</b> à vol d'oiseau (frontière à frontière, jusqu'à la région de Pskov).</td><td><span class="tag fait">FAIT</span></td><td>Mesuré sur les frontières Natural Earth 1:10M (les sources de presse disent de « près de 300 » à « environ 400 » km).</td></tr>
+<tr><td>F4</td><td>Forteresse fondée en <b>1255</b> par l'ordre Teutonique ; le nom honore Ottokar II de Bohême.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://en.wikipedia.org/wiki/K%C3%B6nigsberg">Wikipedia, Königsberg</a></td></tr>
+<tr><td>F5</td><td>Frédéric Ier se couronne « roi en Prusse » à Königsberg le <b>18 janvier 1701</b>.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://en.wikipedia.org/wiki/Frederick_I_of_Prussia">Wikipedia, Frédéric Ier</a></td></tr>
+<tr><td>F6</td><td>Emmanuel Kant naît à Königsberg en 1724 et y vit jusqu'à sa mort en 1804.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://plato.stanford.edu/ENTRIES/kant/">Stanford Encyclopedia of Philosophy</a></td></tr>
+<tr><td>F7</td><td>Le traité de Versailles (1919) crée le corridor polonais : la Prusse-Orientale devient une exclave allemande.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://en.wikipedia.org/wiki/East_Prussia">Wikipedia, Prusse-Orientale</a></td></tr>
+<tr><td>F8</td><td>Raids de la RAF les 26-27 et 29-30 <b>août 1944</b> : Altstadt, Löbenicht et Kneiphof presque détruits.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://en.wikipedia.org/wiki/Bombing_of_K%C3%B6nigsberg_in_World_War_II">Wikipedia</a>, <a href="https://www.awm.gov.au/collection/F02622">Australian War Memorial</a></td></tr>
+<tr><td>F9</td><td>Assaut soviétique du 6 au 9 avril 1945 ; la garnison du général Lasch capitule le <b>9 avril 1945</b>.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://en.wikipedia.org/wiki/Otto_Lasch">Wikipedia, Otto Lasch</a>, <a href="https://en.wikipedia.org/wiki/Battle_of_K%C3%B6nigsberg">Wikipedia, bataille</a></td></tr>
+<tr><td>F10</td><td><b>Protocole de Potsdam (1er août 1945)</b> : la conférence accepte « en principe » le transfert final à l'URSS de Königsberg et de la zone adjacente, sous réserve d'examen de la frontière par des experts, en attendant le règlement de paix ; les États-Unis et le Royaume-Uni s'engagent à soutenir ce transfert lors de ce règlement. La partie de la Prusse-Orientale non placée sous administration soviétique passe sous administration polonaise.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://avalon.law.yale.edu/20th_century/decade17.asp">Avalon Project, protocole</a>, <a href="https://history.state.gov/historicaldocuments/frus1945Berlinv02/d1431">FRUS</a>, <a href="https://germanhistorydocs.org/en/occupation-and-the-emergence-of-two-states-1945-1961/excerpts-from-the-report-on-the-potsdam-conference-potsdam-agreement-august-2-1945">GHDI</a></td></tr>
+<tr><td>F11</td><td>Région créée le <b>7 avril 1946</b> au sein de la RSFS de Russie ; ville renommée Kaliningrad le <b>4 juillet 1946</b>, d'après Mikhaïl Kalinine.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://www.prlib.ru/en/node/619151">Bibliothèque présidentielle Eltsine</a>, <a href="https://en.wikipedia.org/wiki/Kaliningrad">Wikipedia</a></td></tr>
+<tr><td>F12</td><td>Expulsion des Allemands restants d'octobre 1947 à fin 1948 ; repeuplement par des citoyens soviétiques.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://escholarship.org/content/qt6r33q03k/qt6r33q03k_noSplash_528da985f7c921dd7e9896937fe735c1.pdf">N. Eaton, thèse, UC Berkeley</a></td></tr>
+<tr><td>F13</td><td>Zone militaire fermée aux étrangers jusqu'à la fin de l'URSS (1991 ou 1992 selon les sources). Information de contexte, non prononcée.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://meduza.io/en/feature/2023/04/06/kaliningrad-an-imperial-gem-and-a-thorn-in-everyone-s-side">Meduza</a></td></tr>
+<tr><td>F14</td><td>Depuis 1991, la Lituanie, la Lettonie et la Biélorussie, devenues indépendantes, séparent l'oblast du reste de la Russie.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://en.wikipedia.org/wiki/Kaliningrad">Wikipedia, Kaliningrad</a></td></tr>
+<tr><td>F15</td><td>Pologne : OTAN le 12 mars 1999, UE le 1er mai 2004. Lituanie : OTAN le 29 mars 2004, UE le 1er mai 2004.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://www.nato.int/fr/what-we-do/partnerships-and-cooperation/enlargement-and-article-10?selectedLocale=en">NATO</a>, <a href="https://wikipedia.com/wiki/NATO_member">Wikipedia</a></td></tr>
+<tr><td>F16</td><td>Baltiïsk : base principale de la flotte russe de la Baltique (depuis 1952) ; port libre de glaces.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://wikiwand.com/en/articles/Baltiysk">Wikipedia, Baltiïsk</a></td></tr>
+<tr><td>F17</td><td>Iskander à capacité nucléaire, portée jusqu'à 500 km, déployés en permanence depuis février 2018 ; inquiétudes exprimées par la Lituanie et l'OTAN.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://missilethreat.csis.org/russia-deploys-iskander-missiles-kaliningrad-2/">CSIS</a>, <a href="https://www.rferl.org/a/russia-missiles-iskander-kaliningrad/29023076.html">RFE/RL</a></td></tr>
+<tr><td>F18</td><td>Corridor de Suwałki : la frontière polono-lituanienne, entre l'oblast et la Biélorussie.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://Www.Wikipedia.org/wiki/Suwa%C5%82ki_Gap">Wikipedia</a>, <a href="https://weforum.org/agenda/2022/07/suwalki-gap-russia-belarus-lithuania-sanctions-ukraine">WEF</a></td></tr>
+<tr><td>F19</td><td>Le corridor est un enjeu de sécurité majeur pour l'OTAN.</td><td><span class="tag ana">ANALYSE</span></td><td><a href="https://www.atlanticcouncil.org/blogs/natosource/nato-s-vulnerable-link-in-europe-poland-s-suwalki-gap/">Atlantic Council</a>, <a href="https://www.rte.ie/news/analysis-and-comment/2025/0921/1534438-suwalki-gap-nato-russia">RTÉ, 2025</a></td></tr>
+<tr><td>F20</td><td>Mai 2023 : une commission polonaise recommande le nom « Królewiec » en polonais (recommandation linguistique, pas un changement officiel).</td><td><span class="tag fait">FAIT</span></td><td><a href="https://notesfrompoland.com/2023/05/10/poland-recommends-russias-kaliningrad-be-called-krolewiec/">Notes from Poland</a>, <a href="https://www.pap.pl/en/news/news,1570624,poland-use-name-krolewiec-instead-kaliningrad.html">PAP</a></td></tr>
+<tr><td>F21</td><td><b>Traité « 2+4 »</b> (12 septembre 1990) et traité germano-polonais (14 novembre 1990) : l'Allemagne unie confirme ses frontières comme définitives.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://www.cvce.eu/education/unit-content/-/unit/en/1f5d29d1-bc79-44af-ae41-6fdb3f41608e/efe51364-e699-4d53-92ff-fe24f37e4d40">CVCE</a>, <a href="https://www.wikipedia.com/wiki/German-Polish_Border_Treaty">Wikipedia</a></td></tr>
+<tr><td>F22</td><td>Le territoire de Memel (Klaipėda), détaché de la Prusse-Orientale par Versailles, est rattaché à la RSS de Lituanie après la guerre : il ne fait pas partie du partage de Potsdam.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://en.wikipedia.org/wiki/Klaip%C4%97da_Region">Wikipedia, région de Klaipėda</a></td></tr>
+<tr><td>F23</td><td>Lituanie : proclamation d'indépendance le 11 mars 1990, reconnue par l'URSS le 6 septembre 1991 ; fin de l'URSS le 26 décembre 1991.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://history.state.gov/countries/lithuania">Office of the Historian (US)</a>, <a href="https://Www.Wikipedia.org/wiki/Lithuania_SSR">Wikipedia</a></td></tr>
+<tr><td>F24</td><td>Depuis le 1er juillet 2003, le transit des voyageurs russes par la Lituanie se fait avec un document de transit facilité (FTD/FRTD, règlement CE 693/2003).</td><td><span class="tag fait">FAIT</span></td><td><a href="https://oeil.europarl.europa.eu/oeil/en/document-summary?id=989320">Parlement européen (OEIL)</a>, <a href="https://www.baltictimes.com/news/articles/9659/">Baltic Times</a></td></tr>
+<tr><td>F25</td><td>Frontière Pologne–Lituanie : ≈ 104 km (104,3 km selon les gardes-frontières lituaniens). Distance la plus courte entre l'oblast et la Biélorussie : ≈ 65 km à vol d'oiseau.</td><td><span class="tag fait">FAIT</span></td><td><a href="https://en.wikipedia.org/wiki/Lithuania%E2%80%93Poland_border">Wikipedia</a>, <a href="https://vsat.lrv.lt/en/about-service/tasks-functions/the-outline-of-the-state-border/">VSAT Lituanie</a> ; 65,9 km mesurés sur Natural Earth</td></tr>
+</table>
+<h3>Écartés volontairement</h3><ul><li>« <b>Seul</b> port russe libre de glaces sur la Baltique » : contesté.</li><li>« 90 % des réserves mondiales d'ambre » : chiffre de source russe uniquement.</li><li>Bilans des victimes et nombre d'expulsés : estimations trop divergentes.</li><li>Restrictions de transit de 2022 : faits solides, mais hors du format de 2 min.</li></ul>
+<h2>5. Direction artistique (inchangée)</h2>
+<ul><li><b>Ambiance :</b> documentaire géopolitique sobre et mystérieux ; pas de flash, pas d'effet criard ; la caméra voyage sur la carte de façon continue.</li>
+<li><b>Carte :</b> imagerie satellite réelle, légèrement désaturée et assombrie ; pays colorés par transparence (terrain visible) ; contours fins et lumineux.</li></ul>
+<table><tr><th>Élément</th><th>Couleur</th></tr>
+<tr><td>Russie / URSS</td><td><span class="sw" style="background:#B3202A"></span>rouge profond #B3202A</td></tr>
+<tr><td>Kaliningrad mis en avant</td><td><span class="sw" style="background:#F2A93B"></span>ambre lumineux #F2A93B</td></tr>
+<tr><td>OTAN / UE</td><td><span class="sw" style="background:#2E6BD8"></span>bleu #2E6BD8</td></tr>
+<tr><td>Prusse / Allemagne historique</td><td><span class="sw" style="background:#2A2A2A"></span><span class="sw" style="background:#BFBFBF"></span>noir et gris</td></tr>
+<tr><td>Pologne</td><td><span class="sw" style="background:#fff"></span><span class="sw" style="background:#e57373"></span>blanc et rouge clair</td></tr>
+<tr><td>Limites provisoires ou internes</td><td>tiretés gris fins (scènes 7 et 9)</td></tr>
+<tr><td>Mesures (distances, portées)</td><td>tiretés gris-ambre, jamais en aplat rouge</td></tr>
+<tr><td>Époques passées</td><td><span class="sw" style="background:#a58a63"></span>filtre sépia et grain léger</td></tr></table>
+<ul><li><b>Typographie :</b> dates et lieux en Oswald ou Bebas Neue ; noms historiques en Playfair Display ; sous-titres en Montserrat gras avec contour, dans la zone sûre TikTok.</li>
+<li><b>Tampons de date :</b> en haut à gauche, apparition façon machine à écrire, toujours au même endroit.</li>
+<li><b>Archives :</b> dans un cadre épinglé au lieu, avec léger zoom, grain et bord papier ; jamais en plein écran brut.</li>
+<li><b>Son :</b> nappe grave continue, pulsation qui s'intensifie de 1944 à 2018, silence d'une demi-seconde avant « … jusqu'en 1991 », whoosh discret à chaque vol de caméra.</li>
+<li><b>Badge « ANALYSE » :</b> uniquement scène 12 (enjeu du corridor).</li></ul>
+<h2>6. Ressources nécessaires et précautions de licence</h2>
+<h3>Données cartographiques</h3>
+<table><tr><th>Ressource</th><th>Usage (scènes)</th><th>Source</th><th>Licence</th></tr>
+<tr><td>Frontières actuelles</td><td>1–3, 10–13</td><td>Natural Earth 1:10M</td><td>Domaine public</td></tr>
+<tr><td>Frontières historiques (1919, 1937, 1945, républiques soviétiques)</td><td>4–9</td><td>CShapes 2.0 (ETH Zurich) ou tracés manuels d'après cartes d'époque</td><td>CShapes : CC BY-NC-SA, à vérifier ; tracés manuels : sans restriction</td></tr>
+<tr><td>Ligne de partage de Potsdam</td><td>7</td><td>Tracé d'après le protocole (baie de Dantzig, nord de Braunsberg et de Goldap) et la frontière actuelle oblast–Pologne</td><td>Données propres</td></tr>
+<tr><td>Région de Klaipėda (Memel)</td><td>5, 7</td><td>Natural Earth (limites administratives lituaniennes)</td><td>Domaine public</td></tr>
+<tr><td>Corridor de Suwałki, mesures</td><td>2, 12</td><td>Calculées sur Natural Earth (≈ 363 km, ≈ 65 km)</td><td>Domaine public</td></tr>
+<tr><td>Imagerie satellite</td><td>toutes</td><td>EOX Sentinel-2 cloudless, MapTiler ou Mapbox</td><td>Voir l'avertissement ci-dessous</td></tr></table>
+<div class="warn"><b>Imagerie satellite :</b> la mosaïque EOX <b>2020</b> (la plus belle) est sous licence <b>CC BY-NC-SA : usage non commercial uniquement</b>. Si la chaîne est monétisée (fonds créateurs, partenariats), utiliser EOX <b>2016</b> (CC BY 4.0, crédit obligatoire) ou un fournisseur commercial (MapTiler, Mapbox) avec sa clé et ses conditions d'attribution.</div>
+<h3>Images d'archives (à valider une par une avant le montage)</h3>
+<table><tr><th>Image</th><th>Scène</th><th>Source probable</th><th>Licence probable</th><th>Précaution</th></tr>
+<tr><td>Château de Königsberg (gravure ou photo d'avant 1944)</td><td>4</td><td>Wikimedia Commons / Bundesarchiv</td><td>Domaine public ou CC BY-SA 3.0 DE</td><td>CC BY-SA : crédit obligatoire et partage à l'identique, à vérifier pour une vidéo</td></tr>
+<tr><td>Portrait de Kant</td><td>4</td><td>Wikimedia Commons</td><td>Domaine public</td><td>—</td></tr>
+<tr><td>Ruines de Königsberg 1944-1945</td><td>6</td><td>Bundesarchiv ou archives soviétiques</td><td>À vérifier</td><td>Éviter les images IWM (licence non commerciale)</td></tr>
+<tr><td>Conférence de Potsdam</td><td>7</td><td>US National Archives</td><td>Domaine public</td><td>—</td></tr>
+<tr><td>Portrait de Kalinine</td><td>8</td><td>Wikimedia Commons</td><td>Domaine public (à confirmer)</td><td>Vérifier l'auteur et la date</td></tr>
+<tr><td>Baltiïsk aujourd'hui</td><td>11</td><td>Wikimedia Commons</td><td>À vérifier</td><td>Sinon, vue satellite seule</td></tr>
+<tr><td>Lanceur Iskander</td><td>11</td><td>Ministère russe de la Défense (mil.ru)</td><td>CC BY 4.0</td><td>Crédit obligatoire</td></tr></table>
+<h3>Autres ressources</h3>
+<ul><li><b>Polices :</b> Oswald, Bebas Neue, Playfair Display, Montserrat (licence SIL OFL, usage commercial permis).</li>
+<li><b>Musique et effets :</b> composition synthétisée (comme pour « Littoraux ») ou banque libre de droits avec licence commerciale.</li>
+<li><b>Voix :</b> TTS français (voix à choisir) ou comédien.</li>
+<li><b>Crédits :</b> à placer dans la description TikTok (imagerie, photos CC, Natural Earth), plus une ligne discrète en fin de vidéo si la licence l'impose.</li></ul>
+<h2>7. Notes pour la production</h2>
+<ul><li><b>Prononciation :</b> Königsberg [keu-nigs-bèrg] · Kaliningrad [ka-li-nin-grad] · Królewiec [krou-lé-viets] · Suwałki [sou-va-ou-ki] · Baltiïsk [bal-ti-isk] · Iskander [is-kan-dèr].</li>
+<li><b>Calage :</b> chaque phrase de la voix off pilote sa scène ; les animations sont attachées aux phrases et non à des secondes fixes, pour rester synchronisées si la durée réelle varie.</li>
+<li><b>Zone sûre :</b> sous-titres centrés vers 75 % de la hauteur, largeur ≤ 900 px ; textes affichés à au moins 150 px du haut et 40 px des bords.</li>
+<li><b>Contrôle qualité :</b> vérifier chaque scène sur des images fixes avant le rendu complet (frontières, dates, orthographe des noms, aucune bordure noire ni fond vide).</li></ul>
+</body></html>
