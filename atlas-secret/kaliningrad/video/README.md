@@ -68,15 +68,17 @@ Un fournisseur à clé exige d'adapter le crédit dans `src/config/style.ts` à 
 Vérification géographique de la ligne de distance (`npm run data` puis contrôle sur le grand cercle) : 363 km de l'oblast à la Russie continentale. La ligne traverse la Lituanie (≈ 240 km), puis la Lettonie, et arrive au point où se rejoignent les frontières lettone, biélorusse et russe.
 
 ## Version 3 : précision et contrôle technique
-**Distance :** les deux points sont calculés par `npm run data` (plus courte distance entre les sommets des frontières Natural Earth 1:10M) :
-- départ : 22,821° E, 54,885° N, pointe est de l'oblast, sur la frontière lituanienne ;
-- arrivée : 28,149° E, 56,142° N, frontière de la Russie continentale (région de Pskov), près du tripoint Lettonie–Biélorussie–Russie.
+**Distance (vérification finale) :** `npm run data` cherche la plus courte distance entre le contour de l'oblast et celui de la Russie continentale. Le calcul se fait sur les frontières **geoBoundaries gbOpen** (détaillées, ≈ 19 000 sommets pour l'oblast), avec un repli sur Natural Earth si elles sont indisponibles. Le script compare toutes les paires de sommets (sphère), puis calcule la distance précise entre les deux points retenus sur l'ellipsoïde **WGS84** (formule inverse de Vincenty).
+- départ : **22,85524° E, 54,88788° N**, pointe est de l'oblast, sur la frontière lituanienne ;
+- arrivée : **28,15743° E, 56,14318° N**, frontière de la Russie continentale avec la Biélorussie (région de Pskov), à 1–3 km du point triple Lettonie–Biélorussie–Russie.
 
-| Méthode | Distance |
+| Contrôle | Distance |
 |---|---|
-| Ellipsoïde WGS84, formule de Vincenty (**valeur affichée**) | **364,4 km** |
-| Sphère (haversine) | 363,3 km |
-| Contrôle avec les données 1:50M | 364,8 km (WGS84) |
+| geoBoundaries, WGS84 (**valeur retenue**) | **362,8 km → « ≈ 363 km »** |
+| départ geoBoundaries → point triple publié (56,170° N, 28,151° E) | 363,5 km |
+| Natural Earth 1:10M (valeur précédente) | 364,4 km : contour simplifié, pointe est de l'oblast ≈ 2 km trop à l'ouest |
+
+C'est une distance **à vol d'oiseau** : la ligne est tracée sur le grand cercle entre ces deux points. Ce n'est pas un trajet routier.
 
 Le chiffre n'apparaît qu'une fois la ligne entièrement tracée : aucun compteur intermédiaire ne peut être lu comme une donnée. Il s'affiche en chiffres alignés : les chiffres elzéviriens de Playfair faisaient lire « 364 » comme « 304 » sur un téléphone.
 

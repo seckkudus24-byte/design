@@ -120,6 +120,29 @@ function vincenty([L1, p1], [L2, p2]) {
   const ds = B * ss * (c2m + (B / 4) * (cs * (-1 + 2 * c2m * c2m) - (B / 6) * c2m * (-3 + 4 * ss * ss) * (-3 + 4 * c2m * c2m)));
   return (b * A * (sg - ds)) / 1000;
 }
-const kmWgs = vincenty(best[1], best[2]);
-fs.writeFileSync(path.join(OUT, "measure.json"), JSON.stringify({ km: Math.round(kmWgs), kmSphere: Math.round(best[0] * 10) / 10, kmWgs84: Math.round(kmWgs * 10) / 10, from: best[1], to: best[2] }));
-console.log(`distance la plus courte oblast → Russie continentale : ${kmWgs.toFixed(1)} km (ellipsoïde WGS84) / ${best[0].toFixed(1)} km (sphère)`, best[1], "→", best[2]);
+let measure = { source: "Natural Earth 1:10M", from: best[1], to: best[2], kmSphere: best[0] };
+console.log(`Natural Earth 1:10M : ${vincenty(best[1], best[2]).toFixed(1)} km (WGS84)`, best[1], "→", best[2]);
+
+// Affinage avec des frontières détaillées (geoBoundaries gbOpen, Russie par régions, ~19 000 sommets pour l'oblast).
+// Natural Earth, très simplifié, place la pointe est de l'oblast ≈ 2 km trop à l'ouest.
+try {
+  const GBF = "cache/gb-geoBoundaries-RUS-ADM1.geojson";
+  if (!fs.existsSync(GBF)) {
+    console.log("téléchargement geoBoundaries RUS ADM1 (≈ 57 Mo)…");
+    const r = await fetch("https://media.githubusercontent.com/media/wmgeolab/geoBoundaries/main/releaseData/gbOpen/RUS/ADM1/geoBoundaries-RUS-ADM1.geojson");
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    fs.writeFileSync(GBF, Buffer.from(await r.arrayBuffer()));
+  }
+  const gb = JSON.parse(fs.readFileSync(GBF, "utf8"));
+  const gkal = gb.features.filter((f) => f.properties.shapeName === "Kaliningrad");
+  const gk = gkal.flatMap((f) => polysOf(f.geometry).flatMap((p) => p[0])).filter((q) => q[0] > 22.3);
+  const gm = gb.features.filter((f) => !gkal.includes(f)).flatMap((f) => polysOf(f.geometry).flatMap((p) => p[0])).filter((q) => q[0] > 26 && q[0] < 30 && q[1] > 55 && q[1] < 57.5);
+  let gbest = [1e9];
+  for (const a of gk) for (const b of gm) { const d = hav(a, b); if (d < gbest[0]) gbest = [d, a, b]; }
+  measure = { source: "geoBoundaries gbOpen RUS ADM1", from: gbest[1], to: gbest[2], kmSphere: gbest[0] };
+} catch (e) {
+  console.log("geoBoundaries indisponible (" + e.message + ") : mesure Natural Earth conservée");
+}
+const kmWgs = vincenty(measure.from, measure.to);
+fs.writeFileSync(path.join(OUT, "measure.json"), JSON.stringify({ km: Math.round(kmWgs), kmWgs84: Math.round(kmWgs * 10) / 10, kmSphere: Math.round(measure.kmSphere * 10) / 10, source: measure.source, from: measure.from.map((v) => Math.round(v * 1e5) / 1e5), to: measure.to.map((v) => Math.round(v * 1e5) / 1e5) }));
+console.log(`mesure retenue (${measure.source}) : ${kmWgs.toFixed(1)} km (WGS84) / ${measure.kmSphere.toFixed(1)} km (sphère)`, measure.from, "→", measure.to);

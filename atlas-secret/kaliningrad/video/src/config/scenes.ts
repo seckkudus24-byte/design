@@ -25,10 +25,11 @@ export const CAMERA: Key[] = [
   { at: "end", lng: 25.75, lat: 55.68, zoom: 5.3, pitch: 18, bearing: -4 },
 ];
 
-// Plus courte distance oblast → Russie continentale (Natural Earth 1:10M, calculée par `npm run data`) :
-// départ 22,821° E 54,885° N (pointe est de l'oblast, frontière lituanienne) ;
-// arrivée 28,149° E 56,142° N (région de Pskov, près du tripoint Lettonie–Biélorussie–Russie).
-// 364,4 km sur l'ellipsoïde WGS84 (363,3 km sur la sphère ; 364,8 km avec les données 1:50M).
+// Plus courte distance oblast → Russie continentale (calculée par `npm run data`, frontières geoBoundaries détaillées) :
+// départ  22,8552° E 54,8879° N : pointe est de l'oblast, sur la frontière lituanienne ;
+// arrivée 28,1574° E 56,1432° N : frontière russo-biélorusse, à 1–3 km du tripoint Lettonie–Biélorussie–Russie
+//         (région de Pskov). 362,8 km sur l'ellipsoïde WGS84 → « ≈ 363 km ».
+// Contrôles : vers le tripoint publié (56,170° N 28,151° E) 363,5 km ; Natural Earth 1:10M 364,4 km.
 // La ligne suit le grand cercle : Lituanie (≈ 240 km) puis Lettonie.
 const M = MEASURE_KAL_RUS;
 
