@@ -141,3 +141,8 @@ npm run render:episode  # → out/kaliningrad_episode1.mp4 + .srt
 | 11 | Lanceur Iskander-M (exercice de 2018, lieu non précisé) | Алексей Иванов (mil.ru) | **CC BY 4.0** : crédit incrusté sous l'image |
 
 Une légende factuelle est incrustée sous chaque image. Depuis cet environnement, Wikimedia limite l'API et les fichiers originaux (erreur 429) : le script télécharge les vignettes standard (500 à 1 280 px) et recopie les licences vérifiées lors de la sélection.
+
+### Fichiers livrés (épisode)
+- `rendu/kaliningrad_episode1_diffusion.mp4` : 1080×1920, 30 i/s, H.264 High (≈ 5,5 Mb/s) + AAC 48 kHz, −14 LUFS — version versionnée (limite GitHub 100 Mo).
+- Master qualité maximale (CRF 18, ≈ 14 Mb/s, 210 Mo) : régénéré par `npm run render:episode` dans `out/kaliningrad_episode1.mp4` (non versionné, trop lourd pour GitHub).
+- `rendu/kaliningrad_episode1.srt`, `rendu/episode1_planche_contact.jpg`, `rendu/verification_episode1.txt`.

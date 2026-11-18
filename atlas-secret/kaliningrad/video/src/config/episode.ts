@@ -193,7 +193,7 @@ export const EP: EpOverlay[] = [
   { type: "ring", at: K, km: 13, color: "#ff5252", until: "s6c:end", from: "s6c@0.45", to: "s6c:end+0.4" },
   { type: "note", text: "Directions d'attaque schématiques : 43ᵉ et 50ᵉ armées au nord, 11ᵉ armée de la Garde au sud", from: "s6c", to: "s6c:end+0.3" },
   // 7 — Potsdam
-  ...(has("potsdam") ? [{ type: "card", src: "archives/potsdam.jpg", pin: [13.07, 52.39], x: 90, y: 470, w: 900, h: 700, credit: credit("potsdam"), tilt: -1, from: "s7a", to: "s7a@0.55" } as EpOverlay] : []),
+  ...(has("potsdam") ? [{ type: "card", src: "archives/potsdam.jpg", pin: [13.07, 52.39], x: 90, y: 470, w: 900, h: 700, credit: credit("potsdam"), tilt: -1, from: "s7a", to: "s7a@0.5", fadeOut: 0.8 } as EpOverlay] : []),
   { type: "date", date: "17 juillet – 2 août 1945", text: "Conférence de Potsdam", slot: 0, from: "s7a@0.05", to: "s7c:end+0.2" },
   { type: "zone", id: "H_EP", fill: "#e57373", opacity: 0.32, blur: 6, from: "s7b", to: "s8a@0.3", fadeOut: 0.7 },
   { type: "lines", id: "L_1945", color: "#ffffff", width: 4, dash: "12 10", glow: true, solidAt: "s7c@0.75", from: "s7a@0.6", to: "s8a@0.3" },
@@ -232,7 +232,7 @@ export const EP: EpOverlay[] = [
   // 11 — position militaire
   { type: "place", at: [19.91, 54.65], text: "Baltiïsk", color: STYLE.kal, from: "s11a@0.6", to: "s11c@0.4" },
   { type: "date", date: "Baltiïsk", text: "Base principale de la flotte russe de la Baltique", slot: 0, from: "s11b", to: "s11d:end+0.2" },
-  ...(has("iskander") ? [{ type: "card", src: "archives/iskander.jpg", pin: ISKANDER.center, x: 110, y: 470, w: 860, h: 573, credit: credit("iskander"), tilt: -1, from: "s11c", to: "s11d@0.05" } as EpOverlay] : []),
+  ...(has("iskander") ? [{ type: "card", src: "archives/iskander.jpg", pin: ISKANDER.center, x: 110, y: 470, w: 860, h: 573, credit: credit("iskander"), tilt: -1, from: "s11c", to: "s11d", fadeOut: 0.8 } as EpOverlay] : []),
   { type: "date", date: "Depuis 2018", text: "Iskander déployés en permanence", slot: 1, from: "s11c@0.2", to: "s11d:end+0.2" },
   { type: "place", at: ISKANDER.center, text: "Tcherniakhovsk", from: "s11d@0.05", to: "s11d:end+0.3" },
   { type: "circle", ring: ISKANDER.ring, center: ISKANDER.center, from: "s11d", until: "s11d@0.65", to: "s11d:end+0.4", caption: "PORTÉE MAXIMALE ANNONCÉE : JUSQU'À 500 KM", note: "Rayon théorique : il ne désigne pas de cibles" },

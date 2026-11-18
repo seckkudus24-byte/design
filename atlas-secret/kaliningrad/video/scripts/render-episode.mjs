@@ -38,13 +38,22 @@ for (let i = 0; i < PARTS; i++) {
   const file = `out/ep/part_${i}.mp4`;
   if (fs.existsSync(file)) { log(`déjà fait : ${file}`); continue; }
   const a = A + Math.floor(((N - A) * i) / PARTS), b = A + Math.floor(((N - A) * (i + 1)) / PARTS) - 1;
-  let last = -1;
-  await renderMedia({
-    ...common, composition: ep, codec: "h264", crf: 16, muted: true, frameRange: [a, b], outputLocation: file + ".tmp.mp4",
-    concurrency: Number(process.env.CONCURRENCY || 4), imageFormat: "jpeg", jpegQuality: 94,
-    onProgress: ({ progress }) => { const p = Math.floor(progress * 10); if (p !== last) { last = p; log(`tranche ${i + 1}/${PARTS} (images ${a}–${b}) : ${p * 10} %`); } },
-  });
-  fs.renameSync(file + ".tmp.mp4", file);
+  // chaque tranche est rendue en SUB sous-tranches enregistrées au fur et à mesure (reprise fine)
+  const SUB = Number(process.env.SUB || 4), subs = [];
+  for (let k = 0; k < SUB; k++) {
+    const sa = a + Math.floor(((b - a + 1) * k) / SUB), sb = a + Math.floor(((b - a + 1) * (k + 1)) / SUB) - 1;
+    const sf = `out/ep/part_${i}_${k}.mp4`; subs.push(sf);
+    if (fs.existsSync(sf)) { log(`déjà fait : ${sf}`); continue; }
+    let last = -1;
+    await renderMedia({
+      ...common, composition: ep, codec: "h264", crf: 16, muted: true, frameRange: [sa, sb], outputLocation: sf + ".tmp.mp4",
+      concurrency: Number(process.env.CONCURRENCY || 4), imageFormat: "jpeg", jpegQuality: 94,
+      onProgress: ({ progress }) => { const p = Math.floor(progress * 10); if (p !== last) { last = p; log(`tranche ${i + 1}/${PARTS}.${k + 1}/${SUB} (images ${sa}–${sb}) : ${p * 10} %`); } },
+    });
+    fs.renameSync(sf + ".tmp.mp4", sf);
+  }
+  fs.writeFileSync(`out/ep/sub_${i}.txt`, subs.map((f) => `file '${path.resolve(f)}'`).join("\n"));
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", `out/ep/sub_${i}.txt`, "-c", "copy", file]);
 }
 server.close();
 const parts = Array.from({ length: PARTS }, (_, i) => `out/ep/part_${i}.mp4`);

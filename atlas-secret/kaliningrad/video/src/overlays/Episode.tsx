@@ -71,18 +71,23 @@ const DateStamp: React.FC<{ o: O.DateO } & P> = ({ o, local, alpha }) => {
 const Card: React.FC<{ o: O.CardO } & P> = ({ o, local, alpha, exit }) => {
   const { project } = useMap();
   const [px, py] = project(o.pin);
+  const { width, height } = useVideoConfig();
+  const pinIn = px > 0 && px < width && py > 0 && py < height;
   const inP = out(clamp(local / 0.7)), ex = soft(exit);
-  const k = inP * (1 - ex);                         // 0 = replié sur l'épingle, 1 = déployé
+  // épingle visible : la photo se replie vers elle ; hors champ : elle s'efface sur place
+  // épingle hors champ : apparition et disparition sur place (fondu + léger zoom), sans trajectoire
+  const k = pinIn ? inP * (1 - ex) : 1 - 0.1 * (1 - inP) - 0.12 * ex;
+  const fadeIn = pinIn ? 1 : soft(clamp(local / 0.7));
   const cx = o.x + o.w / 2, cy = o.y + o.h / 2;
-  const s = 0.35 + 0.65 * k, tx = (px - cx) * (1 - k), ty = (py - cy) * (1 - k);
+  const s = pinIn ? 0.35 + 0.65 * k : k, tx = pinIn ? (px - cx) * (1 - k) : 0, ty = pinIn ? (py - cy) * (1 - k) : 0;
   const kb = 1.02 + 0.06 * clamp(local / 6);
   return (
     <>
-      <svg style={{ position: "absolute", inset: 0, opacity: alpha * clamp(k * 1.5) }} width="100%" height="100%">
+      <svg style={{ position: "absolute", inset: 0, opacity: alpha * clamp(k * 1.5) * (pinIn ? 1 : fadeIn * (1 - ex)) }} width="100%" height="100%">
         <line x1={px} y1={py} x2={cx} y2={o.y + o.h} stroke="rgba(255,240,210,0.7)" strokeWidth={2} />
         <circle cx={px} cy={py} r={7} fill={STYLE.kal} stroke="#fff" strokeWidth={2} />
       </svg>
-      <div style={{ position: "absolute", left: o.x, top: o.y, width: o.w, height: o.h, opacity: alpha * clamp(k * 1.4),
+      <div style={{ position: "absolute", left: o.x, top: o.y, width: o.w, height: o.h, opacity: alpha * clamp(k * 1.4) * (pinIn ? 1 : fadeIn * (1 - ex)),
         transform: `translate(${tx}px, ${ty}px) scale(${s}) rotate(${(o.tilt ?? -1.5) * k}deg)`, transformOrigin: "50% 50%",
         padding: 12, background: "#e8dfca", boxShadow: "0 18px 40px rgba(0,0,0,0.65), 0 2px 6px rgba(0,0,0,0.5)" }}>
         <div style={{ position: "relative", width: "100%", height: "100%", overflow: "hidden", background: "#222" }}>
