@@ -1,0 +1,47 @@
+{
+  "_aide": "Voix off du prototype (scènes 1 et 2), texte validé du plan V2, découpé en segments pour le calage. 'text' = sous-titre (**mot** = surligné), 'tts' = texte prononcé si différent. Après modification : npm run voice",
+  "voice": "fr_FR-siwis-medium",
+  "lengthScale": 1.0,
+  "lead": 0.3,
+  "segments": [
+    {
+      "id": "s1a",
+      "scene": 1,
+      "text": "Imaginez une région de Russie…",
+      "pauseAfter": 0.4
+    },
+    {
+      "id": "s1b",
+      "scene": 1,
+      "text": "qui ne touche pas la Russie.",
+      "pauseAfter": 0.5
+    },
+    {
+      "id": "s1c",
+      "scene": 1,
+      "text": "Elle existe.",
+      "pauseAfter": 0.3
+    },
+    {
+      "id": "s1d",
+      "scene": 1,
+      "text": "Elle s'appelle **Kaliningrad**.",
+      "tts": "Elle s'appelle Kaliningrad.",
+      "pauseAfter": 0.55
+    },
+    {
+      "id": "s2a",
+      "scene": 2,
+      "text": "**Un million** d'habitants, entre la Pologne et la Lituanie.",
+      "tts": "Un million d'habitants, entre la Pologne et la Lituanie.",
+      "pauseAfter": 0.45
+    },
+    {
+      "id": "s2b",
+      "scene": 2,
+      "text": "Et par la terre, plus de **350 kilomètres** de pays étrangers la séparent de la Russie.",
+      "tts": "Et par la terre, plus de trois cent cinquante kilomètres de pays étrangers la séparent de la Russie.",
+      "pauseAfter": 1.0
+    }
+  ]
+}
